@@ -12,6 +12,10 @@ class InventoryController {
         render();
     }
 
+    def saveProduct(){
+       redirect(action: "createProduct");
+    }
+
     def productList(){
         render(view: "/scm/product_list");
     }
