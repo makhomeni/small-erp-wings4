@@ -2,6 +2,8 @@ package com.jabait.scm.inventory
 
 class InventoryController {
 
+    def inventoryService;
+
     def index() { }
 
     def createProduct(){
@@ -13,7 +15,7 @@ class InventoryController {
     }
 
     def productJsonData(){
-        Product product
+        List products = inventoryService.findAllProducts();
     }
 
 }
