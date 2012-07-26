@@ -19,8 +19,8 @@ class Customer {
     Integer mobileNumber;
     Integer phoneNumber;
     String address;
-    Contact contact;
-    Reference reference;
+    ContactPerson contact;
+    Refferal reference;
 
     static mapping = {
         table('inventory_customer')
