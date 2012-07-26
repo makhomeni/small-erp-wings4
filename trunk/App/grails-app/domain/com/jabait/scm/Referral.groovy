@@ -9,7 +9,7 @@ import com.jabait.hrm.Organization
  * Time: 1:47 AM
  * To change this template use File | Settings | File Templates.
  */
-class Refferal {
+class Referral {
 
     Integer id;
     String firstName;
