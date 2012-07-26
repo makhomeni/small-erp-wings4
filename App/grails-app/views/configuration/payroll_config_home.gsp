@@ -58,8 +58,8 @@
             <div id="list_user" class="content scaffold-list" role="main" style="width: 799px;">
                 <ul class="widgetlist">
 
-                    <li style="width: 138px"><g:link controller="configuration" action="allowanceTypeList"><img src="${resource(dir:'images', file: 'cash.png')}" alt="Document Icon"><span>Allowance</span></g:link></li>
-                    <li style="width: 138px"><g:link controller="configuration" action="leaveEncashment"><img src="${resource(dir:'images', file: 'encashment.png')}" alt="Leave Encashment"><span>Leave Encashment</span></g:link></li>
+                    <li style="width: 138px"><g:link controller="configuration" action="allowanceTypeList"><img src="${resource(dir: 'images', file: 'cash.png')}" alt="Document Icon"><span>Allowance</span></g:link></li>
+                    <li style="width: 138px"><g:link controller="configuration" action="leaveEncashment"><img src="${resource(dir: 'images', file: 'encashment.png')}" alt="Leave Encashment"><span>Leave Encashment</span></g:link></li>
 
                 </ul>
             </div>

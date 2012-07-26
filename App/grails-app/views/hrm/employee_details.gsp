@@ -455,7 +455,7 @@
 
         <div class="header">
             <span><span class="ico gray genInfo"></span>General Information</span>
-            <span style="margin-left: 174px;"><a id="editGeneralInfo"><img id="editGeneralInfoImg" src="${resource(dir:'images',file: 'edit.png')}" alt="Edit" /></a></span>
+            <span style="margin-left: 174px;"><a id="editGeneralInfo"><img id="editGeneralInfoImg" src="${resource(dir: 'images',file: 'edit.png')}" alt="Edit" /></a></span>
             %{--<span  style="margin-left: 166px;"><a id="editGeneralInfo">Edit</a></span>--}%
         </div>
 
@@ -561,7 +561,7 @@
 
         <div class="header">
             <span><span class="ico gray organization"></span>Organization Information</span>
-            <span style="margin-left: 140px;"><a id="editOrganizationInfo"><img id="editOrganizationInfoImg" src="${resource(dir:'images',file: 'edit.png')}" alt="Edit" /></a></span>
+            <span style="margin-left: 140px;"><a id="editOrganizationInfo"><img id="editOrganizationInfoImg" src="${resource(dir: 'images',file: 'edit.png')}" alt="Edit" /></a></span>
         </div>
 
         <div class="content tableName">
@@ -710,7 +710,7 @@
 
         <div class="header">
             <span><span class="ico gray miscellaneous"></span>Miscellaneous</span>
-            <span style="margin-left: 208px;"><a id="editMiscInfo"><img id="editMiscInfoImg" src="${resource(dir:'images',file: 'edit.png')}" alt="Edit" /></a></span>
+            <span style="margin-left: 208px;"><a id="editMiscInfo"><img id="editMiscInfoImg" src="${resource(dir: 'images',file: 'edit.png')}" alt="Edit" /></a></span>
         </div>
 
         <div class="content tableName">
@@ -895,7 +895,7 @@
     <div class="widget">
         <div class="header">
             <span><span class="ico gray contact"></span>Contact Info</span>
-            <span style="margin-left: 227px;"><a id="editContactInfo"><img id="editContactInfoImg" src="${resource(dir:'images',file: 'edit.png')}" alt="Edit" /></a></span>
+            <span style="margin-left: 227px;"><a id="editContactInfo"><img id="editContactInfoImg" src="${resource(dir: 'images',file: 'edit.png')}" alt="Edit" /></a></span>
         </div>
 
         <div class="content tableName">
@@ -1027,7 +1027,7 @@
 
         <div class="header">
             <span><span class="ico gray allowance"></span>&nbsp;&nbsp;Allowance</span>
-            <span style="margin-left: 227px;"><a id="editPaymentInfo"><img id="editPaymentInfoImg" src="${resource(dir:'images',file: 'edit.png')}" alt="Edit" /></a></span>
+            <span style="margin-left: 227px;"><a id="editPaymentInfo"><img id="editPaymentInfoImg" src="${resource(dir: 'images',file: 'edit.png')}" alt="Edit" /></a></span>
         </div>
 
         <div class="content tableName">
