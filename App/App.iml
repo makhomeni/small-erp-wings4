@@ -46,6 +46,18 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/lib" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/mysql/mysql-connector-java/jars/mysql-connector-java-5.1.16.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.jackson/jackson-mapper-lgpl/jars/jackson-mapper-lgpl-1.7.4.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.jackson/jackson-core-lgpl/jars/jackson-core-lgpl-1.7.4.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.geronimo.specs/geronimo-stax-api_1.0_spec/jars/geronimo-stax-api_1.0_spec-1.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.poi/poi-ooxml-schemas/jars/poi-ooxml-schemas-3.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.poi/poi/jars/poi-3.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.poi/poi-ooxml/jars/poi-ooxml-3.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.castor/castor/jars/castor-1.2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/jfree/jfreechart/jars/jfreechart-1.0.12.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/jfree/jcommon/jars/jcommon-1.0.15.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.lowagie/itext/jars/itext-2.1.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-digester/commons-digester/jars/commons-digester-2.1.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/net.sf.jasperreports/jasperreports/jars/jasperreports-4.5.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
