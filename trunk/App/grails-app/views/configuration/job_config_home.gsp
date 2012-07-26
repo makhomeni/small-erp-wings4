@@ -61,10 +61,10 @@
             </g:if>
             <div id="list_user" class="content scaffold-list" role="main" style="width: 800px;">
                 <ul class="widgetlist">
-                    <li><g:link controller="configuration" action="jobRoleList"><img src="${resource(dir:'images', file: 'jobRole.png')}" alt="Document Icon"><span>Job Role</span></g:link></li>
-                    <li><g:link controller="configuration" action="jobSpecList"><img src="${resource(dir:'images', file: 'job_space.png')}" alt="Document Icon"><span>Job Spec</span></g:link></li>
-                    <li><g:link controller="configuration" action="jobTitleList"><img src="${resource(dir:'images', file: 'jobtitles.png')}" alt="Document Icon"><span>Job Title</span></g:link></li>
-                    <li><g:link controller="configuration" action="employmentStatusList"><img src="${resource(dir:'images', file: 'employeeAdd.png')}" alt="Document Icon"><span>Job Status</span></g:link></li>
+                    <li><g:link controller="configuration" action="jobRoleList"><img src="${resource(dir: 'images', file: 'jobRole.png')}" alt="Document Icon"><span>Job Role</span></g:link></li>
+                    <li><g:link controller="configuration" action="jobSpecList"><img src="${resource(dir: 'images', file: 'job_space.png')}" alt="Document Icon"><span>Job Spec</span></g:link></li>
+                    <li><g:link controller="configuration" action="jobTitleList"><img src="${resource(dir: 'images', file: 'jobtitles.png')}" alt="Document Icon"><span>Job Title</span></g:link></li>
+                    <li><g:link controller="configuration" action="employmentStatusList"><img src="${resource(dir: 'images', file: 'employeeAdd.png')}" alt="Document Icon"><span>Job Status</span></g:link></li>
 
                 </ul>
             </div>
