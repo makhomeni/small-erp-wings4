@@ -10,6 +10,9 @@ class Accounts {
     static constraints = {
     }
 
+
+
+
     public static void initialize(){
         def insertSql = [
                 ['Advance Salary',1000001,AccountHead.findByTitleAndIsActive("Salary & Allowance",true)]
