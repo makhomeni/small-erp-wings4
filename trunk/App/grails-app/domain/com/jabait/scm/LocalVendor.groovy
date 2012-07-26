@@ -5,7 +5,4 @@ class LocalVendor {
     static constraints = {
     }
 
-
-
-
 }
