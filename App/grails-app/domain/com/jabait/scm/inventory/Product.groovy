@@ -6,7 +6,10 @@ class Product {
     String productName;
     ProductType productType;
     String licenseInfo;
+    ProductClassification classification;
     boolean active;
+
+    static hasMany = [materials : Material, materialSpecifications : MaterialSpecification]
 
 
     static constraints = {
