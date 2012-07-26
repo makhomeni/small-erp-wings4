@@ -22,4 +22,9 @@ class Customer {
     Contact contact;
     Reference reference;
 
+    static mapping = {
+        table('inventory_customer')
+        autoImport(false)
+    }
+
 }
