@@ -1,0 +1,125 @@
+.container {width: 500px; margin: 10px auto;}
+ul.tabul {
+	margin: 0;
+padding: 0;
+list-style: none;
+height: 25px;
+border-bottom: 0px #EFEFEF;
+border-left: 1px solid #EFEFEF;
+}
+ul.tabul li {
+	font-size: 12px;
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 31px;
+	line-height: 31px;
+	border: 1px solid #EFEFEF;
+	border-left: none;
+	margin-bottom: -1px;
+	background: #f3f8ea;
+	overflow: hidden;
+	position: relative;
+	margin-right:2px;
+}
+ul.tabul li a {
+	text-decoration: none;
+	color: #000;
+	display: block;
+	
+	padding: 0 12px;
+	border: 1px solid #fff;
+	outline: none;
+}
+ul.tabul li a:hover {
+	background: #dad7de;
+}	
+html ul.tabul li.active  {
+	background: #d7e6f7;
+	border-bottom: 1px solid #EFEFEF;
+}
+
+html ul.tabul a:hover  {
+	background: #d7e6f7;
+	border-bottom: 1px solid #EFEFEF;
+}
+
+.tabul_container {
+	border: 1px solid #EFEFEF;
+	border-top: none;
+	clear: both;
+	float: left; 
+	width: 100%;
+	background: #fff;
+	-moz-border-radius-bottomright: 5px;
+	-khtml-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-khtml-border-radius-bottomleft: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+}
+.tabul_content {
+	border: 1px solid #EFEFEF;
+margin: 6px 51px 32px 101px;
+margin-bottom: 11px;
+width: 780px;
+
+}
+.tabul_content h2 {
+	font-weight: normal;
+	padding-bottom: 10px;
+	border-bottom: 1px dashed #EFEFEF;
+	font-size: 1.8em;
+}
+.tabul_content h3 a{
+	color: #254588;
+}
+.tabul_content img {
+	float: left;
+	/*margin: 0 20px 20px 0;*/
+	/*border: 1px solid #EFEFEF;*/
+	padding-top: 1px;
+}
+.title-myaccount{
+	font-size:16px;
+	color:#1e506a;
+	margin-top:7px;
+	margin-bottom:7px;
+	font-weight:bold;
+	}
+.field-info-section{
+	text-align:left;
+}
+.field-info-section input{
+	display:block;
+}
+.field-info-section label{
+	display:block;
+}
+.grid-address{
+	
+	margin-top:10px;}
+
+.grid-address td{
+	border:1px solid #fff;
+	padding:5px;
+	}
+.grid-header{
+	background:#36629d;
+	color:#FFF;
+	font-weight:bold;}
+
+.grid-velue{
+	background:#d7e5f5;}
+.action-link{
+	color:#333;
+	
+	}
+.action-link a{
+	text-decoration:none;
+	color:#333;	
+	}
+.action-link a:hover{
+	color:#36629d;}
+	
+	

@@ -1,0 +1,11 @@
+.selectedAcc {
+    color: #797979;
+    text-shadow: 1px 1px 0px rgba(255,255,255, .2);
+
+    ackground: #efefef;
+    border-bottom: 1px solid #c9c9c9;
+
+    -webkit-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 0px 0px rgba(0,0,0, .1);
+    -moz-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 0px 0px rgba(0,0,0, .1);
+    box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 0px 0px rgba(0,0,0, .1);
+}

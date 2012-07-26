@@ -1,0 +1,22 @@
+.adjustImg{
+    margin-top: -3px;
+    margin-left: -27px;
+}
+
+
+/* gallery grid */
+#small_grid ul,#large_grid ul {list-style: none;margin:0;position:relative}
+#small_grid ul li,#large_grid ul li {background-color: #fff;display: none;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-ms-box-sizing: border-box;box-sizing: border-box}
+#small_grid ul li>a,#small_grid ul li>a img,#large_grid ul li>a,#large_grid ul li>a img {display: block}
+#small_grid ul li>a img,#large_grid ul li>a img {width:100%}
+#small_grid ul li p,#large_grid ul li p {color: #666;font-size: 12px;margin: 8px 4px 2px;overflow:hidden}
+#small_grid ul li p a,#large_grid ul li p a {display:inline-block;margin-left:10px;float:right;opacity:.6}
+#small_grid ul li p a:hover,#large_grid ul li p a:hover {opacity:1}
+#large_grid ul li p span {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:block}
+li.thumbnail:hover {border-color:#0088CC}
+
+/* small gallery grid */
+#small_grid ul li p {line-height:1.3}
+#small_grid ul li p span {font-size:11px}
+/* large gallery grid */
+#large_grid ul li p span {width:70%}

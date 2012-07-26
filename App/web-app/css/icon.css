@@ -1,0 +1,152 @@
+span.ico {
+	width:18px;
+	height:18px;
+	background-repeat:no-repeat;
+	background-position:center center;
+	display: inline-block;
+	margin-bottom:-3px;
+	margin-right:5px;
+}
+
+
+span span.ico {
+	width:18px;
+	height:18px;
+	background-repeat:no-repeat;
+	background-position:center center;
+	display: inline-block;
+	margin-top:-7px;
+	margin-left:-7px;
+	margin-right:0px;
+	margin-bottom:0px
+}
+a span.ico {
+	width:18px;
+	height:18px;
+	background-repeat:no-repeat;
+	background-position:center center;
+	display: inline-block;
+	margin-bottom:-3px;
+	margin-right:12px
+}
+/*  icon  gray 18*18  class by IMG name*/
+.ico.gray.abacus{ background-image:url(../images/abacus.png); }
+.ico.gray.access_point{ background-image:url(../images/access_point.png); }
+.ico.gray.add{ background-image:url(../images/add.png); }
+.ico.gray.organization{ background-image:url(../images/assets/icons/organization.png); }
+.ico.gray.encash{ background-image:url(../images/encash_small.png); }
+.ico.gray.newOrg{ background-image:url(../images/org.png); }
+.ico.gray.department{ background-image:url(../images/assets/icons/departdfment.png); }
+.ico.gray.section{ background-image:url(../images/assets/icons/section.png); }
+.ico.gray.leave{ background-image:url(../images/assets/icons/leave.png); }
+.ico.gray.lateWaiver{ background-image:url(../images/lateWaiver_list.png); }
+.ico.gray.authority{ background-image:url(../images/assets/icons/authority_icon_res.png); }
+.ico.gray.feature{ background-image:url(../images/assets/icons/feature_icon_res.png); }
+.ico.gray.userGroup{ background-image:url(../images/assets/icons/user_group_icon_res.png); }
+.ico.gray.contact{ background-image:url(../images/assets/icons/contact.png); }
+.ico.gray.genInfo{ background-image:url(../images/assets/icons/info.png); }
+.ico.gray.userResi{ background-image:url(../images/user_icon_resi.png); }
+.ico.gray.jobSpec{ background-image:url(../images/job_space.png); }
+.ico.gray.jobTitle{ background-image:url(../images/jobtitles.png); }
+.ico.gray.jobRole{ background-image:url(../images/jobRole.png); }
+.ico.gray.jobStatus{ background-image:url(../images/status.png); }
+.ico.gray.edit{ background-image:url(../images/edit.png); }
+.ico.gray.show{ background-image:url(../images/show.png); }
+.ico.gray.miscellaneous{ background-image:url(../images/miscellaneous.png); }
+.ico.gray.attendance{ background-image:url(../images/clock1.png); }
+.ico.gray.lateThreshold{ background-image:url(../images/leave_threshold1.png); }
+.ico.gray.attendanceList{ background-image:url(../images/list.png); }
+
+
+
+
+/*ico gray add employee*/
+.ico.gray.add.employee{background-image: url(../images/employeeAdd.png);}
+.ico.gray.calendar{ background-image:url(../images/calendar.png); }
+
+
+.ico.gray.chat-exclamation{ background-image:url(../images/chat-exclamation.png); }
+
+.ico.gray.connect{ background-image:url(../images/connect.png); }
+.ico.gray.delete{ background-image:url(../images/delete.png); }
+.ico.gray.dimensions{ background-image:url(../images/dimensions.png); }
+.ico.gray.disconnect{ background-image:url(../images/disconnect.png); }
+.ico.gray.emoticon_grin{ background-image:url(../images/emoticon_grin.png); }
+.ico.gray.emoticon_in_love{ background-image:url(../images/emoticon_in_love.png); }
+.ico.gray.file{ background-image:url(../images/file.png); }
+.ico.gray.firewall{ background-image:url(../images/firewall.png); }
+.ico.gray.gear{ background-image:url(../images/gear.png); }
+.ico.gray.group{ background-image:url(../images/group.png); }
+.ico.gray.home{ background-image:url(../images/home.png); }
+.ico.gray.item{ background-image:url(../images/item.png); }
+.ico.gray.link{ background-image:url(../images/link.png); }
+.ico.gray.location{ background-image:url(../images/location.png); }
+.ico.gray.mail{ background-image:url(../images/mail.png); }
+.ico.gray.notepad{ background-image:url(../images/notepad.png); }
+.ico.gray.paragraph_align_left{ background-image:url(../images/paragraph_align_left.png); }
+.ico.gray.pictures_folder{ background-image:url(../images/pictures_folder.png); }
+.ico.gray.record{ background-image:url(../images/record.png); }
+.ico.gray.satellite{ background-image:url(../images/satellite.png); }
+.ico.gray.spreadsheet{ background-image:url(../images/spreadsheet.png); }
+.ico.gray.stats_lines{ background-image:url(../images/stats_lines.png); }
+.ico.gray.user{ background-image:url(../images/user_icon.png); }
+.ico.gray.window{ background-image:url(../images/window.png); }
+.ico.gray.configuration{ background-image:url(../images/settings.png); }
+.ico.gray.document{ background-image:url(../images/document_plain.png); }
+.ico.gray.money{ background-image:url(../images/money.png); }
+.ico.gray.tasks{ background-image:url(../images/tasks.png); }
+.ico.gray.chain{ background-image:url(../images/diagram_v2_12.png); }
+.ico.gray.cts{ background-image:url(../images/documents.png); }
+.ico.gray.mis{ background-image:url(../images/htc_advantage.png); }
+.ico.gray.salary{ background-image:url(../images/dollars.png); }
+.ico.gray.locator{ background-image:url(../images/search.png); }
+.ico.gray.crm{ background-image:url(../images/users_group.png); }
+
+/*  icon  color 18*18  class by IMG name*/
+.ico.color.abacus{ background-image:url(../images/abacus.png); }
+.ico.color.access_point{ background-image:url(../images/access_point.png); }
+.ico.color.add{ background-image:url(../images/add.png); }
+.ico.color.calendar{ background-image:url(../images/calendar.png); }
+.ico.color.chat-exclamation{ background-image:url(../images/chat-exclamation.png); }
+.ico.color.connect{ background-image:url(../images/connect.png); }
+.ico.color.delete{ background-image:url(../images/delete.png); }
+.ico.color.dimensions{ background-image:url(../images/dimensions.png); }
+.ico.color.disconnect{ background-image:url(../images/disconnect.png); }
+.ico.color.emoticon_grin{ background-image:url(../images/emoticon_grin.png); }
+.ico.color.emoticon_in_love{ background-image:url(../images/emoticon_in_love.png); }
+.ico.color.file{ background-image:url(../images/file.png); }
+.ico.color.firewall{ background-image:url(../images/firewall.png); }
+.ico.color.gear{ background-image:url(../images/gear.png); }
+.ico.color.group{ background-image:url(../images/group.png); }
+.ico.color.home{ background-image:url(../images/home.png); }
+.ico.color.item{ background-image:url(../images/item.png); }
+.ico.color.link{ background-image:url(../images/link.png); }
+.ico.color.location{ background-image:url(../images/location.png); }
+.ico.color.mail{ background-image:url(../images/mail.png); }
+.ico.color.notepad{ background-image:url(../images/notepad.png); }
+.ico.color.paragraph_align_left{ background-image:url(../images/paragraph_align_left.png); }
+.ico.color.pictures_folder{ background-image:url(../images/pictures_folder.png); }
+.ico.color.record{ background-image:url(../images/record.png); }
+.ico.color.satellite{ background-image:url(../images/satellite.png); }
+.ico.color.spreadsheet{ background-image:url(../images/spreadsheet.png); }
+.ico.color.stats_lines{ background-image:url(../images/stats_lines.png); }
+.ico.color.window{ background-image:url(../images/window.png); }
+
+
+.ico.gray.shadow.abacus{ background-image:url(../images/abacus.png); }
+.ico.gray.shadow.calendar{ background-image:url(../images/calendar.png); }
+.ico.gray.shadow.file{ background-image:url(../images/file.png); }
+.ico.gray.shadow.firewall{ background-image:url(../images/firewall.png); }
+.ico.gray.shadow.home{ background-image:url(../images/home.png); }
+.ico.gray.shadow.location{ background-image:url(../images/location.png); }
+.ico.gray.shadow.paragraph_align_left{ background-image:url(../images/paragraph_align_left.png); }
+.ico.gray.shadow.pictures_folder{ background-image:url(../images/pictures_folder.png); }
+.ico.gray.shadow.satellite{ background-image:url(../images/satellite.png); }
+.ico.gray.shadow.spreadsheet{ background-image:url(../images/spreadsheet.png); }
+.ico.gray.shadow.stats_lines{ background-image:url(../images/stats_lines.png); }
+.ico.gray.shadow.window{ background-image:url(../images/window.png); }
+.ico.gray.leaveRequest{ background-image:url(../images/assets/icons/leave_32.png); }
+.ico.gray.advRequest{ background-image:url(../images/assets/icons/advance.png); }
+.ico.gray.leave{ background-image:url(../images/leave.png); }
+.ico.gray.attendance.bio{ background-image:url(../images/attendance_bio.png); }
+.ico.gray.allowance{ background-image:url(../images/allowance.png); }
