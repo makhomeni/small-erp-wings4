@@ -1,0 +1,49 @@
+#userSettingsDrp:hover{
+    border-color: #CCC;
+    background-color: #CCC;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    cursor: pointer;
+}
+
+#userSettingsDrp{
+    float: right;
+}
+
+.prf-subnav {
+    list-style: none;
+    position: absolute; /*--Important - Keeps subnav from affecting main navigation flow--*/
+    left: 0; top: 35px;
+    background: #CCC;
+    margin: 185px 20px 20px 1127px;
+    padding: 0;
+    display: none;
+    float: left;
+    width: 170px;
+    border: 1px solid #CCC;
+}
+
+.prf-subnav li{
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    clear: both;
+    width: 160px;
+}
+
+.prf-subnav li a {
+    float: left;
+    width: 145px;
+    color: white;
+    background-image: none;
+    text-decoration: none;
+}
+
+.prf-subnav li a:hover { /*--Hover effect for subnav links--*/
+    /*background: #222 url(../images/dropdown_linkbg.gif) no-repeat 10px center;  */
+}

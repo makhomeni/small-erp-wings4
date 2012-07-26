@@ -1,0 +1,17 @@
+form input[type="text"], form input[type="password"], form textarea {
+    border-radius: 3px;
+    border: 1px solid #C9C9C9;
+    color: #404040;
+    font-size: 11px;
+    height: 28px;
+    margin-bottom: 3px;
+    padding: 0 6px;
+    width: 200px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+select {
+    cursor: pointer;
+    width: 100%;
+}
