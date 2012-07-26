@@ -12,4 +12,8 @@ class InventoryController {
         render(view: "/scm/product_list");
     }
 
+    def productJsonData(){
+        Product product
+    }
+
 }

@@ -1,17 +1,35 @@
 <%--
   Created by IntelliJ IDEA.
-  User: ronnie
-  Date: 7/27/12
-  Time: 3:25 AM
+  User: hossaindoula
+  Date: 2/20/12
+  Time: 11:06 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="com.jabait.scm.inventory.Product" %>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
+<div class="fieldcontain ${hasErrors(bean: product, field: 'userCode', 'error')} required">
+    <label for="userCode">
+        <g:message code="user.userCode.label" default="User Name" />
+        <span class="required-indicator">*</span>
+    </label>
 
-</body>
-</html>
+
+    <g:textField name="userCode" required=""  value="" />
+
+</div>
+<div class="fieldcontain ${hasErrors(bean: product, field: 'password', 'error')} required">
+    <label for="password">
+        <g:message code="user.password.label" default="Password" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:passwordField name="password" required="" value=""/>
+</div>
+<div class="fieldcontain ${hasErrors(bean: product, field: 'password', 'error')} required">
+    <label for="password">
+        <g:message code="user.password.label" default="Confirm Password" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:passwordField name="confirmPassword" required="" value=""/>
+</div>
+
+
