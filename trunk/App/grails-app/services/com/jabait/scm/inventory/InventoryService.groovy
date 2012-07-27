@@ -22,4 +22,31 @@ class InventoryService {
 
         return returnedProducts;
     }
+
+    boolean deleteProduct(params){
+        try{
+            Product.get(params.id).delete();
+
+            return true;
+        } catch(Exception exception){
+            return false;
+        }
+
+    }
+    
+    Product findProductById(id){
+        return Product.get(id);
+    }
+
+    boolean updateProduct(params){
+        try{
+            Product product = Product.get(params.id);
+            product.properties = params;
+            product.save();
+
+            return true;
+        } catch(Exception exception){
+            return false;
+        }
+    }
 }

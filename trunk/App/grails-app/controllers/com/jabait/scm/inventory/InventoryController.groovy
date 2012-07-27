@@ -37,4 +37,18 @@ class InventoryController {
             products.size() : start + limit), totalCount:totalCount] as JSON);
     }
 
+    def deleteProduct(){
+        flash.message = "Product Deleted " + inventoryService.deleteProduct(params) ? "successfully" : "failed";
+        redirect(action: "productList");
+    }
+
+    def editProduct(){
+        render(view: "/scm/", model: [product:inventoryService.findProductById(params.id), type: "Edit Product"]);
+    }
+
+    def updateProduct(){
+        flash.message = "Product Deleted " + inventoryService.updateProduct(params) ? "successfully" : "failed";
+        redirect(action: "productList");
+    }
+
 }
