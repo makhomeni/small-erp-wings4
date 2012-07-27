@@ -47,7 +47,7 @@ class InventoryController {
     }
 
     def updateProduct(){
-        flash.message = "Product Deleted " + inventoryService.updateProduct(params) ? "successfully" : "failed";
+        flash.message = "Product Updated " + inventoryService.updateProduct(params) ? "successfully" : "failed";
         redirect(action: "productList");
     }
 
