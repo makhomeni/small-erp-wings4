@@ -7,6 +7,7 @@ class Product {
     ProductType productType;
     String licenseInfo;
     ProductClassification classification;
+    ProductImage image;
     boolean active;
 
     static hasMany = [materials : Material, materialSpecifications : MaterialSpecification]
