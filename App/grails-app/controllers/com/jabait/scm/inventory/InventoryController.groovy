@@ -50,5 +50,25 @@ class InventoryController {
         flash.message = "Product Updated " + inventoryService.updateProduct(params) ? "successfully" : "failed";
         redirect(action: "productList");
     }
+    
+    def materialList(){
+        render(view: "");
+    }
+
+    def materialJsonData(){
+
+    }
+    
+    def createMaterial(){
+        render(view:  "");
+    }
+
+    def saveMaterial(){
+        redirect(action: "createMaterial")
+    }
+    
+    def deleteMaterial(){
+        redirect(view: "materialList")
+    }
 
 }
