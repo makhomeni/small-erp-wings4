@@ -1,9 +1,7 @@
 package com.jabait.scm
 
-
-class LocalVendor extends Vendor {
+class ExternalVendor extends Vendor {
 
     static constraints = {
     }
-
 }
