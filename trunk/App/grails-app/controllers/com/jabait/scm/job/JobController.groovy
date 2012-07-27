@@ -9,7 +9,7 @@ class JobController {
     }
 
     def savePurchaseOrder(){
-        redirect(action: "createPurchaseOrder")
+        redirect(action: "createPurchaseOrder");
     }
 
     def purchaseOrderList(){
@@ -25,7 +25,7 @@ class JobController {
     }
 
     def saveSalesOrder(){
-        redirect(action: "createSalesOrder")
+        redirect(action: "createSalesOrder");
     }
 
     def salesOrderList(){
