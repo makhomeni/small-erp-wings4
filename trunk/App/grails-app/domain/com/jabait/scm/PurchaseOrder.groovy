@@ -2,7 +2,7 @@ package com.jabait.scm
 
 class PurchaseOrder extends JobOrder {
 
-    LocalVendor vendor;
+    Vendor vendor;
 
     static mapping = {
         table("purchase_order")
