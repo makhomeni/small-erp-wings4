@@ -54,7 +54,6 @@
         <div class="bread_crumbs_ui_div" style="width: 610px">
             <ul id="crumbs_ui_custom">
                 <li><g:link controller="application" action="index">Dashboard</g:link></li>
-
                 <li>User List</li>
             </ul>
         </div>
