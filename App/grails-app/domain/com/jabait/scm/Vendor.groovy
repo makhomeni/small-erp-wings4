@@ -1,6 +1,7 @@
 package com.jabait.scm
 
 import com.jabait.hrm.Organization
+import com.jabait.scm.inventory.Product
 
 class Vendor {
 
@@ -12,6 +13,8 @@ class Vendor {
     String mobileNo;
     String emailId;
     String phoneNo;
+
+    static hasMany = [products : Product]
 
     static mapping = {
         tablePerSubclass(true)
