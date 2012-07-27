@@ -5,7 +5,7 @@ class JobController {
     def index() { }
 
     def createPurchaseOrder(){
-        render(view: "");
+        render(view: "/scm/purchase_order_create");
     }
 
     def savePurchaseOrder(){
@@ -13,7 +13,7 @@ class JobController {
     }
 
     def purchaseOrderList(){
-        render(view: "");
+        render(view: "/scm/purchase_order_list");
     }
 
     def purchaseOrderJsonData(){
@@ -29,7 +29,7 @@ class JobController {
     }
 
     def salesOrderList(){
-        render(view: "");
+        render(view: "/scm/sales_order_list");
     }
 
     def salesOrderJsonData(){
