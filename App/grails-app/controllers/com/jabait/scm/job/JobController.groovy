@@ -4,8 +4,20 @@ class JobController {
 
     def index() { }
 
+    def createContact(){
+        render(view: "/scm/contact_create", model:[type: "Contact Create"]);
+    }
+
+    def saveContact(){
+        redirect(action: "createContact");
+    }
+
+    def contactList(){
+        render(view: "contact_list");
+    }
+
     def createPurchaseOrder(){
-        render(view: "/scm/purchase_order_create");
+        render(view: "/scm/purchase_order_create", model:[type: "Purchase Order Create"]);
     }
 
     def savePurchaseOrder(){
@@ -13,7 +25,7 @@ class JobController {
     }
 
     def purchaseOrderList(){
-        render(view: "/scm/purchase_order_list");
+        render(view: "/scm/purchase_order_list", model:[type: "Purchase Order List"]);
     }
 
     def purchaseOrderJsonData(){
@@ -21,7 +33,7 @@ class JobController {
     }
 
     def createSalesOrder(){
-        render(view: "");
+        render(view: "/scm/sales_order_create", model:[type: "Sales Order Create"]);
     }
 
     def saveSalesOrder(){
@@ -29,7 +41,7 @@ class JobController {
     }
 
     def salesOrderList(){
-        render(view: "/scm/sales_order_list");
+        render(view: "/scm/sales_order_list", model:[type: "Sales Order List"]);
     }
 
     def salesOrderJsonData(){
