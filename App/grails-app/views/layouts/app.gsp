@@ -229,6 +229,7 @@
 		<g:set var="classNameAcl" value="limenu"></g:set>
 		<g:set var="classNameHRM" value="limenu"></g:set>
 		<g:set var="classNameConfiguration" value="limenu"></g:set>
+		<g:set var="classNameSCM" value="limenu"></g:set>
 		<g:if test="${params.controller=='application' && params.action == 'index'}">
 			  ${classNameDashBoard = "limenu select" }
 		</g:if>
@@ -240,6 +241,11 @@
                 params.action == 'showUserDetails' || params.action == 'showAuthorityDetails'}">
 			${classNameAcl= "limenu select" }
 		</g:if>
+
+        <g:if test="${params.controller == 'scm' ||
+                params.controller == 'inventory' || params.controller == 'job'}">
+            ${classNameSCM = "limenu select"}
+        </g:if>
 
 		<g:if test="${(params.controller == 'attendance' && params.action == 'attendanceList') ||
                 params.controller=='payroll' || (
@@ -314,6 +320,14 @@
                         </g:if>
 					</ul>
 				</li>
+                <li class="${classNameSCM}" ><g:link controller="scm" action="home"><span class="ico gray chain" ></span><b>SCM</b></g:link>
+                    <ul>
+                        <li><g:link controller="inventory" action="home" class="${htmlClass}">Inventory</g:link></li>
+                        <li><g:link controller="job" action="home" class="${htmlClass}">Job</g:link></li>
+                        <li><g:link controller="mrp" action="home" class="${htmlClass}">MRP</g:link></li>
+                        <li><g:link controller="procurement" action="home" class="${htmlClass}">Procurement</g:link></li>
+                    </ul>
+                </li>
 				<g:if test="${securityService.isAllowedForConfiguration(session)}">
                     <li class="${classNameConfiguration}" ><g:link controller="configuration"><span class="ico gray configuration" ></span><b>Configuration</b></g:link>
                 </g:if>
@@ -330,7 +344,6 @@
                 <li class="${classNameDMS}" ><g:link controller="configuration" action="index"><span class="ico gray document" ></span><b>DMS</b></g:link>
                 <li class="${classNameFinance}" ><g:link controller="configuration" action="index"><span class="ico gray money" ></span><b>Finance</b></g:link>
                 <li class="${classNameTask}" ><g:link controller="configuration" action="index"><span class="ico gray tasks" ></span><b>Task Management</b></g:link>
-                <li class="${classNameSCM}" ><g:link controller="configuration" action="index"><span class="ico gray chain" ></span><b>SCM</b></g:link>
                 <li class="${classNameCTS}" ><g:link controller="configuration" action="index"><span class="ico gray cts" ></span><b>CTS</b></g:link>
                 <li class="${classNameMIS}" ><g:link controller="configuration" action="index"><span class="ico gray mis" ></span><b>MIS</b></g:link>
                 <li class="${classNamePayroll}" ><g:link controller="configuration" action="index"><span class="ico gray salary" ></span><b>Payroll Management</b></g:link>

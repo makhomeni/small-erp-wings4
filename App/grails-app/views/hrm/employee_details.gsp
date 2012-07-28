@@ -72,7 +72,7 @@
 
 
             //for organization
-            organizationDataStore = new Ext.data.Store({
+            productDataStore = new Ext.data.Store({
                 id: "organizationDataStore",
                 url: '${createLink(controller: 'employee',action: 'organizationJsonData')}',
                 reader: new Ext.data.JsonReader({
@@ -92,7 +92,7 @@
             checkBoxSelModModelOrganization = new Ext.grid.CheckboxSelectionModel();
             organizationGrid = new Ext.grid.EditorGridPanel({
                 id: 'organizationGrid',
-                store : organizationDataStore,
+                store : productDataStore,
                 clicksToEdit: 2,
                 selModel : checkBoxSelModModelOrganization,
                 height: 250,
@@ -110,7 +110,7 @@
                 ],
                 stripeRows : true,
                 bbar: new Ext.PagingToolbar({
-                    store : organizationDataStore,
+                    store : productDataStore,
                     pageSize : 10,
                     displayInfo : true,
                     displaymsg : 'Displaying {0} - {1} of {2}',
@@ -136,7 +136,7 @@
                     }
                 }
             })
-            organizationDataStore.load({params: {start: 0, limit: 10}});
+            productDataStore.load({params: {start: 0, limit: 10}});
 
             organizationAssignmentWindow = new Ext.Window({
                 id: 'organizationAssignmentWindow',

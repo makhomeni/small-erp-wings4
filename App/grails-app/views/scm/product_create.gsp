@@ -14,7 +14,7 @@
         <g:set var="entityName" value="${message(code:'product.description', default: 'User')}"/>
         <title><g:message code="default.create.label" args="[entityName]"/></title>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'livevalidation_standalone.compressed.js')}"></script>
-
+        <r:require modules="bootstrap-file-upload"/>
     </head>
     <body>
 
@@ -24,7 +24,7 @@
             <ul id="crumbs_ui_custom">
                 <li><g:link controller="application" action="index">Dashboard</g:link></li>
                 <li><g:link controller="inventory" action="productList">Product List</g:link></li>
-                <li>Product Create</li>
+                <li>${type}</li>
             </ul>
         </div>
 
@@ -47,9 +47,8 @@
                     <fieldset class="form">
                         <g:render template="product_form"/>
                         <div class="grid_4 alpha">&nbsp;&nbsp;</div>
-
-
-
+                        <bsfu:fileUpload action="upload" controller="inventory"/>
+                        <bsfu:imageGallery/>
                         <div class="grid_4 omega" style="padding-left: 181px;padding-top: 20px;">
 
                             <a id="productCreate" class="button icon approve" onclick="document.productForm.submit();">Save</a>
