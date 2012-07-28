@@ -51,7 +51,7 @@
         var deleteUserFeature = "";
         /////////////// start user group grid//////////////
 
-        organizationDataStore = new Ext.data.Store({
+        productDataStore = new Ext.data.Store({
             id: "organizationDataStore",
             url: '${createLink(action: 'organizationJsonData')}',
             reader: new Ext.data.JsonReader({
@@ -66,9 +66,9 @@
             autoLoad : true
         })
         checkBoxSelMod = new Ext.grid.CheckboxSelectionModel();
-        organizationListingEditorGrid = new Ext.grid.EditorGridPanel({
+        productListingEditorGrid = new Ext.grid.EditorGridPanel({
             id: "organizationListingEditorGrid",
-            store : organizationDataStore,
+            store : productDataStore,
             selModel : checkBoxSelMod,
             clicksToEdit: 2,
             renderTo: "list_user",
@@ -117,7 +117,7 @@
             ],
             stripeRows : true,
             bbar: new Ext.PagingToolbar({
-                store : organizationDataStore,
+                store : productDataStore,
                 pageSize : 10,
                 displayInfo : true,
                 displaymsg : 'Displaying {0} - {1} of {2}',
@@ -132,7 +132,7 @@
                 }
             }]
         });
-        organizationDataStore.load({params: {start: 0, limit: 10}});
+        productDataStore.load({params: {start: 0, limit: 10}});
         function deleteUser(){
             alert();
         }

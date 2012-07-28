@@ -6,12 +6,49 @@ class InventoryService {
 
     }
 
+    boolean saveCategory(params){
+        try{
+            Category category = new Category();
+            category.categoryName = params.categoryName;
+            category.parentCategory = Category.get(params.id);
+            category.save();
+
+            return true;
+        } catch (Exception ex){
+            return false;
+        }
+    }
+    
+    List findAllCategories(){
+        List<Category> categories = Category.list();
+        List<Map<String,Object>> returnedCategories = new ArrayList<HashMap<String,Object>>();
+        Map<String,Object> categoryStorage;
+        for (Category category: categories) {
+            categoryStorage = new HashMap<String,Object>();
+            categoryStorage.put("categoryName", category.categoryName);
+            categoryStorage.put("parentCategory", category.parentCategory.categoryName);
+            returnedCategories.add(categoryStorage);
+        }
+
+        return returnedCategories;
+    }
+
+    boolean deleteCategory(params){
+        try{
+            Category.get(params.id).delete();
+            return true;
+        } catch(Exception ex){
+            return false;
+        }
+    }
+
     List findAllProducts(){
         List<Product> products = Product.list();
         List<Map<String,Object>> returnedProducts = new ArrayList<HashMap<String,Object>>();
         Map<String,Object> productStorage;
         for (Product product : products) {
             productStorage = new HashMap<String,Object>();
+            productStorage.put("id", product.id);
             productStorage.put("productName", product.productName);
             productStorage.put("categoryName", product.productCategory.categoryName);
             productStorage.put("classification", product.classification.classification);

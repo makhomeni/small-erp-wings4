@@ -65,6 +65,8 @@ a span.ico {
 .ico.gray.calendar{ background-image:url(../images/calendar.png); }
 
 
+
+
 .ico.gray.chat-exclamation{ background-image:url(../images/chat-exclamation.png); }
 
 .ico.gray.connect{ background-image:url(../images/connect.png); }
@@ -146,6 +148,7 @@ a span.ico {
 .ico.gray.shadow.stats_lines{ background-image:url(../images/stats_lines.png); }
 .ico.gray.shadow.window{ background-image:url(../images/window.png); }
 .ico.gray.leaveRequest{ background-image:url(../images/assets/icons/leave_32.png); }
+.ico.gray.scm{ background-image:url(../images/assets/icons/scm.png); }
 .ico.gray.advRequest{ background-image:url(../images/assets/icons/advance.png); }
 .ico.gray.leave{ background-image:url(../images/leave.png); }
 .ico.gray.attendance.bio{ background-image:url(../images/attendance_bio.png); }
