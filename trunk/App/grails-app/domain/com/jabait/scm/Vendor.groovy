@@ -21,5 +21,13 @@ class Vendor {
     }
 
     static constraints = {
+        firstName(nullable: true);
+        lastName(nullable: true);
+        organization(nullable: true);
+        address(nullable: true);
+        description(nullable: true);
+        mobileNo(nullable: true);
+        emailId(nullable: true);
+        phoneNo(nullable: true);
     }
 }
