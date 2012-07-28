@@ -45,7 +45,7 @@
             <div id="list_user" class="content scaffold-list" role="main" style="width: 560px;">
                 <g:form name="productForm" id="productForm" controller="inventory" action="saveProduct" method="POST">
                     <fieldset class="form">
-                        <g:render template="product_form"/>
+                        <g:render template="../scm/product_form"/>
                         <div class="grid_4 alpha">&nbsp;&nbsp;</div>
                         <bsfu:fileUpload action="upload" controller="inventory"/>
                         <bsfu:imageGallery/>
