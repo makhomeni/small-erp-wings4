@@ -2,15 +2,16 @@ package com.jabait.scm
 
 import com.jabait.hrm.Organization
 import com.jabait.scm.inventory.Product
+import com.jabait.security.Address
 
 class Vendor {
 
     String firstName;
     String lastName;
     Organization organization;
-    String address;
-    String description;
+    Address billingAddress;
     String mobileNo;
+    String description;
     String emailId;
     String phoneNo;
 
@@ -24,7 +25,7 @@ class Vendor {
         firstName(nullable: true);
         lastName(nullable: true);
         organization(nullable: true);
-        address(nullable: true);
+        billingAddress(nullable: true);
         description(nullable: true);
         mobileNo(nullable: true);
         emailId(nullable: true);
