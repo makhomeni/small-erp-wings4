@@ -4,9 +4,12 @@ import com.jabait.security.User
 import com.jabait.scm.inventory.Product
 import com.jabait.scm.inventory.PriceList
 import com.jabait.hrm.Organization
+import com.jabait.accounting.PaymentTerm
+import com.jabait.security.Address
 
 class JobOrder {
 
+    String jobName;
     Integer orderQuantity;
     Date createdDate;
     User createdBy;
@@ -15,13 +18,19 @@ class JobOrder {
     //Warehouse warehouse; //to be added
     Integer priority; //1 low, 2 medium, 3 high
     PriceList priceList;
-    Integer paymentTerm; //1 immediate, 2
     Organization organization;
+    Boolean isSent;
+    PaymentTerm paymentTerm;
+    DeliveryTerm deliveryTerm;
+    Date dueDate;
+    Address deliveryAddress;
+    Boolean isArchived;
 
     static mapping = {
-        tablePerSubclass(true)
+        tablePerSubclass(true);
     }
 
     static constraints = {
+        jobName(unique: true, nullable: false);
     }
 }
