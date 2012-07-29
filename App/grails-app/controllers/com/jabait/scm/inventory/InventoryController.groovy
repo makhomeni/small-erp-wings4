@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.multipart.MultipartHttpServletRequest
 import org.springframework.web.multipart.MultipartFile
 import java.awt.image.BufferedImage
-//import org.imgscalr.Scalr
+import org.imgscalr.Scalr
 import javax.imageio.ImageIO
 
 class InventoryController {
