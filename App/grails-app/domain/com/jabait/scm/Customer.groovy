@@ -1,6 +1,7 @@
 package com.jabait.scm
 
 import com.jabait.hrm.Organization
+import com.jabait.security.Address
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,6 +22,7 @@ class Customer {
     String address;
     ContactPerson contact;
     Referral reference;
+    Address billingAddress;
 
     static mapping = {
         table('inventory_customer')
