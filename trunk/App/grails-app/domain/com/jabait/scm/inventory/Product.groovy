@@ -13,7 +13,7 @@ class Product {
     UnitOfMeasure unitOfMeasure; //kg,meter,feet
     boolean active;
 
-    static hasMany = [materials : Material, materialSpecifications : MaterialSpecification]
+    static hasMany = [materials : Material, billOfMaterials : BillOfMaterials]
 
 
     static constraints = {
