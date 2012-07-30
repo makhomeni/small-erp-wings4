@@ -8,6 +8,8 @@ class StorageBin {
 
     static belongsTo = [Warehouse];
 
+    StorageBin storageBin;
+
     static constraints = {
     }
 }
