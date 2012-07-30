@@ -1,6 +1,6 @@
 dataSource {
     pooled = true
-    url = "jdbc:mysql://localhost/ocean_db?useUnicode=true&characterEncoding=utf8"
+    url = "jdbc:mysql://localhost/wings4_erp_db?useUnicode=true&characterEncoding=utf8"
     driverClassName = "com.mysql.jdbc.Driver"
     username = "root"
     password = ""
@@ -16,19 +16,19 @@ environments {
     development {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost/ocean_db?useUnicode=true&characterEncoding=utf8"
+            url = "jdbc:mysql://localhost/wings4_erp_db?useUnicode=true&characterEncoding=utf8"
         }
     }
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost/ocean_db?useUnicode=true&characterEncoding=utf8"
+            url = "jdbc:mysql://localhost/wings4_erp_db?useUnicode=true&characterEncoding=utf8"
         }
     }
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost/ocean_db?useUnicode=true&characterEncoding=utf8"
+            url = "jdbc:mysql://localhost/wings4_erp_db?useUnicode=true&characterEncoding=utf8"
         }
     }
 }
