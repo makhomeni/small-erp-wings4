@@ -42,6 +42,7 @@ class EmployeeService {
         def nationalID = params.nationalId;
         def passportNo = params.passportNo;
         def salary = params.salary;
+        def providentFund = params.providentFund;
 
         Name name = new Name(firstName: firstName, middleName: middleName, surname: lastName, nickname: lastName);
 
@@ -79,7 +80,8 @@ class EmployeeService {
                 bloodGroup: bloodGroup,
                 jobTitle: JobTitle.get(designationId),
                 salary: salary,
-                region: region
+                region: region,
+                providentFundEnable: providentFund
         )
 
 //        employeeProfile.organization =  Organization.get(organizationId);
@@ -161,12 +163,12 @@ class EmployeeService {
     }
 
     def saveEmployeeAllowance(params){
-        
+
         def allowanceType = AllowanceType.get(params.allowanceTypeId);
         def allowanceAmount = Double.parseDouble(params.allowanceAmount);
         def salaryAmount = params.salaryAmount;
         EmployeeProfile employeeProfile = EmployeeProfile.get(params.profileId);
-        
+
         Allowance allowance = new Allowance();
         allowance.allowanceAmount = allowanceAmount;
         allowance.allowanceType = allowanceType;
@@ -212,59 +214,61 @@ class EmployeeService {
         if(!employee){
             return "Employee delete failed";
         }else{
-                if(employee!=null){
-                    try{
-                        def temporaryAllowance = [];
+            if(employee!=null){
+                try{
+                    def temporaryAllowance = [];
 
 
-                        //delete associated allowances
-                        employee.allowances.each {
-                            temporaryAllowance << it;
-                        }
-                        temporaryAllowance.each { allowance->
-                            employee.removeFromAllowances(allowance);
-                        }
+                    //delete associated allowances
+                    employee.allowances.each {
+                        temporaryAllowance << it;
+                    }
+                    temporaryAllowance.each { allowance->
+                        employee.removeFromAllowances(allowance);
+                    }
 
 
-                        //remove associated education
-                        def temporaryEducation = [];
-                        employee.educations.each {
-                            temporaryEducation << it;
-                        }
-                        temporaryEducation.each {education->
-                            employee.removeFromEducations(education);
-                        }
+                    //remove associated education
+                    def temporaryEducation = [];
+                    employee.educations.each {
+                        temporaryEducation << it;
+                    }
+                    temporaryEducation.each {education->
+                        employee.removeFromEducations(education);
+                    }
 
-                        //remove associated finger print
+                    //remove associated finger print
 //                        def temporaryFingerPrint = [];
-                        FingerPrintDetails fingerPrintDetails =  FingerPrintDetails.findByEmployee(employee);
+                    FingerPrintDetails fingerPrintDetails =  FingerPrintDetails.findByEmployee(employee);
 
-                        try{
-                            fingerPrintDetails.delete();
-                            println("delete successfully");
-                        }catch(Exception e){
-                            println ("Fingerprintdetails delete failed" + fingerPrintDetails.id);
-                        }
-                        
-                        //delete employee profile
-                        try{
-                            employee.employeeProfile.delete();
-                        }catch(Exception ex){
-                            println("profile delete falied");
-                        }
-
-
-                        
-                        //delete employee
-                        employee.delete(flush: true)
-                        return "Employee deleted successfully";
+                    println(" fingerprint "+fingerPrintDetails.id)
+                    try{
+                        println("in try fingerprint details");
+                        fingerPrintDetails.delete();
+                        println("delete successfully");
+                    }catch(Exception e){
+                        println ("Fingerprintdetails delete failed" + fingerPrintDetails.id);
                     }
-                    catch (Exception ex){
-                        return "Employee delete failed";
+
+                    //delete employee profile
+                    try{
+                        employee.employeeProfile.delete();
+                    }catch(Exception ex){
+                        println("profile delete falied");
                     }
-                } else{
+
+
+
+                    //delete employee
+                    employee.delete(flush: true)
+                    return "Employee deleted successfully";
+                }
+                catch (Exception ex){
                     return "Employee delete failed";
                 }
+            } else{
+                return "Employee delete failed";
+            }
         }
 
     }
@@ -439,15 +443,25 @@ class EmployeeService {
         def salaryString = params.salary.toString().replace(",", "");
 
         def salary = Double.parseDouble(salaryString?:"0.0");
-        println(salary);
+
+        def providentFund = false;
+        if(params.providentFund.equals("true")){
+            providentFund = true;
+        }
+        def tax = false;
+        if(params.tax.equals("true")){
+            tax = true;
+        }
+
+        println(salary+" provident fund = "+providentFund);
         def employeeProfile = EmployeeProfile.get(params.profileId);
         def designationId = params.designationId;
         JobTitle jobTitle = JobTitle.get(designationId);
         println(designationId)
         def organizationId = params.organizationId;
         if(organizationId){
-           Organization organization = Organization.get(organizationId)
-           employeeProfile.organization = organization
+            Organization organization = Organization.get(organizationId)
+            employeeProfile.organization = organization
         }
         def departmentId = params.departmentId;
         if(departmentId){
@@ -458,8 +472,12 @@ class EmployeeService {
         employeeProfile.region = region;
         employeeProfile.salary = salary;
         employeeProfile.jobTitle = jobTitle;
+        employeeProfile.providentFundEnable = providentFund;
+        employeeProfile.tax = tax;
         if(employeeProfile.save()){
-            return ([result: employeeProfile,jobTitle: jobTitle, organization: employeeProfile.organization, department: employeeProfile.department] as JSON);
+            return ([result: employeeProfile,jobTitle: jobTitle, organization: employeeProfile.organization,
+                    department: employeeProfile.department, providentFund: employeeProfile.providentFundEnable.toString(),
+                    tax: employeeProfile.tax.toString()] as JSON);
         }
         else{
             return employeeProfile;
@@ -479,7 +497,7 @@ class EmployeeService {
         }
 
     }
-    
+
     def getEmployee(id){
         return Employee.get(id);
     }
