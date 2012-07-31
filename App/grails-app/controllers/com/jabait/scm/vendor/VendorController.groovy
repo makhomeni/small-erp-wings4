@@ -2,6 +2,7 @@ package com.jabait.scm.vendor
 
 import grails.converters.JSON
 import com.jabait.scm.Vendor
+import com.jabait.scm.LocalVendor
 
 class VendorController {
 
@@ -27,46 +28,46 @@ class VendorController {
         } else {
             params.max = params.limit;
         }
-        List<Vendor> vendorList = new ArrayList<Vendor>();
+        List<LocalVendor> localVendorList = new ArrayList<LocalVendor>();
 
-        vendorList = Vendor.list();
+        localVendorList = LocalVendor.list();
 
-        List<Map> vendors = new ArrayList<>();
+        List<Map> localVendors = new ArrayList<>();
 
         Map<String, String> vendorMap;
 
-        for (Vendor vendor : vendorList){
+        for (LocalVendor localVendor : localVendorList){
 
             vendorMap = new HashMap<String, String>();
-            def vendorFirstName = vendor.firstName;
-            def vendorLastName = vendor.lastName;
+            def vendorFirstName = localVendor.firstName;
+            def vendorLastName = localVendor.lastName;
 
             def vendorFullName = vendorFirstName + " " + vendorLastName
-            def organizationName = vendor?.organization?.organizationName;
+            def organizationName = localVendor?.organization?.organizationName;
             if (!organizationName){
                 organizationName = "";
             }
 
             vendorMap.put("vendorName", vendorFullName);
             vendorMap.put("organizationName", organizationName);
-            vendorMap.put("mobileNo", vendor?.mobileNo);
-            vendorMap.put("description", vendor.description);
-            vendorMap.put("emailId", vendor.emailId);
-            vendorMap.put("phoneNo", vendor.phoneNo);
+            vendorMap.put("mobileNo", localVendor?.mobileNo);
+            vendorMap.put("description", localVendor.description);
+            vendorMap.put("emailId", localVendor.emailId);
+            vendorMap.put("phoneNo", localVendor.phoneNo);
 
-            vendors.add(vendorMap);
+            localVendor.add(vendorMap);
         }
 
         /* for pagination */
 
-        int totalCount = vendors.size();
+        int totalCount = localVendors.size();
 
 
 
         int start = (params.start != null) ? Integer.parseInt(params.start) : 0;
         int limit = (params.limit != null) ? Integer.parseInt(params.limit) : 10;
 
-        render([vendors : vendors.asList().subList(start, start + limit > totalCount ? totalCount : start + limit),totalCount:totalCount] as JSON);
+        render([vendors : localVendors.asList().subList(start, start + limit > totalCount ? totalCount : start + limit),totalCount:totalCount] as JSON);
 
     }
     //////vendor///////
