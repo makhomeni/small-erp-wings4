@@ -20,6 +20,8 @@ class EmployeeProfile {
     String employeeMaritalStatus;
     String employeeStatus;
     Employee owner;
+    Boolean providentFundEnable = false;
+    Boolean tax = false;
 
     Department department;
     Organization organization;
@@ -68,5 +70,7 @@ class EmployeeProfile {
         generalEmail(nullable: true)
         salary(nullable: true)
         region(nullable: true)
+        providentFundEnable(nullable: true)
+
     }
 }
