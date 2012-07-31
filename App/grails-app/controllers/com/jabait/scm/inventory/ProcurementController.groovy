@@ -5,6 +5,6 @@ class ProcurementController {
     def index() { }
 
     def createRequestForQuotation(){
-        render(view: "/scm/create_rfq");
+        render(view: "/scm/rfq_create");
     }
 }

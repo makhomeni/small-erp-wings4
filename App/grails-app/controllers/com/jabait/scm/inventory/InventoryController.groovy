@@ -117,8 +117,10 @@ class InventoryController {
     }
 
     def upload() {
+        println "request method " + request.method
         switch(request.method){
             case "GET":
+                println "GET ..."
                 def results = []
                 ProductImage.findAll().each { ProductImage picture ->
                     results << [
@@ -133,6 +135,7 @@ class InventoryController {
                 render results as JSON
                 break;
             case "POST":
+                println "POST ..."
                 def results = []
                 if (request instanceof MultipartHttpServletRequest){
                     for(filename in request.getFileNames()){
@@ -206,7 +209,7 @@ class InventoryController {
 
     //////vendor///////
     def createVendor(){
-        render(view: "/scm/creat_local_vendor", model: [type: "Create Vendor"]);
+        render(view: "/scm/local_vendor_create", model: [type: "Create Vendor"]);
     }
 
     def saveVendor(){
