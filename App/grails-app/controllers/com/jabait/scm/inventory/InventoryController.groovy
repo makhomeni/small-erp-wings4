@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile
 import java.awt.image.BufferedImage
 import org.imgscalr.Scalr
 import javax.imageio.ImageIO
+import com.jabait.scm.Vendor
 
 class InventoryController {
 
@@ -202,8 +203,67 @@ class InventoryController {
         render result as JSON
     }
 
+
+    //////vendor///////
     def createVendor(){
-        render(view: "/scm/creat_local_vendor");
+        render(view: "/scm/creat_local_vendor", model: [type: "Create Vendor"]);
     }
+
+    def saveVendor(){
+        flash.message = inventoryService.saveVendor(params);
+    }
+    def vendorList(){
+        render(view: "/scm/vendor_list", model: [type: "Vendor List"]);
+    }
+
+    def vendorJsonData(){
+        if (!params.limit) {
+            params.max = 10;
+        } else {
+            params.max = params.limit;
+        }
+        List<Vendor> vendorList = new ArrayList<Vendor>();
+
+        vendorList = Vendor.list();
+
+        List<Map> vendors = new ArrayList<>();
+
+        Map<String, String> vendorMap;
+
+        for (Vendor vendor : vendorList){
+
+            vendorMap = new HashMap<String, String>();
+            def vendorFirstName = vendor.firstName;
+            def vendorLastName = vendor.lastName;
+
+            def vendorFullName = vendorFirstName + " " + vendorLastName
+            def organizationName = vendor?.organization?.organizationName;
+            if (!organizationName){
+                organizationName = "";
+            }
+
+            vendorMap.put("vendorName", vendorFullName);
+            vendorMap.put("organizationName", organizationName);
+            vendorMap.put("mobileNo", vendor?.mobileNo);
+            vendorMap.put("description", vendor.description);
+            vendorMap.put("emailId", vendor.emailId);
+            vendorMap.put("phoneNo", vendor.phoneNo);
+
+            vendors.add(vendorMap);
+        }
+
+        /* for pagination */
+
+        int totalCount = vendors.size();
+
+
+
+        int start = (params.start != null) ? Integer.parseInt(params.start) : 0;
+        int limit = (params.limit != null) ? Integer.parseInt(params.limit) : 10;
+
+        render([vendors : vendors.asList().subList(start, start + limit > totalCount ? totalCount : start + limit),totalCount:totalCount] as JSON);
+
+    }
+    //////vendor///////
 
 }

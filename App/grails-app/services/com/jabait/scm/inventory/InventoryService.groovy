@@ -1,5 +1,8 @@
 package com.jabait.scm.inventory
 
+import com.jabait.scm.Vendor
+import com.jabait.hrm.Organization
+
 class InventoryService {
 
     def serviceMethod() {
@@ -85,5 +88,24 @@ class InventoryService {
         } catch(Exception exception){
             return false;
         }
+    }
+
+    def saveVendor(params){
+
+        Vendor vendor = new Vendor();
+        vendor.firstName = params.firstName;
+        vendor.lastName = params.lastName;
+        vendor.description = params.description;
+        vendor.emailId = params.emailId;
+        vendor.phoneNo = params.phoneNo;
+
+        Organization organization = Organization.get(Integer.parseInt(params.orgId));
+        vendor.organization = organization;
+        if(vendor.save()){
+            return "Vendor created successfully";
+        }else{
+            return "Vendor creation failed";
+        }
+
     }
 }
