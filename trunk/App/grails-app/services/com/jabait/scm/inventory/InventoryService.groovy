@@ -90,23 +90,4 @@ class InventoryService {
             return false;
         }
     }
-
-    def saveLocalVendor(params){
-
-        LocalVendor localVendor = new LocalVendor();
-        localVendor.firstName = params.firstName;
-        localVendor.lastName = params.lastName;
-        localVendor.description = params.description;
-        localVendor.emailId = params.emailId;
-        localVendor.phoneNo = params.phoneNo;
-
-        Organization organization = Organization.get(Integer.parseInt(params.orgId));
-        localVendor.organization = organization;
-        if(localVendor.save()){
-            return "Vendor created successfully";
-        }else{
-            return "Vendor creation failed";
-        }
-
-    }
 }
