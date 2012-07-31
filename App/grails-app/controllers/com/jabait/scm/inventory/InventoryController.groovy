@@ -202,4 +202,8 @@ class InventoryController {
         render result as JSON
     }
 
+    def createVendor(){
+        render(view: "/scm/creat_local_vendor");
+    }
+
 }
