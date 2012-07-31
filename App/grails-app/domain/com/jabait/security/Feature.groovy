@@ -138,5 +138,36 @@ class Feature {
             )
             Authority.get(1).addToFeatures(saveAdvancePayRegisterFeature).save(flush: true);
         }
+        if(Feature.findByOperation("createVendor") == null){
+            def createVendorFeature = new Feature(
+                    description: "Feature create vendor",
+                    documents: "all",
+                    fields: "all",
+                    module: "inventory",
+                    operation: "createVendor"
+            )
+            Authority.get(1).addToFeatures(createVendorFeature).save(flush: true);
+        }
+        if(Feature.findByOperation("saveVendor") == null){
+            def saveVendorFeature = new Feature(
+                    description: "Feature save vendor",
+                    documents: "all",
+                    fields: "all",
+                    module: "inventory",
+                    operation: "saveVendor"
+            )
+            Authority.get(1).addToFeatures(saveVendorFeature).save(flush: true);
+        }
+        if(Feature.findByOperation("vendorList") == null){
+            def vendorListFeature = new Feature(
+                    description: "Feature for vendor list",
+                    documents: "all",
+                    fields: "all",
+                    module: "inventory",
+                    operation: "vendorList"
+            )
+            Authority.get(1).addToFeatures(vendorListFeature).save(flush: true);
+        }
+
     }
 }
