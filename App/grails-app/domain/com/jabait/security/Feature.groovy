@@ -168,6 +168,38 @@ class Feature {
             )
             Authority.get(1).addToFeatures(vendorListFeature).save(flush: true);
         }
+        if(Feature.findByOperation("createCategory") == null){
+            def createCategoryFeature = new Feature(
+                    description: "Feature to create category",
+                    documents: "all",
+                    fields: "all",
+                    module: "inventory",
+                    operation: "createCategory"
+            )
+            Authority.get(1).addToFeatures(createCategoryFeature).save(flush: true);
+        }
+
+        if(Feature.findByOperation("saveCategory") == null){
+            def saveCategoryFeature = new Feature(
+                    description: "Feature to save category",
+                    documents: "all",
+                    fields: "all",
+                    module: "inventory",
+                    operation: "saveCategory"
+            )
+            Authority.get(1).addToFeatures(saveCategoryFeature).save(flush: true);
+        }
+
+        if(Feature.findByOperation("categoryList") == null){
+            def categoryListFeature = new Feature(
+                    description: "Feature category list",
+                    documents: "all",
+                    fields: "all",
+                    module: "inventory",
+                    operation: "categoryList"
+            )
+            Authority.get(1).addToFeatures(categoryListFeature).save(flush: true);
+        }
 
     }
 }
