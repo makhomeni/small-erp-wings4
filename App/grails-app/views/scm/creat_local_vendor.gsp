@@ -18,12 +18,7 @@
 
     <script type="text/javascript">
 
-        $(document).ready(function(){
-            var liveValidation = new LiveValidation('confirmPassword');
-//                alert(liveValidation)
-            liveValidation.add( Validate.Confirmation, { match: 'password' } );
-        })
-        function submitForm(){
+           function submitForm(){
             document.organizationForm.submit();
         }
     </script>
@@ -41,16 +36,10 @@ div.selector{
     margin-left: 156px;
 }
 </style>
-<script>
-    $(document).ready(function(){
-        $("input, textarea, select, button").uniform();
-    })
-</script>
 
 <div class="bread_crumbs_ui_div" style="width: 611px">
     <ul id="crumbs_ui_custom">
         <li><g:link controller="application" action="index">Dashboard</g:link></li>
-        %{--<li><g:link controller="configuration" action="jobConfigHome">Job Config Home</g:link></li>--}%
         <li><g:link controller="configuration" action="organizationList">Organization List</g:link></li>
         <li>Create Vendor </li>
     </ul>
@@ -71,7 +60,7 @@ div.selector{
 
             <div class="fieldcontain">
                 <label for="firstName">
-                    <g:message code="firstName.label" default="First Name" />
+                    First Name
                     <span class="required-indicator">*</span>
                 </label>
 
@@ -83,7 +72,7 @@ div.selector{
 
             <div class="fieldcontain">
                 <label for="lastName">
-                    <g:message code="lastName.label" default="Last Name" />
+                    Last Name
                     <span class="required-indicator">*</span>
                 </label>
 
@@ -94,7 +83,7 @@ div.selector{
 
             <div class="fieldcontain">
                 <label for="organization">
-                    <g:message code="organization.label" default="Organization" />
+                    Organization
                     <span class="required-indicator">*</span>
                 </label>
 
@@ -130,12 +119,6 @@ div.selector{
                     Description
                     <span class="required-indicator">*</span>
                 </label>
-                %{--
-                  <g:if test="${userInstance.userCode}">
-                    </g:if>
-                    <g:else>
-                    </g:else>
-                --}%
 
                 <g:textField name="description" required=""  value="" />
 
