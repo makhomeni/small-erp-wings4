@@ -2,6 +2,7 @@ package com.jabait.scm.inventory
 
 import com.jabait.scm.Vendor
 import com.jabait.hrm.Organization
+import com.jabait.scm.LocalVendor
 
 class InventoryService {
 
@@ -90,18 +91,18 @@ class InventoryService {
         }
     }
 
-    def saveVendor(params){
+    def saveLocalVendor(params){
 
-        Vendor vendor = new Vendor();
-        vendor.firstName = params.firstName;
-        vendor.lastName = params.lastName;
-        vendor.description = params.description;
-        vendor.emailId = params.emailId;
-        vendor.phoneNo = params.phoneNo;
+        LocalVendor localVendor = new LocalVendor();
+        localVendor.firstName = params.firstName;
+        localVendor.lastName = params.lastName;
+        localVendor.description = params.description;
+        localVendor.emailId = params.emailId;
+        localVendor.phoneNo = params.phoneNo;
 
         Organization organization = Organization.get(Integer.parseInt(params.orgId));
-        vendor.organization = organization;
-        if(vendor.save()){
+        localVendor.organization = organization;
+        if(localVendor.save()){
             return "Vendor created successfully";
         }else{
             return "Vendor creation failed";
