@@ -208,18 +208,18 @@ class InventoryController {
 
 
     //////vendor///////
-    def createVendor(){
+    def createLocalVendor(){
         render(view: "/scm/local_vendor_create", model: [type: "Create Vendor"]);
     }
 
-    def saveVendor(){
-        flash.message = inventoryService.saveVendor(params);
+    def saveLocalVendor(){
+        flash.message = inventoryService.saveLocalVendor(params);
     }
-    def vendorList(){
-        render(view: "/scm/vendor_list", model: [type: "Vendor List"]);
+    def localVendorList(){
+        render(view: "/scm/local_vendor_list", model: [type: "Vendor List"]);
     }
 
-    def vendorJsonData(){
+    def localVendorJsonData(){
         if (!params.limit) {
             params.max = 10;
         } else {
