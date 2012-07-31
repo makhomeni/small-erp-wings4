@@ -19,6 +19,36 @@
     <body>
 
     <content tag="rightTag">
+        <style>
+        .gear{
+           margin-top: -11px;
+        }
+        .disconnect{
+            margin-top: -11px;
+        }
+        </style>
+        <link rel="stylesheet" href="${resource(dir: 'css', file: 'misc.style.css')}">
+        <link rel="stylesheet" href="${resource(dir: 'css', file: 'accordionmenu.css')}">
+        <link rel="stylesheet" href="${resource(dir: 'css', file: 'custom.property.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'fixedHeader.css')}">
+        <!--[if lte IE 8]>
+		<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'fixedHeaderie6.css')}">
+		<![endif]-->
+        <link  rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'zice.style.css')}">
+        <link  rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'icon.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'ui-custom.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'colorpicker.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'elfinder.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'ui-custom.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'dataTables.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'validationEngine.jquery.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jscrollpane.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'tipsy.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jquery.cleditor.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'chosen.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jquery.confirm.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'sourcerer.css')}">
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'grid.css')}">
 
         <div class="bread_crumbs_ui_div" style="width: 611px">
             <ul id="crumbs_ui_custom">
@@ -32,7 +62,11 @@
 
         <div class="widget">
 
-
+            <script>
+                $(document).ready(function(){
+                    $('#fileupload').fileupload();
+                })
+            </script>
 
             <div class="header" style="width: 610px;">
                 <span><span class="ico gray product"></span>${type}</span>
