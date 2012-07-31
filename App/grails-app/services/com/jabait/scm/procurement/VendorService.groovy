@@ -1,4 +1,4 @@
-package com.jabait.scm.vendor
+package com.jabait.scm.procurement
 
 import com.jabait.scm.Vendor
 import com.jabait.hrm.Organization

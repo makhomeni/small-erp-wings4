@@ -1,4 +1,4 @@
-package com.jabait.scm.inventory
+package com.jabait.scm.procurement
 
 class ProcurementController {
 
