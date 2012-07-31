@@ -32,6 +32,7 @@
             <div class="bread_crumbs_ui_div" style="width: 851px">
                 <ul id="crumbs_ui_custom">
                     <li><g:link controller="application" action="index">Dashboard</g:link></li>
+                    <li><g:link controller="scm" action="home">Supply-Chain Management</g:link></li>
                     <li>${type}</li>
                 </ul>
             </div>

@@ -9,10 +9,10 @@ class ProcurementController {
     }
 
     def createRequestForQuotation(){
-        render(view: "/scm/rfq_create");
+        render(view: "/scm/rfq_create", model:[type: "Request for Quotation Create"]);
     }
 
     def vendorHome(){
-        render(view: "/scm/vendor_home");
+        render(view: "/scm/vendor_home" , model:[type: "Vendor Home"]);
     }
 }
