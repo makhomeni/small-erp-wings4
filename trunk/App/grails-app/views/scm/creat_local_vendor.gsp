@@ -10,8 +10,8 @@
 
 <g:applyLayout name="app">
 <head>
-    <g:set var="entityName" value="${message(code:'vendor.description', default: 'Vendor')}"/>
-    <title><g:message code="vendor.label" args="[entityName]"/></title>
+
+    <title>Create Vendor</title>
     <script type="text/javascript" src="${resource(dir: 'js', file: 'livevalidation_standalone.compressed.js')}">
 
     </script>
@@ -34,10 +34,7 @@
     <h1>${type}</h1>
 </content>
 <content tag="rightTag">
-<script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.uniform.js')}" ></script>
 
-
-<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'uniform.aristo.css')}">
 <style>
 div.selector{
     margin-top: -20px;
@@ -58,7 +55,9 @@ div.selector{
         <li>Create Vendor </li>
     </ul>
 </div>
-<div class="widget">
+    <br class="clear" />
+
+    <div class="widget">
 
     <div class="header" style="width: 610px;">
         <span><span class="ico gray organization"></span>${type}</span>
@@ -69,8 +68,8 @@ div.selector{
     </g:if>
     <g:form name="vendorForm" id="vendorForm" controller="inventory" action="saveVendor" method="POST">
         <fieldset class="form">
-            %{--<g:render template="organization_form"/>--}%
-            <div class="fieldcontain ${hasErrors(bean: vendorInstance, field: 'firstName', 'error')} required">
+
+            <div class="fieldcontain">
                 <label for="firstName">
                     <g:message code="firstName.label" default="First Name" />
                     <span class="required-indicator">*</span>
@@ -82,7 +81,7 @@ div.selector{
 
 
 
-            <div class="fieldcontain ${hasErrors(bean: vendorInstance, field: 'lastName', 'error')} required">
+            <div class="fieldcontain">
                 <label for="lastName">
                     <g:message code="lastName.label" default="Last Name" />
                     <span class="required-indicator">*</span>
@@ -93,7 +92,7 @@ div.selector{
             </div>
 
 
-            <div class="fieldcontain ${hasErrors(bean: vendorInstance, field: 'organization', 'error')} required">
+            <div class="fieldcontain">
                 <label for="organization">
                     <g:message code="organization.label" default="Organization" />
                     <span class="required-indicator">*</span>
@@ -104,33 +103,21 @@ div.selector{
             </div>
 
 
-            <div class="fieldcontain ${hasErrors(bean: vendorInstance, field: 'billingAddress', 'error')} required">
+            <div class="fieldcontain">
                 <label for="billingAddress">
-                    <g:message code="billingAddress.label" default="Billing Address" />
+                    Billing Address
                     <span class="required-indicator">*</span>
                 </label>
-                %{--
-                  <g:if test="${userInstance.userCode}">
-                    </g:if>
-                    <g:else>
-                    </g:else>
-                --}%
 
                 <g:textField name="billingAddress" required=""  value="" />
 
             </div>
 
-            <div class="fieldcontain ${hasErrors(bean: vendorInstance, field: 'mobileNo', 'error')} required">
+            <div class="fieldcontain">
                 <label for="mobileNo">
-                    <g:message code="mobileNo.label" default="Mobile No" />
+                    Mobile No
                     <span class="required-indicator">*</span>
                 </label>
-                %{--
-                  <g:if test="${userInstance.userCode}">
-                    </g:if>
-                    <g:else>
-                    </g:else>
-                --}%
 
                 <g:textField name="mobileNo" required=""  value="" />
 
@@ -138,9 +125,9 @@ div.selector{
 
 
 
-            <div class="fieldcontain ${hasErrors(bean: vendorInstance, field: 'description', 'error')} required">
+            <div class="fieldcontain">
                 <label for="description">
-                    <g:message code="description.label" default="Description" />
+                    Description
                     <span class="required-indicator">*</span>
                 </label>
                 %{--
@@ -155,35 +142,22 @@ div.selector{
             </div>
 
 
-            <div class="fieldcontain ${hasErrors(bean: vendorInstance, field: 'emailId', 'error')} required">
+            <div class="fieldcontain">
                 <label for="emailId">
-                    <g:message code="emailId.label" default="Email Id" />
+                    Email Id
                     <span class="required-indicator">*</span>
                 </label>
-                %{--
-                  <g:if test="${userInstance.userCode}">
-                    </g:if>
-                    <g:else>
-                    </g:else>
-                --}%
 
                 <g:textField name="emailId" required=""  value="" />
 
             </div>
 
 
-            <div class="fieldcontain ${hasErrors(bean: vendorInstance, field: 'phoneNo', 'error')} required">
+            <div class="fieldcontain">
                 <label for="phoneNo">
-                    <g:message code="phoneNo.label" default="Phone No" />
+                    Phone No
                     <span class="required-indicator">*</span>
                 </label>
-                %{--
-                  <g:if test="${userInstance.userCode}">
-                    </g:if>
-                    <g:else>
-                    </g:else>
-                --}%
-
                 <g:textField name="phoneNo" required=""  value="" />
 
             </div>
