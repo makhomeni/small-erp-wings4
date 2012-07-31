@@ -64,6 +64,7 @@
                 <ul class="widgetlist">
                     <li><g:link controller="inventory" action="home"><img src="${resource(dir:'images/assets/icons', file: 'inventory.png')}" alt="Document Icon"><span>Inventory</span></g:link></li>
                     <li><g:link controller="job" action="home"><img src="${resource(dir:'images/assets/icons', file: 'job.png')}" alt="Document Icon"><span>Job</span></g:link></li>
+                    <li><g:link controller="procurement" action="home"><img src="${resource(dir:'images/assets/icons', file: 'procurement.png')}" alt="Document Icon"><span>Procurement</span></g:link></li>
                 </ul>
             </div>
         </div>
