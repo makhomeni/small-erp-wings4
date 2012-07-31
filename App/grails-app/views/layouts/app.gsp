@@ -242,7 +242,7 @@
 			${classNameAcl= "limenu select" }
 		</g:if>
 
-        <g:if test="${params.controller == 'scm' ||
+        <g:if test="${params.controller == 'scm' || params.controller == 'procurement' ||
                 params.controller == 'inventory' || params.controller == 'job'}">
             ${classNameSCM = "limenu select"}
         </g:if>

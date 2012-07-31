@@ -63,7 +63,7 @@
             <div id="list_user" class="content scaffold-list" role="main" style="width: 800px;">
                 <ul class="widgetlist">
                     <li><g:link controller="procurement" action="createRequestForQuotation"><img src="${resource(dir:'images/assets/icons', file: 'inventory.png')}" alt="Document Icon"><span>RFQ</span></g:link></li>
-                    <li><g:link controller="procurement" action="vendorHome"><img src="${resource(dir:'images/assets/icons', file: 'supplier.png')}" alt="Document Icon"><span>Job</span></g:link></li>
+                    <li><g:link controller="procurement" action="vendorHome"><img src="${resource(dir:'images/assets/icons', file: 'supplier.png')}" alt="Document Icon"><span>Vendors</span></g:link></li>
                 </ul>
             </div>
         </div>
