@@ -138,33 +138,33 @@ class Feature {
             )
             Authority.get(1).addToFeatures(saveAdvancePayRegisterFeature).save(flush: true);
         }
-        if(Feature.findByOperation("createVendor") == null){
+        if(Feature.findByOperation("createLocalVendor") == null){
             def createVendorFeature = new Feature(
                     description: "Feature create vendor",
                     documents: "all",
                     fields: "all",
                     module: "inventory",
-                    operation: "createVendor"
+                    operation: "createLocalVendor"
             )
             Authority.get(1).addToFeatures(createVendorFeature).save(flush: true);
         }
-        if(Feature.findByOperation("saveVendor") == null){
+        if(Feature.findByOperation("saveLocalVendor") == null){
             def saveVendorFeature = new Feature(
                     description: "Feature save vendor",
                     documents: "all",
                     fields: "all",
                     module: "inventory",
-                    operation: "saveVendor"
+                    operation: "saveLocalVendor"
             )
             Authority.get(1).addToFeatures(saveVendorFeature).save(flush: true);
         }
-        if(Feature.findByOperation("vendorList") == null){
+        if(Feature.findByOperation("localVendorList") == null){
             def vendorListFeature = new Feature(
                     description: "Feature for vendor list",
                     documents: "all",
                     fields: "all",
                     module: "inventory",
-                    operation: "vendorList"
+                    operation: "localVendorList"
             )
             Authority.get(1).addToFeatures(vendorListFeature).save(flush: true);
         }
