@@ -9,8 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <g:applyLayout name="app">
     <head>
-        <g:set var="entityName" value="${message(code: 'user.label', default:'User')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
+
+        <title>Vendor List</title>
         <script>
 
             //for delete
