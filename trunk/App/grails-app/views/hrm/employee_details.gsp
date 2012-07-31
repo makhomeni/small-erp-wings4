@@ -11,424 +11,424 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <g:applyLayout name="app">
 <head>
-    <script type="text/javascript" src="${resource(dir: 'js', file: 'jscal2.js')}"></script>
-    <script type="text/javascript" src="${resource(dir: 'js', file: 'en.js')}"></script>
-
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'border-radius.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jscal2.css')}"/>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'steel.css')}"/>
-
-    <title>${titleOfPage}</title>
-    <style type="text/css">
-
-    .miscInfoText{
-        text-align: left;
-    }
-    .orgInfoText{
-        text-align: left;
-    }
-    .adjustOrgImg{
-        margin-bottom: -8px;
-        margin-left: 2px;
-    }
-    .adjustCalendarImg {
-        margin-bottom: -11px;
-    }
-    </style>
-
-    <script type="text/javascript">
-        //var's for organization
-        var organizationDataStore;
-        var organizationGrid;
-        var checkBoxSelModModelOrganization;
-        var organizationAssignmentWindow;
-
-        //var's for department window
-        var departmentDataStore;
-        var departmentGrid;
-        var checkBoxSelectionModelDepartment;
-        var departmentAssignmentWindow;
-
-
-
-        //org end
-
-
-        //for designation
-        var designationDataStore;
-        var designationGrid;
-        var checkBoxSelectionModelDesignation;
-        var designationAssignmentWindow;
-
-        //for section
-        var sectionDataStore;
-        var checkBoxSelectionModelSection;
-        var sectionGrid;
-        var sectionWindow;
-
-
-
-        Ext.onReady(function(){
-
-
-            //for organization
-            productDataStore = new Ext.data.Store({
-                id: "organizationDataStore",
-                url: '${createLink(controller: 'employee',action: 'organizationJsonData')}',
-                reader: new Ext.data.JsonReader({
-                    root: 'organizations',
-                    totalProperty: 'totalCount',
-                    id: 'id'
-                },[
-                    {name: 'id', type: 'int', mapping: 'id'},
-                    {name: 'organizationName', type: 'string', mapping: 'organizationName'},
-                    {name: 'phone', type: 'string', mapping: 'phone'}
-                ]),
-                autoLoad : true
-            })
-
-
-            //create the grid
-            checkBoxSelModModelOrganization = new Ext.grid.CheckboxSelectionModel();
-            organizationGrid = new Ext.grid.EditorGridPanel({
-                id: 'organizationGrid',
-                store : productDataStore,
-                clicksToEdit: 2,
-                selModel : checkBoxSelModModelOrganization,
-                height: 250,
-
-                columns: [
-
-                    {
-                        dataIndex: 'organizationName',
-                        header: 'Organization',
-                        sortable: true,
-                        width: 370,
-                        editable: true,
-                        editor: new Ext.form.TextField()
-                    }
-                ],
-                stripeRows : true,
-                bbar: new Ext.PagingToolbar({
-                    store : productDataStore,
-                    pageSize : 10,
-                    displayInfo : true,
-                    displaymsg : 'Displaying {0} - {1} of {2}',
-                    emptyMsg : "No records found"
-                }),
-                listeners: {
-                    "cellclick" : function(grid, rowIndex, columnIndex, e){
-                        var selectedOrganization= organizationGrid.getSelectionModel().getSelections();
-                        var departmentStore = departmentGrid.getStore()
-                        Ext.each(selectedOrganization, function(sel) {
-                            $("#organization").val(sel.get('organizationName'))
-                            $("#organizationId").val(sel.get('id'))
-                            //to show department selection option
-
-                            departmentStore.setBaseParam("orgId",sel.get('id'))
-                            organizationAssignmentWindow.hide();
-                        });
-
-
-                        departmentStore.load({
-                            params : {start: 0, limit: 10}
-                        })
-                    }
-                }
-            })
-            productDataStore.load({params: {start: 0, limit: 10}});
-
-            organizationAssignmentWindow = new Ext.Window({
-                id: 'organizationAssignmentWindow',
-                title: 'Select Organization for Employee',
-                closable: false,
-                width: 400,
-                height: 400,
-                plain:true,
-                modal:true,
-                layout: 'fit',
-                resizable: false,
-                items: organizationGrid,
-                buttons:[
-                    {
-                        text: 'Cancel',
-                        handler: function(){
-                            organizationAssignmentWindow.hide();
-                        }
-                    }
-                ]
-            });
-
-
-            //////////// organization end ////////////////////////////////
-
-
-            //////for department///////////
-
-            departmentDataStore = new Ext.data.Store({
-                id: "departmentDataStore",
-                url: '${createLink(controller: 'employee',action: 'departmentJsonData')}',
-                reader: new Ext.data.JsonReader({
-                    root: 'departments',
-                    totalProperty: 'totalCount',
-                    id: 'id'
-                },[
-                    {name: 'id', type: 'int', mapping: 'id'},
-                    {name: 'departmentName', type: 'string', mapping: 'departmentName'}
-                ]),
-                autoLoad : true
-            })
-
-
-            //create the grid
-            checkBoxSelectionModelDepartment = new Ext.grid.CheckboxSelectionModel();
-            departmentGrid = new Ext.grid.EditorGridPanel({
-                id: 'departmentGrid',
-                store : departmentDataStore,
-                clicksToEdit: 2,
-                selModel : checkBoxSelectionModelDepartment,
-                height: 250,
-                //sm: new Ext.grid.CheckboxSelectionModel(),
-                columns: [
-
-                    {
-                        dataIndex: 'departmentName',
-                        header: 'Department Name',
-                        sortable: true,
-                        width: 250,
-                        editable: true,
-                        editor: new Ext.form.TextField()
-                    }
-                ],
-                stripeRows : true,
-                bbar: new Ext.PagingToolbar({
-                    store : departmentDataStore,
-                    pageSize : 10,
-                    displayInfo : true,
-                    displaymsg : 'Displaying {0} - {1} of {2}',
-                    emptyMsg : "No records found"
-                }),
-                listeners: {
-                    "cellclick" : function(grid, rowIndex, columnIndex, e){
-                        var selectedDepartment= departmentGrid.getSelectionModel().getSelections();
-                        var sectionStore = sectionGrid.getStore()
-                        Ext.each(selectedDepartment, function(sel) {
-
-                            $("#department").val(sel.get('departmentName'));
-                            $("#departmentId").val(sel.get('id'));
-
-                            sectionStore.setBaseParam("deptId",sel.get('id'))
-
-                            departmentAssignmentWindow.hide();
-                        });
-
-                    }
-                }
-            })
-            departmentDataStore.load({params: {start: 0, limit: 10}});
-
-            departmentAssignmentWindow = new Ext.Window({
-                id: 'departmentAssignmentWindow',
-                title: 'Select Department for Employee',
-                closable: false,
-                width: 400,
-                height: 400,
-                plain:true,
-                modal:true,
-                layout: 'fit',
-                resizable: false,
-                items: departmentGrid,
-                buttons:[
-                    {
-                        text: 'Cancel',
-                        handler: function(){
-                            departmentAssignmentWindow.hide();
-                        }
-                    }
-                ]
-            });
-
-            //////////// department end /////////////////////////////////
-
-
-            /////////////////// section ////////////
-            sectionDataStore = new Ext.data.Store({
-                id: "sectionDataStore",
-                url: '${createLink(controller: 'employee',action: 'sectionJsonData')}',
-                reader: new Ext.data.JsonReader({
-                    root: 'sections',
-                    totalProperty: 'totalCount',
-                    id: 'id'
-                },[
-                    {name: 'id', type: 'int', mapping: 'id'},
-                    {name: 'departmentName', type: 'string', mapping: 'departmentName'}
-                ]),
-                autoLoad : true
-            });
-
-
-            //create the grid
-            checkBoxSelectionModelSection = new Ext.grid.CheckboxSelectionModel();
-            sectionGrid = new Ext.grid.EditorGridPanel({
-                id: 'sectionGrid',
-                store : sectionDataStore,
-                clicksToEdit: 2,
-                selModel : checkBoxSelectionModelSection,
-                height: 250,
-
-                columns: [
-
-                    {
-                        dataIndex: 'departmentName',
-                        header: 'Section Name',
-                        sortable: true,
-                        width: 370,
-                        editable: true,
-                        editor: new Ext.form.TextField()
-                    }
-                ],
-                stripeRows:true,
-                bbar: new Ext.PagingToolbar({
-                    store : sectionDataStore,
-                    pageSize : 10,
-                    displayInfo : true,
-                    displaymsg : 'Displaying {0} - {1} of {2}',
-                    emptyMsg : "No records found"
-                }),
-                listeners: {
-                    "cellclick" : function(grid, rowIndex, columnIndex, e){
-                        var selectedSection= sectionGrid.getSelectionModel().getSelections();
-                        Ext.each(selectedSection, function(sel) {
-
-                            $("#section").val(sel.get('departmentName'))
-                            $("#sectionId").val(sel.get('id'))
-
-                            sectionWindow.hide();
-
-                        });
-
-
-                    }
-                }
-            })
-            sectionDataStore.load({params: {start: 0, limit: 10}});
-
-
-            sectionWindow = new Ext.Window({
-                id: 'sectionWindow',
-                title: 'Select Section for Employee',
-                closable: false,
-                width: 400,
-                height: 400,
-                plain:true,
-                modal:true,
-                layout: 'fit',
-                resizable: false,
-                items: sectionGrid,
-                buttons:[
-                    {
-                        text: 'Cancel',
-                        handler: function(){
-                            sectionWindow.hide();
-                        }
-                    }
-                ]
-            });
-
-            ///////////////////////// Section end ///////////////////////////////////
-
-
-
-
-            /////////////////for designation//////////////////////
-
-            designationDataStore = new Ext.data.Store({
-                id: "designationDataStore",
-                url: '${createLink(controller: 'employee',action: 'designationJsonData')}',
-                reader: new Ext.data.JsonReader({
-                    root: 'designations',
-                    totalProperty: 'totalCount',
-                    id: 'id'
-                },[
-                    {name: 'id', type: 'int', mapping: 'id'},
-                    {name: 'jobTitleName', type: 'string', mapping: 'jobTitleName'},
-                    {name: 'jobTitleDescription', type: 'string', mapping: 'jobTitleDescription'}
-                ]),
-                autoLoad : true
-            })
-
-
-            %{--grid for designation--}%
-
-            checkBoxSelectionModelDesignation= new Ext.grid.CheckboxSelectionModel();
-            designationGrid = new Ext.grid.EditorGridPanel({
-                id: 'designationGrid',
-                store : designationDataStore,
-                clicksToEdit: 2,
-                selModel : checkBoxSelectionModelDesignation,
-                height: 250,
-                //sm: new Ext.grid.CheckboxSelectionModel(),
-                columns: [
-
-                    {
-                        dataIndex: 'jobTitleName',
-                        header: 'Title',
-                        sortable: true,
-                        width: 370,
-                        editable: true,
-                        editor: new Ext.form.TextField()
-                    }
-                ],
-                stripeRows:true,
-                bbar: new Ext.PagingToolbar({
-                    store : designationDataStore,
-                    pageSize : 10,
-                    displayInfo : true,
-                    displaymsg : 'Displaying {0} - {1} of {2}',
-                    emptyMsg : "No records found"
-                }),
-                listeners: {
-                    "cellclick" : function(grid, rowIndex, columnIndex, e){
-                        var selectedDesignation= designationGrid.getSelectionModel().getSelections();
-                        Ext.each(selectedDesignation, function(sel) {
-
-                            $("#designation").val(sel.get('jobTitleName'))
-                            $("#designationId").val(sel.get('id'))
-                            designationAssignmentWindow.hide();
-                        });
-
-
-                    }
-                }
-            })
-            designationDataStore.load({params: {start: 0, limit: 10}});
-
-
-            designationAssignmentWindow = new Ext.Window({
-                id: 'designationAssignmentWindow',
-                title: 'Select Designation for Employee',
-                closable: false,
-                width: 400,
-                height: 400,
-                plain:true,
-                modal:true,
-                layout: 'fit',
-                resizable: false,
-                items: designationGrid,
-                buttons:[
-                   {
-                        text: 'Cancel',
-                        handler: function(){
-                            designationAssignmentWindow.hide();
-                        }
-                    }
-                ]
-            });
-
-
+<script type="text/javascript" src="${resource(dir: 'js', file: 'jscal2.js')}"></script>
+<script type="text/javascript" src="${resource(dir: 'js', file: 'en.js')}"></script>
+
+<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'border-radius.css')}"/>
+<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'jscal2.css')}"/>
+<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'steel.css')}"/>
+
+<title>${titleOfPage}</title>
+<style type="text/css">
+
+.miscInfoText{
+    text-align: left;
+}
+.orgInfoText{
+    text-align: left;
+}
+.adjustOrgImg{
+    margin-bottom: -8px;
+    margin-left: 2px;
+}
+.adjustCalendarImg {
+    margin-bottom: -11px;
+}
+</style>
+
+<script type="text/javascript">
+    //var's for organization
+    var organizationDataStore;
+    var organizationGrid;
+    var checkBoxSelModModelOrganization;
+    var organizationAssignmentWindow;
+
+    //var's for department window
+    var departmentDataStore;
+    var departmentGrid;
+    var checkBoxSelectionModelDepartment;
+    var departmentAssignmentWindow;
+
+
+
+    //org end
+
+
+    //for designation
+    var designationDataStore;
+    var designationGrid;
+    var checkBoxSelectionModelDesignation;
+    var designationAssignmentWindow;
+
+    //for section
+    var sectionDataStore;
+    var checkBoxSelectionModelSection;
+    var sectionGrid;
+    var sectionWindow;
+
+
+
+    Ext.onReady(function(){
+
+
+        //for organization
+        organizationDataStore = new Ext.data.Store({
+            id: "organizationDataStore",
+            url: '${createLink(controller: 'employee',action: 'organizationJsonData')}',
+            reader: new Ext.data.JsonReader({
+                root: 'organizations',
+                totalProperty: 'totalCount',
+                id: 'id'
+            },[
+                {name: 'id', type: 'int', mapping: 'id'},
+                {name: 'organizationName', type: 'string', mapping: 'organizationName'},
+                {name: 'phone', type: 'string', mapping: 'phone'}
+            ]),
+            autoLoad : true
         })
-    </script>
-    <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'basic.css')}" media='screen'/>
+
+
+        //create the grid
+        checkBoxSelModModelOrganization = new Ext.grid.CheckboxSelectionModel();
+        organizationGrid = new Ext.grid.EditorGridPanel({
+            id: 'organizationGrid',
+            store : organizationDataStore,
+            clicksToEdit: 2,
+            selModel : checkBoxSelModModelOrganization,
+            height: 250,
+
+            columns: [
+
+                {
+                    dataIndex: 'organizationName',
+                    header: 'Organization',
+                    sortable: true,
+                    width: 370,
+                    editable: true,
+                    editor: new Ext.form.TextField()
+                }
+            ],
+            stripeRows : true,
+            bbar: new Ext.PagingToolbar({
+                store : organizationDataStore,
+                pageSize : 10,
+                displayInfo : true,
+                displaymsg : 'Displaying {0} - {1} of {2}',
+                emptyMsg : "No records found"
+            }),
+            listeners: {
+                "cellclick" : function(grid, rowIndex, columnIndex, e){
+                    var selectedOrganization= organizationGrid.getSelectionModel().getSelections();
+                    var departmentStore = departmentGrid.getStore()
+                    Ext.each(selectedOrganization, function(sel) {
+                        $("#organization").val(sel.get('organizationName'))
+                        $("#organizationId").val(sel.get('id'))
+                        //to show department selection option
+
+                        departmentStore.setBaseParam("orgId",sel.get('id'))
+                        organizationAssignmentWindow.hide();
+                    });
+
+
+                    departmentStore.load({
+                        params : {start: 0, limit: 10}
+                    })
+                }
+            }
+        })
+        organizationDataStore.load({params: {start: 0, limit: 10}});
+
+        organizationAssignmentWindow = new Ext.Window({
+            id: 'organizationAssignmentWindow',
+            title: 'Select Organization for Employee',
+            closable: false,
+            width: 400,
+            height: 400,
+            plain:true,
+            modal:true,
+            layout: 'fit',
+            resizable: false,
+            items: organizationGrid,
+            buttons:[
+                {
+                    text: 'Cancel',
+                    handler: function(){
+                        organizationAssignmentWindow.hide();
+                    }
+                }
+            ]
+        });
+
+
+        //////////// organization end ////////////////////////////////
+
+
+        //////for department///////////
+
+        departmentDataStore = new Ext.data.Store({
+            id: "departmentDataStore",
+            url: '${createLink(controller: 'employee',action: 'departmentJsonData')}',
+            reader: new Ext.data.JsonReader({
+                root: 'departments',
+                totalProperty: 'totalCount',
+                id: 'id'
+            },[
+                {name: 'id', type: 'int', mapping: 'id'},
+                {name: 'departmentName', type: 'string', mapping: 'departmentName'}
+            ]),
+            autoLoad : true
+        })
+
+
+        //create the grid
+        checkBoxSelectionModelDepartment = new Ext.grid.CheckboxSelectionModel();
+        departmentGrid = new Ext.grid.EditorGridPanel({
+            id: 'departmentGrid',
+            store : departmentDataStore,
+            clicksToEdit: 2,
+            selModel : checkBoxSelectionModelDepartment,
+            height: 250,
+            //sm: new Ext.grid.CheckboxSelectionModel(),
+            columns: [
+
+                {
+                    dataIndex: 'departmentName',
+                    header: 'Department Name',
+                    sortable: true,
+                    width: 250,
+                    editable: true,
+                    editor: new Ext.form.TextField()
+                }
+            ],
+            stripeRows : true,
+            bbar: new Ext.PagingToolbar({
+                store : departmentDataStore,
+                pageSize : 10,
+                displayInfo : true,
+                displaymsg : 'Displaying {0} - {1} of {2}',
+                emptyMsg : "No records found"
+            }),
+            listeners: {
+                "cellclick" : function(grid, rowIndex, columnIndex, e){
+                    var selectedDepartment= departmentGrid.getSelectionModel().getSelections();
+                    var sectionStore = sectionGrid.getStore()
+                    Ext.each(selectedDepartment, function(sel) {
+
+                        $("#department").val(sel.get('departmentName'));
+                        $("#departmentId").val(sel.get('id'));
+
+                        sectionStore.setBaseParam("deptId",sel.get('id'))
+
+                        departmentAssignmentWindow.hide();
+                    });
+
+                }
+            }
+        })
+        departmentDataStore.load({params: {start: 0, limit: 10}});
+
+        departmentAssignmentWindow = new Ext.Window({
+            id: 'departmentAssignmentWindow',
+            title: 'Select Department for Employee',
+            closable: false,
+            width: 400,
+            height: 400,
+            plain:true,
+            modal:true,
+            layout: 'fit',
+            resizable: false,
+            items: departmentGrid,
+            buttons:[
+                {
+                    text: 'Cancel',
+                    handler: function(){
+                        departmentAssignmentWindow.hide();
+                    }
+                }
+            ]
+        });
+
+        //////////// department end /////////////////////////////////
+
+
+        /////////////////// section ////////////
+        sectionDataStore = new Ext.data.Store({
+            id: "sectionDataStore",
+            url: '${createLink(controller: 'employee',action: 'sectionJsonData')}',
+            reader: new Ext.data.JsonReader({
+                root: 'sections',
+                totalProperty: 'totalCount',
+                id: 'id'
+            },[
+                {name: 'id', type: 'int', mapping: 'id'},
+                {name: 'departmentName', type: 'string', mapping: 'departmentName'}
+            ]),
+            autoLoad : true
+        });
+
+
+        //create the grid
+        checkBoxSelectionModelSection = new Ext.grid.CheckboxSelectionModel();
+        sectionGrid = new Ext.grid.EditorGridPanel({
+            id: 'sectionGrid',
+            store : sectionDataStore,
+            clicksToEdit: 2,
+            selModel : checkBoxSelectionModelSection,
+            height: 250,
+
+            columns: [
+
+                {
+                    dataIndex: 'departmentName',
+                    header: 'Section Name',
+                    sortable: true,
+                    width: 370,
+                    editable: true,
+                    editor: new Ext.form.TextField()
+                }
+            ],
+            stripeRows:true,
+            bbar: new Ext.PagingToolbar({
+                store : sectionDataStore,
+                pageSize : 10,
+                displayInfo : true,
+                displaymsg : 'Displaying {0} - {1} of {2}',
+                emptyMsg : "No records found"
+            }),
+            listeners: {
+                "cellclick" : function(grid, rowIndex, columnIndex, e){
+                    var selectedSection= sectionGrid.getSelectionModel().getSelections();
+                    Ext.each(selectedSection, function(sel) {
+
+                        $("#section").val(sel.get('departmentName'))
+                        $("#sectionId").val(sel.get('id'))
+
+                        sectionWindow.hide();
+
+                    });
+
+
+                }
+            }
+        })
+        sectionDataStore.load({params: {start: 0, limit: 10}});
+
+
+        sectionWindow = new Ext.Window({
+            id: 'sectionWindow',
+            title: 'Select Section for Employee',
+            closable: false,
+            width: 400,
+            height: 400,
+            plain:true,
+            modal:true,
+            layout: 'fit',
+            resizable: false,
+            items: sectionGrid,
+            buttons:[
+                {
+                    text: 'Cancel',
+                    handler: function(){
+                        sectionWindow.hide();
+                    }
+                }
+            ]
+        });
+
+        ///////////////////////// Section end ///////////////////////////////////
+
+
+
+
+        /////////////////for designation//////////////////////
+
+        designationDataStore = new Ext.data.Store({
+            id: "designationDataStore",
+            url: '${createLink(controller: 'employee',action: 'designationJsonData')}',
+            reader: new Ext.data.JsonReader({
+                root: 'designations',
+                totalProperty: 'totalCount',
+                id: 'id'
+            },[
+                {name: 'id', type: 'int', mapping: 'id'},
+                {name: 'jobTitleName', type: 'string', mapping: 'jobTitleName'},
+                {name: 'jobTitleDescription', type: 'string', mapping: 'jobTitleDescription'}
+            ]),
+            autoLoad : true
+        })
+
+
+        %{--grid for designation--}%
+
+        checkBoxSelectionModelDesignation= new Ext.grid.CheckboxSelectionModel();
+        designationGrid = new Ext.grid.EditorGridPanel({
+            id: 'designationGrid',
+            store : designationDataStore,
+            clicksToEdit: 2,
+            selModel : checkBoxSelectionModelDesignation,
+            height: 250,
+            //sm: new Ext.grid.CheckboxSelectionModel(),
+            columns: [
+
+                {
+                    dataIndex: 'jobTitleName',
+                    header: 'Title',
+                    sortable: true,
+                    width: 370,
+                    editable: true,
+                    editor: new Ext.form.TextField()
+                }
+            ],
+            stripeRows:true,
+            bbar: new Ext.PagingToolbar({
+                store : designationDataStore,
+                pageSize : 10,
+                displayInfo : true,
+                displaymsg : 'Displaying {0} - {1} of {2}',
+                emptyMsg : "No records found"
+            }),
+            listeners: {
+                "cellclick" : function(grid, rowIndex, columnIndex, e){
+                    var selectedDesignation= designationGrid.getSelectionModel().getSelections();
+                    Ext.each(selectedDesignation, function(sel) {
+
+                        $("#designation").val(sel.get('jobTitleName'))
+                        $("#designationId").val(sel.get('id'))
+                        designationAssignmentWindow.hide();
+                    });
+
+
+                }
+            }
+        })
+        designationDataStore.load({params: {start: 0, limit: 10}});
+
+
+        designationAssignmentWindow = new Ext.Window({
+            id: 'designationAssignmentWindow',
+            title: 'Select Designation for Employee',
+            closable: false,
+            width: 400,
+            height: 400,
+            plain:true,
+            modal:true,
+            layout: 'fit',
+            resizable: false,
+            items: designationGrid,
+            buttons:[
+                {
+                    text: 'Cancel',
+                    handler: function(){
+                        designationAssignmentWindow.hide();
+                    }
+                }
+            ]
+        });
+
+
+    })
+</script>
+<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'basic.css')}" media='screen'/>
 
 </head>
 
@@ -455,7 +455,7 @@
 
         <div class="header">
             <span><span class="ico gray genInfo"></span>General Information</span>
-            <span style="margin-left: 174px;"><a id="editGeneralInfo"><img id="editGeneralInfoImg" src="${resource(dir: 'images',file: 'edit.png')}" alt="Edit" /></a></span>
+            <span style="margin-left: 174px;"><a id="editGeneralInfo"><img id="editGeneralInfoImg" src="${resource(dir:'images',file: 'edit.png')}" alt="Edit" /></a></span>
             %{--<span  style="margin-left: 166px;"><a id="editGeneralInfo">Edit</a></span>--}%
         </div>
 
@@ -561,7 +561,7 @@
 
         <div class="header">
             <span><span class="ico gray organization"></span>Organization Information</span>
-            <span style="margin-left: 140px;"><a id="editOrganizationInfo"><img id="editOrganizationInfoImg" src="${resource(dir: 'images',file: 'edit.png')}" alt="Edit" /></a></span>
+            <span style="margin-left: 140px;"><a id="editOrganizationInfo"><img id="editOrganizationInfoImg" src="${resource(dir:'images',file: 'edit.png')}" alt="Edit" /></a></span>
         </div>
 
         <div class="content tableName">
@@ -582,7 +582,7 @@
                             <g:textField name="organization" id="organization" readonly="readonly" value="${fieldValue(bean: employeeProfile, field: "organization.organizationName")}"></g:textField>
                             <g:hiddenField name="organizationId" id="organizationId"></g:hiddenField>
 
-                                <img src="${resource(dir: 'images', file: 'organization_picker.png')}" alt="Organization Image" onclick="organizationAssignmentWindow.show()" class="adjustOrgImg" title="Click to select organization" />
+                            <img src="${resource(dir: 'images', file: 'organization_picker.png')}" alt="Organization Image" onclick="organizationAssignmentWindow.show()" class="adjustOrgImg" title="Click to select organization" />
 
                         </div>
                     </td>
@@ -603,7 +603,7 @@
                             <g:textField name="department" id="department" readonly="readonly" value="${fieldValue(bean: employeeProfile, field: "department.departmentName")}"></g:textField>
                             <g:hiddenField name="departmentId" id="departmentId"></g:hiddenField>
 
-                                <img src="${resource(dir: 'images', file: 'department.png')}" alt="Department Image" class="adjustOrgImg" onclick="departmentAssignmentWindow.show()" title="Click to select department">
+                            <img src="${resource(dir: 'images', file: 'department.png')}" alt="Department Image" class="adjustOrgImg" onclick="departmentAssignmentWindow.show()" title="Click to select department">
 
                         </div>
                     </td>
@@ -639,7 +639,7 @@
                             <g:textField name="designation" id="designation" readonly="readonly" value="${fieldValue(bean: employeeProfile, field: "jobTitle.jobTitleName")}"></g:textField>
                             <g:hiddenField name="designationId" id="designationId"></g:hiddenField>
 
-                                <img src="${resource(dir: 'images/assets/icons', file: 'jobTitle.png')}" alt="Designation" class="adjustOrgImg" onclick="designationAssignmentWindow.show()" title="Click to select designation">
+                            <img src="${resource(dir: 'images/assets/icons', file: 'jobTitle.png')}" alt="Designation" class="adjustOrgImg" onclick="designationAssignmentWindow.show()" title="Click to select designation">
 
                         </div>
 
@@ -658,6 +658,36 @@
                         <div class="msg_date orgInfoDiv" id="salaryDiv" >${fieldValue(bean: employeeProfile, field: "salary")}</div>
                         <div class="msg_date orgInfoText" >
                             <g:textField name="salary" id="salary"  value="${fieldValue(bean: employeeProfile, field: "salary")}"></g:textField>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td >
+                        <div class="msg">
+
+                            <div class="msg_topic"><strong>Provident Fund:</strong></div>
+                        </div>
+                    </td>
+                    <td >
+                        <div class="msg_date orgInfoDiv" id="providentFundDiv" >${fieldValue(bean: employeeProfile, field: "providentFundEnable")}</div>
+                        <div class="msg_date orgInfoText" >
+                            <g:checkBox name="providentFund" id="providentFund" value="${fieldValue(bean: employeeProfile, field: "providentFundEnable")}" />
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td >
+                        <div class="msg">
+
+                            <div class="msg_topic"><strong>Tax:</strong></div>
+                        </div>
+                    </td>
+                    <td >
+                        <div class="msg_date orgInfoDiv" id="taxDiv" >${fieldValue(bean: employeeProfile, field: "tax")}</div>
+                        <div class="msg_date orgInfoText" >
+                            <g:checkBox name="tax" id="tax" value="${fieldValue(bean: employeeProfile, field: "tax")}" />
                         </div>
                     </td>
                 </tr>
@@ -710,7 +740,7 @@
 
         <div class="header">
             <span><span class="ico gray miscellaneous"></span>Miscellaneous</span>
-            <span style="margin-left: 208px;"><a id="editMiscInfo"><img id="editMiscInfoImg" src="${resource(dir: 'images',file: 'edit.png')}" alt="Edit" /></a></span>
+            <span style="margin-left: 208px;"><a id="editMiscInfo"><img id="editMiscInfoImg" src="${resource(dir:'images',file: 'edit.png')}" alt="Edit" /></a></span>
         </div>
 
         <div class="content tableName">
@@ -895,7 +925,7 @@
     <div class="widget">
         <div class="header">
             <span><span class="ico gray contact"></span>Contact Info</span>
-            <span style="margin-left: 227px;"><a id="editContactInfo"><img id="editContactInfoImg" src="${resource(dir: 'images',file: 'edit.png')}" alt="Edit" /></a></span>
+            <span style="margin-left: 227px;"><a id="editContactInfo"><img id="editContactInfoImg" src="${resource(dir:'images',file: 'edit.png')}" alt="Edit" /></a></span>
         </div>
 
         <div class="content tableName">
@@ -1027,7 +1057,7 @@
 
         <div class="header">
             <span><span class="ico gray allowance"></span>&nbsp;&nbsp;Allowance</span>
-            <span style="margin-left: 227px;"><a id="editPaymentInfo"><img id="editPaymentInfoImg" src="${resource(dir: 'images',file: 'edit.png')}" alt="Edit" /></a></span>
+            <span style="margin-left: 227px;"><a id="editPaymentInfo"><img id="editPaymentInfoImg" src="${resource(dir:'images',file: 'edit.png')}" alt="Edit" /></a></span>
         </div>
 
         <div class="content tableName">
@@ -1064,8 +1094,8 @@
                                     </div>
                                     <div class="msg_date paymentInfoText" >
 
-                                            <g:textField name="${allowanceType.id}" id="${allowanceType.id}" value="${allowance.allowanceAmount}"></g:textField>
-                                            <g:set var="textField" value="${false}"></g:set>
+                                        <g:textField name="${allowanceType.id}" id="${allowanceType.id}" value="${allowance.allowanceAmount}"></g:textField>
+                                        <g:set var="textField" value="${false}"></g:set>
 
                                     </div>
 
@@ -1326,6 +1356,9 @@
             var departmentId = $("#departmentId").val();
             var organizationId = $("#organizationId").val();
             var region = $("#region").val();
+            var providentFund = document.getElementById("providentFund").checked;
+            var tax = document.getElementById("tax").checked;
+            alert(providentFund);
             var salary = $("#salary").val();
             $.blockUI({
                 message: '<em>Saving Miscellaneous... Please wait for a while...</em>',
@@ -1344,7 +1377,8 @@
                 type:'POST',
                 url:'${createLink(controller: 'employee', action: 'updateOrgInfo')}',
                 data: 'profileId=' +profileId+ '&designationId=' +designationId+ '&region='+region+ '&departmentId=' +departmentId
-                        + '&organizationId=' +organizationId+ '&salary=' +salary,
+                        + '&organizationId=' +organizationId+ '&salary=' +salary+ '&providentFund=' +providentFund+
+                        '&tax=' +tax,
                 success: function(response){
                     $.unblockUI();
                     if(response.result){
@@ -1352,12 +1386,23 @@
                         showOrgInfo()
                         $("#regionDiv").html(response.result.region);
                         $("#region").html(response.result.region);
+
                         $("#salaryDiv").html(response.result.salary);
                         $("#salary").html(response.result.salary);
+
+
+                        $("#providentFundDiv").html(response.providentFund);
+                        $("#providentFund").html(response.providentFund);
+
+                        $("#taxDiv").html(response.tax);
+                        $("#tax").html(response.tax);
+
                         $("#designationDiv").html(response.jobTitle.jobTitleName);
                         $("#designation").html(response.jobTitle.jobTitleName);
+
                         $("#departmentDiv").html(response.department.departmentName);
                         $("#department").html(response.department.departmentName);
+
                         $("#organizationDiv").html(response.organization.organizationName);
                         $("#organization").html(response.organization.organizationName);
 
@@ -1495,42 +1540,42 @@
         })
         //contact click
 
-       $("#paymentSave").bind("click", function(){
+        $("#paymentSave").bind("click", function(){
 
-           var jsonObj = [];
+            var jsonObj = [];
 
 
-           $(".paymentInfoText").each(function() {
+            $(".paymentInfoText").each(function() {
 
-               jsonObj.push({"id": $(this).children().attr('id'), "optionValue": $(this).children().val()});
+                jsonObj.push({"id": $(this).children().attr('id'), "optionValue": $(this).children().val()});
 
-           });
+            });
 
-           var serverJsonData = JSON.stringify(jsonObj)
+            var serverJsonData = JSON.stringify(jsonObj)
 
-           $.ajax({
-               type:'POST',
-               url:'${createLink(controller: 'employee', action: 'updateAllowanceInfo')}',
-               data: 'profileId=' +profileId+ '&serverJsonData=' +serverJsonData,
-               success: function(response){
-                   $.unblockUI();
-                   if(response.result){
+            $.ajax({
+                type:'POST',
+                url:'${createLink(controller: 'employee', action: 'updateAllowanceInfo')}',
+                data: 'profileId=' +profileId+ '&serverJsonData=' +serverJsonData,
+                success: function(response){
+                    $.unblockUI();
+                    if(response.result){
 
-                       Ext.MessageBox.alert("Success", "Employee allowance saved successfully");
-                       showPaymentInfo();
+                        Ext.MessageBox.alert("Success", "Employee allowance saved successfully");
+                        showPaymentInfo();
 
-                   }else{
+                    }else{
 
-                       Ext.MessageBox.alert("Failed", "Employee allowance save failed");
-                       showPaymentInfo();
+                        Ext.MessageBox.alert("Failed", "Employee allowance save failed");
+                        showPaymentInfo();
 
-                   }
+                    }
 
-               }
+                }
 
-           })
+            })
 
-       })
+        })
 
     });
     function showGeneralInfo(){
