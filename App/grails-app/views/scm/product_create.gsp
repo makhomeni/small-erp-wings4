@@ -55,7 +55,7 @@
 
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'uniform.aristo.css')}">
 
-        <div class="bread_crumbs_ui_div" style="width: 611px">
+        <div class="bread_crumbs_ui_div" style="width: 901px">
             <ul id="crumbs_ui_custom">
                 <li><g:link controller="application" action="index">Dashboard</g:link></li>
                 <li><g:link controller="inventory" action="productList">Product List</g:link></li>
@@ -65,17 +65,19 @@
 
         <br class="clear" />
 
-        <div class="widget">
+        <div class="widget" style="width: 900px;">
 
             <script>
                 $(document).ready(function(){
                     $('#fileupload').fileupload();
                     $(".logout > .disconnect").css("margin-top", "-11px");
                     $("select").uniform();
+                    $(".selector").css("margin-top", "-24px");
+                    $(".selector").css("margin-left", "120px");
                 })
             </script>
 
-            <div class="header" style="width: 610px;">
+            <div class="header" style="width: 900px;">
                 <span><span class="ico gray product"></span>${type}</span>
             </div>
 
@@ -83,15 +85,14 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
 
-            <div id="list_user" class="content scaffold-list" role="main" style="width: 560px;">
+            <div id="list_user" class="content scaffold-list" role="main" style="width: 850px;">
                 <g:form name="productForm" id="productForm" controller="inventory" action="saveProduct" method="POST">
                     <fieldset class="form">
                         <g:render template="../scm/product_form"/>
                         <div class="grid_4 alpha">&nbsp;&nbsp;</div>
                         <div class="grid_4 omega" style="padding-left: 181px;padding-top: 20px;">
 
-                            <a id="productCreate" class="button icon approve" onclick="document.productForm.submit();">Save</a>
-                            <a id="ff" class="button danger icon remove" onclick="document.productForm.reset()">Clear</a>
+
                             %{--<g:link action="userGroupDetails" controller="security" class="btn">Link</g:link>--}%
                         </div>
                     </fieldset>
@@ -100,6 +101,8 @@
                 </g:form>
                 <bsfu:fileUpload action="upload" controller="inventory"/>
                 <bsfu:imageGallery/>
+                <a id="productCreate" class="button icon approve" onclick="document.productForm.submit();">Save</a>
+                <a id="ff" class="button danger icon remove" onclick="document.productForm.reset()">Clear</a>
             </div>
         </div>
     </content>
