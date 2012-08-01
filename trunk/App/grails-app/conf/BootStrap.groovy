@@ -8,6 +8,8 @@ import com.jabait.hrm.calendar.CalendarShare
 import com.jabait.security.Feature
 import com.jabait.accounting.AccountHead
 import com.jabait.accounting.Accounts
+import com.jabait.scm.inventory.ProductClassification
+import com.jabait.util.UnitOfMeasure
 
 class BootStrap {
 
@@ -23,6 +25,8 @@ class BootStrap {
         CalendarShare.initialize();
         AccountHead.initialize();
         Accounts.initialize();
+        ProductClassification.initialize();
+        UnitOfMeasure.initialize();
 
     }
     def destroy = {
