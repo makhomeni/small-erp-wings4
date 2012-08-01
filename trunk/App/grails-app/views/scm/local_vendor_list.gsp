@@ -130,7 +130,7 @@
                         text: "Create Vendor",
                         iconCls: "addRecord" ,
                         handler:function(){
-                            window.location="${createLink(controller: 'inventory', action: 'createVendor')}"
+                            window.location="${createLink(controller: 'vendor', action: 'createLocalVendor')}"
                         }
                     }]
                 });
