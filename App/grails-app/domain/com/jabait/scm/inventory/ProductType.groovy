@@ -10,9 +10,11 @@ class ProductType {
     }
 
     public static void initialize(){
-        new ProductType(name: 'Expense Item', description: 'Expense Oriented Items').save();
-        new ProductType(name: 'Item', description: 'Generic Items').save();
-        new ProductType(name: 'Resource', description: 'Resource Related Items').save();
-        new ProductType(name: 'Service', description: 'Service Related Items').save();
+        if (ProductType.count() == 0 ) {
+            new ProductType(name: 'Expense Item', description: 'Expense Oriented Items').save();
+            new ProductType(name: 'Item', description: 'Generic Items').save();
+            new ProductType(name: 'Resource', description: 'Resource Related Items').save();
+            new ProductType(name: 'Service', description: 'Service Related Items').save();
+        }
     }
 }

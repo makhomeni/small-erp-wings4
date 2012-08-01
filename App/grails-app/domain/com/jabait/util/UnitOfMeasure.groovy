@@ -9,8 +9,10 @@ class UnitOfMeasure {
     }
 
     public static void initialize(){
-        new UnitOfMeasure(uom: 'K.G', description: 'Killogram').save();
-        new UnitOfMeasure(uom: 'Feet', description: 'Feet').save();
-        new UnitOfMeasure(uom: 'Meter', description: 'Meter').save();
+        if (UnitOfMeasure.count() == 0 ) {
+            new UnitOfMeasure(uom: 'K.G', description: 'Killogram').save();
+            new UnitOfMeasure(uom: 'Feet', description: 'Feet').save();
+            new UnitOfMeasure(uom: 'Meter', description: 'Meter').save();
+        }
     }
 }
