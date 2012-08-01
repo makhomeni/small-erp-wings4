@@ -13,10 +13,7 @@
 
         <title>Create Vendor</title>
 
-
         <script type="text/javascript">
-
-
 
             var organizationDataStore;
             var organizationGrid;
@@ -156,7 +153,7 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <g:form name="vendorForm" id="vendorForm" controller="inventory" action="saveVendor" method="POST">
+            <g:form name="vendorForm" id="vendorForm" controller="vendor" action="saveLocalVendor" method="POST">
                 <fieldset class="form">
 
                     <div class="fieldcontain">
@@ -164,30 +161,22 @@
                             <g:message code="firstName.label" default="First Name" />
                             <span class="required-indicator">*</span>
                         </label>
-
                         <g:textField name="firstName" required=""  value="" />
-
                     </div>
-
-
 
                     <div class="fieldcontain">
                         <label for="lastName">
                             <g:message code="lastName.label" default="Last Name" />
                             <span class="required-indicator">*</span>
                         </label>
-
                         <g:textField name="lastName" required=""  value="" />
-
                     </div>
-
 
                     <div class="fieldcontain">
                         <label for="organization">
                             <g:message code="organization.label" default="Organization" />
                             <span class="required-indicator">*</span>
                         </label>
-
                         <g:textField name="organization" id="organization" required=""  readonly="readonly" onclick="organizationWindow.show()" value="" />
                         <g:hiddenField name="organizationId" id="organizationId"></g:hiddenField>
                         <a id="organizationSelect" href="#">
@@ -195,14 +184,34 @@
                         </a>
                     </div>
 
-
                     <div class="fieldcontain">
-                        <label for="billingAddress">
-                            Billing Address
+                        <label for="country">
+                            Country
                             <span class="required-indicator">*</span>
                         </label>
 
-                        <g:textField name="billingAddress" required=""  value="" />
+                        <g:textField name="country" id="country" required=""  value="" />
+
+                    </div>
+
+                    <div class="fieldcontain">
+                        <label for="address1">
+                            House/Road
+                            %{--database ar street address--}%
+                            <span class="required-indicator">*</span>
+                        </label>
+
+                        <g:textArea name="address1" id="address1" required="" cols="10" rows="10"  value="" ></g:textArea>
+
+                    </div>
+
+                    <div class="fieldcontain">
+                        <label for="postCode">
+                            Postal Code
+                            <span class="required-indicator">*</span>
+                        </label>
+
+                        <g:textField name="postCode" id="postCode" required=""  value="" />
 
                     </div>
 
@@ -212,7 +221,7 @@
                             <span class="required-indicator">*</span>
                         </label>
 
-                        <g:textField name="mobileNo" required=""  value="" />
+                        <g:textField name="mobileNo" id="mobileNo" required=""  value="" />
 
                     </div>
 
@@ -223,13 +232,6 @@
                             Description
                             <span class="required-indicator">*</span>
                         </label>
-                        %{--
-                          <g:if test="${userInstance.userCode}">
-                            </g:if>
-                            <g:else>
-                            </g:else>
-                        --}%
-
                         <g:textField name="description" required=""  value="" />
 
                     </div>
