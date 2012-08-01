@@ -143,7 +143,7 @@ class Feature {
                     description: "Feature create vendor",
                     documents: "all",
                     fields: "all",
-                    module: "inventory",
+                    module: "vendor",
                     operation: "createLocalVendor"
             )
             Authority.get(1).addToFeatures(createVendorFeature).save(flush: true);
@@ -153,7 +153,7 @@ class Feature {
                     description: "Feature save vendor",
                     documents: "all",
                     fields: "all",
-                    module: "inventory",
+                    module: "vendor",
                     operation: "saveLocalVendor"
             )
             Authority.get(1).addToFeatures(saveVendorFeature).save(flush: true);
@@ -163,7 +163,7 @@ class Feature {
                     description: "Feature for vendor list",
                     documents: "all",
                     fields: "all",
-                    module: "inventory",
+                    module: "vendor",
                     operation: "localVendorList"
             )
             Authority.get(1).addToFeatures(vendorListFeature).save(flush: true);
