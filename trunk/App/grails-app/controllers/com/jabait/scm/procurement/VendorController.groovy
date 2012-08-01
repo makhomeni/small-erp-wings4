@@ -27,17 +27,15 @@ class VendorController {
         } else {
             params.max = params.limit;
         }
-        List<Vendor> vendorList = new ArrayList<Vendor>();
+        List<Vendor> vendorList = Vendor.list();
 
-        vendorList = Vendor.list();
-
-        List<Map> vendors = new ArrayList<>();
+        List<Map<String,String>> vendors = new ArrayList<Map<String,String>>();
 
         Map<String, String> vendorMap;
 
         for (Vendor vendor : vendorList){
 
-            vendorMap = new HashMap<String, String>();
+            vendorMap = new HashMap<String,String>();
             def vendorFirstName = vendor.firstName;
             def vendorLastName = vendor.lastName;
 
@@ -66,7 +64,8 @@ class VendorController {
         int start = (params.start != null) ? Integer.parseInt(params.start) : 0;
         int limit = (params.limit != null) ? Integer.parseInt(params.limit) : 10;
 
-        render([vendors : vendors.asList().subList(start, start + limit > totalCount ? totalCount : start + limit),totalCount:totalCount] as JSON);
+        render([vendors : vendors.asList().subList(start, start + limit > totalCount ?
+            totalCount : start + limit),totalCount:totalCount] as JSON);
 
     }
     //////vendor///////
