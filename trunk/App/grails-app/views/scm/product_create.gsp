@@ -81,8 +81,6 @@
                     <fieldset class="form">
                         <g:render template="../scm/product_form"/>
                         <div class="grid_4 alpha">&nbsp;&nbsp;</div>
-                        <bsfu:fileUpload action="upload" controller="inventory"/>
-                        <bsfu:imageGallery/>
                         <div class="grid_4 omega" style="padding-left: 181px;padding-top: 20px;">
 
                             <a id="productCreate" class="button icon approve" onclick="document.productForm.submit();">Save</a>
@@ -93,6 +91,8 @@
                 %{--<br class="clear"/>--}%
 
                 </g:form>
+                <bsfu:fileUpload action="upload" controller="inventory"/>
+                <bsfu:imageGallery/>
             </div>
         </div>
     </content>
