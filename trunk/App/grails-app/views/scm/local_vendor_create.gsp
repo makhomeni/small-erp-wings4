@@ -17,14 +17,100 @@
         <script type="text/javascript">
 
 
-            function submitForm(){
-                document.organizationForm.submit();
-            }
+
+            var organizationDataStore;
+            var organizationGrid;
+            var checkBoxSelectionModelOrganization;
+            var organizationWindow;
 
 
             Ext.onReady(function(){
 
+                organizationDataStore = new Ext.data.Store({
+                    id: "organizationDataStore",
+                    url: '${createLink(controller: 'employee', action: 'organizationJsonData')}',
+                    reader: new Ext.data.JsonReader({
+                        root:'organizations',
+                        id: 'id',
+                        totalProperty:'totalCount'
+                    },[
+                        {name: 'id', type: 'int', mapping: 'id'},
+                        {name: 'organizationName', type: 'string', mapping: 'organizationName'}
+                    ]),
+                    autoLoad: true
+
+                });
+
+                checkBoxSelectionModelOrganization = new Ext.grid.CheckboxSelectionModel();
+                organizationGrid = new Ext.grid.EditorGridPanel({
+                    id:'organizationGrid',
+                    store: organizationDataStore,
+                    clicksToEdit: 2,
+                    selModel: checkBoxSelectionModelOrganization,
+                    height: 500,
+                    columns: [
+                        {
+                            dataIndex:'organizationName',
+                            header: 'Organization Name',
+                            sortable: true,
+                            width: 370,
+                            editor: new Ext.form.TextField()
+                        }
+                    ],
+                    stripeRows: true,
+                    bbar: new Ext.PagingToolbar({
+                        store : organizationDataStore,
+                        pageSize : 10,
+                        displayInfo : true,
+                        displaymsg : 'Displaying {0} - {1} of {2}',
+                        emptyMsg : "No records found"
+                    }),
+                    listeners: {
+                        "cellclick" : function(grid, rowIndex, columnIndex, e){
+                            var selectedOrganization= organizationGrid.getSelectionModel().getSelections();
+
+                            Ext.each(selectedOrganization, function(sel) {
+//                            alert(sel.get('id'))
+
+                                $("#organization").val(sel.get('organizationName'))
+                                $("#organizationId").val(sel.get('id'))
+
+                                organizationWindow.hide();
+
+                            });
+
+                        }
+                    }
+                });
+                organizationDataStore.load({params: {start: 0, limit: 10}});
+                organizationWindow = new Ext.Window({
+                    id: 'organizationWindow',
+                    title: 'Select Organization for Employee',
+                    closable: false,
+                    width: 400,
+                    height: 400,
+                    plain:true,
+                    modal:true,
+                    layout: 'fit',
+                    resizable: false,
+                    items: organizationGrid,
+                    buttons:[
+                        {
+                            text: 'Cancel',
+                            handler: function(){
+                                organizationWindow.hide();
+                            }
+                        }
+                    ]
+                });
+
             });
+
+
+            function submitForm(){
+                document.organizationForm.submit();
+            }
+
         </script>
         <style type="text/css">
         .adjustImg{
@@ -41,16 +127,14 @@
     </content>
     <content tag="rightTag">
 
-        <style>
-        div.selector{
-            margin-top: -20px;
-            margin-left: 156px;
-        }
+        <style type="text/css">
+            div.selector{
+                margin-top: -20px;
+                margin-left: 156px;
+            }
         </style>
-        <script>
-            $(document).ready(function(){
-                $("input, textarea, select, button").uniform();
-            })
+        <script type="text/javascript">
+
         </script>
 
         <div class="bread_crumbs_ui_div" style="width: 611px">
@@ -104,7 +188,8 @@
                             <span class="required-indicator">*</span>
                         </label>
 
-                        <g:textField name="organization" required=""  value="" />
+                        <g:textField name="organization" id="organization" required=""  readonly="readonly" onclick="organizationWindow.show()" value="" />
+                        <g:hiddenField name="organizationId" id="organizationId"></g:hiddenField>
                         <a id="organizationSelect" href="#">
                             <img src="${resource(dir: 'images', file: 'organization_picker.png')}" alt="Organization Image" onclick="organizationWindow.show()" class="adjustImg" title="Click to select organization">
                         </a>
