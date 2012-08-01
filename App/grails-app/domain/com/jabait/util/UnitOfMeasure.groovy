@@ -7,4 +7,10 @@ class UnitOfMeasure {
 
     static constraints = {
     }
+
+    public static void initialize(){
+        new UnitOfMeasure(uom: 'K.G', description: 'Killogram').save();
+        new UnitOfMeasure(uom: 'Feet', description: 'Feet').save();
+        new UnitOfMeasure(uom: 'Meter', description: 'Meter').save();
+    }
 }
