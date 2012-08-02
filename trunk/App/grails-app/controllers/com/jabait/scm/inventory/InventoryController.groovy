@@ -147,7 +147,13 @@ class InventoryController {
                         String newFilenameBase = UUID.randomUUID().toString()
                         String originalFileExtension = file.originalFilename.substring(file.originalFilename.lastIndexOf("."))
                         String newFilename = newFilenameBase + originalFileExtension
-                        String storageDirectory = grailsApplication.config.file.upload.directory?:'/tmp'
+                        //String storageDirectory = grailsApplication.config.file.upload.directory?:'/web-app'
+                        String uploadPath = "upload"
+
+                        String rootDirectory = "${servletContext.getRealPath('/images')}/"
+                        String storageDirectory = rootDirectory.concat(uploadPath)
+
+                        println("storageDirectory " + storageDirectory);
 
                         File newFile = new File("$storageDirectory/$newFilename")
                         file.transferTo(newFile)
