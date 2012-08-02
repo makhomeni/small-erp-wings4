@@ -61,7 +61,11 @@ class InventoryController {
     }
 
     def saveProduct(){
-       redirect(action: "createProduct");
+        boolean savedStatus = inventoryService.saveProduct(params);
+        String flashMessage = "Product Created " + (savedStatus ? "successfully" : "failed");
+
+        flash.message = flashMessage;
+        redirect(action: "createProduct");
     }
 
     def productList(){
