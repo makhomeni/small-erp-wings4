@@ -1,8 +1,5 @@
 package com.jabait.scm.inventory
 
-import com.jabait.scm.Vendor
-import com.jabait.hrm.Organization
-import com.jabait.scm.LocalVendor
 
 class InventoryService {
 
