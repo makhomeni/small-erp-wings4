@@ -22,18 +22,20 @@ class VendorService {
         localVendor.mobileNo = params.mobileNo;
         localVendor.phoneNo = params.phoneNo;
 
-        def country = params.country;
-        def streetAddress = params.address1;
-        def postalCode = params.postCode;
+        localVendor.country = params.country;
+        localVendor.address = params.address;
 
-        Address address = new Address();
-        address.streetAddress = streetAddress;
-        address.country = country;
-        address.postalCode = postalCode;
 
-        Organization organization = Organization.get(Integer.parseInt(params.orgId));
+
+
+//        address.streetAddress = streetAddress;
+//        address.country = country;
+//        address.postalCode = postalCode;
+
+        println("organization id = " + params.organizationId);
+
+        Organization organization = Organization.get(params.organizationId);
         localVendor.organization = organization;
-        localVendor.billingAddress = address;
         if(localVendor.save()){
             return "Vendor created successfully";
         }else{

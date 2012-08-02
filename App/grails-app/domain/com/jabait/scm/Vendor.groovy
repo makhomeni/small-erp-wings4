@@ -9,7 +9,9 @@ class Vendor {
     String firstName;
     String lastName;
     Organization organization;
-    Address billingAddress;
+    String address;
+    String extendedAddress;
+    String country;
     String mobileNo;
     String description;
     String emailId;
@@ -25,7 +27,7 @@ class Vendor {
         firstName(nullable: true);
         lastName(nullable: true);
         organization(nullable: true);
-        billingAddress(nullable: true);
+        extendedAddress(nullable: true);
         description(nullable: true);
         mobileNo(nullable: true);
         emailId(nullable: true);
