@@ -129,9 +129,9 @@ class InventoryController {
                     results << [
                             name: picture.generatedName,
                             size: picture.extension,
-                            url: createLink(controller:'image', action:'picture', id: picture.id),
-                            thumbnail_url: createLink(controller:'image', action:'thumbnail', id: picture.id),
-                            delete_url: createLink(controller:'image', action:'delete', id: picture.id),
+                            url: createLink(controller:'inventory', action:'picture', id: picture.id),
+                            thumbnail_url: createLink(controller:'inventory', action:'thumbnail', id: picture.id),
+                            delete_url: createLink(controller:'inventory', action:'delete', id: picture.id),
                             delete_type: "DELETE"
                     ]
                 }
@@ -164,18 +164,21 @@ class InventoryController {
                         ImageIO.write(thumbnail, 'png', thumbnailFile)
 
                         ProductImage picture = new ProductImage(
-                                originalFilename: file.originalFilename,
-                                thumbnailFilename: thumbnailFilename,
-                                newFilename: newFilename,
-                                fileSize: file.size
+                                prefix: "PRD_IMG_",
+                                generatedName: newFilename,
+                                postfix: "_INV_STCK",
+                                extension: originalFileExtension,
+                                mimeType: originalFileExtension,
+                                addedDate: new Date(),
+                                uploadedBy: session?.user
                         ).save()
 
                         results << [
                                 name: picture.generatedName,
                                 size: picture.addedDate,
-                                url: createLink(controller:'image', action:'picture', id: picture.id),
-                                thumbnail_url: createLink(controller:'image', action:'thumbnail', id: picture.id),
-                                delete_url: createLink(controller:'image', action:'delete', id: picture.id),
+                                url: createLink(controller:'inventory', action:'picture', id: picture.id),
+                                thumbnail_url: createLink(controller:'inventory', action:'thumbnail', id: picture.id),
+                                delete_url: createLink(controller:'inventory', action:'delete', id: picture.id),
                                 delete_type: "DELETE"
                         ]
                     }
