@@ -5,11 +5,11 @@
   Time: 3:21 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="grails.converters.JSON; com.jabait.scm.inventory.Product"%>
+<%@ page import="grails.converters.JSON; com.jabait.scm.inventory.Category"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <g:applyLayout name="app">
     <head>
-        <g:set var="entityName" value="${message(code: 'user.label', default:'Category')}" />
+        <g:set var="entityName" value="${message(code: 'category.description', default:'Category')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
         <script>
 
