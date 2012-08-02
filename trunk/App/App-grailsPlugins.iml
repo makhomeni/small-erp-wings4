@@ -4,17 +4,18 @@
     <facet type="web" name="GrailsWeb">
       <configuration>
         <webroots>
-          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jquery-1.7.1/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jasper-1.5.3/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jquery-ui-1.8.15/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jqgrid-3.8.0.1/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jqgrid-3.8.0.1/grails-app/views" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/twitter-bootstrap-2.0.2.25/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/twitter-bootstrap-2.0.2.25/grails-app/views" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/extjs-3.4.0.0/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/extjs-3.4.0.0/grails-app/views" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/bootstrap-file-upload-2.1.1/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/bootstrap-file-upload-2.1.1/grails-app/views" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/twitter-bootstrap-2.0.2.25/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/twitter-bootstrap-2.0.2.25/grails-app/views" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jaxrs-0.6/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jqgrid-3.8.0.1/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jqgrid-3.8.0.1/grails-app/views" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jquery-1.7.1/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jasper-1.5.3/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jquery-ui-1.8.15/web-app" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -40,6 +41,11 @@
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jasper-1.5.3/grails-app/controllers" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jasper-1.5.3/grails-app/services" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jasper-1.5.3/grails-app/taglib" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jaxrs-0.6">
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jaxrs-0.6/src/java" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jaxrs-0.6/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jaxrs-0.6/grails-app/controllers" isTestSource="false" />
     </content>
     <content url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jqgrid-3.8.0.1">
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jqgrid-3.8.0.1/grails-app/taglib" isTestSource="false" />
@@ -78,6 +84,15 @@
       <library name="Grails User Library (App-grailsPlugins)">
         <CLASSES>
           <root url="jar://$USER_HOME$/.grails/ivy-cache/mysql/mysql-connector-java/jars/mysql-connector-java-5.1.16.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/javax.ws.rs/jsr311-api/jars/jsr311-api-1.1.1.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.sun.jersey/jersey-core/bundles/jersey-core-1.8.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/asm/asm/jars/asm-3.3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.sun.jersey.contribs/jersey-spring/jars/jersey-spring-1.8.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet.ext.json/jars/org.restlet.ext.json-2.0-RC3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet/jars/org.restlet-2.0-RC3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet.ext.servlet/jars/org.restlet.ext.servlet-2.0-RC3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.sun.jersey/jersey-server/bundles/jersey-server-1.8.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet.lib.org.json/jars/org.restlet.lib.org.json-2.0.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.jackson/jackson-mapper-lgpl/jars/jackson-mapper-lgpl-1.7.4.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.jackson/jackson-core-lgpl/jars/jackson-core-lgpl-1.7.4.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.geronimo.specs/geronimo-stax-api_1.0_spec/jars/geronimo-stax-api_1.0_spec-1.0.jar!/" />
@@ -90,9 +105,11 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.lowagie/itext/jars/itext-2.1.7.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-digester/commons-digester/jars/commons-digester-2.1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/net.sf.jasperreports/jasperreports/jars/jasperreports-4.5.1.jar!/" />
+          <root url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jaxrs-0.6/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/.grails/2.0.1/projects/App/plugins/jaxrs-0.6/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>
