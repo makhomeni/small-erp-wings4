@@ -105,7 +105,7 @@
 
 
             function submitForm(){
-                document.organizationForm.submit();
+                document.vendorForm.submit();
             }
 
         </script>
@@ -137,9 +137,10 @@
         <div class="bread_crumbs_ui_div" style="width: 611px">
             <ul id="crumbs_ui_custom">
                 <li><g:link controller="application" action="index">Dashboard</g:link></li>
-                %{--<li><g:link controller="configuration" action="jobConfigHome">Job Config Home</g:link></li>--}%
-                <li><g:link controller="configuration" action="organizationList">Organization List</g:link></li>
-                <li>Create Vendor </li>
+                <li><g:link controller="scm" action="home">Supply Chain Management Home</g:link></li>
+                <li><g:link controller="procurement" action="vendorHome">Vendor Home</g:link></li>
+                <li><g:link controller="vendor" action="localVendorList">Local Vendor List</g:link></li>
+                <li>Create Local Vendor </li>
             </ul>
         </div>
         <br class="clear" />
@@ -171,50 +172,6 @@
                         </label>
                         <g:textField name="lastName" required=""  value="" />
                     </div>
-
-                    <div class="fieldcontain">
-                        <label for="organization">
-                            <g:message code="organization.label" default="Organization" />
-                            <span class="required-indicator">*</span>
-                        </label>
-                        <g:textField name="organization" id="organization" required=""  readonly="readonly" onclick="organizationWindow.show()" value="" />
-                        <g:hiddenField name="organizationId" id="organizationId"></g:hiddenField>
-                        <a id="organizationSelect" href="#">
-                            <img src="${resource(dir: 'images', file: 'organization_picker.png')}" alt="Organization Image" onclick="organizationWindow.show()" class="adjustImg" title="Click to select organization">
-                        </a>
-                    </div>
-
-                    <div class="fieldcontain">
-                        <label for="country">
-                            Country
-                            <span class="required-indicator">*</span>
-                        </label>
-
-                        <g:textField name="country" id="country" required=""  value="" />
-
-                    </div>
-
-                    <div class="fieldcontain">
-                        <label for="address1">
-                            House/Road
-                            %{--database ar street address--}%
-                            <span class="required-indicator">*</span>
-                        </label>
-
-                        <g:textArea name="address1" id="address1" required="" cols="10" rows="10"  value="" ></g:textArea>
-
-                    </div>
-
-                    <div class="fieldcontain">
-                        <label for="postCode">
-                            Postal Code
-                            <span class="required-indicator">*</span>
-                        </label>
-
-                        <g:textField name="postCode" id="postCode" required=""  value="" />
-
-                    </div>
-
                     <div class="fieldcontain">
                         <label for="mobileNo">
                             Mobile No
@@ -222,6 +179,25 @@
                         </label>
 
                         <g:textField name="mobileNo" id="mobileNo" required=""  value="" />
+
+                    </div>
+
+                    <div class="fieldcontain">
+                        <label for="phoneNo">
+                            Phone No
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <g:textField name="phoneNo" required=""  value="" />
+
+                    </div>
+
+                    <div class="fieldcontain">
+                        <label for="emailId">
+                            Email Id
+                            <span class="required-indicator">*</span>
+                        </label>
+
+                        <g:textField name="emailId" required=""  value="" />
 
                     </div>
 
@@ -236,28 +212,40 @@
 
                     </div>
 
-
                     <div class="fieldcontain">
-                        <label for="emailId">
-                            Email Id
+                        <label for="organization">
+                            <g:message code="organization.label" default="Organization" />
                             <span class="required-indicator">*</span>
                         </label>
-
-                        <g:textField name="emailId" required=""  value="" />
-
+                        <g:textField name="organization" id="organization" required=""  readonly="readonly" onclick="organizationWindow.show()" value="" />
+                        <g:hiddenField name="organizationId" id="organizationId"></g:hiddenField>
+                        <a id="organizationSelect" href="#">
+                            <img src="${resource(dir: 'images', file: 'organization_picker.png')}" alt="Organization Image" onclick="organizationWindow.show()" class="adjustImg" title="Click to select organization">
+                        </a>
                     </div>
 
 
+
                     <div class="fieldcontain">
-                        <label for="phoneNo">
-                            Phone No
+                        <label for="address">
+                            House/Road
+                            %{--database ar street address--}%
                             <span class="required-indicator">*</span>
                         </label>
-                        <g:textField name="phoneNo" required=""  value="" />
+
+                        <g:textArea name="address" id="address" required="" cols="10" rows="10"  value="" ></g:textArea>
 
                     </div>
 
+                    <div class="fieldcontain">
+                        <label for="country">
+                            Country
+                            <span class="required-indicator">*</span>
+                        </label>
 
+                        <g:textField name="country" id="country" required=""  value="" />
+
+                    </div>
 
                     <div class="grid_4 alpha">&nbsp;&nbsp;</div>
 

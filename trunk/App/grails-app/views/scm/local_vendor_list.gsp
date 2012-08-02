@@ -40,7 +40,7 @@
 
                 vendorDataStore = new Ext.data.Store({
                     id: "productDataStore",
-                    url: '${createLink(controller:'inventory', action: 'vendorJsonData')}',
+                    url: '${createLink(controller:'vendor', action: 'localVendorJsonData')}',
                     reader: new Ext.data.JsonReader({
                         root: 'vendors',
                         totalProperty: 'totalCount',
@@ -79,30 +79,34 @@
                             dataIndex: 'mobileNo',
                             header: 'Mobile No',
                             sortable: true,
-                            width: 150
-                        },{
-                            dataIndex: 'description',
-                            header: 'Description',
-                            sortable: true,
                             width: 100
-                        },{
-                            dataIndex: 'emailId',
-                            header: 'Email Id',
-                            sortable: true,
-                            width: 100
-                        },{
+                        },
+                        {
                             dataIndex: 'phoneNo',
                             header: 'Phone No',
                             sortable: true,
                             width: 100
-                        },{
+                        },
+                        {
+                            dataIndex: 'emailId',
+                            header: 'Email Id',
+                            sortable: true,
+                            width: 140
+                        }
+                        ,{
+                            dataIndex: 'description',
+                            header: 'Description',
+                            sortable: true,
+                            width: 100
+                        }
+                        ,{
                             header:'Action',
                             dataIndex: 'action',
                             width: 200,
                             renderer: function(v, p, record) {
                                 var renderText  = "";
 
-                                renderText = renderText + " <a href='${createLink(controller: "employee",action: "editUser")}/"+record.get('id')+"'><img title='Edit' src='${resource(dir:'images',file: 'edit.png')}'/></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
 
                                 renderText = renderText + " <a href='${createLink(controller: 'configuration',action: "showOrganizationDetails")}/"+record.get('id')+"'><img title='Show' src='${resource(dir:'images',file: 'show.png')}'/></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
@@ -160,7 +164,7 @@
             <ul id="crumbs_ui_custom">
                 <li><g:link controller="application" action="index">Dashboard</g:link></li>
                 <li><g:link controller="scm" action="home">Supply Chain Management Home</g:link></li>
-                <li><g:link controller="inventory" action="home">Inventory Home</g:link></li>
+                <li><g:link controller="procurement" action="vendorHome">Vendor Home</g:link></li>
                 <li>${type}</li>
             </ul>
         </div>
