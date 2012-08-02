@@ -24,6 +24,7 @@ class VendorController {
     }
 
     def localVendorJsonData(){
+
         if (!params.limit) {
             params.max = 10;
         } else {
