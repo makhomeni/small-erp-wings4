@@ -14,8 +14,12 @@ class InventoryService {
         try{
             Category category = new Category();
             category.categoryName = params.categoryName;
-            category.parentCategory = Category.get(params.id);
-            category.save();
+            if(params.category != null) category.parentCategory = Category.get(params.category);
+            if(category.hasErrors()){
+                println(category.errors)
+
+            }
+            category.save(flush: true);
 
             return true;
         } catch (Exception ex){
