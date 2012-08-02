@@ -47,6 +47,27 @@ class InventoryService {
         }
     }
 
+    boolean saveProduct(params){
+        try{
+            Product product = new Product();
+            product.productCategory = Category.get(params.category);
+            product.productName = params.productName;
+            product.classification = ProductClassification.get(params.classification);
+            product.licenseInfo = params.licenseInfo;
+            product.productType = ProductType.get(params.productType);
+            product.unitOfMeasure = ProductType.get(params.uom);
+            if(product.hasErrors()){
+                println(product.errors)
+
+            }
+            product.save(flush: true);
+
+            return true;
+        } catch (Exception ex){
+            return false;
+        }
+    }
+
     List findAllProducts(){
         List<Product> products = Product.list();
         List<Map<String,Object>> returnedProducts = new ArrayList<HashMap<String,Object>>();
