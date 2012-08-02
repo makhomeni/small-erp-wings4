@@ -11,7 +11,7 @@
 
 <g:applyLayout name="app">
     <head>
-        <g:set var="entityName" value="${message(code:'product.description', default: 'User')}"/>
+        <g:set var="entityName" value="${message(code:'product.description', default: 'Product')}"/>
         <title><g:message code="default.create.label" args="[entityName]"/></title>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'livevalidation_standalone.compressed.js')}"></script>
         <r:require modules="bootstrap-file-upload"/>
