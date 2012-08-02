@@ -189,7 +189,11 @@ class InventoryController {
 
     def picture(){
         def pic = ProductImage.get(params.id)
-        File picFile = new File("${grailsApplication.config.file.upload.directory?:'/tmp'}/${pic.newFilename}")
+        String uploadPath = "upload"
+
+        String rootDirectory = "${servletContext.getRealPath('/images')}/"
+        String storageDirectory = rootDirectory.concat(uploadPath)
+        File picFile = new File("$storageDirectory/${pic.newFilename}")
         response.contentType = 'image/jpeg'
         response.outputStream << new FileInputStream(picFile)
         response.outputStream.flush()
@@ -197,7 +201,11 @@ class InventoryController {
 
     def thumbnail(){
         def pic = ProductImage.get(params.id)
-        File picFile = new File("${grailsApplication.config.file.upload.directory?:'/tmp'}/${pic.thumbnailFilename}")
+        String uploadPath = "upload"
+
+        String rootDirectory = "${servletContext.getRealPath('/images')}/"
+        String storageDirectory = rootDirectory.concat(uploadPath)
+        File picFile = new File("$storageDirectory/${pic.newFilename}")
         response.contentType = 'image/png'
         response.outputStream << new FileInputStream(picFile)
         response.outputStream.flush()
@@ -205,7 +213,11 @@ class InventoryController {
 
     def delete(){
         def pic = ProductImage.get(params.id)
-        File picFile = new File("${grailsApplication.config.file.upload.directory?:'/tmp'}/${pic.newFilename}")
+        String uploadPath = "upload"
+
+        String rootDirectory = "${servletContext.getRealPath('/images')}/"
+        String storageDirectory = rootDirectory.concat(uploadPath)
+        File picFile = new File("$storageDirectory/${pic.newFilename}")
         picFile.delete()
         File thumbnailFile = new File("${grailsApplication.config.file.upload.directory?:'/tmp'}/${pic.thumbnailFilename}")
         thumbnailFile.delete()
