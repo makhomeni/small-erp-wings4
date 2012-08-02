@@ -34,7 +34,7 @@ class InventoryService {
         for (Category category: categories) {
             categoryStorage = new HashMap<String,Object>();
             categoryStorage.put("categoryName", category.categoryName);
-            categoryStorage.put("parentCategory", category.parentCategory.categoryName);
+            categoryStorage.put("parentCategory", category?.parentCategory?.categoryName);
             returnedCategories.add(categoryStorage);
         }
 
