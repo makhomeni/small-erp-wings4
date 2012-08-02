@@ -17,9 +17,10 @@ class VendorController {
 
     def saveLocalVendor(){
         flash.message = vendorService.saveLocalVendor(params);
+        redirect(action: 'createLocalVendor');
     }
     def localVendorList(){
-        render(view: "/scm/local_vendor_list", model: [type: "Vendor List"]);
+        render(view: "/scm/local_vendor_list", model: [type: "Local Vendor List"]);
     }
 
     def localVendorJsonData(){
