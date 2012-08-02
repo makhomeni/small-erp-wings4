@@ -23,7 +23,10 @@ class InventoryController {
     }
 
     def saveCategory(){
-        flash.message = "Category Created " + inventoryService.saveCategory(params) ? "successfully" : "failed";
+        boolean savedStatus = inventoryService.saveCategory(params);
+        String flashMessage = "Category Created " + (savedStatus ? "successfully" : "failed");
+
+        flash.message = flashMessage;
         redirect(action: "createCategory");
     }
 
