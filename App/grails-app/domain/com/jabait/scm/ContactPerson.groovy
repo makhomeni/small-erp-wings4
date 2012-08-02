@@ -10,8 +10,6 @@ package com.jabait.scm
 class ContactPerson {
     String firstName;
     String lastName;
-    //mobile number should be String type;
-    // please check history that you have entered wrong data type as Integer
     String mobileNumber;
     String emailId;
     String address;

@@ -12,13 +12,12 @@ import com.jabait.security.Address
  */
 class Customer {
 
-    Integer id;
     String firstName;
     String lastName;
     String emailId;
     Organization organization;
-    Integer mobileNumber;
-    Integer phoneNumber;
+    String mobileNumber;
+    String phoneNumber;
     String address;
     ContactPerson contact;
     Referral reference;
