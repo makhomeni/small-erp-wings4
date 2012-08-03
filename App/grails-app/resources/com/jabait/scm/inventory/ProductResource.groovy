@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response
 import org.grails.jaxrs.provider.DomainObjectNotFoundException
 import javax.ws.rs.Path
 import javax.ws.rs.PathParam
+import org.json.JSONObject
 
 @Path("/api/product")
 class ProductResource {
@@ -33,9 +34,14 @@ class ProductResource {
     }
     
     @PUT
-    Response update(Product dto) {
-        dto.id = id
-        ok inventoryService.update(dto)
+    @Produces(["application/json"])
+    @Consumes(["application/json"])
+    Response update(String productData) {
+        JSONObject productUpdate = new JSONObject(productData);
+        Product product = Product.get(Long.parseLong(productUpdate.get("id").toString()));
+        product.productName = productUpdate.get("productName");
+        product.productCategory = Category.get(Long.valueOf(productUpdate.get("category").toString()));
+        ok inventoryService.update(product);
     }
     
     @DELETE
