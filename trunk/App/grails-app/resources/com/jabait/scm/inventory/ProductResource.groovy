@@ -13,6 +13,7 @@ import org.grails.jaxrs.provider.DomainObjectNotFoundException
 import javax.ws.rs.Path
 import javax.ws.rs.PathParam
 import org.json.JSONObject
+import javax.ws.rs.POST
 
 @Path("/api/product")
 class ProductResource {
@@ -20,11 +21,21 @@ class ProductResource {
     def inventoryService
     def id
 
+    @POST
+    @Consumes(["application/json"])
+    @Produces(["application/xml"])
+    Response create(Object product){
+        JSONObject productSave = new JSONObject(product);
+        Product productObject = new Product();
+        productObject.productName = productSave.get("productName");
+        ok inventoryService.save(productObject);
+    }
+
     @GET
     @Path('/{id}')
     @Produces(["application/xml"])
     Response read(@PathParam("id") Long id) {
-        ok inventoryService.read(id)
+        ok inventoryService.read(id);
     }
 
     @GET
