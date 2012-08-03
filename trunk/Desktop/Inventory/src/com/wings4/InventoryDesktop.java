@@ -62,6 +62,7 @@ public class InventoryDesktop extends javax.swing.JFrame {
         jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inventory");
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
