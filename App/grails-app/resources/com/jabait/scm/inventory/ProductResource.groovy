@@ -19,6 +19,7 @@ class ProductResource {
     def productResourceService
     def id
 
+    @GET
     @Path('/{id}')
     @Produces(["application/xml"])
     Response read(@PathParam("id") Long id) {
