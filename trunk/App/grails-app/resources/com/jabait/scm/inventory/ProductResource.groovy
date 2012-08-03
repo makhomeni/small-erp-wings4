@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response
 
 import org.grails.jaxrs.provider.DomainObjectNotFoundException
 import javax.ws.rs.Path
+import javax.ws.rs.PathParam
 
 @Path("/api/product")
 class ProductResource {
@@ -19,8 +20,9 @@ class ProductResource {
     def id
     
     @GET
+    @Path('/{id}')
     @Produces(["application/xml"])
-    Response read() {
+    Response read(@PathParam("id") Long id) {
         ok productResourceService.read(id)
     }
     
