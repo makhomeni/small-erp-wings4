@@ -16,31 +16,31 @@ import javax.ws.rs.PathParam
 @Path("/api/product")
 class ProductResource {
     
-    def productResourceService
+    def inventoryService
     def id
 
     @GET
     @Path('/{id}')
     @Produces(["application/xml"])
     Response read(@PathParam("id") Long id) {
-        ok productResourceService.read(id)
+        ok inventoryService.read(id)
     }
 
     @GET
     @Produces(["application/xml"])
     Response readAll(){
-        ok productResourceService.readAll();
+        ok inventoryService.readAllProducts();
     }
     
     @PUT
     Response update(Product dto) {
         dto.id = id
-        ok productResourceService.update(dto)
+        ok inventoryService.update(dto)
     }
     
     @DELETE
     void delete() {
-        productResourceService.delete(id)
+        inventoryService.delete(id)
     }
     
 }
