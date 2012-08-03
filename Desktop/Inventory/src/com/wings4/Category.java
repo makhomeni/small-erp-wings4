@@ -43,6 +43,11 @@ public class Category extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         submitCategory.setText("Submit");
+        submitCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitCategoryActionPerformed(evt);
+            }
+        });
 
         cancelCategory.setText("Cancel");
 
@@ -86,6 +91,10 @@ public class Category extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void submitCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitCategoryActionPerformed
+        
+    }//GEN-LAST:event_submitCategoryActionPerformed
 
     /**
      * @param args the command line arguments
