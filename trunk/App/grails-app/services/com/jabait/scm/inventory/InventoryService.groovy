@@ -1,10 +1,31 @@
 package com.jabait.scm.inventory
 
+import org.grails.jaxrs.provider.DomainObjectNotFoundException
+
 
 class InventoryService {
 
     def serviceMethod() {
 
+    }
+    
+    def saveCategory(Category dto){
+        dto.save();
+    }
+
+    def read(Category category) {
+        if (!category) {
+            throw new DomainObjectNotFoundException(Category.class, category.id);
+        }
+        category;
+    }
+
+    def readAllCategories(){
+        if(Category.count() == 0){
+            throw new DomainObjectNotFoundException(Category.class, 1);
+        } else {
+            Category.findAll()
+        }
     }
 
     boolean saveCategory(params){
