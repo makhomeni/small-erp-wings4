@@ -11,9 +11,9 @@ class Product {
     ProductClassification classification;
     ProductImage image;
     UnitOfMeasure unitOfMeasure; //kg,meter,feet
-    boolean active;
+    Boolean active;
 
-    static hasMany = [materials : Material, billOfMaterials : BillOfMaterials]
+    static hasMany = [materials : Material, billOfMaterials : BillOfMaterials, substituteProducts : Product]
 
 
     static constraints = {
