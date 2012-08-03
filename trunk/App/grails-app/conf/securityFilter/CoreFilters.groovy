@@ -4,7 +4,7 @@ class CoreFilters {
 
     def filters = {
 
-        forSecurity(controller:"*", action:"*", controllerExclude: "auth") {
+        forSecurity(controller:"*", action:"*", controllerExclude: "auth|jaxrs") {
             before = {
 
                 session.requestedController = params.controller
