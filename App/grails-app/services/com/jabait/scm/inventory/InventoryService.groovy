@@ -103,6 +103,10 @@ class InventoryService {
         }
     }
 
+    def save(Product product){
+        product.save();
+    }
+
     boolean saveProduct(params){
         try{
             Product product = new Product();
