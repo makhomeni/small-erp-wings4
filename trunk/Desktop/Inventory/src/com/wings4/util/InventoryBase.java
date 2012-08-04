@@ -4,6 +4,7 @@
  */
 package com.wings4.util;
 
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
@@ -36,6 +37,29 @@ public class InventoryBase extends JFrame{
             // handle exception
         }
     }
+
+    public InventoryBase(String title) throws HeadlessException {
+        super(title);
+        setDefaultBehavior();
+        setLocation(500,200);
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (UnsupportedLookAndFeelException e) {
+            // handle exception
+        }
+        catch (ClassNotFoundException e) {
+            // handle exception
+        }
+        catch (InstantiationException e) {
+            // handle exception
+        }
+        catch (IllegalAccessException e) {
+            // handle exception
+        }
+    }
+    
+    
     
     public void setDefaultBehavior(){
         Toolkit kit = Toolkit.getDefaultToolkit();
