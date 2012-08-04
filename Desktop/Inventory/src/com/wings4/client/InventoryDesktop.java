@@ -4,6 +4,8 @@
  */
 package com.wings4.client;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Administrator
@@ -75,6 +77,11 @@ public class InventoryDesktop extends javax.swing.JFrame {
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton1);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/product.png"))); // NOI18N
@@ -93,7 +100,6 @@ public class InventoryDesktop extends javax.swing.JFrame {
 
         logoutMenuItem.setText("Logout");
         fileMenu.add(logoutMenuItem);
-        fileMenu.addSeparator();
 
         exitMenuItem.setText("Exit");
         fileMenu.add(exitMenuItem);
@@ -178,6 +184,14 @@ public class InventoryDesktop extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Category category = new Category();
+        category.setVisible(true);
+        jDesktopPane1.add(category);
+        category.pack();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
