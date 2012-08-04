@@ -4,11 +4,13 @@
  */
 package com.wings4.client;
 
+import com.wings4.util.InventoryInternalBase;
+
 /**
  *
  * @author Administrator
  */
-public class Category extends javax.swing.JInternalFrame {
+public class Category extends InventoryInternalBase {
 
     /**
      * Creates new form Category
