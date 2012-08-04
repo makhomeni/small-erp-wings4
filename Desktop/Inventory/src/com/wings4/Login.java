@@ -18,12 +18,13 @@ import org.json.JSONObject;
  *
  * @author Administrator
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JDialog {
 
     /**
      * Creates new form Login
      */
     public Login() {
+        setLocation(500,200);
         initComponents();
     }
 
@@ -47,7 +48,7 @@ public class Login extends javax.swing.JFrame {
         serverText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
         setResizable(false);
 
