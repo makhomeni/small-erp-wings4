@@ -38,9 +38,9 @@ public class RESTFeed {
         connection.setDoInput(true);
         connection.setDoOutput(true);
         
-        connection.setRequestMethod(getRequestMethod());
-        connection.setRequestProperty("Content-Type", getContentType());
-        connection.setRequestProperty("Accept", getAcceptType());
+        connection.setRequestMethod(requestMethod);
+        connection.setRequestProperty("Content-Type", contentType);
+        connection.setRequestProperty("Accept", acceptType);
         
         OutputStream outputStream = connection.getOutputStream();
         outputStream.write(getJsonObject().toString().getBytes());
