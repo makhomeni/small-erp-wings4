@@ -21,4 +21,6 @@ public class InventoryConstants {
     
     public static final String appName = "App";
     
+    public static final String serverAddressPrefix = "http://";
+    
 }
