@@ -43,8 +43,8 @@ public class Login extends javax.swing.JFrame {
         submit = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
         passwordText = new javax.swing.JPasswordField();
-        serverAddressText = new javax.swing.JTextField();
         portText = new javax.swing.JTextField();
+        serverText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,14 +83,14 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        serverAddressText.setText("8080");
-        serverAddressText.addActionListener(new java.awt.event.ActionListener() {
+        portText.setText("8080");
+        portText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                serverAddressTextActionPerformed(evt);
+                portTextActionPerformed(evt);
             }
         });
 
-        portText.setText("localhost");
+        serverText.setText("localhost");
 
         jLabel1.setText("Port");
 
@@ -109,8 +109,8 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(serverAddressText, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                             .addComponent(portText, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                            .addComponent(serverText, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                             .addComponent(passwordText, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                             .addComponent(usernameText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
@@ -133,11 +133,11 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(passwordLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(portText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(serverText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(serverAddressLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(serverAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(portText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -153,9 +153,9 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTextActionPerformed
 
-    private void serverAddressTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serverAddressTextActionPerformed
+    private void portTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_serverAddressTextActionPerformed
+    }//GEN-LAST:event_portTextActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         // TODO add your handling code here:
@@ -163,7 +163,7 @@ public class Login extends javax.swing.JFrame {
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
 
-        String serverAddress = serverAddressText.getText();
+        String serverAddress = serverText.getText();
         String serverPort = portText.getText();
         JSONObject userObject = new JSONObject();
         try {
@@ -173,7 +173,7 @@ public class Login extends javax.swing.JFrame {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        String restEndPoint = InventoryConstants.serverAddressPrefix.concat(serverPort.concat(":").concat(serverAddress).
+        String restEndPoint = InventoryConstants.serverAddressPrefix.concat(serverAddress.concat(":").concat(serverPort).
                 concat("/").concat(InventoryConstants.appName).concat("/api/").concat("user"));
         System.out.println("restEndPoint = " + restEndPoint);
         
@@ -243,7 +243,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordText;
     private javax.swing.JTextField portText;
     private javax.swing.JLabel serverAddressLabel;
-    private javax.swing.JTextField serverAddressText;
+    private javax.swing.JTextField serverText;
     private javax.swing.JButton submit;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameText;

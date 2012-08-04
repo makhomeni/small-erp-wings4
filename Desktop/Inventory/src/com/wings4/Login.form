@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
@@ -36,8 +36,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="serverAddressText" pref="245" max="32767" attributes="1"/>
                           <Component id="portText" pref="245" max="32767" attributes="1"/>
+                          <Component id="serverText" pref="245" max="32767" attributes="1"/>
                           <Component id="passwordText" alignment="0" pref="245" max="32767" attributes="0"/>
                           <Component id="usernameText" alignment="1" pref="245" max="32767" attributes="0"/>
                       </Group>
@@ -68,12 +68,12 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="portText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="serverText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="serverAddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="serverAddressText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="portText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -128,15 +128,15 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordTextActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="serverAddressText">
+    <Component class="javax.swing.JTextField" name="portText">
       <Properties>
         <Property name="text" type="java.lang.String" value="8080"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="serverAddressTextActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="portTextActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="portText">
+    <Component class="javax.swing.JTextField" name="serverText">
       <Properties>
         <Property name="text" type="java.lang.String" value="localhost"/>
       </Properties>
