@@ -11,6 +11,7 @@
 package com.wings4.client;
 
 import com.wings4.util.InventoryInternalBase;
+import javax.swing.WindowConstants;
 
 /**
  *
