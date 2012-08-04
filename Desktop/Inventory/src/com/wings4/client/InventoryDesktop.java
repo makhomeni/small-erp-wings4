@@ -4,13 +4,13 @@
  */
 package com.wings4.client;
 
-import javax.swing.JFrame;
+import com.wings4.util.InventoryBase;
 
 /**
  *
  * @author Administrator
  */
-public class InventoryDesktop extends javax.swing.JFrame {
+public class InventoryDesktop extends InventoryBase {
 
     /**
      * Creates new form InventoryDesktop
@@ -88,6 +88,11 @@ public class InventoryDesktop extends javax.swing.JFrame {
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton2);
 
         jToolBar1.setBounds(0, 0, 1030, 60);
@@ -192,6 +197,13 @@ public class InventoryDesktop extends javax.swing.JFrame {
         jDesktopPane1.add(category);
         category.pack();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Product product = new Product();
+        product.setVisible(true);
+        jDesktopPane1.add(product);
+        product.pack();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
