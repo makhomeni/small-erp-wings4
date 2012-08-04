@@ -38,9 +38,9 @@ public class RESTFeed {
         connection.setDoInput(true);
         connection.setDoOutput(true);
         
-        connection.setRequestMethod(requestMethod);
-        connection.setRequestProperty("Content-Type", contentType);
-        connection.setRequestProperty("Accept", acceptType);
+        connection.setRequestMethod(getRequestMethod());
+        connection.setRequestProperty("Content-Type", getContentType());
+        connection.setRequestProperty("Accept", getAcceptType());
         
         OutputStream outputStream = connection.getOutputStream();
         outputStream.write(getJsonObject().toString().getBytes());
@@ -77,6 +77,29 @@ public class RESTFeed {
     public void setRestEndPoint(String restEndPoint) {
         this.restEndPoint = restEndPoint;
     }
-    
+
+    public String getAcceptType() {
+        return acceptType;
+    }
+
+    public void setAcceptType(String acceptType) {
+        this.acceptType = acceptType;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public String getRequestMethod() {
+        return requestMethod;
+    }
+
+    public void setRequestMethod(String requestMethod) {
+        this.requestMethod = requestMethod;
+    }
     
 }
