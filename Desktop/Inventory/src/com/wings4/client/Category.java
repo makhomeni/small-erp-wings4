@@ -35,7 +35,7 @@ public class Category extends InventoryInternalBase {
         submitCategory = new javax.swing.JButton();
         cancelCategory = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(2);
         setTitle("Category");
 
         categoryNameLabel.setText("Category Name");
@@ -88,7 +88,7 @@ public class Category extends InventoryInternalBase {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitCategory)
                     .addComponent(cancelCategory))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         pack();

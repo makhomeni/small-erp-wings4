@@ -28,89 +28,93 @@ public class InventoryDesktop extends InventoryBase {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jMenu2 = new javax.swing.JMenu();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        inventoryMenuBar = new javax.swing.JMenuBar();
+        categoryToolBarButton = new javax.swing.JButton();
+        productToolbarButton = new javax.swing.JButton();
+        purchaseToolbarButton = new javax.swing.JButton();
+        salesToolbarButton = new javax.swing.JButton();
+        inventoryDesktopBoard = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         loginMenuItem = new javax.swing.JMenuItem();
         logoutMenuItem = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         exitMenuItem = new javax.swing.JMenuItem();
-        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         generalMenu = new javax.swing.JMenu();
-        dashboardMenuItem = new javax.swing.JMenuItem();
-        reportsMenuItem = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        dashboardMenu = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        reportsMenu = new javax.swing.JMenuItem();
+        materialsMenu = new javax.swing.JMenu();
         categoryMenuItem = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         productMenuItem = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         inventoryMenuItem = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
         transferOrderMenuItem = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        consignmentMenuItem = new javax.swing.JMenuItem();
         salesMenu = new javax.swing.JMenu();
         salesOrderMenuItem = new javax.swing.JMenuItem();
-        shippingItem = new javax.swing.JMenuItem();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        pickingMenuItem = new javax.swing.JMenuItem();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
+        shippingMenuItem = new javax.swing.JMenuItem();
+        jSeparator9 = new javax.swing.JPopupMenu.Separator();
         customerMenuItem = new javax.swing.JMenuItem();
-        receivingMenuItem = new javax.swing.JMenu();
-        purchageOrderMenuItem = new javax.swing.JMenuItem();
+        jSeparator10 = new javax.swing.JPopupMenu.Separator();
+        rmaMenuItem = new javax.swing.JMenuItem();
+        jSeparator11 = new javax.swing.JPopupMenu.Separator();
+        pricingMenuItem = new javax.swing.JMenuItem();
+        jSeparator12 = new javax.swing.JPopupMenu.Separator();
+        discountMenuItem = new javax.swing.JMenuItem();
+        purchasingMenu = new javax.swing.JMenu();
+        purchasingOrderMenuItem = new javax.swing.JMenuItem();
+        jSeparator13 = new javax.swing.JPopupMenu.Separator();
+        receivingMenuItem = new javax.swing.JMenuItem();
+        jSeparator14 = new javax.swing.JPopupMenu.Separator();
         vendorMenuItem = new javax.swing.JMenuItem();
-        receivingMenu = new javax.swing.JMenuItem();
-        manufaccturingMenu = new javax.swing.JMenu();
-        billOfMaterialMenuItem = new javax.swing.JMenuItem();
-        reportsMenu = new javax.swing.JMenu();
-
-        jMenu1.setText("jMenu1");
-
-        jMenu2.setText("jMenu2");
+        manufacturingMenuItem = new javax.swing.JMenu();
+        billOfMaterialsMenuItem = new javax.swing.JMenuItem();
+        jSeparator15 = new javax.swing.JPopupMenu.Separator();
+        manufactureOrderMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventory");
 
-        jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
-
         jToolBar1.setRollover(true);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/category.png"))); // NOI18N
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        categoryToolBarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/category.png"))); // NOI18N
+        categoryToolBarButton.setFocusable(false);
+        categoryToolBarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        categoryToolBarButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        categoryToolBarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                categoryToolBarButtonActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton1);
+        jToolBar1.add(categoryToolBarButton);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/product.png"))); // NOI18N
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
+        productToolbarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/product.png"))); // NOI18N
+        productToolbarButton.setFocusable(false);
+        productToolbarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        productToolbarButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(productToolbarButton);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/sales.png"))); // NOI18N
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        purchaseToolbarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/purchase.png"))); // NOI18N
+        purchaseToolbarButton.setFocusable(false);
+        purchaseToolbarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        purchaseToolbarButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(purchaseToolbarButton);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/purchase.png"))); // NOI18N
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
+        salesToolbarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/sales.png"))); // NOI18N
+        salesToolbarButton.setFocusable(false);
+        salesToolbarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        salesToolbarButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(salesToolbarButton);
 
-        jToolBar1.setBounds(0, 0, 1040, 68);
-        jDesktopPane1.add(jToolBar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        inventoryDesktopBoard.setBackground(new java.awt.Color(255, 255, 255));
+        inventoryDesktopBoard.setForeground(new java.awt.Color(255, 255, 255));
 
         fileMenu.setText("File");
 
@@ -119,105 +123,129 @@ public class InventoryDesktop extends InventoryBase {
 
         logoutMenuItem.setText("Logout");
         fileMenu.add(logoutMenuItem);
+        fileMenu.add(jSeparator1);
 
         exitMenuItem.setText("Exit");
         fileMenu.add(exitMenuItem);
-        fileMenu.add(jSeparator3);
 
-        inventoryMenuBar.add(fileMenu);
+        jMenuBar1.add(fileMenu);
 
         generalMenu.setText("General");
 
-        dashboardMenuItem.setText("Dashboard");
-        generalMenu.add(dashboardMenuItem);
+        dashboardMenu.setText("Dashboard");
+        generalMenu.add(dashboardMenu);
+        generalMenu.add(jSeparator2);
 
-        reportsMenuItem.setText("Reports");
-        generalMenu.add(reportsMenuItem);
+        reportsMenu.setText("Reports");
+        generalMenu.add(reportsMenu);
 
-        inventoryMenuBar.add(generalMenu);
+        jMenuBar1.add(generalMenu);
 
-        jMenu3.setText("Materials");
+        materialsMenu.setText("Materials");
 
         categoryMenuItem.setText("Category");
-        jMenu3.add(categoryMenuItem);
+        materialsMenu.add(categoryMenuItem);
+        materialsMenu.add(jSeparator3);
 
         productMenuItem.setText("Product");
-        jMenu3.add(productMenuItem);
+        materialsMenu.add(productMenuItem);
+        materialsMenu.add(jSeparator4);
 
         inventoryMenuItem.setText("Inventory");
-        jMenu3.add(inventoryMenuItem);
+        materialsMenu.add(inventoryMenuItem);
+        materialsMenu.add(jSeparator5);
 
         transferOrderMenuItem.setText("Transfer Order");
-        jMenu3.add(transferOrderMenuItem);
+        materialsMenu.add(transferOrderMenuItem);
+        materialsMenu.add(jSeparator6);
 
-        inventoryMenuBar.add(jMenu3);
+        consignmentMenuItem.setText("Consignment");
+        materialsMenu.add(consignmentMenuItem);
+
+        jMenuBar1.add(materialsMenu);
 
         salesMenu.setText("Sales");
 
         salesOrderMenuItem.setText("Sales Order");
         salesMenu.add(salesOrderMenuItem);
+        salesMenu.add(jSeparator7);
 
-        shippingItem.setText("Shipping");
-        salesMenu.add(shippingItem);
+        pickingMenuItem.setText("Picking");
+        salesMenu.add(pickingMenuItem);
+        salesMenu.add(jSeparator8);
+
+        shippingMenuItem.setText("Shipping");
+        salesMenu.add(shippingMenuItem);
+        salesMenu.add(jSeparator9);
 
         customerMenuItem.setText("Customer");
         salesMenu.add(customerMenuItem);
+        salesMenu.add(jSeparator10);
 
-        inventoryMenuBar.add(salesMenu);
+        rmaMenuItem.setText("RMA");
+        salesMenu.add(rmaMenuItem);
+        salesMenu.add(jSeparator11);
 
-        receivingMenuItem.setText("Purchasing");
+        pricingMenuItem.setText("Pricing");
+        salesMenu.add(pricingMenuItem);
+        salesMenu.add(jSeparator12);
 
-        purchageOrderMenuItem.setText("Purchage Order");
-        receivingMenuItem.add(purchageOrderMenuItem);
+        discountMenuItem.setText("Discount");
+        salesMenu.add(discountMenuItem);
+
+        jMenuBar1.add(salesMenu);
+
+        purchasingMenu.setText("Purchasing");
+
+        purchasingOrderMenuItem.setText("Purchasing Order");
+        purchasingMenu.add(purchasingOrderMenuItem);
+        purchasingMenu.add(jSeparator13);
+
+        receivingMenuItem.setText("Receiving");
+        purchasingMenu.add(receivingMenuItem);
+        purchasingMenu.add(jSeparator14);
 
         vendorMenuItem.setText("Vendor");
-        receivingMenuItem.add(vendorMenuItem);
+        purchasingMenu.add(vendorMenuItem);
 
-        receivingMenu.setText("Receiving");
-        receivingMenuItem.add(receivingMenu);
+        jMenuBar1.add(purchasingMenu);
 
-        inventoryMenuBar.add(receivingMenuItem);
+        manufacturingMenuItem.setText("Manufacturing");
 
-        manufaccturingMenu.setText("Manufacturing");
+        billOfMaterialsMenuItem.setText("Bill of Materials");
+        manufacturingMenuItem.add(billOfMaterialsMenuItem);
+        manufacturingMenuItem.add(jSeparator15);
 
-        billOfMaterialMenuItem.setText("Bill of Mateerial");
-        manufaccturingMenu.add(billOfMaterialMenuItem);
+        manufactureOrderMenuItem.setText("Manufacture Order");
+        manufacturingMenuItem.add(manufactureOrderMenuItem);
 
-        inventoryMenuBar.add(manufaccturingMenu);
+        jMenuBar1.add(manufacturingMenuItem);
 
-        reportsMenu.setText("Reports");
-        inventoryMenuBar.add(reportsMenu);
-
-        setJMenuBar(inventoryMenuBar);
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
+            .addComponent(inventoryDesktopBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inventoryDesktopBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void categoryToolBarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryToolBarButtonActionPerformed
         Category category = new Category();
         category.setVisible(true);
-        jDesktopPane1.add(category);
-        category.pack();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Product product = new Product();
-        product.setVisible(true);
-        jDesktopPane1.add(product);
-        product.pack();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        inventoryDesktopBoard.add(category);
+    }//GEN-LAST:event_categoryToolBarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,39 +289,54 @@ public class InventoryDesktop extends InventoryBase {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem billOfMaterialMenuItem;
+    private javax.swing.JMenuItem billOfMaterialsMenuItem;
     private javax.swing.JMenuItem categoryMenuItem;
+    private javax.swing.JButton categoryToolBarButton;
+    private javax.swing.JMenuItem consignmentMenuItem;
     private javax.swing.JMenuItem customerMenuItem;
-    private javax.swing.JMenuItem dashboardMenuItem;
+    private javax.swing.JMenuItem dashboardMenu;
+    private javax.swing.JMenuItem discountMenuItem;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu generalMenu;
-    private javax.swing.JMenuBar inventoryMenuBar;
+    private javax.swing.JDesktopPane inventoryDesktopBoard;
     private javax.swing.JMenuItem inventoryMenuItem;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator10;
+    private javax.swing.JPopupMenu.Separator jSeparator11;
+    private javax.swing.JPopupMenu.Separator jSeparator12;
+    private javax.swing.JPopupMenu.Separator jSeparator13;
+    private javax.swing.JPopupMenu.Separator jSeparator14;
+    private javax.swing.JPopupMenu.Separator jSeparator15;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
+    private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenuItem loginMenuItem;
     private javax.swing.JMenuItem logoutMenuItem;
-    private javax.swing.JMenu manufaccturingMenu;
+    private javax.swing.JMenuItem manufactureOrderMenuItem;
+    private javax.swing.JMenu manufacturingMenuItem;
+    private javax.swing.JMenu materialsMenu;
+    private javax.swing.JMenuItem pickingMenuItem;
+    private javax.swing.JMenuItem pricingMenuItem;
     private javax.swing.JMenuItem productMenuItem;
-    private javax.swing.JMenuItem purchageOrderMenuItem;
-    private javax.swing.JMenuItem receivingMenu;
-    private javax.swing.JMenu receivingMenuItem;
-    private javax.swing.JMenu reportsMenu;
-    private javax.swing.JMenuItem reportsMenuItem;
+    private javax.swing.JButton productToolbarButton;
+    private javax.swing.JButton purchaseToolbarButton;
+    private javax.swing.JMenu purchasingMenu;
+    private javax.swing.JMenuItem purchasingOrderMenuItem;
+    private javax.swing.JMenuItem receivingMenuItem;
+    private javax.swing.JMenuItem reportsMenu;
+    private javax.swing.JMenuItem rmaMenuItem;
     private javax.swing.JMenu salesMenu;
     private javax.swing.JMenuItem salesOrderMenuItem;
-    private javax.swing.JMenuItem shippingItem;
+    private javax.swing.JButton salesToolbarButton;
+    private javax.swing.JMenuItem shippingMenuItem;
     private javax.swing.JMenuItem transferOrderMenuItem;
     private javax.swing.JMenuItem vendorMenuItem;
     // End of variables declaration//GEN-END:variables
