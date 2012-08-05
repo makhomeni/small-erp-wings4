@@ -108,7 +108,7 @@ public class Category extends InventoryInternalBase {
         JSONObject categoryObject = new JSONObject();
         try {
             categoryObject.put("categoryName", categoryNameText.getText());
-            categoryObject.put("parentCategory", parentCategory.getSelectedItem());
+            categoryObject.put("parentCategory", 1);
         } catch (JSONException ex) {
             Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
         }
