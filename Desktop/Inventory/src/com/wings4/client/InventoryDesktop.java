@@ -4,19 +4,73 @@
  */
 package com.wings4.client;
 
+import com.wings4.Login;
 import com.wings4.util.InventoryBase;
+import com.wings4.util.InactivityListener;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeListener;
+import javax.swing.Action;
 
 /**
  *
  * @author Administrator
  */
 public class InventoryDesktop extends InventoryBase {
+    
+    private static InventoryDesktop desktop = new InventoryDesktop();
+    private static Login login = new Login();
+
+    private static class LogoutAction implements Action {
+
+        public LogoutAction() {
+            //desktop.dispose();
+        }
+
+        @Override
+        public Object getValue(String key) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public void putValue(String key, Object value) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public void setEnabled(boolean b) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public boolean isEnabled() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public void addPropertyChangeListener(PropertyChangeListener listener) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public void removePropertyChangeListener(PropertyChangeListener listener) {
+            
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            login.setVisible(true);
+            desktop.dispose();
+        }
+    }
 
     /**
      * Creates new form InventoryDesktop
      */
     public InventoryDesktop() {
         initComponents();
+        Action logoutAction = new LogoutAction();
+        InactivityListener listener = new InactivityListener(logoutAction, 10);
+        listener.start();
     }
 
     /**
@@ -122,6 +176,11 @@ public class InventoryDesktop extends InventoryBase {
         fileMenu.add(loginMenuItem);
 
         logoutMenuItem.setText("Logout");
+        logoutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(logoutMenuItem);
         fileMenu.add(jSeparator1);
 
@@ -246,6 +305,11 @@ public class InventoryDesktop extends InventoryBase {
         category.setVisible(true);
         inventoryDesktopBoard.add(category);
     }//GEN-LAST:event_categoryToolBarButtonActionPerformed
+
+    private void logoutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutMenuItemActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_logoutMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

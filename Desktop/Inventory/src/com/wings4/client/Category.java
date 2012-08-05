@@ -4,7 +4,16 @@
  */
 package com.wings4.client;
 
+import com.wings4.Login;
+import com.wings4.util.InventoryConstants;
 import com.wings4.util.InventoryInternalBase;
+import com.wings4.util.RESTFeed;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -31,7 +40,7 @@ public class Category extends InventoryInternalBase {
         categoryNameLabel = new javax.swing.JLabel();
         categoryNameText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        parentCategory = new javax.swing.JComboBox();
         submitCategory = new javax.swing.JButton();
         cancelCategory = new javax.swing.JButton();
 
@@ -42,7 +51,7 @@ public class Category extends InventoryInternalBase {
 
         jLabel1.setText("Parent Category");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        parentCategory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         submitCategory.setText("Submit");
         submitCategory.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +79,7 @@ public class Category extends InventoryInternalBase {
                         .addComponent(cancelCategory))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(categoryNameText, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(parentCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(155, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,7 +92,7 @@ public class Category extends InventoryInternalBase {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(parentCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitCategory)
@@ -95,7 +104,31 @@ public class Category extends InventoryInternalBase {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitCategoryActionPerformed
+
+        JSONObject categoryObject = new JSONObject();
+        try {
+            categoryObject.put("categoryName", categoryNameText.getText());
+            categoryObject.put("parentCategory", parentCategory.getSelectedItem());
+        } catch (JSONException ex) {
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        String restEndPoint = Login.getRestEndPoint();
+        String resource = "category";
+        String serviceUri = restEndPoint.concat(resource);
+        System.out.println("serviceUri = " + serviceUri);
+        
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
+        System.out.println("categoryObject = " + categoryObject);
+        restFeed.setRestEndPoint(serviceUri);
+        restFeed.setJsonObject(categoryObject);
+        try {
+            restFeed.restInitialization();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_submitCategoryActionPerformed
 
     /**
@@ -105,8 +138,8 @@ public class Category extends InventoryInternalBase {
     private javax.swing.JButton cancelCategory;
     private javax.swing.JLabel categoryNameLabel;
     private javax.swing.JTextField categoryNameText;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox parentCategory;
     private javax.swing.JButton submitCategory;
     // End of variables declaration//GEN-END:variables
 }
