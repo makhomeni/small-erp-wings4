@@ -40,7 +40,7 @@ class CategoryResource {
     @POST
     @Produces([MediaType.APPLICATION_JSON])
     @Consumes([MediaType.APPLICATION_JSON])
-    Response create(Object category){
+    Response create(String category){
         
         JSONObject categoryJsonObject = new JSONObject(category);
         Category parentCategory = Category.get(Long.valueOf(
