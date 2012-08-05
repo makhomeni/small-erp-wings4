@@ -4,12 +4,14 @@
  */
 package com.wings4;
 
+import com.wings4.client.InventoryDesktop;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.RESTFeed;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,6 +22,15 @@ import org.json.JSONObject;
  */
 public class Login extends javax.swing.JDialog {
 
+    private static String restEndPoint;
+
+    public static String getRestEndPoint() {
+        return restEndPoint;
+    }
+
+    public static void setRestEndPoint(String restEndPoint) {
+        Login.restEndPoint = restEndPoint;
+    }
     /**
      * Creates new form Login
      */
@@ -174,20 +185,23 @@ public class Login extends javax.swing.JDialog {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        String restEndPoint = InventoryConstants.serverAddressPrefix.concat(serverAddress.concat(":").concat(serverPort).
-                concat("/").concat(InventoryConstants.appName).concat("/api/").concat("user"));
+        restEndPoint = InventoryConstants.serverAddressPrefix.concat(serverAddress.concat(":").concat(serverPort).
+                concat("/").concat(InventoryConstants.appName).concat("/api/"));
         System.out.println("restEndPoint = " + restEndPoint);
         
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
-        System.out.println("restFeed = " + restFeed.getContentType());
-        restFeed.setRestEndPoint(restEndPoint);
+        String serviceUri = restEndPoint.concat("user");
+        restFeed.setRestEndPoint(serviceUri);
         restFeed.setJsonObject(userObject);
         try {
             restFeed.restInitialization();
+            InventoryDesktop desktop = new InventoryDesktop();
+            desktop.setVisible(true);
+            this.setVisible(false);
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"The URL Provided is incorrect","Login Error",JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Bad Usernam/Password combination provided","Login Error",JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_submitActionPerformed
