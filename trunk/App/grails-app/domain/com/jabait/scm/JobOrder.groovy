@@ -13,17 +13,12 @@ class JobOrder {
     Integer orderQuantity;
     Date createdDate;
     User createdBy;
-    Product product;
     Integer status; //1 draft, 2 Open, 3 Closed
     //Warehouse warehouse; //to be added
     Integer priority; //1 low, 2 medium, 3 high
-    PriceList priceList;
-    Organization organization;
     Boolean isSent;
-    PaymentTerm paymentTerm;
     DeliveryTerm deliveryTerm;
     Date dueDate;
-    Address deliveryAddress;
     Boolean isArchived;
 
     static mapping = {
