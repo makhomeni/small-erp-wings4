@@ -12,6 +12,7 @@ package com.wings4.client;
 
 import com.wings4.Login;
 import com.wings4.util.InventoryConstants;
+import com.wings4.util.InventoryInternalBase;
 import com.wings4.util.RESTFeed;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -25,7 +26,7 @@ import org.json.JSONObject;
  *
  * @author Masum
  */
-public class InventoryCreate extends JInternalFrame {
+public class InventoryCreate extends InventoryInternalBase {
 
     /** Creates new form InventoryCreate */
     public InventoryCreate() {
@@ -64,7 +65,7 @@ public class InventoryCreate extends JInternalFrame {
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Inventory Create");
 
         productLabel.setText("Product");
