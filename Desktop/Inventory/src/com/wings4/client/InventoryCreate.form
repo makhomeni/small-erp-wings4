@@ -26,16 +26,16 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="availableToPick" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="availableForSale" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="dropShip" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="backOrdered" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="productLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="onOrderLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="allocatedLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="committedLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="unavailableLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="onHandLabel" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -66,52 +66,52 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="productLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="productText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="onHandText" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="onHandLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="onOrderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="onOrderText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="allocatedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="allocatedText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="committedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="committedText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="unavailableLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="unavailableText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="backOrdered" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="backOrderedText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dropShip" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="dropShipText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="availableForSale" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="availableForSaleText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="availableToPick" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="availableToPickText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -125,70 +125,70 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="productLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Product"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="productText">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="onHandLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="On Hand"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="onHandText">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="onOrderLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="On Order"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="onOrderText">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="allocatedLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Allocated"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="allocatedText">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="committedLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Committed"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="committedText">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="unavailableLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Unavailable"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="unavailableText">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="backOrdered">
       <Properties>
         <Property name="text" type="java.lang.String" value="Back Ordered"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="backOrderedText">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="dropShip">
       <Properties>
         <Property name="text" type="java.lang.String" value="Drop Ship"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="dropShipText">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="availableForSale">
       <Properties>
         <Property name="text" type="java.lang.String" value="Available For Sale"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="availableForSaleText">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="availableToPick">
       <Properties>
         <Property name="text" type="java.lang.String" value="Available To Pick"/>
       </Properties>
