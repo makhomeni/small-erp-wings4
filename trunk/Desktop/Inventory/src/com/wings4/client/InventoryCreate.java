@@ -10,11 +10,22 @@
  */
 package com.wings4.client;
 
+import com.wings4.Login;
+import com.wings4.util.InventoryConstants;
+import com.wings4.util.RESTFeed;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JInternalFrame;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  *
  * @author Masum
  */
-public class InventoryCreate extends javax.swing.JFrame {
+public class InventoryCreate extends JInternalFrame {
 
     /** Creates new form InventoryCreate */
     public InventoryCreate() {
@@ -30,25 +41,25 @@ public class InventoryCreate extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        productLabel = new javax.swing.JLabel();
         productText = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        onHandLabel = new javax.swing.JLabel();
         onHandText = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        onOrderLabel = new javax.swing.JLabel();
         onOrderText = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        allocatedLabel = new javax.swing.JLabel();
         allocatedText = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        committedLabel = new javax.swing.JLabel();
         committedText = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        unavailableLabel = new javax.swing.JLabel();
         unavailableText = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        backOrdered = new javax.swing.JLabel();
         backOrderedText = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        dropShip = new javax.swing.JLabel();
         dropShipText = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        availableForSale = new javax.swing.JLabel();
         availableForSaleText = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        availableToPick = new javax.swing.JLabel();
         availableToPickText = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
@@ -56,25 +67,25 @@ public class InventoryCreate extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventory Create");
 
-        jLabel1.setText("Product");
+        productLabel.setText("Product");
 
-        jLabel2.setText("On Hand");
+        onHandLabel.setText("On Hand");
 
-        jLabel3.setText("On Order");
+        onOrderLabel.setText("On Order");
 
-        jLabel4.setText("Allocated");
+        allocatedLabel.setText("Allocated");
 
-        jLabel5.setText("Committed");
+        committedLabel.setText("Committed");
 
-        jLabel6.setText("Unavailable");
+        unavailableLabel.setText("Unavailable");
 
-        jLabel7.setText("Back Ordered");
+        backOrdered.setText("Back Ordered");
 
-        jLabel8.setText("Drop Ship");
+        dropShip.setText("Drop Ship");
 
-        jLabel9.setText("Available For Sale");
+        availableForSale.setText("Available For Sale");
 
-        jLabel10.setText("Available To Pick");
+        availableToPick.setText("Available To Pick");
 
         saveButton.setText("Save");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -92,16 +103,16 @@ public class InventoryCreate extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel2))
+                    .addComponent(availableToPick)
+                    .addComponent(availableForSale)
+                    .addComponent(dropShip)
+                    .addComponent(backOrdered)
+                    .addComponent(productLabel)
+                    .addComponent(onOrderLabel)
+                    .addComponent(allocatedLabel)
+                    .addComponent(committedLabel)
+                    .addComponent(unavailableLabel)
+                    .addComponent(onHandLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -126,43 +137,43 @@ public class InventoryCreate extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(productLabel)
                     .addComponent(productText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(onHandText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(onHandLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(onOrderLabel)
                     .addComponent(onOrderText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(allocatedLabel)
                     .addComponent(allocatedText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(committedLabel)
                     .addComponent(committedText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(unavailableLabel)
                     .addComponent(unavailableText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(backOrdered)
                     .addComponent(backOrderedText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(dropShip)
                     .addComponent(dropShipText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addComponent(availableForSale)
                     .addComponent(availableForSaleText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                    .addComponent(availableToPick)
                     .addComponent(availableToPickText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -178,7 +189,7 @@ private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 // TODO add your handling code here:
     JSONObject categoryObject = new JSONObject();
         try {
-            categoryObject.put("categoryName", categoryNameText.getText());
+            //categoryObject.put("categoryName", categoryNameText.getText());
             categoryObject.put("parentCategory", 1);
         } catch (JSONException ex) {
             Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
@@ -199,8 +210,7 @@ private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }                                              
+        }                                              
 
 }//GEN-LAST:event_saveButtonActionPerformed
 
@@ -240,27 +250,27 @@ private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel allocatedLabel;
     private javax.swing.JTextField allocatedText;
+    private javax.swing.JLabel availableForSale;
     private javax.swing.JTextField availableForSaleText;
+    private javax.swing.JLabel availableToPick;
     private javax.swing.JTextField availableToPickText;
+    private javax.swing.JLabel backOrdered;
     private javax.swing.JTextField backOrderedText;
     private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel committedLabel;
     private javax.swing.JTextField committedText;
+    private javax.swing.JLabel dropShip;
     private javax.swing.JTextField dropShipText;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel onHandLabel;
     private javax.swing.JTextField onHandText;
+    private javax.swing.JLabel onOrderLabel;
     private javax.swing.JTextField onOrderText;
+    private javax.swing.JLabel productLabel;
     private javax.swing.JTextField productText;
     private javax.swing.JButton saveButton;
+    private javax.swing.JLabel unavailableLabel;
     private javax.swing.JTextField unavailableText;
     // End of variables declaration//GEN-END:variables
 }
