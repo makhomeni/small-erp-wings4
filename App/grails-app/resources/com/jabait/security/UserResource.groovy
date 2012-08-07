@@ -30,6 +30,11 @@ class UserResource {
         ok userResourceService.read(id)
     }
 
+    @GET
+    Response readAll(){
+        ok userResourceService.readAll();
+    }
+
     @POST
     @Produces(["application/json"])
     @Consumes(["application/json"])
