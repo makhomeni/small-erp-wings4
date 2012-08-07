@@ -257,6 +257,11 @@ public class InventoryDesktop extends InventoryBase {
         purchasingMenu.setText("Purchasing");
 
         purchasingOrderMenuItem.setText("Purchasing Order");
+        purchasingOrderMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                purchasingOrderMenuItemActionPerformed(evt);
+            }
+        });
         purchasingMenu.add(purchasingOrderMenuItem);
         purchasingMenu.add(jSeparator13);
 
@@ -310,6 +315,14 @@ public class InventoryDesktop extends InventoryBase {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_logoutMenuItemActionPerformed
+
+private void purchasingOrderMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchasingOrderMenuItemActionPerformed
+// TODO add your handling code here:
+    PurchasingOrderCreate purchasOrderCreate = new PurchasingOrderCreate();
+    purchasOrderCreate.setVisible(true);
+    inventoryDesktopBoard.add(purchasOrderCreate);
+    
+}//GEN-LAST:event_purchasingOrderMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
