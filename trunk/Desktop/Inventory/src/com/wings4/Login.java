@@ -190,9 +190,8 @@ public class Login extends javax.swing.JDialog {
                 concat("/").concat(InventoryConstants.appName).concat("/api/"));
         System.out.println("restEndPoint = " + restEndPoint);
         
-        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
-        String serviceUri = restEndPoint.concat("user");
-        restFeed.setRestEndPoint(serviceUri);
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,InventoryConstants.MEDIA_JSON,InventoryConstants.POST, restEndPoint, "user");
+
         restFeed.setJsonObject(userObject);
         try {
             restFeed.restInitialization();
