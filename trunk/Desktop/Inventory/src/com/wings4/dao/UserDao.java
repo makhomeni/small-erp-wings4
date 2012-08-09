@@ -19,9 +19,26 @@ import java.util.logging.Logger;
  * @author ronnie
  */
 public class UserDao {
-    
+
+    public String getRestEndPoint(){
+        return Login.getRestEndPoint();
+    }
     public String findAllUsers(){
-        return null;
+//        RESTFeed restFeed = RESTFeed(InventoryConstants.)
+        String restEndPoint = getRestEndPoint();
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
+                InventoryConstants.MEDIA_JSON,InventoryConstants.GET,
+                restEndPoint, "user");
+        try {
+            System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
+            return restFeed.restInitialization();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (IOException ex) {
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
     
 }

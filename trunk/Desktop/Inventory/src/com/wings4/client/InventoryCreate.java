@@ -209,7 +209,8 @@ private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
                 InventoryConstants.MEDIA_JSON,InventoryConstants.POST, 
-                restEndPoint, resource, inventoryResourceObject);
+                restEndPoint, resource);
+    restFeed.setJsonObject(inventoryResourceObject);
         try {
             restFeed.restInitialization();
         } catch (MalformedURLException ex) {

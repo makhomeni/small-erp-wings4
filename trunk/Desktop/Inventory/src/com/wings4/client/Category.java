@@ -121,7 +121,8 @@ public class Category extends InventoryInternalBase {
         
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
                 InventoryConstants.MEDIA_JSON,InventoryConstants.POST, 
-                restEndPoint, resource, categoryObject);
+                restEndPoint, resource);
+        restFeed.setJsonObject(categoryObject);
         try {
             restFeed.restInitialization();
         } catch (MalformedURLException ex) {
