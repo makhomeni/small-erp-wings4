@@ -5,13 +5,13 @@
 package com.wings4.client;
 
 import com.wings4.Login;
-import com.wings4.util.InventoryConstants;
-import com.wings4.util.RESTFeed;
+import com.wings4.util.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,19 +19,16 @@ import org.json.JSONObject;
  *
  * @author shohag
  */
-public class SalesOrderCreate extends javax.swing.JFrame {
+public class SalesOrderCreate extends InventoryInternalBase {
 
     /**
      * Creates new form SalesOrderCreate
      */
     public SalesOrderCreate() {
         initComponents();
-        findAllUsers();
     }
     
-    private List findAllUsers(){
-        JSONObject salesOrderObject = new JSONObject();
-        
+    private String findAllUsers(){
         
         String restEndPoint = Login.getRestEndPoint();
         String resource = "user";
@@ -42,7 +39,7 @@ public class SalesOrderCreate extends javax.swing.JFrame {
         restFeed.setRestEndPoint(serviceUri);
         try {
             System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
-            return null;
+            return restFeed.restInitialization();
         } catch (MalformedURLException ex) {
             Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -82,7 +79,32 @@ public class SalesOrderCreate extends javax.swing.JFrame {
         submitGeneralBtn = new javax.swing.JButton();
         cancelGeneral = new javax.swing.JButton();
         createdByLabel = new javax.swing.JLabel();
-        createdByTxt = new javax.swing.JComboBox();
+		
+        try{
+            JSONArray jsonArray = new JSONArray(findAllUsers());
+			List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
+			Map<String,Object> user;
+            System.out.print(jsonArray.length());
+			for(int i = 0 ; i < jsonArray.length(); i++){
+				user = new HashMap<String,Object>();
+                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
+				JSONObject userObject = (JSONObject)jsonArray.get(i);
+				user.put("id", userObject.get("id"));
+				user.put("userCode", userObject.get("userCode"));
+				users.add(user);
+			}
+			
+			Vector<Item> userVector = new Vector<Item>();
+			for(Map<String,Object> userMap : users) {
+                System.out.println("userMap = " + userMap);
+				userVector.addElement(new Item(Integer.parseInt(userMap.get("id").toString()), userMap.get("userCode").toString()));
+			}
+			createdByCombo = new javax.swing.JComboBox(userVector);
+			createdByCombo.setRenderer(new ItemRenderer());
+        }catch(Exception ex){
+            System.out.println("ex is here = " + ex);
+        }
+        
         jPanel3 = new javax.swing.JPanel();
         paymentTermLabel = new javax.swing.JLabel();
         paymentTermCombo = new javax.swing.JComboBox();
@@ -100,8 +122,6 @@ public class SalesOrderCreate extends javax.swing.JFrame {
         submitDetailBtn = new javax.swing.JButton();
         cancelDetailBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jobNameLabel.setText("Job Name");
 
         orderQuantityLabel.setText("Order Quantity");
@@ -110,11 +130,11 @@ public class SalesOrderCreate extends javax.swing.JFrame {
 
         statusLabel.setText("Status");
 
-        statusCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        statusCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
 
         jLabel1.setText("Priority");
 
-        priorityCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        priorityCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Low", "Medium", "High"}));
 
         sentLabel.setText("Sent");
 
@@ -132,8 +152,6 @@ public class SalesOrderCreate extends javax.swing.JFrame {
         cancelGeneral.setText("Cancel");
 
         createdByLabel.setText("Created By");
-
-        createdByTxt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -166,7 +184,7 @@ public class SalesOrderCreate extends javax.swing.JFrame {
                         .addComponent(sentCheck)
                         .addComponent(dueDateTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                         .addComponent(archaivedCheck))
-                    .addComponent(createdByTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createdByCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -184,9 +202,9 @@ public class SalesOrderCreate extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createdDateLabel)
                     .addComponent(createdDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(createdByTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(createdByCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(createdByLabel))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -260,7 +278,7 @@ public class SalesOrderCreate extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(dueDateTermsCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Terms and Conditions", jPanel3);
@@ -318,7 +336,7 @@ public class SalesOrderCreate extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitDetailBtn)
                     .addComponent(cancelDetailBtn))
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Detail", jPanel2);
@@ -350,24 +368,27 @@ public class SalesOrderCreate extends javax.swing.JFrame {
             salesOrderObject.put("jobName", jobNameTxt.getText());
             salesOrderObject.put("orderQuantity", orderQuantityTxt.getText());
             salesOrderObject.put("createdDate", createdDateTxt.getText());
-            salesOrderObject.put("createdBy", createdByTxt.getSelectedItem().toString());
-            salesOrderObject.put("orderQuantity", orderQuantityTxt.getText());
-            salesOrderObject.put("orderQuantity", orderQuantityTxt.getText());
-            salesOrderObject.put("orderQuantity", orderQuantityTxt.getText());
-            salesOrderObject.put("orderQuantity", orderQuantityTxt.getText());
+            salesOrderObject.put("createdBy", createdByCombo.getSelectedItem().toString());
+            salesOrderObject.put("status", statusCombo.getSelectedItem().toString());
+            salesOrderObject.put("priority", priorityCombo.getSelectedItem().toString());
+            salesOrderObject.put("sent", sentCheck.isSelected());
+            salesOrderObject.put("dueDate", dueDateTxt.getText());
+            salesOrderObject.put("archived", archaivedCheck.isSelected());
+            
         } catch (JSONException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SalesOrderCreate.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String restEndPoint = Login.getRestEndPoint();
-        String resource = "category";
+        String resource = "salesOrder";
         String serviceUri = restEndPoint.concat(resource);
         System.out.println("serviceUri = " + serviceUri);
         
-        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
+                InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
         //System.out.println("categoryObject = " + categoryObject);
         restFeed.setRestEndPoint(serviceUri);
-        //restFeed.setJsonObject(categoryObject);
+        restFeed.setJsonObject(salesOrderObject);
         try {
             restFeed.restInitialization();
         } catch (MalformedURLException ex) {
@@ -423,8 +444,8 @@ public class SalesOrderCreate extends javax.swing.JFrame {
     private javax.swing.JCheckBox archaivedCheck;
     private javax.swing.JButton cancelDetailBtn;
     private javax.swing.JButton cancelGeneral;
+    private javax.swing.JComboBox createdByCombo;
     private javax.swing.JLabel createdByLabel;
-    private javax.swing.JComboBox createdByTxt;
     private javax.swing.JLabel createdDateLabel;
     private javax.swing.JTextField createdDateTxt;
     private javax.swing.JComboBox customerCombo;

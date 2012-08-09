@@ -31,7 +31,7 @@ public class RESTFeed {
         this.requestMethod = requestMethod;
     }
     
-    public void restInitialization() throws MalformedURLException, IOException {
+    public String restInitialization() throws MalformedURLException, IOException {
         URL url = new URL(getRestEndPoint());
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setUseCaches(false);
@@ -42,24 +42,26 @@ public class RESTFeed {
         connection.setRequestProperty("Content-Type", contentType);
         connection.setRequestProperty("Accept", acceptType);
         
-        OutputStream outputStream = connection.getOutputStream();
-        outputStream.write(getJsonObject().toString().getBytes());
-        outputStream.flush();
-        outputStream.close();
+        if(! requestMethod.equals("GET")){
+            OutputStream outputStream = connection.getOutputStream();
+            outputStream.write(getJsonObject().toString().getBytes());
+            outputStream.flush();
+            outputStream.close();
+        }
         
-        if (connection.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                        + connection.getResponseCode() + connection.getContent());
-            }
+        
+        System.out.println("connection.getInputStream() = " + connection.getInputStream());
 
         BufferedReader br = new BufferedReader(new InputStreamReader(
                 (connection.getInputStream())));
-        String output;
-        while ((output = br.readLine()) != null) {
-            System.out.println(output);
-        }
+        String output = br.readLine(); 
+//        while ((output = br.readLine()) != null) {
+//            System.out.println(output);
+//        }
 
         connection.disconnect();
+        
+        return output;
     }
 
     public JSONObject getJsonObject() {

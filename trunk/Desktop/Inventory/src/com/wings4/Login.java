@@ -175,6 +175,7 @@ public class Login extends javax.swing.JDialog {
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
 
+        //1. define rest end point
         String serverAddress = serverText.getText();
         String serverPort = portText.getText();
         JSONObject userObject = new JSONObject();
@@ -199,9 +200,9 @@ public class Login extends javax.swing.JDialog {
             desktop.setVisible(true);
             this.setVisible(false);
         } catch (MalformedURLException ex) {
-            JOptionPane.showMessageDialog(null,"The URL Provided is incorrect","Login Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"The URL Provided is incorrect" + ex,"Login Error",JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null,"Bad Usernam/Password combination provided","Login Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Bad Usernam/Password combination provided" + ex,"Login Error",JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_submitActionPerformed
