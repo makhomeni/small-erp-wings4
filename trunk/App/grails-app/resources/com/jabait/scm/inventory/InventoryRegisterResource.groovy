@@ -25,7 +25,30 @@ class InventoryRegisterResource {
     @Produces(["application/json"])
     Response createInventory(String inventory){
          JSONObject inventoryObject = new JSONObject(inventory);
+        Product product = Product.get(Integer.parseInt(inventoryObject.get("product").toString()));
+        Integer onHand =  Integer.parseInt(inventoryObject.get("onHand").toString());
+        Integer onOrder = Integer.parseInt(inventoryObject.get("onOrder").toString());;
+        Integer allocated = Integer.parseInt(inventoryObject.get("allocated").toString());;;
+        Integer committed = Integer.parseInt(inventoryObject.get("committed").toString());;;
+        Integer unavailable = Integer.parseInt(inventoryObject.get("unavailable").toString());;;
+        Integer backOrdered = Integer.parseInt(inventoryObject.get("backOrdered").toString());;;
+        Integer dropShip = Integer.parseInt(inventoryObject.get("dropShip").toString());;;
+        Integer availableForSale = Integer.parseInt(inventoryObject.get("availableForSale").toString());;;
+        Integer availableToPick = Integer.parseInt(inventoryObject.get("availableToPick").toString());;;
 
+        InventoryRegister inventoryRegister = new InventoryRegister();
+        inventoryRegister.product = product;
+        inventoryRegister.onHand = onHand;
+        inventoryRegister.onOrder = onOrder;
+        inventoryRegister.allocated = allocated;
+        inventoryRegister.committed = committed;
+        inventoryRegister.unavailable = unavailable;
+        inventoryRegister.backOrdered = backOrdered;
+        inventoryRegister.dropShip = dropShip;
+        inventoryRegister.availableForSale = availableForSale;
+        inventoryRegister.availableToPick = availableToPick;
+
+        created inventoryRegister.save();
     }
 
     @GET
