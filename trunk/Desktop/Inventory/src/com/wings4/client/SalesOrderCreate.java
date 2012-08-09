@@ -18,6 +18,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.swing.*;
+
 /**
  *
  * @author shohag
@@ -190,7 +192,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
 
         jLabel1.setText("Priority");
 
-        priorityCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Low", "Medium", "High"}));
+        priorityCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3"}));
 
         sentLabel.setText("Sent");
 
@@ -417,40 +419,41 @@ public class SalesOrderCreate extends InventoryInternalBase {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitGeneralBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitGeneralBtnActionPerformed
-        
+        JOptionPane.showConfirmDialog(this, "Submitted");
         JSONObject salesOrderObject = new JSONObject();
         try {
+            Item createdBy = (Item)createdByCombo.getSelectedItem();
             salesOrderObject.put("jobName", jobNameTxt.getText());
             salesOrderObject.put("orderQuantity", orderQuantityTxt.getText());
             salesOrderObject.put("createdDate", createdDateTxt.getText());
-            salesOrderObject.put("createdBy", createdByCombo.getSelectedItem().toString());
+            salesOrderObject.put("createdBy", createdBy.getId());
             salesOrderObject.put("status", statusCombo.getSelectedItem().toString());
             salesOrderObject.put("priority", priorityCombo.getSelectedItem().toString());
-            salesOrderObject.put("sent", sentCheck.isSelected());
+            salesOrderObject.put("isSent", sentCheck.isSelected());
             salesOrderObject.put("dueDate", dueDateTxt.getText());
-            salesOrderObject.put("archived", archaivedCheck.isSelected());
+            salesOrderObject.put("isArchived", archaivedCheck.isSelected());
             
         } catch (JSONException ex) {
             Logger.getLogger(SalesOrderCreate.class.getName()).log(Level.SEVERE, null, ex);
         }
-//
-//        String restEndPoint = Login.getRestEndPoint();
-//        String resource = "salesOrder";
-//        String serviceUri = restEndPoint.concat(resource);
-//        System.out.println("serviceUri = " + serviceUri);
-//
-//        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
-//                InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
-//        //System.out.println("categoryObject = " + categoryObject);
-//        restFeed.setRestEndPoint(serviceUri);
-//        restFeed.setJsonObject(salesOrderObject);
-//        try {
-//            restFeed.restInitialization();
-//        } catch (MalformedURLException ex) {
-//            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
+        String restEndPoint = Login.getRestEndPoint();
+        String resource = "salesOrder";
+
+
+
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
+                InventoryConstants.MEDIA_JSON,InventoryConstants.POST,
+                restEndPoint, resource);
+        restFeed.setJsonObject(salesOrderObject);
+        try {
+            restFeed.restInitialization();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(SalesOrderCreate.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SalesOrderCreate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_submitGeneralBtnActionPerformed
 
     /**
