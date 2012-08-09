@@ -10,7 +10,15 @@
  */
 package com.wings4.client;
 
+import com.wings4.Login;
+import com.wings4.util.InventoryConstants;
 import com.wings4.util.InventoryInternalBase;
+import com.wings4.util.RESTFeed;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -34,59 +42,64 @@ public class PurchasingOrderCreate extends InventoryInternalBase {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel6 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jobNameLabel = new javax.swing.JLabel();
+        jobNameText = new javax.swing.JTextField();
+        orderQuantityLabel = new javax.swing.JLabel();
+        orderQuantityText = new javax.swing.JTextField();
+        createDateLabel = new javax.swing.JLabel();
+        createdDateText = new javax.swing.JTextField();
+        createdByLabel = new javax.swing.JLabel();
+        createByText = new javax.swing.JTextField();
+        statusLabel = new javax.swing.JLabel();
+        statusComboBox = new javax.swing.JComboBox();
+        isArchivedLabel = new javax.swing.JLabel();
+        isArchivedCheckBox = new javax.swing.JCheckBox();
+        porderCreateButton = new javax.swing.JButton();
+        poInformationCancelButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        vendorLabel = new javax.swing.JLabel();
+        organizationLabel = new javax.swing.JLabel();
+        shippingAddressLabel = new javax.swing.JLabel();
+        poDetailsButton = new javax.swing.JButton();
+        poDetailsCancelButton = new javax.swing.JButton();
+        vendorComboBox = new javax.swing.JComboBox();
+        organizationComboBox = new javax.swing.JComboBox();
+        shippingAdressComboBox = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        paymentTermLabel = new javax.swing.JLabel();
+        deliveryTermLabel = new javax.swing.JLabel();
+        paymentTermComboBox = new javax.swing.JComboBox();
+        deliveryTermComboBox = new javax.swing.JComboBox();
+        dueDateLabel = new javax.swing.JLabel();
+        dueDateTextField = new javax.swing.JTextField();
+        poTermsConditionButton = new javax.swing.JButton();
+        poCancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Purchasing Order Create");
 
-        jLabel1.setText("Job Name");
+        jobNameLabel.setText("Job Name");
 
-        jLabel2.setText("Order Quantity");
+        orderQuantityLabel.setText("Order Quantity");
 
-        jLabel3.setText("Created Date");
+        createDateLabel.setText("Created Date");
 
-        jLabel4.setText("Created By");
+        createdByLabel.setText("Created By");
 
-        jLabel5.setText("Status");
+        statusLabel.setText("Status");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        statusComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel6.setText("Is Archived");
+        isArchivedLabel.setText("Is Archived");
 
-        jButton1.setText("Save");
+        porderCreateButton.setText("Submit");
+        porderCreateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                porderCreateButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Cancel");
+        poInformationCancelButton.setText("Cancel");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,71 +108,84 @@ public class PurchasingOrderCreate extends InventoryInternalBase {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(createDateLabel)
+                    .addComponent(jobNameLabel)
+                    .addComponent(orderQuantityLabel)
+                    .addComponent(createdByLabel)
+                    .addComponent(statusLabel)
+                    .addComponent(isArchivedLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton2))
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(porderCreateButton)
+                            .addGap(35, 35, 35)
+                            .addComponent(poInformationCancelButton))
+                        .addComponent(createByText, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(createdDateText, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(orderQuantityText, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(jobNameText, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(statusComboBox, 0, 225, Short.MAX_VALUE))
+                    .addComponent(isArchivedCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jobNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jobNameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(orderQuantityLabel)
+                    .addComponent(orderQuantityText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createDateLabel)
+                    .addComponent(createdDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(createByText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(createdByLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(statusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(statusLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jCheckBox1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(51, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(isArchivedCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(porderCreateButton)
+                            .addComponent(poInformationCancelButton)))
+                    .addComponent(isArchivedLabel))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("General Information", jPanel1);
 
-        jLabel7.setText("Vendor");
+        vendorLabel.setText("Vendor");
 
-        jLabel8.setText("Organization");
+        organizationLabel.setText("Organization");
 
-        jLabel9.setText("Shipping Address");
+        shippingAddressLabel.setText("Shipping Address");
 
-        jButton3.setText("Save");
+        poDetailsButton.setText("Submit");
+        poDetailsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                poDetailsButtonActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Cancel");
+        poDetailsCancelButton.setText("Cancel");
+
+        vendorComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        organizationComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        shippingAdressComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -168,20 +194,20 @@ public class PurchasingOrderCreate extends InventoryInternalBase {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel9))
+                    .addComponent(organizationLabel)
+                    .addComponent(vendorLabel)
+                    .addComponent(shippingAddressLabel))
                 .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField7)
-                    .addComponent(jTextField6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(vendorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(organizationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(shippingAdressComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(59, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(179, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(poDetailsButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(poDetailsCancelButton)
                 .addGap(130, 130, 130))
         );
         jPanel2Layout.setVerticalGroup(
@@ -189,38 +215,38 @@ public class PurchasingOrderCreate extends InventoryInternalBase {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(vendorLabel)
+                    .addComponent(vendorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(organizationLabel)
+                    .addComponent(organizationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(58, 58, 58)
+                    .addComponent(shippingAddressLabel)
+                    .addComponent(shippingAdressComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
-                .addContainerGap(115, Short.MAX_VALUE))
+                    .addComponent(poDetailsButton)
+                    .addComponent(poDetailsCancelButton))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Detail", jPanel2);
 
-        jLabel10.setText("Payment Term");
+        paymentTermLabel.setText("Payment Term");
 
-        jLabel11.setText("Delivery Term");
+        deliveryTermLabel.setText("Delivery Term");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        paymentTermComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        deliveryTermComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel12.setText("Due Date");
+        dueDateLabel.setText("Due Date");
 
-        jButton5.setText("Save");
+        poTermsConditionButton.setText("Submit");
 
-        jButton6.setText("Cancel");
+        poCancelButton.setText("Cancel");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -229,19 +255,19 @@ public class PurchasingOrderCreate extends InventoryInternalBase {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10))
+                    .addComponent(dueDateLabel)
+                    .addComponent(paymentTermLabel)
+                    .addComponent(deliveryTermLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton5)
+                        .addComponent(poTermsConditionButton)
                         .addGap(30, 30, 30)
-                        .addComponent(jButton6))
+                        .addComponent(poCancelButton))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField8)
-                        .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(dueDateTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(deliveryTermComboBox, 0, 225, Short.MAX_VALUE)
+                        .addComponent(paymentTermComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -249,21 +275,21 @@ public class PurchasingOrderCreate extends InventoryInternalBase {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(paymentTermLabel)
+                    .addComponent(paymentTermComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(deliveryTermComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deliveryTermLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dueDateLabel)
+                    .addComponent(dueDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addContainerGap(140, Short.MAX_VALUE))
+                    .addComponent(poTermsConditionButton)
+                    .addComponent(poCancelButton))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Terms & Conditions", jPanel3);
@@ -282,11 +308,47 @@ public class PurchasingOrderCreate extends InventoryInternalBase {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+private void porderCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_porderCreateButtonActionPerformed
+// TODO add your handling code here:
+    JSONObject purchasingOrderInformationResourceObject = new JSONObject();
+    try{
+        purchasingOrderInformationResourceObject.put("jobName",jobNameText.getText());
+        purchasingOrderInformationResourceObject.put("orderQuantity",orderQuantityText.getText());
+        purchasingOrderInformationResourceObject.put("createDate",createdDateText.getText());
+        purchasingOrderInformationResourceObject.put("createdBy",createByText.getText());
+        purchasingOrderInformationResourceObject.put("status",statusComboBox.getSelectedItem().toString());
+        purchasingOrderInformationResourceObject.put("isArchived",Boolean.valueOf(isArchivedCheckBox.isSelected()));
+        
+    } catch(JSONException ex){
+        
+        Logger.getLogger(CustomerInsert.class.getName()).log(Level.SEVERE, null, ex);  
+    }
+     String restEndPoint = Login.getRestEndPoint();
+        String resource = "purchasingOrderInformationRegister";
+        
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
+                InventoryConstants.MEDIA_JSON,InventoryConstants.POST, 
+                restEndPoint, resource);
+    restFeed.setJsonObject(purchasingOrderInformationResourceObject);
+    try {
+        restFeed.restInitialization();
+    } catch (IOException ex) {
+        Logger.getLogger(PurchasingOrderCreate.class.getName()).log(Level.SEVERE, null, ex);
+    }                
+    
+}//GEN-LAST:event_porderCreateButtonActionPerformed
+
+private void poDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poDetailsButtonActionPerformed
+// TODO add your handling code here:
+    
+    
+}//GEN-LAST:event_poDetailsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,39 +386,39 @@ public class PurchasingOrderCreate extends InventoryInternalBase {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField createByText;
+    private javax.swing.JLabel createDateLabel;
+    private javax.swing.JLabel createdByLabel;
+    private javax.swing.JTextField createdDateText;
+    private javax.swing.JComboBox deliveryTermComboBox;
+    private javax.swing.JLabel deliveryTermLabel;
+    private javax.swing.JLabel dueDateLabel;
+    private javax.swing.JTextField dueDateTextField;
+    private javax.swing.JCheckBox isArchivedCheckBox;
+    private javax.swing.JLabel isArchivedLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel jobNameLabel;
+    private javax.swing.JTextField jobNameText;
+    private javax.swing.JLabel orderQuantityLabel;
+    private javax.swing.JTextField orderQuantityText;
+    private javax.swing.JComboBox organizationComboBox;
+    private javax.swing.JLabel organizationLabel;
+    private javax.swing.JComboBox paymentTermComboBox;
+    private javax.swing.JLabel paymentTermLabel;
+    private javax.swing.JButton poCancelButton;
+    private javax.swing.JButton poDetailsButton;
+    private javax.swing.JButton poDetailsCancelButton;
+    private javax.swing.JButton poInformationCancelButton;
+    private javax.swing.JButton poTermsConditionButton;
+    private javax.swing.JButton porderCreateButton;
+    private javax.swing.JLabel shippingAddressLabel;
+    private javax.swing.JComboBox shippingAdressComboBox;
+    private javax.swing.JComboBox statusComboBox;
+    private javax.swing.JLabel statusLabel;
+    private javax.swing.JComboBox vendorComboBox;
+    private javax.swing.JLabel vendorLabel;
     // End of variables declaration//GEN-END:variables
 }
