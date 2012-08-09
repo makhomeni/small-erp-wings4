@@ -336,6 +336,9 @@ private void purchasingOrderMenuItemActionPerformed(java.awt.event.ActionEvent e
 
 private void inventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventoryMenuItemActionPerformed
 // TODO add your handling code here:
+    InventoryCreate inventory = new InventoryCreate();
+    inventory.setVisible(true);
+    inventoryDesktopBoard.add(inventory);
 }//GEN-LAST:event_inventoryMenuItemActionPerformed
 
     private void salesOrderMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesOrderMenuItemActionPerformed

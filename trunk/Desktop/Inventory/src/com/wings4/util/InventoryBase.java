@@ -20,7 +20,7 @@ public class InventoryBase extends JFrame{
 
     public InventoryBase() {
         setDefaultBehavior();
-        setLocation(500,200);
+        setLocation(100,100);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
@@ -41,7 +41,7 @@ public class InventoryBase extends JFrame{
     public InventoryBase(String title) throws HeadlessException {
         super(title);
         setDefaultBehavior();
-        setLocation(500,200);
+        setLocation(100,100);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
