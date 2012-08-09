@@ -188,6 +188,7 @@ public class InventoryDesktop extends InventoryBase {
         fileMenu.setText("File");
 
         loginMenuItem.setText("Login");
+        loginMenuItem.setEnabled(false);
         fileMenu.add(loginMenuItem);
 
         logoutMenuItem.setText("Logout");
