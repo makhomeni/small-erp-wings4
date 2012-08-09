@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,6 +63,11 @@ public class Login extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         usernameLabel.setText("Username");
 
@@ -76,9 +82,15 @@ public class Login extends javax.swing.JDialog {
         serverAddressLabel.setText("Server Address");
 
         submit.setText("Login");
+        submit.setSelected(true);
         submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitActionPerformed(evt);
+            }
+        });
+        submit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                submitKeyPressed(evt);
             }
         });
 
@@ -171,12 +183,11 @@ public class Login extends javax.swing.JDialog {
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         // TODO add your handling code here:
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_cancelActionPerformed
 
-    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-
-        //1. define rest end point
-        String serverAddress = serverText.getText();
+    private void loginButtonAction(){
+      String serverAddress = serverText.getText();
         String serverPort = portText.getText();
         JSONObject userObject = new JSONObject();
         try {
@@ -202,13 +213,27 @@ public class Login extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"The URL Provided is incorrect" + ex,"Login Error",JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,"Bad Usernam/Password combination provided" + ex,"Login Error",JOptionPane.ERROR_MESSAGE);
-        }
+        }  
+        
+    }
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+
+       loginButtonAction();
         
     }//GEN-LAST:event_submitActionPerformed
 
     private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordTextActionPerformed
+
+private void submitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_submitKeyPressed
+// TODO add your handling code here:
+    loginButtonAction();
+}//GEN-LAST:event_submitKeyPressed
+
+private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+// TODO add your handling code here:
+}//GEN-LAST:event_formKeyPressed
 
     /**
      * @param args the command line arguments
