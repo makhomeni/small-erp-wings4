@@ -12,15 +12,20 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+
 /**
  *
  * @author ronnie
  */
 public class InventoryBase extends JFrame{
 
+    
     public InventoryBase() {
         setDefaultBehavior();
         setLocation(100,100);
+        
+ 
+        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
@@ -42,6 +47,7 @@ public class InventoryBase extends JFrame{
         super(title);
         setDefaultBehavior();
         setLocation(100,100);
+        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
@@ -66,7 +72,8 @@ public class InventoryBase extends JFrame{
         URL imageUrl = ClassLoader.getSystemResource("com/wings4/resource/logo.png");
         Image favIcon = kit.createImage(imageUrl);
         this.setIconImage(favIcon);
-
+        
+        
     }
     
 }

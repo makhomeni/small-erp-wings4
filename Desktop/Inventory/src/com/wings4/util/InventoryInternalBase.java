@@ -25,6 +25,7 @@ public class InventoryInternalBase extends JInternalFrame {
         setLocation(100,100);
         setClosable(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
@@ -46,6 +47,7 @@ public class InventoryInternalBase extends JInternalFrame {
         setDefaultBehavior();
         setLocation(100,100);
         setClosable(true);
+        
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
