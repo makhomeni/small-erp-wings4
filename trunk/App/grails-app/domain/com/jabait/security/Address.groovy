@@ -6,7 +6,7 @@ import com.jabait.hrm.EmployeeProfile
 class Address {
 
     String country;
-    String extendedAddress;
+    String extendedAddress;//Street address 1 and Street address 2 two Text field
     String poBox;
     String postalCode;
     String region;

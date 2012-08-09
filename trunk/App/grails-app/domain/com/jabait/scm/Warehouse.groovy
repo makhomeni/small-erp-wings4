@@ -8,6 +8,7 @@ import com.jabait.security.Address
 class Warehouse {
     
     Organization organization;
+    String wareHouseName;
     Address address;
 
     static hasMany = [storageBins : StorageBin]
