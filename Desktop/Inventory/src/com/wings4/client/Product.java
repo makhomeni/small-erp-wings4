@@ -51,7 +51,7 @@ public class Product extends InventoryInternalBase {
         skuText = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         upcText = new javax.swing.JTextField();
-        saveProductButton = new javax.swing.JButton();
+        saveGeneralProductButton = new javax.swing.JButton();
         clearProductButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -90,10 +90,10 @@ public class Product extends InventoryInternalBase {
 
         jLabel8.setText("UPC:");
 
-        saveProductButton.setText("Save");
-        saveProductButton.addActionListener(new java.awt.event.ActionListener() {
+        saveGeneralProductButton.setText("Save");
+        saveGeneralProductButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveProductButtonActionPerformed(evt);
+                saveGeneralProductButtonActionPerformed(evt);
             }
         });
 
@@ -131,7 +131,7 @@ public class Product extends InventoryInternalBase {
                             .addComponent(uomCombo, 0, 335, Short.MAX_VALUE)
                             .addComponent(upcText, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(saveProductButton)
+                                .addComponent(saveGeneralProductButton)
                                 .addGap(18, 18, 18)
                                 .addComponent(clearProductButton)))))
                 .addContainerGap())
@@ -174,7 +174,7 @@ public class Product extends InventoryInternalBase {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clearProductButton)
-                    .addComponent(saveProductButton))
+                    .addComponent(saveGeneralProductButton))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -230,7 +230,7 @@ public class Product extends InventoryInternalBase {
         // TODO add your handling code here:
     }//GEN-LAST:event_productNameTextActionPerformed
 
-    private void saveProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveProductButtonActionPerformed
+    private void saveGeneralProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveGeneralProductButtonActionPerformed
         // TODO add your handling code here:
         String productName = productNameText.getText();
         String category = categoryCombo.getSelectedItem().toString();
@@ -240,7 +240,7 @@ public class Product extends InventoryInternalBase {
         String uom = uomCombo.getSelectedItem().toString();
         String sku = skuText.getText();
         String upc = upcText.getText();
-    }//GEN-LAST:event_saveProductButtonActionPerformed
+    }//GEN-LAST:event_saveGeneralProductButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox categoryCombo;
@@ -261,7 +261,7 @@ public class Product extends InventoryInternalBase {
     private javax.swing.JTextField licenseInfoText;
     private javax.swing.JTextField productNameText;
     private javax.swing.JComboBox productTypeCombo;
-    private javax.swing.JButton saveProductButton;
+    private javax.swing.JButton saveGeneralProductButton;
     private javax.swing.JTextField skuText;
     private javax.swing.JComboBox uomCombo;
     private javax.swing.JTextField upcText;
