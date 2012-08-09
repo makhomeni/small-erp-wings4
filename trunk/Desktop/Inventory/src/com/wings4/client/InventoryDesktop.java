@@ -8,6 +8,8 @@ import com.wings4.Login;
 import com.wings4.util.InventoryBase;
 import com.wings4.util.InactivityListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.Action;
 
@@ -68,6 +70,11 @@ public class InventoryDesktop extends InventoryBase {
      */
     public InventoryDesktop() {
         initComponents();
+        addWindowListener(new WindowAdapter() {
+            public void windowOpened(WindowEvent e) {
+                setExtendedState(MAXIMIZED_BOTH);
+            }
+        });
         Action logoutAction = new LogoutAction();
         InactivityListener listener = new InactivityListener(logoutAction, 10);
         listener.start();
