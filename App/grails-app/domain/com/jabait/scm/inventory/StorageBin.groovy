@@ -8,7 +8,7 @@ class StorageBin {
 
     static belongsTo = [Warehouse];
 
-    static hasMany = [products : Product];
+    static hasMany = [inventories : InventoryRegister];
 
     String storageBinName;
     Warehouse warehouse;
