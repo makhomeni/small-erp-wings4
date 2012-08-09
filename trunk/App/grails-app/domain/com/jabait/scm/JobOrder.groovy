@@ -27,5 +27,8 @@ class JobOrder {
 
     static constraints = {
         jobName(unique: true, nullable: false);
+        createdDate(nullable: true);
+        deliveryTerm(nullable: true);
+        dueDate(nullable: true);
     }
 }
