@@ -5,6 +5,7 @@
 package com.wings4.client;
 
 import com.wings4.Login;
+import com.wings4.dao.PaymentDao;
 import com.wings4.dao.UserDao;
 import com.wings4.util.*;
 import java.io.IOException;
@@ -66,7 +67,6 @@ public class SalesOrderCreate extends InventoryInternalBase {
         
         jPanel3 = new javax.swing.JPanel();
         paymentTermLabel = new javax.swing.JLabel();
-        paymentTermCombo = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         deliveryTermCombo = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
@@ -88,7 +88,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
         UserDao userDao = new UserDao();
 
         try{
-            System.out.println("userDao.findAllUsers() = " + userDao.findAllUsers());
+//            System.out.println("userDao.findAllUsers() = " + userDao.findAllUsers());
             JSONArray jsonArray = new JSONArray(userDao.findAllUsers());
             List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
             Map<String,Object> user;
@@ -118,32 +118,34 @@ public class SalesOrderCreate extends InventoryInternalBase {
         //start the combo box processing for for payment term  in terms and condition
         //get combo box value from db
         //add value as key value pair
-        /*
+
         try{
-            JSONArray jsonArray = new JSONArray(findAllPayments());
-            List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
-            Map<String,Object> user;
+            PaymentDao paymentDao = new PaymentDao();
+            System.out.println("paymentDao = " + paymentDao.findAllPayments());
+            JSONArray jsonArray = new JSONArray(paymentDao.findAllPayments());
+            List<Map<String,Object>> payments = new ArrayList<Map<String,Object>>();
+            Map<String,Object> payment;
             System.out.print(jsonArray.length());
             for(int i = 0 ; i < jsonArray.length(); i++){
-                user = new HashMap<String,Object>();
+                payment = new HashMap<String,Object>();
                 System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
-                JSONObject userObject = (JSONObject)jsonArray.get(i);
-                user.put("id", userObject.get("id"));
-                user.put("userCode", userObject.get("userCode"));
-                users.add(user);
+                JSONObject paymentObject = (JSONObject)jsonArray.get(i);
+                payment.put("id", paymentObject.get("id"));
+                payment.put("paymentMethod", paymentObject.get("paymentMethod"));
+                payments.add(payment);
             }
 
-            Vector<Item> userVector = new Vector<Item>();
-            for(Map<String,Object> userMap : users) {
-                System.out.println("userMap = " + userMap);
-                userVector.addElement(new Item(Integer.parseInt(userMap.get("id").toString()), userMap.get("userCode").toString()));
+            Vector<Item> paymentVector = new Vector<Item>();
+            for(Map<String,Object> paymentMap : payments) {
+                System.out.println("paymentMap = " + paymentMap);
+                paymentVector.addElement(new Item(Integer.parseInt(paymentMap.get("id").toString()), paymentMap.get("paymentMethod").toString()));
             }
-            createdByCombo = new javax.swing.JComboBox(userVector);
-            createdByCombo.setRenderer(new ItemRenderer());
+            paymentTermCombo = new javax.swing.JComboBox(paymentVector);
+            paymentTermCombo.setRenderer(new ItemRenderer());
         }catch(Exception ex){
             System.out.println("ex is here = " + ex);
         }
-         */
+
         //end combo box processing for created by
 
 
@@ -264,7 +266,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
 
         paymentTermLabel.setText("Payment Term");
 
-        paymentTermCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
+//        paymentTermCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
 
         jLabel5.setText("Delivery Term");
 
