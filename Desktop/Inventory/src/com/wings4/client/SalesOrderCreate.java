@@ -84,100 +84,16 @@ public class SalesOrderCreate extends InventoryInternalBase {
         cancelDetailBtn = new javax.swing.JButton();
 
 
-        //start the combo box processing for for created by in general information
-        //get combo box value from db
-        //add value as key value pair
-        UserDao userDao = new UserDao();
+        createdByCombo = new javax.swing.JComboBox(creatorItem());
+        createdByCombo.setRenderer(new ItemRenderer());
 
-        try{
-//            System.out.println("userDao.findAllUsers() = " + userDao.findAllUsers());
-            JSONArray jsonArray = new JSONArray(userDao.findAllUsers());
-            List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
-            Map<String,Object> user;
-            System.out.print(jsonArray.length());
-            for(int i = 0 ; i < jsonArray.length(); i++){
-                user = new HashMap<String,Object>();
-                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
-                JSONObject userObject = (JSONObject)jsonArray.get(i);
-                user.put("id", userObject.get("id"));
-                user.put("userCode", userObject.get("userCode"));
-                users.add(user);
-            }
 
-            Vector<Item> userVector = new Vector<Item>();
-            for(Map<String,Object> userMap : users) {
-                System.out.println("userMap = " + userMap);
-                userVector.addElement(new Item(Integer.parseInt(userMap.get("id").toString()), userMap.get("userCode").toString()));
-            }
-            createdByCombo = new javax.swing.JComboBox(userVector);
-            createdByCombo.setRenderer(new ItemRenderer());
-        }catch(Exception ex){
-            System.out.println("ex is here = " + ex);
-        }
+        paymentTermCombo = new javax.swing.JComboBox(paymentTermItem());
+        paymentTermCombo.setRenderer(new ItemRenderer());
 
-        //end combo box processing for created by
 
-        //start the combo box processing for for payment term  in terms and condition
-        //get combo box value from db
-        //add value as key value pair
-
-        try{
-            PaymentDao paymentDao = new PaymentDao();
-            System.out.println("paymentDao = " + paymentDao.findAllPayments());
-            JSONArray jsonArray = new JSONArray(paymentDao.findAllPayments());
-            List<Map<String,Object>> payments = new ArrayList<Map<String,Object>>();
-            Map<String,Object> payment;
-            System.out.print(jsonArray.length());
-            for(int i = 0 ; i < jsonArray.length(); i++){
-                payment = new HashMap<String,Object>();
-                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
-                JSONObject paymentObject = (JSONObject)jsonArray.get(i);
-                payment.put("id", paymentObject.get("id"));
-                payment.put("paymentMethod", paymentObject.get("paymentMethod"));
-                payments.add(payment);
-            }
-
-            Vector<Item> paymentVector = new Vector<Item>();
-            for(Map<String,Object> paymentMap : payments) {
-                System.out.println("paymentMap = " + paymentMap);
-                paymentVector.addElement(new Item(Integer.parseInt(paymentMap.get("id").toString()), paymentMap.get("paymentMethod").toString()));
-            }
-            paymentTermCombo = new javax.swing.JComboBox(paymentVector);
-            paymentTermCombo.setRenderer(new ItemRenderer());
-        }catch(Exception ex){
-            System.out.println("ex is here = " + ex);
-        }
-
-        //end combo box processing for created by
-        //start delivery
-        try{
-            DeliveryTermDao deliveryTermDao = new DeliveryTermDao();
-            System.out.println("deliveryTermDao.findAllDeliveryTerm() = " + deliveryTermDao.findAllDeliveryTerm());
-            List<Map<String,Object>> deliveryTerms = new ArrayList<Map<String,Object>>();
-            JSONArray jsonArray = new JSONArray(deliveryTermDao.findAllDeliveryTerm());
-            Map<String,Object> deliveryTerm;
-            for(int i = 0 ; i < jsonArray.length(); i++){
-                deliveryTerm = new HashMap<String,Object>();
-                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
-                JSONObject deliveryTermObject = (JSONObject)jsonArray.get(i);
-                deliveryTerm.put("id", deliveryTermObject.get("id"));
-                deliveryTerm.put("terms", deliveryTermObject.get("terms"));
-                deliveryTerms.add(deliveryTerm);
-            }
-
-            Vector<Item> deliveryTermVector = new Vector<Item>();
-            for(Map<String,Object> deliveryTermMap : deliveryTerms) {
-                System.out.println("deliveryTermMap = " + deliveryTermMap);
-                deliveryTermVector.addElement(new Item(Integer.parseInt(deliveryTermMap.get("id").toString()),
-                        deliveryTermMap.get("terms").toString()));
-            }
-            deliveryTermCombo = new javax.swing.JComboBox(deliveryTermVector);
-            deliveryTermCombo.setRenderer(new ItemRenderer());
-        }catch(Exception ex){
-            System.out.println("ex is here = " + ex);
-        }
-        //end delivery
-
+        deliveryTermCombo = new javax.swing.JComboBox(deliveryTermItem());
+        deliveryTermCombo.setRenderer(new ItemRenderer());
 
 
         jobNameLabel.setText("Job Name");
@@ -417,6 +333,95 @@ public class SalesOrderCreate extends InventoryInternalBase {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private Vector<Item> creatorItem(){
+        UserDao userDao = new UserDao();
+
+        try{
+//            System.out.println("userDao.findAllUsers() = " + userDao.findAllUsers());
+            JSONArray jsonArray = new JSONArray(userDao.findAllUsers());
+            List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
+            Map<String,Object> user;
+            System.out.print(jsonArray.length());
+            for(int i = 0 ; i < jsonArray.length(); i++){
+                user = new HashMap<String,Object>();
+                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
+                JSONObject userObject = (JSONObject)jsonArray.get(i);
+                user.put("id", userObject.get("id"));
+                user.put("userCode", userObject.get("userCode"));
+                users.add(user);
+            }
+
+            Vector<Item> userVector = new Vector<Item>();
+            for(Map<String,Object> userMap : users) {
+                System.out.println("userMap = " + userMap);
+                userVector.addElement(new Item(Integer.parseInt(userMap.get("id").toString()), userMap.get("userCode").toString()));
+            }
+            return userVector;
+        }catch(Exception ex){
+            System.out.println("ex is here = " + ex);
+            return null;
+        }
+    }
+
+
+    private Vector<Item> paymentTermItem(){
+        try{
+            PaymentDao paymentDao = new PaymentDao();
+            System.out.println("paymentDao = " + paymentDao.findAllPayments());
+            JSONArray jsonArray = new JSONArray(paymentDao.findAllPayments());
+            List<Map<String,Object>> payments = new ArrayList<Map<String,Object>>();
+            Map<String,Object> payment;
+            System.out.print(jsonArray.length());
+            for(int i = 0 ; i < jsonArray.length(); i++){
+                payment = new HashMap<String,Object>();
+                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
+                JSONObject paymentObject = (JSONObject)jsonArray.get(i);
+                payment.put("id", paymentObject.get("id"));
+                payment.put("paymentMethod", paymentObject.get("paymentMethod"));
+                payments.add(payment);
+            }
+
+            Vector<Item> paymentVector = new Vector<Item>();
+            for(Map<String,Object> paymentMap : payments) {
+                System.out.println("paymentMap = " + paymentMap);
+                paymentVector.addElement(new Item(Integer.parseInt(paymentMap.get("id").toString()), paymentMap.get("paymentMethod").toString()));
+            }
+            return paymentVector;
+        }catch(Exception ex){
+            System.out.println("ex is here = " + ex);
+            return null;
+        }
+    }
+
+    private Vector<Item> deliveryTermItem(){
+        try{
+            DeliveryTermDao deliveryTermDao = new DeliveryTermDao();
+            System.out.println("deliveryTermDao.findAllDeliveryTerm() = " + deliveryTermDao.findAllDeliveryTerm());
+            List<Map<String,Object>> deliveryTerms = new ArrayList<Map<String,Object>>();
+            JSONArray jsonArray = new JSONArray(deliveryTermDao.findAllDeliveryTerm());
+            Map<String,Object> deliveryTerm;
+            for(int i = 0 ; i < jsonArray.length(); i++){
+                deliveryTerm = new HashMap<String,Object>();
+                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
+                JSONObject deliveryTermObject = (JSONObject)jsonArray.get(i);
+                deliveryTerm.put("id", deliveryTermObject.get("id"));
+                deliveryTerm.put("terms", deliveryTermObject.get("terms"));
+                deliveryTerms.add(deliveryTerm);
+            }
+
+            Vector<Item> deliveryTermVector = new Vector<Item>();
+            for(Map<String,Object> deliveryTermMap : deliveryTerms) {
+                System.out.println("deliveryTermMap = " + deliveryTermMap);
+                deliveryTermVector.addElement(new Item(Integer.parseInt(deliveryTermMap.get("id").toString()),
+                        deliveryTermMap.get("terms").toString()));
+            }
+            return deliveryTermVector;
+        }catch(Exception ex){
+            System.out.println("ex is here = " + ex);
+            return null;
+        }
+    }
 
     private void submitGeneralBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitGeneralBtnActionPerformed
         JOptionPane.showConfirmDialog(this, "Submitted");
