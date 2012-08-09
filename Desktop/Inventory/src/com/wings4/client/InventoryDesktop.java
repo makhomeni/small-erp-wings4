@@ -23,9 +23,11 @@ public class InventoryDesktop extends InventoryBase {
     private static Login login = new Login();
 
     private static class LogoutAction implements Action {
+        
+        private InventoryDesktop inventoryDesktop;
 
-        public LogoutAction() {
-            //desktop.dispose();
+        public LogoutAction(InventoryDesktop inventoryDesktop) {
+            this.inventoryDesktop = inventoryDesktop;
         }
 
         @Override
@@ -61,7 +63,7 @@ public class InventoryDesktop extends InventoryBase {
         @Override
         public void actionPerformed(ActionEvent e) {
             login.setVisible(true);
-            desktop.dispose();
+            inventoryDesktop.setVisible(false);
         }
     }
 
@@ -75,8 +77,8 @@ public class InventoryDesktop extends InventoryBase {
                 setExtendedState(MAXIMIZED_BOTH);
             }
         });
-        Action logoutAction = new LogoutAction();
-        InactivityListener listener = new InactivityListener(logoutAction, 10);
+        Action logoutAction = new LogoutAction(this);
+        InactivityListener listener = new InactivityListener(logoutAction, 1);
         listener.start();
     }
 
@@ -336,7 +338,9 @@ public class InventoryDesktop extends InventoryBase {
 
     private void logoutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutMenuItemActionPerformed
         // TODO add your handling code here:
-        
+        Login login = new Login();
+        login.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_logoutMenuItemActionPerformed
 
 private void purchasingOrderMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchasingOrderMenuItemActionPerformed
