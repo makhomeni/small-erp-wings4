@@ -116,12 +116,12 @@ public class Category extends InventoryInternalBase {
         
         String restEndPoint = Login.getRestEndPoint();
         String resource = "category";
-        String serviceUri = restEndPoint.concat(resource);
-        System.out.println("serviceUri = " + serviceUri);
+
+
         
-        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,InventoryConstants.MEDIA_JSON,InventoryConstants.POST, restEndPoint, resource);
         System.out.println("categoryObject = " + categoryObject);
-        restFeed.setRestEndPoint(serviceUri);
+
         restFeed.setJsonObject(categoryObject);
         try {
             restFeed.restInitialization();

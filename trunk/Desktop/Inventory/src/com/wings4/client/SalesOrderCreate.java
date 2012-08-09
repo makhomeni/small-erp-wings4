@@ -5,6 +5,7 @@
 package com.wings4.client;
 
 import com.wings4.Login;
+import com.wings4.dao.UserDao;
 import com.wings4.util.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -28,26 +29,8 @@ public class SalesOrderCreate extends InventoryInternalBase {
         initComponents();
     }
     
-    private String findAllUsers(){
-        
-        String restEndPoint = Login.getRestEndPoint();
-        String resource = "user";
-        String serviceUri = restEndPoint.concat(resource);
-        
-        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,InventoryConstants.MEDIA_JSON,
-                InventoryConstants.GET);
-        restFeed.setRestEndPoint(serviceUri);
-        try {
-            System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
-            return restFeed.restInitialization();
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        } catch (IOException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,31 +62,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
         submitGeneralBtn = new javax.swing.JButton();
         cancelGeneral = new javax.swing.JButton();
         createdByLabel = new javax.swing.JLabel();
-		
-        try{
-            JSONArray jsonArray = new JSONArray(findAllUsers());
-			List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
-			Map<String,Object> user;
-            System.out.print(jsonArray.length());
-			for(int i = 0 ; i < jsonArray.length(); i++){
-				user = new HashMap<String,Object>();
-                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
-				JSONObject userObject = (JSONObject)jsonArray.get(i);
-				user.put("id", userObject.get("id"));
-				user.put("userCode", userObject.get("userCode"));
-				users.add(user);
-			}
-			
-			Vector<Item> userVector = new Vector<Item>();
-			for(Map<String,Object> userMap : users) {
-                System.out.println("userMap = " + userMap);
-				userVector.addElement(new Item(Integer.parseInt(userMap.get("id").toString()), userMap.get("userCode").toString()));
-			}
-			createdByCombo = new javax.swing.JComboBox(userVector);
-			createdByCombo.setRenderer(new ItemRenderer());
-        }catch(Exception ex){
-            System.out.println("ex is here = " + ex);
-        }
+
         
         jPanel3 = new javax.swing.JPanel();
         paymentTermLabel = new javax.swing.JLabel();
@@ -121,6 +80,73 @@ public class SalesOrderCreate extends InventoryInternalBase {
         customerCombo = new javax.swing.JComboBox();
         submitDetailBtn = new javax.swing.JButton();
         cancelDetailBtn = new javax.swing.JButton();
+
+
+        //start the combo box processing for for created by in general information
+        //get combo box value from db
+        //add value as key value pair
+        UserDao userDao = new UserDao();
+
+        try{
+            JSONArray jsonArray = new JSONArray(userDao.findAllUsers());
+            List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
+            Map<String,Object> user;
+            System.out.print(jsonArray.length());
+            for(int i = 0 ; i < jsonArray.length(); i++){
+                user = new HashMap<String,Object>();
+                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
+                JSONObject userObject = (JSONObject)jsonArray.get(i);
+                user.put("id", userObject.get("id"));
+                user.put("userCode", userObject.get("userCode"));
+                users.add(user);
+            }
+
+            Vector<Item> userVector = new Vector<Item>();
+            for(Map<String,Object> userMap : users) {
+                System.out.println("userMap = " + userMap);
+                userVector.addElement(new Item(Integer.parseInt(userMap.get("id").toString()), userMap.get("userCode").toString()));
+            }
+            createdByCombo = new javax.swing.JComboBox(userVector);
+            createdByCombo.setRenderer(new ItemRenderer());
+        }catch(Exception ex){
+            System.out.println("ex is here = " + ex);
+        }
+
+        //end combo box processing for created by
+
+        //start the combo box processing for for payment term  in terms and condition
+        //get combo box value from db
+        //add value as key value pair
+        /*
+        try{
+            JSONArray jsonArray = new JSONArray(findAllPayments());
+            List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
+            Map<String,Object> user;
+            System.out.print(jsonArray.length());
+            for(int i = 0 ; i < jsonArray.length(); i++){
+                user = new HashMap<String,Object>();
+                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
+                JSONObject userObject = (JSONObject)jsonArray.get(i);
+                user.put("id", userObject.get("id"));
+                user.put("userCode", userObject.get("userCode"));
+                users.add(user);
+            }
+
+            Vector<Item> userVector = new Vector<Item>();
+            for(Map<String,Object> userMap : users) {
+                System.out.println("userMap = " + userMap);
+                userVector.addElement(new Item(Integer.parseInt(userMap.get("id").toString()), userMap.get("userCode").toString()));
+            }
+            createdByCombo = new javax.swing.JComboBox(userVector);
+            createdByCombo.setRenderer(new ItemRenderer());
+        }catch(Exception ex){
+            System.out.println("ex is here = " + ex);
+        }
+         */
+        //end combo box processing for created by
+
+
+
 
         jobNameLabel.setText("Job Name");
 
@@ -156,88 +182,88 @@ public class SalesOrderCreate extends InventoryInternalBase {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(createdByLabel)
-                    .addComponent(jLabel2)
-                    .addComponent(dueDateLabel)
-                    .addComponent(sentLabel)
-                    .addComponent(jLabel1)
-                    .addComponent(statusLabel)
-                    .addComponent(createdDateLabel)
-                    .addComponent(orderQuantityLabel)
-                    .addComponent(jobNameLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(submitGeneralBtn)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cancelGeneral))
-                        .addComponent(jobNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                        .addComponent(orderQuantityTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                        .addComponent(createdDateTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                        .addComponent(statusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(priorityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(sentCheck)
-                        .addComponent(dueDateTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                        .addComponent(archaivedCheck))
-                    .addComponent(createdByCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(155, Short.MAX_VALUE))
+                                .addGap(52, 52, 52)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(createdByLabel)
+                                        .addComponent(jLabel2)
+                                        .addComponent(dueDateLabel)
+                                        .addComponent(sentLabel)
+                                        .addComponent(jLabel1)
+                                        .addComponent(statusLabel)
+                                        .addComponent(createdDateLabel)
+                                        .addComponent(orderQuantityLabel)
+                                        .addComponent(jobNameLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(submitGeneralBtn)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(cancelGeneral))
+                                                .addComponent(jobNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                                .addComponent(orderQuantityTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                                .addComponent(createdDateTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                                .addComponent(statusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(priorityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(sentCheck)
+                                                .addComponent(dueDateTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                                .addComponent(archaivedCheck))
+                                        .addComponent(createdByCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jobNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jobNameLabel))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(orderQuantityLabel)
-                    .addComponent(orderQuantityTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(createdDateLabel)
-                    .addComponent(createdDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(createdByCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(createdByLabel))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(statusLabel)
-                    .addComponent(statusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(priorityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sentLabel)
-                    .addComponent(sentCheck))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dueDateLabel)
-                    .addComponent(dueDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(archaivedCheck))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitGeneralBtn)
-                    .addComponent(cancelGeneral))
-                .addContainerGap())
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jobNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jobNameLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(orderQuantityLabel)
+                                        .addComponent(orderQuantityTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(21, 21, 21)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(createdDateLabel)
+                                        .addComponent(createdDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(createdByCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(createdByLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(statusLabel)
+                                        .addComponent(statusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(priorityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(sentLabel)
+                                        .addComponent(sentCheck))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(dueDateLabel)
+                                        .addComponent(dueDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(archaivedCheck))
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(submitGeneralBtn)
+                                        .addComponent(cancelGeneral))
+                                .addContainerGap())
         );
 
         jTabbedPane1.addTab("General Information", jPanel1);
 
         paymentTermLabel.setText("Payment Term");
 
-        paymentTermCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        paymentTermCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
 
         jLabel5.setText("Delivery Term");
 
@@ -378,24 +404,24 @@ public class SalesOrderCreate extends InventoryInternalBase {
         } catch (JSONException ex) {
             Logger.getLogger(SalesOrderCreate.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        String restEndPoint = Login.getRestEndPoint();
-        String resource = "salesOrder";
-        String serviceUri = restEndPoint.concat(resource);
-        System.out.println("serviceUri = " + serviceUri);
-        
-        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
-                InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
-        //System.out.println("categoryObject = " + categoryObject);
-        restFeed.setRestEndPoint(serviceUri);
-        restFeed.setJsonObject(salesOrderObject);
-        try {
-            restFeed.restInitialization();
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//
+//        String restEndPoint = Login.getRestEndPoint();
+//        String resource = "salesOrder";
+//        String serviceUri = restEndPoint.concat(resource);
+//        System.out.println("serviceUri = " + serviceUri);
+//
+//        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
+//                InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
+//        //System.out.println("categoryObject = " + categoryObject);
+//        restFeed.setRestEndPoint(serviceUri);
+//        restFeed.setJsonObject(salesOrderObject);
+//        try {
+//            restFeed.restInitialization();
+//        } catch (MalformedURLException ex) {
+//            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_submitGeneralBtnActionPerformed
 
     /**

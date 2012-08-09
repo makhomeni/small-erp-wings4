@@ -30,12 +30,13 @@ public class Webservice {
     public String getDataFromWeb(String resource, String requestType){
         String restEndPoint = getRestEndPoint();
 
-        String serviceUri = restEndPoint.concat(resource);
+
 
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,InventoryConstants.MEDIA_JSON,
-                requestType);
+                requestType, restEndPoint, resource);
 
-        restFeed.setRestEndPoint(serviceUri);
+
+
         try {
             System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
             return restFeed.restInitialization();

@@ -206,12 +206,9 @@ private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         
         String restEndPoint = Login.getRestEndPoint();
         String resource = "inventoryRegister";
-        String serviceUri = restEndPoint.concat(resource);
-        System.out.println("serviceUri = " + serviceUri);
         
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
-                InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
-        restFeed.setRestEndPoint(serviceUri);
+                InventoryConstants.MEDIA_JSON,InventoryConstants.POST, restEndPoint, resource);
         restFeed.setJsonObject(inventoryResourceObject);
         try {
             restFeed.restInitialization();
