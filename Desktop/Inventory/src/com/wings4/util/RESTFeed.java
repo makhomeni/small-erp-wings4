@@ -34,14 +34,13 @@ public class RESTFeed {
      * @param restEndPoint
      * @param resource
      */
-    public RESTFeed(String contentType, String acceptType, String requestMethod, String restEndPoint, String resource, JSONObject jsonObject) {
+    public RESTFeed(String contentType, String acceptType, String requestMethod, String restEndPoint, String resource) {
         System.out.println(contentType + " requestMethod = "+requestMethod+" restEndPoint = "+restEndPoint+" resource = "+resource );
         this.contentType = contentType;
         this.acceptType = acceptType;
         this.requestMethod = requestMethod;
         this.restEndPoint = restEndPoint;
         this.resource = resource;
-        this.jsonObject = jsonObject;
     }
     
     public String restInitialization() throws MalformedURLException, IOException {

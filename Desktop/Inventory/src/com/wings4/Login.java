@@ -203,7 +203,8 @@ public class Login extends javax.swing.JDialog {
         
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
                 InventoryConstants.MEDIA_JSON,InventoryConstants.POST, 
-                restEndPoint, "user", userObject);
+                restEndPoint, "user");
+        restFeed.setJsonObject(userObject);
         try {
             restFeed.restInitialization();
             InventoryDesktop desktop = new InventoryDesktop();

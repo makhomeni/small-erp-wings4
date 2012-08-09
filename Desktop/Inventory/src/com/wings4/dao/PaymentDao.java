@@ -1,11 +1,14 @@
 package com.wings4.dao;
 
 import com.wings4.Login;
+import com.wings4.client.Category;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.RESTFeed;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,23 +19,27 @@ import java.net.MalformedURLException;
  * To change this template use File | Settings | File Templates.
  */
 public class PaymentDao {
+
+    public String getRestEndPoint(){
+        return Login.getRestEndPoint();
+    }
+
+
     private String findAllPayments(){
-//        String restEndPoint = Login.getRestEndPoint();
-//        String resource = "payment";
-//        String serviceUi = restEndPoint.concat(resource);
-//        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON, InventoryConstants.MEDIA_JSON,
-//                InventoryConstants.GET);
-//        restFeed.setRestEndPoint(serviceUi);
-//        try{
-//            System.out.println("restFeed.restInitialization() = "+ restFeed.restInitialization());
-//            return restFeed.restInitialization();
-//        }catch(MalformedURLException ex){
-//            return null;
-//        }
-//        catch(IOException ex){
-//            return null;
-//        }
-        return null;
+        String restEndPoint = getRestEndPoint();
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
+                InventoryConstants.MEDIA_JSON,InventoryConstants.GET,
+                restEndPoint, "user");
+        try {
+            System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
+            return restFeed.restInitialization();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (IOException ex) {
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
 
     }
 }

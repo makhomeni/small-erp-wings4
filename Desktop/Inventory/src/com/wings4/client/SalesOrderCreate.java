@@ -88,6 +88,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
         UserDao userDao = new UserDao();
 
         try{
+            System.out.println("userDao.findAllUsers() = " + userDao.findAllUsers());
             JSONArray jsonArray = new JSONArray(userDao.findAllUsers());
             List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
             Map<String,Object> user;
