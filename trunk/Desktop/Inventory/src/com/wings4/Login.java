@@ -7,6 +7,7 @@ package com.wings4;
 import com.wings4.client.InventoryDesktop;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.RESTFeed;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
@@ -218,18 +219,20 @@ public class Login extends javax.swing.JDialog {
         
     }
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-
-       loginButtonAction();
-        
+        loginButtonAction();
     }//GEN-LAST:event_submitActionPerformed
 
     private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
         // TODO add your handling code here:
+        loginButtonAction();
     }//GEN-LAST:event_passwordTextActionPerformed
 
 private void submitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_submitKeyPressed
 // TODO add your handling code here:
-    loginButtonAction();
+    if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        loginButtonAction();
+    }
+    
 }//GEN-LAST:event_submitKeyPressed
 
 private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
