@@ -199,11 +199,11 @@ public class Login extends javax.swing.JDialog {
         
         restEndPoint = InventoryConstants.serverAddressPrefix.concat(serverAddress.concat(":").concat(serverPort).
                 concat("/").concat(InventoryConstants.appName).concat("/api/"));
-        System.out.println("restEndPoint = " + restEndPoint);
+        System.out.println("restEndPoint = " + restEndPoint.concat("user"));
         
-        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,InventoryConstants.MEDIA_JSON,InventoryConstants.POST, restEndPoint, "user");
-
-        restFeed.setJsonObject(userObject);
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
+                InventoryConstants.MEDIA_JSON,InventoryConstants.POST, 
+                restEndPoint, "user", userObject);
         try {
             restFeed.restInitialization();
             InventoryDesktop desktop = new InventoryDesktop();

@@ -208,8 +208,8 @@ private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         String resource = "inventoryRegister";
         
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
-                InventoryConstants.MEDIA_JSON,InventoryConstants.POST, restEndPoint, resource);
-        restFeed.setJsonObject(inventoryResourceObject);
+                InventoryConstants.MEDIA_JSON,InventoryConstants.POST, 
+                restEndPoint, resource, inventoryResourceObject);
         try {
             restFeed.restInitialization();
         } catch (MalformedURLException ex) {
