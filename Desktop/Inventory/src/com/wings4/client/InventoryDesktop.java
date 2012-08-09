@@ -153,6 +153,11 @@ public class InventoryDesktop extends InventoryBase {
         productToolbarButton.setFocusable(false);
         productToolbarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         productToolbarButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        productToolbarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productToolbarButtonActionPerformed(evt);
+            }
+        });
         jToolBar1.add(productToolbarButton);
 
         purchaseToolbarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/purchase.png"))); // NOI18N
@@ -347,6 +352,13 @@ private void inventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {/
         salesOrderCreate.setVisible(true);
         inventoryDesktopBoard.add(salesOrderCreate);
     }//GEN-LAST:event_salesOrderMenuItemActionPerformed
+
+    private void productToolbarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productToolbarButtonActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setVisible(true);
+        inventoryDesktopBoard.add(product);
+    }//GEN-LAST:event_productToolbarButtonActionPerformed
 
     /**
      * @param args the command line arguments
