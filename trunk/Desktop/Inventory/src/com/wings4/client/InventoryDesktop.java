@@ -78,7 +78,7 @@ public class InventoryDesktop extends InventoryBase {
             }
         });
         Action logoutAction = new LogoutAction(this);
-        InactivityListener listener = new InactivityListener(logoutAction, 1);
+        InactivityListener listener = new InactivityListener(logoutAction, 120);
         listener.start();
     }
 
