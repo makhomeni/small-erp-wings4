@@ -43,7 +43,6 @@ public class InventoryCreate extends InventoryInternalBase {
     private void initComponents() {
 
         productLabel = new javax.swing.JLabel();
-        productText = new javax.swing.JTextField();
         onHandLabel = new javax.swing.JLabel();
         onHandText = new javax.swing.JTextField();
         onOrderLabel = new javax.swing.JLabel();
@@ -64,8 +63,8 @@ public class InventoryCreate extends InventoryInternalBase {
         availableToPickText = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        productListCombo = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Inventory Create");
 
         productLabel.setText("Product");
@@ -97,6 +96,8 @@ public class InventoryCreate extends InventoryInternalBase {
 
         cancelButton.setText("Cancel");
 
+        productListCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,23 +116,22 @@ public class InventoryCreate extends InventoryInternalBase {
                     .addComponent(unavailableLabel)
                     .addComponent(onHandLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(saveButton)
                         .addGap(44, 44, 44)
                         .addComponent(cancelButton))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(availableToPickText)
-                        .addComponent(availableForSaleText)
-                        .addComponent(dropShipText)
-                        .addComponent(backOrderedText)
-                        .addComponent(unavailableText)
-                        .addComponent(committedText)
-                        .addComponent(allocatedText)
-                        .addComponent(onOrderText)
-                        .addComponent(onHandText)
-                        .addComponent(productText, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)))
-                .addContainerGap(84, Short.MAX_VALUE))
+                    .addComponent(availableToPickText)
+                    .addComponent(availableForSaleText)
+                    .addComponent(dropShipText)
+                    .addComponent(backOrderedText)
+                    .addComponent(unavailableText)
+                    .addComponent(committedText)
+                    .addComponent(allocatedText)
+                    .addComponent(onOrderText)
+                    .addComponent(onHandText)
+                    .addComponent(productListCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +139,7 @@ public class InventoryCreate extends InventoryInternalBase {
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(productLabel)
-                    .addComponent(productText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(productListCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(onHandText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,7 +180,7 @@ public class InventoryCreate extends InventoryInternalBase {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
                     .addComponent(cancelButton))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -188,29 +188,37 @@ public class InventoryCreate extends InventoryInternalBase {
 
 private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
 // TODO add your handling code here:
-    JSONObject categoryObject = new JSONObject();
+    JSONObject inventoryResourceObject = new JSONObject();
         try {
-            //categoryObject.put("categoryName", categoryNameText.getText());
-            categoryObject.put("parentCategory", 1);
+            inventoryResourceObject.put("product", productListCombo.getSelectedItem().toString());
+            inventoryResourceObject.put("onHand", onHandText.getText());
+            inventoryResourceObject.put("onOrder", onOrderText.getText());
+            inventoryResourceObject.put("allocated", allocatedText.getText());
+            inventoryResourceObject.put("committed", committedText.getText());
+            inventoryResourceObject.put("unavailable", unavailableText.getText());
+            inventoryResourceObject.put("backOrdered", backOrderedText.getText());
+            inventoryResourceObject.put("dropShip", dropShipText.getText());
+            inventoryResourceObject.put("availableForSale", availableForSaleText.getText());
+            inventoryResourceObject.put("availableToPick", availableToPickText.getText());
         } catch (JSONException ex) {
             Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String restEndPoint = Login.getRestEndPoint();
-        String resource = "category";
+        String resource = "inventoryRegister";
         String serviceUri = restEndPoint.concat(resource);
         System.out.println("serviceUri = " + serviceUri);
         
-        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
-        System.out.println("categoryObject = " + categoryObject);
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
+                InventoryConstants.MEDIA_JSON,InventoryConstants.POST);
         restFeed.setRestEndPoint(serviceUri);
-        restFeed.setJsonObject(categoryObject);
+        restFeed.setJsonObject(inventoryResourceObject);
         try {
             restFeed.restInitialization();
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InventoryCreate.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InventoryCreate.class.getName()).log(Level.SEVERE, null, ex);
         }                                              
 
 }//GEN-LAST:event_saveButtonActionPerformed
@@ -269,7 +277,7 @@ private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel onOrderLabel;
     private javax.swing.JTextField onOrderText;
     private javax.swing.JLabel productLabel;
-    private javax.swing.JTextField productText;
+    private javax.swing.JComboBox productListCombo;
     private javax.swing.JButton saveButton;
     private javax.swing.JLabel unavailableLabel;
     private javax.swing.JTextField unavailableText;

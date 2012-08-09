@@ -22,7 +22,7 @@ public class InventoryInternalBase extends JInternalFrame {
     public InventoryInternalBase(String title) {
         super(title);
         setDefaultBehavior();
-        setLocation(500,200);
+        setLocation(100,100);
         setClosable(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         try {
@@ -44,7 +44,7 @@ public class InventoryInternalBase extends JInternalFrame {
 
     public InventoryInternalBase() {
         setDefaultBehavior();
-        setLocation(500,200);
+        setLocation(100,100);
         setClosable(true);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         try {

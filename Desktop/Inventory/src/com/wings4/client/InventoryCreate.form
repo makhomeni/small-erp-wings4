@@ -1,8 +1,7 @@
 <?xml version="1.1" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="Inventory Create"/>
   </Properties>
   <SyntheticProperties>
@@ -38,26 +37,24 @@
                   <Component id="onHandLabel" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="saveButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="availableToPickText" max="32767" attributes="1"/>
-                      <Component id="availableForSaleText" max="32767" attributes="1"/>
-                      <Component id="dropShipText" max="32767" attributes="1"/>
-                      <Component id="backOrderedText" max="32767" attributes="1"/>
-                      <Component id="unavailableText" max="32767" attributes="1"/>
-                      <Component id="committedText" max="32767" attributes="1"/>
-                      <Component id="allocatedText" max="32767" attributes="1"/>
-                      <Component id="onOrderText" max="32767" attributes="1"/>
-                      <Component id="onHandText" max="32767" attributes="1"/>
-                      <Component id="productText" alignment="0" pref="225" max="32767" attributes="1"/>
-                  </Group>
+                  <Component id="availableToPickText" max="32767" attributes="1"/>
+                  <Component id="availableForSaleText" max="32767" attributes="1"/>
+                  <Component id="dropShipText" max="32767" attributes="1"/>
+                  <Component id="backOrderedText" max="32767" attributes="1"/>
+                  <Component id="unavailableText" max="32767" attributes="1"/>
+                  <Component id="committedText" max="32767" attributes="1"/>
+                  <Component id="allocatedText" max="32767" attributes="1"/>
+                  <Component id="onOrderText" max="32767" attributes="1"/>
+                  <Component id="onHandText" max="32767" attributes="1"/>
+                  <Component id="productListCombo" alignment="0" min="-2" pref="198" max="-2" attributes="1"/>
               </Group>
-              <EmptySpace pref="84" max="32767" attributes="0"/>
+              <EmptySpace pref="111" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,7 +64,7 @@
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="productLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="productText" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="productListCombo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -119,7 +116,7 @@
                   <Component id="saveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -129,8 +126,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Product"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="productText">
     </Component>
     <Component class="javax.swing.JLabel" name="onHandLabel">
       <Properties>
@@ -206,6 +201,18 @@
     <Component class="javax.swing.JButton" name="cancelButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="productListCombo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>
