@@ -202,13 +202,13 @@ private void customerSubmitButtonActionPerformed(java.awt.event.ActionEvent evt)
         customerResourceObject.put("firstName",firstNameText.getText());
         customerResourceObject.put("lastName",lastNameText.getText());
         customerResourceObject.put("emailId",emailIdText.getText());
-        customerResourceObject.put("organization",organizationComboBox.getSelectedItem());
+        customerResourceObject.put("organization",organizationComboBox.getSelectedItem().toString());
         customerResourceObject.put("mobileNumber",mobileNumberText.getText());
         customerResourceObject.put("phoneNumber",phoneNumberText.getText());
         customerResourceObject.put("address",addressText.getText());
-        customerResourceObject.put("contact",contactComboBox.getSelectedItem());
-        customerResourceObject.put("reference",referenceComboBox.getSelectedItem());
-        customerResourceObject.put("billingAddress",billingAddressComboBox.getSelectedItem());
+        customerResourceObject.put("contact",contactComboBox.getSelectedItem().toString());
+        customerResourceObject.put("reference",referenceComboBox.getSelectedItem().toString());
+        customerResourceObject.put("billingAddress",billingAddressComboBox.getSelectedItem().toString());
         
     }catch(JSONException ex){
         
