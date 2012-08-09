@@ -20,24 +20,21 @@ import java.util.logging.Logger;
  */
 public class PaymentDao {
 
-    public String getRestEndPoint(){
+    private String getRestEndPoint(){
         return Login.getRestEndPoint();
     }
 
 
-    private String findAllPayments(){
+    public String findAllPayments(){
         String restEndPoint = getRestEndPoint();
-        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
-                InventoryConstants.MEDIA_JSON,InventoryConstants.GET,
-                restEndPoint, "user");
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON, InventoryConstants.MEDIA_JSON,
+                InventoryConstants.GET, restEndPoint, "payment");
         try {
             System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
             return restFeed.restInitialization();
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         } catch (IOException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
