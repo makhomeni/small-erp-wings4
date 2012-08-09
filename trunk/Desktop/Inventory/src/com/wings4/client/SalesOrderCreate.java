@@ -5,6 +5,7 @@
 package com.wings4.client;
 
 import com.wings4.Login;
+import com.wings4.dao.DeliveryTermDao;
 import com.wings4.dao.PaymentDao;
 import com.wings4.dao.UserDao;
 import com.wings4.util.*;
@@ -68,7 +69,6 @@ public class SalesOrderCreate extends InventoryInternalBase {
         jPanel3 = new javax.swing.JPanel();
         paymentTermLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        deliveryTermCombo = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         dueDateTermsCondition = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -147,7 +147,34 @@ public class SalesOrderCreate extends InventoryInternalBase {
         }
 
         //end combo box processing for created by
+        //start delivery
+        try{
+            DeliveryTermDao deliveryTermDao = new DeliveryTermDao();
+            System.out.println("deliveryTermDao.findAllDeliveryTerm() = " + deliveryTermDao.findAllDeliveryTerm());
+            List<Map<String,Object>> deliveryTerms = new ArrayList<Map<String,Object>>();
+            JSONArray jsonArray = new JSONArray(deliveryTermDao.findAllDeliveryTerm());
+            Map<String,Object> deliveryTerm;
+            for(int i = 0 ; i < jsonArray.length(); i++){
+                deliveryTerm = new HashMap<String,Object>();
+                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
+                JSONObject deliveryTermObject = (JSONObject)jsonArray.get(i);
+                deliveryTerm.put("id", deliveryTermObject.get("id"));
+                deliveryTerm.put("terms", deliveryTermObject.get("terms"));
+                deliveryTerms.add(deliveryTerm);
+            }
 
+            Vector<Item> deliveryTermVector = new Vector<Item>();
+            for(Map<String,Object> deliveryTermMap : deliveryTerms) {
+                System.out.println("deliveryTermMap = " + deliveryTermMap);
+                deliveryTermVector.addElement(new Item(Integer.parseInt(deliveryTermMap.get("id").toString()),
+                        deliveryTermMap.get("terms").toString()));
+            }
+            deliveryTermCombo = new javax.swing.JComboBox(deliveryTermVector);
+            deliveryTermCombo.setRenderer(new ItemRenderer());
+        }catch(Exception ex){
+            System.out.println("ex is here = " + ex);
+        }
+        //end delivery
 
 
 
@@ -266,11 +293,10 @@ public class SalesOrderCreate extends InventoryInternalBase {
 
         paymentTermLabel.setText("Payment Term");
 
-//        paymentTermCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
 
         jLabel5.setText("Delivery Term");
 
-        deliveryTermCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+//        deliveryTermCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel6.setText("Due Date");
 
