@@ -12,6 +12,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="loginMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Login"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="logoutMenuItem">
