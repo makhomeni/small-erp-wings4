@@ -24,15 +24,27 @@ public class RESTFeed {
     private String contentType;
     private String acceptType;
     private String requestMethod;
+    private String resource;
 
-    public RESTFeed(String contentType, String acceptType, String requestMethod) {
+    /**
+     *
+     * @param contentType
+     * @param acceptType
+     * @param requestMethod
+     * @param restEndPoint
+     * @param resource
+     */
+    public RESTFeed(String contentType, String acceptType, String requestMethod, String restEndPoint, String resource) {
+        System.out.println(contentType + " requestMethod = "+requestMethod+" restEndPoint = "+restEndPoint+" resource = "+resource );
         this.contentType = contentType;
         this.acceptType = acceptType;
         this.requestMethod = requestMethod;
+        this.restEndPoint = restEndPoint;
+        this.resource = resource;
     }
     
     public String restInitialization() throws MalformedURLException, IOException {
-        URL url = new URL(getRestEndPoint());
+        URL url = new URL(restEndPoint);
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setUseCaches(false);
         connection.setDoInput(true);
@@ -102,6 +114,13 @@ public class RESTFeed {
 
     public void setRequestMethod(String requestMethod) {
         this.requestMethod = requestMethod;
+    }
+    public String getResource() {
+        return resource;
+    }
+
+    public void setResource(String resource) {
+        this.resource = resource;
     }
     
 }
