@@ -34,17 +34,18 @@ public class RESTFeed {
      * @param restEndPoint
      * @param resource
      */
-    public RESTFeed(String contentType, String acceptType, String requestMethod, String restEndPoint, String resource) {
+    public RESTFeed(String contentType, String acceptType, String requestMethod, String restEndPoint, String resource, JSONObject jsonObject) {
         System.out.println(contentType + " requestMethod = "+requestMethod+" restEndPoint = "+restEndPoint+" resource = "+resource );
         this.contentType = contentType;
         this.acceptType = acceptType;
         this.requestMethod = requestMethod;
         this.restEndPoint = restEndPoint;
         this.resource = resource;
+        this.jsonObject = jsonObject;
     }
     
     public String restInitialization() throws MalformedURLException, IOException {
-        URL url = new URL(restEndPoint);
+        URL url = new URL(restEndPoint.concat(resource));
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setUseCaches(false);
         connection.setDoInput(true);
@@ -62,7 +63,7 @@ public class RESTFeed {
         }
         
         
-        System.out.println("connection.getInputStream() = " + connection.getInputStream());
+        System.out.println("connection.getInputStream() = " + jsonObject + "    " + restEndPoint);
 
         BufferedReader br = new BufferedReader(new InputStreamReader(
                 (connection.getInputStream())));

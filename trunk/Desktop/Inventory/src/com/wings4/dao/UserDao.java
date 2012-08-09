@@ -8,7 +8,6 @@ import com.wings4.Login;
 import com.wings4.client.Category;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.RESTFeed;
-import com.wings4.util.Webservice;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -22,8 +21,7 @@ import java.util.logging.Logger;
 public class UserDao {
     
     public String findAllUsers(){
-        Webservice webservice = new Webservice();
-        return webservice.getDataFromWeb("user", InventoryConstants.GET);
+        return null;
     }
     
 }
