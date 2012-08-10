@@ -63,7 +63,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
         jLabel2 = new javax.swing.JLabel();
         archaivedCheck = new javax.swing.JCheckBox();
         submitGeneralBtn = new javax.swing.JButton();
-        cancelGeneral = new javax.swing.JButton();
+        clearGeneral = new javax.swing.JButton();
         createdByLabel = new javax.swing.JLabel();
 
 
@@ -87,16 +87,19 @@ public class SalesOrderCreate extends InventoryInternalBase {
         customerCombo = new javax.swing.JComboBox();
         submitDetailBtn = new javax.swing.JButton();
         cancelDetailBtn = new javax.swing.JButton();
+        itemCreationCombo = new ItemCreationCombo();
 
-        createdByCombo = new javax.swing.JComboBox(creatorItem());
+        createdByCombo = new javax.swing.JComboBox(itemCreationCombo.creatorItem());
         createdByCombo.setRenderer(new ItemRenderer());
 
-        paymentTermCombo = new javax.swing.JComboBox(paymentTermItem());
+        paymentTermCombo = new javax.swing.JComboBox(itemCreationCombo.paymentTermItem());
         paymentTermCombo.setRenderer(new ItemRenderer());
 
 
-        deliveryTermCombo = new javax.swing.JComboBox(deliveryTermItem());
+        deliveryTermCombo = new javax.swing.JComboBox(itemCreationCombo.deliveryTermItem());
         deliveryTermCombo.setRenderer(new ItemRenderer());
+
+        setTitle("Sales Order Creation");
 
         jobNameLabel.setText("Job Name");
 
@@ -110,7 +113,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
 
         jLabel1.setText("Priority");
 
-        priorityCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3"}));
+        priorityCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"1", "2", "3"}));
 
         sentLabel.setText("Sent");
 
@@ -125,7 +128,13 @@ public class SalesOrderCreate extends InventoryInternalBase {
             }
         });
 
-        cancelGeneral.setText("Cancel");
+        clearGeneral.setText("Clear");
+
+        clearGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearGeneralActionPerformed(evt);
+            }
+        });
 
         createdByLabel.setText("Created By");
 
@@ -153,7 +162,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addComponent(submitGeneralBtn)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(cancelGeneral))
+                                                        .addComponent(clearGeneral))
                                                 .addComponent(jobNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                                                 .addComponent(orderQuantityTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                                                 .addComponent(statusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,7 +216,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
                                 .addGap(29, 29, 29)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(submitGeneralBtn)
-                                        .addComponent(cancelGeneral))
+                                        .addComponent(clearGeneral))
                                 .addContainerGap())
         );
 
@@ -339,89 +348,8 @@ public class SalesOrderCreate extends InventoryInternalBase {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    CommonDao commonDao =  new CommonDao();
-    private Vector<Item> creatorItem(){
-        try{
-//            System.out.println("userDao.findAllUsers() = " + userDao.findAllUsers());
-            JSONArray jsonArray = new JSONArray(commonDao.findAllUsers());
-            List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
-            Map<String,Object> user;
-            System.out.print(jsonArray.length());
-            for(int i = 0 ; i < jsonArray.length(); i++){
-                user = new HashMap<String,Object>();
-                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
-                JSONObject userObject = (JSONObject)jsonArray.get(i);
-                user.put("id", userObject.get("id"));
-                user.put("userCode", userObject.get("userCode"));
-                users.add(user);
-            }
-
-            Vector<Item> userVector = new Vector<Item>();
-            for(Map<String,Object> userMap : users) {
-                System.out.println("userMap = " + userMap);
-                userVector.addElement(new Item(Integer.parseInt(userMap.get("id").toString()), userMap.get("userCode").toString()));
-            }
-            return userVector;
-        }catch(Exception ex){
-            System.out.println("ex is here = " + ex);
-            return null;
-        }
-    }
 
 
-    private Vector<Item> paymentTermItem(){
-        try{
-            JSONArray jsonArray = new JSONArray(commonDao.findAllPaymentMethods());
-            List<Map<String,Object>> payments = new ArrayList<Map<String,Object>>();
-            Map<String,Object> payment;
-            System.out.print(jsonArray.length());
-            for(int i = 0 ; i < jsonArray.length(); i++){
-                payment = new HashMap<String,Object>();
-                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
-                JSONObject paymentObject = (JSONObject)jsonArray.get(i);
-                payment.put("id", paymentObject.get("id"));
-                payment.put("paymentMethod", paymentObject.get("paymentMethod"));
-                payments.add(payment);
-            }
-
-            Vector<Item> paymentVector = new Vector<Item>();
-            for(Map<String,Object> paymentMap : payments) {
-                System.out.println("paymentMap = " + paymentMap);
-                paymentVector.addElement(new Item(Integer.parseInt(paymentMap.get("id").toString()), paymentMap.get("paymentMethod").toString()));
-            }
-            return paymentVector;
-        }catch(Exception ex){
-            System.out.println("ex is here = " + ex);
-            return null;
-        }
-    }
-
-    private Vector<Item> deliveryTermItem(){
-        try{
-            List<Map<String,Object>> deliveryTerms = new ArrayList<Map<String,Object>>();
-            JSONArray jsonArray = new JSONArray(commonDao.findAllDeliveryTerm());
-            Map<String,Object> deliveryTerm;
-            for(int i = 0 ; i < jsonArray.length(); i++){
-                deliveryTerm = new HashMap<String,Object>();
-                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
-                JSONObject deliveryTermObject = (JSONObject)jsonArray.get(i);
-                deliveryTerm.put("id", deliveryTermObject.get("id"));
-                deliveryTerm.put("terms", deliveryTermObject.get("terms"));
-                deliveryTerms.add(deliveryTerm);
-            }
-
-            Vector<Item> deliveryTermVector = new Vector<Item>();
-            for(Map<String,Object> deliveryTermMap : deliveryTerms) {
-                System.out.println("deliveryTermMap = " + deliveryTermMap);
-                deliveryTermVector.addElement(new Item(Integer.parseInt(deliveryTermMap.get("id").toString()),
-                        deliveryTermMap.get("terms").toString()));
-            }
-            return deliveryTermVector;
-        }catch(Exception ex){
-            System.out.println("ex is here = " + ex);
-            return null;
-        }
-    }
 
     private void submitGeneralBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitGeneralBtnActionPerformed
         JOptionPane.showConfirmDialog(this, "Submitted");
@@ -454,6 +382,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
         restFeed.setJsonObject(salesOrderObject);
         try {
             restFeed.restInitialization();
+            JOptionPane.showMessageDialog (this, "General information saved successfully", "Sales Order", JOptionPane.INFORMATION_MESSAGE);
         } catch (MalformedURLException ex) {
             Logger.getLogger(SalesOrderCreate.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -461,6 +390,17 @@ public class SalesOrderCreate extends InventoryInternalBase {
         }
 
     }//GEN-LAST:event_submitGeneralBtnActionPerformed
+
+    private void clearGeneralActionPerformed(java.awt.event.ActionEvent evt) {
+        clearGeneral();
+    }
+
+    private void clearGeneral(){
+        jobNameTxt.setText("");
+        orderQuantityTxt.setText("");
+//        dueDateTxt.setDate(null);
+
+    }
 
     /**
      * @param args the command line arguments
@@ -507,7 +447,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
     private javax.swing.JTextField addressTxt;
     private javax.swing.JCheckBox archaivedCheck;
     private javax.swing.JButton cancelDetailBtn;
-    private javax.swing.JButton cancelGeneral;
+    private javax.swing.JButton clearGeneral;
     private javax.swing.JComboBox createdByCombo;
     private javax.swing.JLabel createdByLabel;
     private javax.swing.JLabel createdDateLabel;
@@ -542,5 +482,6 @@ public class SalesOrderCreate extends InventoryInternalBase {
     private javax.swing.JLabel statusLabel;
     private javax.swing.JButton submitDetailBtn;
     private javax.swing.JButton submitGeneralBtn;
+    private ItemCreationCombo itemCreationCombo;
     // End of variables declaration//GEN-END:variables
 }
