@@ -18,9 +18,11 @@ class SalesOrder extends JobOrder {
     static hasMany = [inventories : InventoryRegister]
 
     static mapping = {
+
         table("sales_order")
     }
 
     static constraints = {
+
     }
 }

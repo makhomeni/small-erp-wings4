@@ -11,6 +11,10 @@ import javax.ws.rs.core.Response
 
 import org.grails.jaxrs.provider.DomainObjectNotFoundException
 import javax.ws.rs.Path
+import javax.ws.rs.POST
+import org.json.JSONObject
+import com.jabait.hrm.Organization
+import com.jabait.security.Address
 
 @Path("/api/warehouse")
 @Consumes(['application/xml', 'application/json'])
@@ -19,10 +23,41 @@ class WarehouseResource {
 
     def warehouseResourceService
     def id
+    @POST
+    @Consumes(["application/json"])
+    @Produces(["application/json"])
+    Response createWareHouse(String wareHouse){
+        JSONObject wareHouseObject = new JSONObject(wareHouse);
+
+        Organization organization = Organization.get(Integer.parseInt(wareHouseObject.get("organization").toString()));
+        String country = wareHouseObject.get("country").toString();
+        String extendedAddress = wareHouseObject.get("extendedAddress").toString();//Street address 1 and Street address 2 two Text field
+        String poBox = wareHouseObject.get("poBox").toString();
+        String postalCode = wareHouseObject.get("postalCode").toString();
+        String region = wareHouseObject.get("region").toString();
+        String streetAddress = wareHouseObject.get("streetAddress").toString();
+
+        Address address = new Address();
+        address.country = country;
+        address.extendedAddress = extendedAddress;
+        address.poBox = poBox;
+        address.postalCode = postalCode;
+        address.region = region;
+        address.streetAddress = streetAddress;
+
+        created Address.save(address);
+
+
+    }
 
     @GET
     Response read() {
         ok warehouseResourceService.read(id)
+    }
+
+    @GET
+    Response readAll(){
+        ok warehouseResourceService.readAll();
     }
 
     @PUT
