@@ -15,6 +15,7 @@ import javax.ws.rs.POST
 import org.json.JSONObject
 import javax.ws.rs.core.MediaType
 import com.jabait.security.User
+import com.jabait.util.Util
 
 @Path('/api/salesOrder')
 class SalesOrderResource {
@@ -51,6 +52,8 @@ class SalesOrderResource {
     Response create(String salesOrder){
         JSONObject jsonObjectSalesOrder = new JSONObject(salesOrder);
         JobOrder jobOrder = new JobOrder();
+        String dateFormat = "MMM dd, yyyy";
+        Util util = new Util();
         jobOrder.jobName = jsonObjectSalesOrder.get("jobName").toString();
         jobOrder.orderQuantity = Integer.parseInt(jsonObjectSalesOrder.get("orderQuantity").toString());
         jobOrder.createdBy = User.get(Integer.parseInt(jsonObjectSalesOrder.get("createdBy").toString()));
@@ -58,8 +61,8 @@ class SalesOrderResource {
         jobOrder.priority = Integer.parseInt(jsonObjectSalesOrder.get("priority").toString());
         jobOrder.isSent = Boolean.parseBoolean(jsonObjectSalesOrder.get("isSent").toString());
         jobOrder.deliveryTerm = DeliveryTerm.get(1);
-        jobOrder.dueDate = new Date();
-        jobOrder.createdDate = new Date();
+        jobOrder.dueDate = util.parseDate(jsonObjectSalesOrder.get("dueDate").toString(), dateFormat)
+        jobOrder.createdDate = util.parseDate(jsonObjectSalesOrder.get("createdDate").toString(), dateFormat)
         jobOrder.isArchived = Boolean.parseBoolean(jsonObjectSalesOrder.get("isArchived").toString());
 
         created jobOrder.save();

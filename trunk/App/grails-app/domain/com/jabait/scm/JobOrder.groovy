@@ -23,6 +23,8 @@ class JobOrder {
 
     static mapping = {
         tablePerSubclass(true);
+        createdDate(sqlType: 'date');
+        dueDate(sqlType: 'date');
     }
 
     static constraints = {
