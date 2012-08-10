@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
  *
  * @author ronnie
  */
-public class CategoryDao {
+public class MaterialDao {
     
     public static String findAllCategories(){
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON, InventoryConstants.MEDIA_JSON,
