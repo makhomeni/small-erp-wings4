@@ -19,16 +19,10 @@ import java.util.logging.Logger;
  * To change this template use File | Settings | File Templates.
  */
 public class PaymentDao {
-
-    private String getRestEndPoint(){
-        return Login.getRestEndPoint();
-    }
-
-
-    public String findAllPayments(){
-        String restEndPoint = getRestEndPoint();
+    
+    public static String findAllPayments(){
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON, InventoryConstants.MEDIA_JSON,
-                InventoryConstants.GET, restEndPoint, "payment");
+                InventoryConstants.GET, Login.getRestEndPoint(), "payment");
         try {
             System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
             return restFeed.restInitialization();
