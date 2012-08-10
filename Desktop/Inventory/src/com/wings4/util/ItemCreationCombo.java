@@ -19,8 +19,7 @@ public class ItemCreationCombo {
 
     public Vector<Item> deliveryTermItem(){
         try{
-            CommonDao commonDao = new CommonDao();
-            JSONArray jsonArray = new JSONArray(commonDao.findAllDeliveryTerm());
+            JSONArray jsonArray = new JSONArray(CommonDao.findAllDeliveryTerms());
             return getVectorForCombo(jsonArray, "terms");
         }catch(Exception ex){
             System.out.println("ex is here = " + ex);
@@ -30,8 +29,7 @@ public class ItemCreationCombo {
 
     public Vector<Item> paymentTermItem(){
         try{
-            CommonDao commonDao = new CommonDao();
-            JSONArray jsonArray = new JSONArray(commonDao.findAllPaymentTerms());
+            JSONArray jsonArray = new JSONArray(CommonDao.findAllPaymentTerms());
             return getVectorForCombo(jsonArray, "name");
         }catch(Exception ex){
             System.out.println("ex is here = " + ex);
@@ -41,8 +39,7 @@ public class ItemCreationCombo {
 
     public Vector<Item> paymentTermMethod(){
         try{
-            CommonDao commonDao = new CommonDao();
-            JSONArray jsonArray = new JSONArray(commonDao.findAllPaymentTerms());
+            JSONArray jsonArray = new JSONArray(CommonDao.findAllPaymentTerms());
             return getVectorForCombo(jsonArray, "paymentMethod");
         }catch(Exception ex){
             System.out.println("ex is here = " + ex);
@@ -52,8 +49,7 @@ public class ItemCreationCombo {
 
     public Vector<Item> creatorItem(){
         try{
-            CommonDao commonDao = new CommonDao();
-            JSONArray jsonArray = new JSONArray(commonDao.findAllUsers());
+            JSONArray jsonArray = new JSONArray(CommonDao.findAllUsers());
 
             return getVectorForCombo(jsonArray, "userCode");
         }catch(Exception ex){
