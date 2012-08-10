@@ -82,6 +82,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.0.3" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.0.3" level="application" />
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (App-grailsPlugins)">
         <CLASSES>
@@ -92,6 +93,10 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.sun.jersey/jersey-core/bundles/jersey-core-1.8.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/asm/asm/jars/asm-3.3.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.sun.jersey.contribs/jersey-spring/jars/jersey-spring-1.8.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet.ext.json/jars/org.restlet.ext.json-2.0-RC3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet/jars/org.restlet-2.0-RC3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet.ext.servlet/jars/org.restlet.ext.servlet-2.0-RC3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet.lib.org.json/jars/org.restlet.lib.org.json-2.0.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.jackson/jackson-mapper-lgpl/jars/jackson-mapper-lgpl-1.7.4.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.jackson/jackson-core-lgpl/jars/jackson-core-lgpl-1.7.4.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.geronimo.specs/geronimo-stax-api_1.0_spec/jars/geronimo-stax-api_1.0_spec-1.0.jar!/" />
@@ -104,10 +109,6 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.lowagie/itext/jars/itext-2.1.7.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-digester/commons-digester/jars/commons-digester-2.1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/net.sf.jasperreports/jasperreports/jars/jasperreports-4.5.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet.ext.json/jars/org.restlet.ext.json-2.0-RC3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet/jars/org.restlet-2.0-RC3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet.ext.servlet/jars/org.restlet.ext.servlet-2.0-RC3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.restlet.gae/org.restlet.lib.org.json/jars/org.restlet.lib.org.json-2.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
