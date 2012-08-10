@@ -72,11 +72,7 @@ public class InventoryDesktop extends InventoryBase {
      */
     public InventoryDesktop() {
         initComponents();
-        addWindowListener(new WindowAdapter() {
-            public void windowOpened(WindowEvent e) {
-                setExtendedState(MAXIMIZED_BOTH);
-            }
-        });
+        
         Action logoutAction = new LogoutAction(this);
         InactivityListener listener = new InactivityListener(logoutAction, 120);
         listener.start();
@@ -105,6 +101,7 @@ public class InventoryDesktop extends InventoryBase {
         exitMenuItem = new javax.swing.JMenuItem();
         generalMenu = new javax.swing.JMenu();
         dashboardMenu = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         reportsMenu = new javax.swing.JMenuItem();
         materialsMenu = new javax.swing.JMenu();
@@ -209,6 +206,9 @@ public class InventoryDesktop extends InventoryBase {
 
         dashboardMenu.setText("Dashboard");
         generalMenu.add(dashboardMenu);
+
+        jMenuItem1.setText("Warehouse");
+        generalMenu.add(jMenuItem1);
         generalMenu.add(jSeparator2);
 
         reportsMenu.setText("Reports");
@@ -428,6 +428,7 @@ private void inventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {/
     private javax.swing.JDesktopPane inventoryDesktopBoard;
     private javax.swing.JMenuItem inventoryMenuItem;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator11;
