@@ -335,11 +335,9 @@ public class SalesOrderCreate extends InventoryInternalBase {
     }// </editor-fold>//GEN-END:initComponents
 
     private Vector<Item> creatorItem(){
-        UserDao userDao = new UserDao();
-
         try{
 //            System.out.println("userDao.findAllUsers() = " + userDao.findAllUsers());
-            JSONArray jsonArray = new JSONArray(userDao.findAllUsers());
+            JSONArray jsonArray = new JSONArray(UserDao.findAllUsers());
             List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
             Map<String,Object> user;
             System.out.print(jsonArray.length());
@@ -367,9 +365,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
 
     private Vector<Item> paymentTermItem(){
         try{
-            PaymentDao paymentDao = new PaymentDao();
-            System.out.println("paymentDao = " + paymentDao.findAllPayments());
-            JSONArray jsonArray = new JSONArray(paymentDao.findAllPayments());
+            JSONArray jsonArray = new JSONArray(PaymentDao.findAllPayments());
             List<Map<String,Object>> payments = new ArrayList<Map<String,Object>>();
             Map<String,Object> payment;
             System.out.print(jsonArray.length());
@@ -396,10 +392,8 @@ public class SalesOrderCreate extends InventoryInternalBase {
 
     private Vector<Item> deliveryTermItem(){
         try{
-            DeliveryTermDao deliveryTermDao = new DeliveryTermDao();
-            System.out.println("deliveryTermDao.findAllDeliveryTerm() = " + deliveryTermDao.findAllDeliveryTerm());
             List<Map<String,Object>> deliveryTerms = new ArrayList<Map<String,Object>>();
-            JSONArray jsonArray = new JSONArray(deliveryTermDao.findAllDeliveryTerm());
+            JSONArray jsonArray = new JSONArray(DeliveryTermDao.findAllDeliveryTerm());
             Map<String,Object> deliveryTerm;
             for(int i = 0 ; i < jsonArray.length(); i++){
                 deliveryTerm = new HashMap<String,Object>();

@@ -16,15 +16,10 @@ import java.net.MalformedURLException;
  * To change this template use File | Settings | File Templates.
  */
 public class DeliveryTermDao {
-    private String getRestEndPoint(){
-        return Login.getRestEndPoint();
-    }
-
-
-    public String findAllDeliveryTerm(){
-        String restEndPoint = getRestEndPoint();
+    
+    public static String findAllDeliveryTerm(){
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON, InventoryConstants.MEDIA_JSON,
-                InventoryConstants.GET, restEndPoint, "delivery");
+                InventoryConstants.GET, Login.getRestEndPoint(), "delivery");
         try {
             System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
             return restFeed.restInitialization();

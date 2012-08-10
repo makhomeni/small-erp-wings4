@@ -19,16 +19,10 @@ import java.util.logging.Logger;
  * @author ronnie
  */
 public class UserDao {
-
-    public String getRestEndPoint(){
-        return Login.getRestEndPoint();
-    }
-    public String findAllUsers(){
-//        RESTFeed restFeed = RESTFeed(InventoryConstants.)
-        String restEndPoint = getRestEndPoint();
+    public static String findAllUsers(){
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
                 InventoryConstants.MEDIA_JSON,InventoryConstants.GET,
-                restEndPoint, "user");
+                Login.getRestEndPoint(), "user");
         try {
             System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
             return restFeed.restInitialization();
