@@ -2,6 +2,7 @@ package com.wings4.dao;
 
 import com.wings4.Login;
 import com.wings4.client.Category;
+import com.wings4.util.FindAllResourceFeed;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.RESTFeed;
 
@@ -23,42 +24,24 @@ public class CommonDao {
 
     //for delivery term
 
-    public String findAllDeliveryTerm(){
-        return restFeedInitialization("delivery");
+    public static String findAllDeliveryTerms(){
+        return FindAllResourceFeed.restFeedInitialization("delivery");
     }
 
 
     //payment methods
 
-    public String findAllPaymentMethods(){
-        return restFeedInitialization("payment");
+    public static String findAllPaymentMethods(){
+        return FindAllResourceFeed.restFeedInitialization("payment");
     }
 
 
-    public String findAllPaymentTerms(){
-        return restFeedInitialization("paymentTerm");
+    public static String findAllPaymentTerms(){
+        return FindAllResourceFeed.restFeedInitialization("paymentTerm");
     }
 
     //user related
-    public String findAllUsers(){
-        return restFeedInitialization("user");
+    public static String findAllUsers(){
+        return FindAllResourceFeed.restFeedInitialization("user");
     }
-    
-    public String restFeedInitialization(String resource){
-        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
-                InventoryConstants.MEDIA_JSON,InventoryConstants.GET,
-                Login.getRestEndPoint(), resource);
-        try {
-            System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
-            return restFeed.restInitialization();
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        } catch (IOException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
-
-
 }
