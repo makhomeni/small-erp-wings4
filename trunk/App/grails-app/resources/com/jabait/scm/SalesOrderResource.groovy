@@ -52,7 +52,7 @@ class SalesOrderResource {
     Response create(String salesOrder){
         JSONObject jsonObjectSalesOrder = new JSONObject(salesOrder);
         JobOrder jobOrder = new JobOrder();
-        String dateFormat = "MMM dd, yyyy";
+        String dateFormat = "EEE MMM dd HH:mm:ss zzz yyyy";
         Util util = new Util();
         jobOrder.jobName = jsonObjectSalesOrder.get("jobName").toString();
         jobOrder.orderQuantity = Integer.parseInt(jsonObjectSalesOrder.get("orderQuantity").toString());
@@ -61,8 +61,12 @@ class SalesOrderResource {
         jobOrder.priority = Integer.parseInt(jsonObjectSalesOrder.get("priority").toString());
         jobOrder.isSent = Boolean.parseBoolean(jsonObjectSalesOrder.get("isSent").toString());
         jobOrder.deliveryTerm = DeliveryTerm.get(1);
-        jobOrder.dueDate = util.parseDate(jsonObjectSalesOrder.get("dueDate").toString(), dateFormat)
-        jobOrder.createdDate = util.parseDate(jsonObjectSalesOrder.get("createdDate").toString(), dateFormat)
+
+        jobOrder.dueDate = util.parseDate(jsonObjectSalesOrder.get("dueDate").toString(), dateFormat);
+        println("incoming duedate = "+jsonObjectSalesOrder.get("dueDate").toString());
+
+        jobOrder.createdDate =util.parseDate(jsonObjectSalesOrder.get("createdDate").toString(), dateFormat);
+        println("incoming created date = "+jsonObjectSalesOrder.get("createdDate").toString())
         jobOrder.isArchived = Boolean.parseBoolean(jsonObjectSalesOrder.get("isArchived").toString());
 
         created jobOrder.save();

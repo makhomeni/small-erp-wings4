@@ -13,6 +13,16 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 public class Util {
+
+    /**
+     * for date = "Fri Aug 17 23:23:37 BDT 2012", use format = "EEE MMM dd HH:mm:ss zzz yyyy"
+     * for date = "Aug 16, 2012", use format  "MMM dd, yyyy"
+     * @param date
+     * @param format
+     * @return
+     */
+
+
     public Date parseDate(String date, String format)
     {
         SimpleDateFormat formatter = new SimpleDateFormat(format);
