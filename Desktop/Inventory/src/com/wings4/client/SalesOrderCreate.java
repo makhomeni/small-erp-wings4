@@ -433,6 +433,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
             salesOrderObject.put("status", statusCombo.getSelectedItem().toString());
             salesOrderObject.put("priority", priorityCombo.getSelectedItem().toString());
             salesOrderObject.put("isSent", sentCheck.isSelected());
+            System.out.println("due date = "+dueDateTxt.getDate());
             salesOrderObject.put("dueDate", dueDateTxt.getDate().toString());
             salesOrderObject.put("isArchived", archaivedCheck.isSelected());
             
