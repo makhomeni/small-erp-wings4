@@ -1,6 +1,7 @@
 package com.wings4.util;
 
 import com.wings4.dao.CommonDao;
+import java.lang.reflect.Method;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +21,10 @@ public class ItemCreationCombo {
     public static Vector<Item> comboInitialization(String className, String methodName, String displayName){
         try{
             Object object = (Object) className;
-            JSONArray jsonArray = new JSONArray(object.getClass().getMethod(methodName));
+            Class<?> c = Class.forName("com.wings4.dao.".concat(className));
+            Method method = c.getMethod(methodName);
+            Object ret = method.invoke(object);
+            JSONArray jsonArray = new JSONArray(ret.toString());
             return getVectorForCombo(jsonArray, displayName);
         }catch(Exception ex){
             System.out.println("ex is here = " + ex);
