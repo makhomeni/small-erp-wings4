@@ -21,9 +21,9 @@ public class ItemCreationCombo {
     /**
      *
      * @param className = your dao class for accessing webservice i.e =  CommonDao
-     * @param methodName = method name for accessing webservice i.e =
-     * @param displayName
-     * @return
+     * @param methodName = method name for accessing webservice i.e =  findAllDeliveryTerms
+     * @param displayName = which property you wanted to show in combo i.e. = name
+     * @return Vector<Item> for combo box
      */
     public static Vector<Item> comboInitialization(String className, String methodName, String displayName){
         try{
