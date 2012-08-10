@@ -327,7 +327,7 @@ private void porderCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {
         
     } catch(JSONException ex){
         
-        Logger.getLogger(CustomerInsert.class.getName()).log(Level.SEVERE, null, ex);  
+        Logger.getLogger(PurchasingOrderCreate.class.getName()).log(Level.SEVERE, null, ex);  
     }
      String restEndPoint = Login.getRestEndPoint();
         String resource = "purchasingOrderInformationRegister";
