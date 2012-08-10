@@ -4,7 +4,7 @@
  */
 
 /*
- * CustomerInsert.java
+ * CustomerCreate.java
  *
  * Created on Aug 9, 2012, 11:39:12 PM
  */
@@ -25,10 +25,10 @@ import org.json.JSONObject;
  *
  * @author Administrator
  */
-public class CustomerInsert extends javax.swing.JFrame {
+public class CustomerCreate extends javax.swing.JFrame {
 
-    /** Creates new form CustomerInsert */
-    public CustomerInsert() {
+    /** Creates new form CustomerCreate */
+    public CustomerCreate() {
         initComponents();
     }
 
@@ -212,7 +212,7 @@ private void customerSubmitButtonActionPerformed(java.awt.event.ActionEvent evt)
         
     }catch(JSONException ex){
         
-        Logger.getLogger(CustomerInsert.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CustomerCreate.class.getName()).log(Level.SEVERE, null, ex);
         
     }
     
@@ -226,7 +226,7 @@ private void customerSubmitButtonActionPerformed(java.awt.event.ActionEvent evt)
     try {
         restFeed.restInitialization();
     } catch (IOException ex) {
-        Logger.getLogger(CustomerInsert.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CustomerCreate.class.getName()).log(Level.SEVERE, null, ex);
     }                
     
     
@@ -248,13 +248,13 @@ private void customerSubmitButtonActionPerformed(java.awt.event.ActionEvent evt)
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -262,7 +262,7 @@ private void customerSubmitButtonActionPerformed(java.awt.event.ActionEvent evt)
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new CustomerInsert().setVisible(true);
+                new CustomerCreate().setVisible(true);
             }
         });
     }
