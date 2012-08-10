@@ -17,48 +17,18 @@ import java.util.*;
  */
 public class ItemCreationCombo {
 
-    public Vector<Item> deliveryTermItem(){
+    public static Vector<Item> comboInitialization(String className, String methodName, String displayName){
         try{
-            JSONArray jsonArray = new JSONArray(CommonDao.findAllDeliveryTerms());
-            return getVectorForCombo(jsonArray, "terms");
+            Object object = (Object) className;
+            JSONArray jsonArray = new JSONArray(object.getClass().getMethod(methodName));
+            return getVectorForCombo(jsonArray, displayName);
         }catch(Exception ex){
             System.out.println("ex is here = " + ex);
             return null;
         }
     }
 
-    public Vector<Item> paymentTermItem(){
-        try{
-            JSONArray jsonArray = new JSONArray(CommonDao.findAllPaymentTerms());
-            return getVectorForCombo(jsonArray, "name");
-        }catch(Exception ex){
-            System.out.println("ex is here = " + ex);
-            return null;
-        }
-    }
-
-    public Vector<Item> paymentTermMethod(){
-        try{
-            JSONArray jsonArray = new JSONArray(CommonDao.findAllPaymentTerms());
-            return getVectorForCombo(jsonArray, "paymentMethod");
-        }catch(Exception ex){
-            System.out.println("ex is here = " + ex);
-            return null;
-        }
-    }
-
-    public Vector<Item> creatorItem(){
-        try{
-            JSONArray jsonArray = new JSONArray(CommonDao.findAllUsers());
-
-            return getVectorForCombo(jsonArray, "userCode");
-        }catch(Exception ex){
-            System.out.println("ex is here = " + ex);
-            return null;
-        }
-    }
-
-    public Vector<Item> getVectorForCombo(JSONArray jsonArray, String valueToShowInCombo){
+    public static Vector<Item> getVectorForCombo(JSONArray jsonArray, String valueToShowInCombo){
         List<Map<String,Object>> instances = new ArrayList<Map<String,Object>>();
         Map<String,Object> instance;
         try{
