@@ -5,9 +5,10 @@
 package com.wings4.client;
 
 import com.wings4.Login;
-import com.wings4.dao.DeliveryTermDao;
-import com.wings4.dao.PaymentDao;
-import com.wings4.dao.UserDao;
+import com.wings4.dao.CommonDao;
+
+
+
 import com.wings4.util.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -338,10 +339,11 @@ public class SalesOrderCreate extends InventoryInternalBase {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    CommonDao commonDao =  new CommonDao();
     private Vector<Item> creatorItem(){
         try{
 //            System.out.println("userDao.findAllUsers() = " + userDao.findAllUsers());
-            JSONArray jsonArray = new JSONArray(UserDao.findAllUsers());
+            JSONArray jsonArray = new JSONArray(commonDao.findAllUsers());
             List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
             Map<String,Object> user;
             System.out.print(jsonArray.length());
@@ -369,7 +371,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
 
     private Vector<Item> paymentTermItem(){
         try{
-            JSONArray jsonArray = new JSONArray(PaymentDao.findAllPaymentMethods());
+            JSONArray jsonArray = new JSONArray(commonDao.findAllPaymentMethods());
             List<Map<String,Object>> payments = new ArrayList<Map<String,Object>>();
             Map<String,Object> payment;
             System.out.print(jsonArray.length());
@@ -397,7 +399,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
     private Vector<Item> deliveryTermItem(){
         try{
             List<Map<String,Object>> deliveryTerms = new ArrayList<Map<String,Object>>();
-            JSONArray jsonArray = new JSONArray(DeliveryTermDao.findAllDeliveryTerm());
+            JSONArray jsonArray = new JSONArray(commonDao.findAllDeliveryTerm());
             Map<String,Object> deliveryTerm;
             for(int i = 0 ; i < jsonArray.length(); i++){
                 deliveryTerm = new HashMap<String,Object>();
@@ -433,7 +435,7 @@ public class SalesOrderCreate extends InventoryInternalBase {
             salesOrderObject.put("status", statusCombo.getSelectedItem().toString());
             salesOrderObject.put("priority", priorityCombo.getSelectedItem().toString());
             salesOrderObject.put("isSent", sentCheck.isSelected());
-            System.out.println("due date = "+dueDateTxt.getDate());
+            System.out.println("due date = " + dueDateTxt.getDate());
             salesOrderObject.put("dueDate", dueDateTxt.getDate().toString());
             salesOrderObject.put("isArchived", archaivedCheck.isSelected());
             
