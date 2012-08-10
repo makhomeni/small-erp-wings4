@@ -88,14 +88,14 @@ public class SalesOrderCreate extends InventoryInternalBase {
         submitDetailBtn = new javax.swing.JButton();
         cancelDetailBtn = new javax.swing.JButton();
 
-        createdByCombo = new javax.swing.JComboBox(ItemCreationCombo.comboInitialization("Common","findAllUsers", "userCode"));
+        createdByCombo = new javax.swing.JComboBox(ItemCreationCombo.comboInitialization("CommonDao","findAllUsers", "userCode"));
         createdByCombo.setRenderer(new ItemRenderer());
 
-        paymentTermCombo = new javax.swing.JComboBox(ItemCreationCombo.comboInitialization("Common","findAllPaymentTerms", "name"));
+        paymentTermCombo = new javax.swing.JComboBox(ItemCreationCombo.comboInitialization("CommonDao","findAllPaymentTerms", "name"));
         paymentTermCombo.setRenderer(new ItemRenderer());
 
 
-        deliveryTermCombo = new javax.swing.JComboBox(ItemCreationCombo.comboInitialization("Common","findAllDeliveryTerms", "terms"));
+        deliveryTermCombo = new javax.swing.JComboBox(ItemCreationCombo.comboInitialization("CommonDao","findAllDeliveryTerms", "terms"));
         deliveryTermCombo.setRenderer(new ItemRenderer());
 
         setTitle("Sales Order Creation");
