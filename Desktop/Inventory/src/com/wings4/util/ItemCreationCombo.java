@@ -31,7 +31,18 @@ public class ItemCreationCombo {
     public Vector<Item> paymentTermItem(){
         try{
             CommonDao commonDao = new CommonDao();
-            JSONArray jsonArray = new JSONArray(commonDao.findAllPaymentMethods());
+            JSONArray jsonArray = new JSONArray(commonDao.findAllPaymentTerms());
+            return getVectorForCombo(jsonArray, "name");
+        }catch(Exception ex){
+            System.out.println("ex is here = " + ex);
+            return null;
+        }
+    }
+
+    public Vector<Item> paymentTermMethod(){
+        try{
+            CommonDao commonDao = new CommonDao();
+            JSONArray jsonArray = new JSONArray(commonDao.findAllPaymentTerms());
             return getVectorForCombo(jsonArray, "paymentMethod");
         }catch(Exception ex){
             System.out.println("ex is here = " + ex);
