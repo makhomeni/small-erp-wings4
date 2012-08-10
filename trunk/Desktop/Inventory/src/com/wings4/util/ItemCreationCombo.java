@@ -1,6 +1,5 @@
 package com.wings4.util;
 
-import com.wings4.dao.CommonDao;
 import java.lang.reflect.Method;
 import org.json.JSONArray;
 import org.json.JSONException;
