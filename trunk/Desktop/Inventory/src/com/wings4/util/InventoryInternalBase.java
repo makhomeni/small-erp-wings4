@@ -27,7 +27,7 @@ public class InventoryInternalBase extends JInternalFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel("com.peterswing.white.PeterSwingWhiteLookAndFeel");
         }
         catch (UnsupportedLookAndFeelException e) {
             // handle exception
@@ -50,7 +50,7 @@ public class InventoryInternalBase extends JInternalFrame {
         
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel("com.peterswing.white.PeterSwingWhiteLookAndFeel");
         }
         catch (UnsupportedLookAndFeelException e) {
             // handle exception

@@ -25,9 +25,8 @@ public class InventoryBase extends JFrame{
         setLocation(100,100);
         
  
-        
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel("com.peterswing.white.PeterSwingWhiteLookAndFeel");
         }
         catch (UnsupportedLookAndFeelException e) {
             // handle exception
@@ -49,7 +48,7 @@ public class InventoryBase extends JFrame{
         setLocation(100,100);
         
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel("com.peterswing.white.PeterSwingWhiteLookAndFeel");
         }
         catch (UnsupportedLookAndFeelException e) {
             // handle exception
