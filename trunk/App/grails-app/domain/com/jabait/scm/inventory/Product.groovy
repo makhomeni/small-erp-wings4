@@ -29,5 +29,6 @@ class Product {
         productType(nullable: false);
         classification(nullable: false);
         unitOfMeasure(nullable: true);
+        image(nullable: true);
     }
 }

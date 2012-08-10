@@ -39,6 +39,7 @@ class UserResource {
     @Produces(["application/json"])
     @Consumes(["application/json"])
     Response authenticate(String user){
+        println "user = $user"
         JSONObject userObject = new JSONObject(user);
         User userAuth = User.findByUserCodeAndPassword(userObject.get("username").toString(),
                 new EncryptionUtils("jabait").encrypt(userObject.get("password").toString()));
