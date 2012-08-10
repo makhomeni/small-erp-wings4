@@ -141,7 +141,7 @@ public class InventoryDesktop extends InventoryBase {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventory");
-        setResizable(false);
+        setResizable(true);
 
         jToolBar1.setRollover(true);
 
