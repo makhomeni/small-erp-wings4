@@ -44,7 +44,6 @@ public class ItemCreationCombo {
         try{
             for(int i = 0 ; i < jsonArray.length(); i++){
                 instance = new HashMap<String,Object>();
-                System.out.println("jsonArray.get(i) = " + jsonArray.get(i));
                 JSONObject deliveryTermObject = (JSONObject)jsonArray.get(i);
                 instance.put("id", deliveryTermObject.get("id"));
                 instance.put(valueToShowInCombo, deliveryTermObject.get(valueToShowInCombo));
@@ -53,12 +52,11 @@ public class ItemCreationCombo {
 
             Vector<Item> instanceVector = new Vector<Item>();
             for(Map<String,Object> instanceMap : instances) {
-                System.out.println("instanceMap = " + instanceMap);
                 instanceVector.addElement(new Item(Integer.parseInt(instanceMap.get("id").toString()),
                         instanceMap.get(valueToShowInCombo).toString()));
             }
+            
             return instanceVector;
-
         }catch(JSONException jE){
             jE.printStackTrace();
             return null;
