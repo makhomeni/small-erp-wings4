@@ -24,41 +24,30 @@ public class CommonDao {
     //for delivery term
 
     public String findAllDeliveryTerm(){
-        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON, InventoryConstants.MEDIA_JSON,
-                InventoryConstants.GET, Login.getRestEndPoint(), "delivery");
-        try {
-            System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
-            return restFeed.restInitialization();
-        } catch (MalformedURLException ex) {
-            return null;
-        } catch (IOException ex) {
-            return null;
-        }
-
+        return restFeedInitialization("delivery");
     }
 
 
     //payment methods
 
     public String findAllPaymentMethods(){
-        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON, InventoryConstants.MEDIA_JSON,
-                InventoryConstants.GET, Login.getRestEndPoint(), "payment");
-        try {
-            System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
-            return restFeed.restInitialization();
-        } catch (MalformedURLException ex) {
-            return null;
-        } catch (IOException ex) {
-            return null;
-        }
+        return restFeedInitialization("payment");
+    }
 
+
+    public String findAllPaymentTerms(){
+        return restFeedInitialization("paymentTerm");
     }
 
     //user related
     public String findAllUsers(){
+        return restFeedInitialization("user");
+    }
+    
+    public String restFeedInitialization(String resource){
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
                 InventoryConstants.MEDIA_JSON,InventoryConstants.GET,
-                Login.getRestEndPoint(), "user");
+                Login.getRestEndPoint(), resource);
         try {
             System.out.println("restFeed.restInitialization() = " + restFeed.restInitialization());
             return restFeed.restInitialization();
