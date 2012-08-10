@@ -1,6 +1,6 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -76,14 +76,14 @@
                               </Group>
                               <Component id="jobNameTxt" pref="245" max="32767" attributes="0"/>
                               <Component id="orderQuantityTxt" pref="245" max="32767" attributes="0"/>
-                              <Component id="createdDateTxt" pref="245" max="32767" attributes="0"/>
                               <Component id="statusCombo" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                               <Component id="priorityCombo" min="-2" pref="145" max="-2" attributes="0"/>
                               <Component id="sentCheck" min="-2" max="-2" attributes="0"/>
-                              <Component id="dueDateTxt" alignment="0" pref="245" max="32767" attributes="0"/>
                               <Component id="archaivedCheck" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="createdByCombo" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Component id="createdDateTxt" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
+                          <Component id="dueDateTxt" min="-2" pref="245" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="155" max="32767" attributes="0"/>
                   </Group>
@@ -102,12 +102,12 @@
                           <Component id="orderQuantityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="orderQuantityTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="createdDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="createdDateTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="createdDateLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="createdDateTxt" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="createdByCombo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="createdByLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -128,9 +128,9 @@
                           <Component id="sentCheck" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="dueDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="dueDateTxt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="dueDateLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="dueDateTxt" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -166,8 +166,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Created Date"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="createdDateTxt">
             </Component>
             <Component class="javax.swing.JLabel" name="statusLabel">
               <Properties>
@@ -215,8 +213,6 @@
                 <Property name="text" type="java.lang.String" value="Due Date"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="dueDateTxt">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Archived"/>
@@ -257,6 +253,10 @@
                 <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="try{&#xa;    JSONArray jsonArray = new JSONArray(findAllUsers());&#xa;    System.out.print(jsonArray.length());&#xa;}catch(Exception ex){&#xa;&#xa;}"/>
               </AuxValues>
             </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="createdDateTxt">
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="dueDateTxt">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel3">
@@ -280,11 +280,11 @@
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="dueDateTermsCondition" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="deliveryTermCombo" alignment="0" pref="142" max="32767" attributes="0"/>
                               <Component id="paymentTermCombo" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="dueDateTermsCondition" min="-2" pref="245" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="127" max="32767" attributes="0"/>
                   </Group>
@@ -353,7 +353,7 @@
                 <Property name="text" type="java.lang.String" value="Due Date"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="dueDateTermsCondition">
+            <Component class="com.toedter.calendar.JDateChooser" name="dueDateTermsCondition">
             </Component>
           </SubComponents>
         </Container>

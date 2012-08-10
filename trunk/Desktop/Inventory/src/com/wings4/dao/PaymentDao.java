@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class PaymentDao {
     
-    public static String findAllPayments(){
+    public static String findAllPaymentMethods(){
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON, InventoryConstants.MEDIA_JSON,
                 InventoryConstants.GET, Login.getRestEndPoint(), "payment");
         try {
