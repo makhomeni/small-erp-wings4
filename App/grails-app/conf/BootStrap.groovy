@@ -12,6 +12,7 @@ import com.jabait.scm.inventory.ProductClassification
 import com.jabait.util.UnitOfMeasure
 import com.jabait.scm.inventory.ProductType
 import com.jabait.util.Carrier
+import com.jabait.scm.SalesOrder
 
 class BootStrap {
 
@@ -19,7 +20,7 @@ class BootStrap {
 
         User.initialize();
         Feature.initialize();
-        Feature.initializeSalesOrder();
+        SalesOrder.initializeSalesOrder();
         Organization.initialize();
         Department.initialize();
         CalendarType.initialize();
