@@ -21,11 +21,25 @@ import org.json.JSONObject;
  */
 public class Category extends InventoryInternalBase {
 
+    private static volatile Category instance = null;
+    
     /**
      * Creates new form Category
      */
-    public Category() {
+    private Category() {
         initComponents();
+    }
+ 
+    public static Category getInstance() {
+        if (instance == null) {
+            synchronized (Category.class){
+                if (instance == null) {
+                    instance = new Category();
+                }
+            }
+        }
+        
+        return instance;
     }
 
     /**

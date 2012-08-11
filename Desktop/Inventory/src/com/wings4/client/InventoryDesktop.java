@@ -231,6 +231,11 @@ public class InventoryDesktop extends InventoryBase {
         materialsMenu.setText("Materials");
 
         categoryMenuItem.setText("Category");
+        categoryMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryMenuItemActionPerformed(evt);
+            }
+        });
         materialsMenu.add(categoryMenuItem);
         materialsMenu.add(jSeparator3);
 
@@ -344,9 +349,13 @@ public class InventoryDesktop extends InventoryBase {
     }// </editor-fold>//GEN-END:initComponents
 
     private void categoryToolBarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryToolBarButtonActionPerformed
-        Category category = new Category();
-        category.setVisible(true);
-        inventoryDesktopBoard.add(category);
+        try{
+            Category category = Category.getInstance();
+            category.setVisible(true);
+            inventoryDesktopBoard.add(category); 
+        }catch(Exception ex){
+            this.categoryToolBarButtonActionPerformed(evt);
+        }
     }//GEN-LAST:event_categoryToolBarButtonActionPerformed
 
     private void logoutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutMenuItemActionPerformed
@@ -391,6 +400,13 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     wareHouse.setVisible(true);
     inventoryDesktopBoard.add(wareHouse);
 }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+private void categoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryMenuItemActionPerformed
+// TODO add your handling code here:
+   Category category = Category.getInstance();
+   category.setVisible(true);
+   inventoryDesktopBoard.add(category); 
+}//GEN-LAST:event_categoryMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
