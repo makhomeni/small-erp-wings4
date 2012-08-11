@@ -19,6 +19,7 @@ class BootStrap {
 
         User.initialize();
         Feature.initialize();
+        Feature.initializeSalesOrder();
         Organization.initialize();
         Department.initialize();
         CalendarType.initialize();
