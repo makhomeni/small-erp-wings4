@@ -403,9 +403,13 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
 private void categoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryMenuItemActionPerformed
 // TODO add your handling code here:
-   Category category = Category.getInstance();
-   category.setVisible(true);
-   inventoryDesktopBoard.add(category); 
+   try{
+        Category category = Category.getInstance();
+        category.setVisible(true);
+        inventoryDesktopBoard.add(category); 
+    }catch(Exception ex){
+        this.categoryMenuItemActionPerformed(evt);
+    }
 }//GEN-LAST:event_categoryMenuItemActionPerformed
 
     /**
