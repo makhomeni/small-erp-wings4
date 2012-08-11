@@ -10,6 +10,7 @@
  */
 package com.wings4.client;
 
+import com.wings4.util.InventoryInternalBase;
 import com.wings4.util.Item;
 import com.wings4.util.ItemCreationCombo;
 import com.wings4.util.ItemRenderer;
@@ -26,7 +27,7 @@ import org.json.JSONObject;
  * @author Md Dablu Hossain
  */
 
-public class WareHouse extends javax.swing.JFrame {
+public class WareHouse extends InventoryInternalBase {
 
     /** Creates new form WareHouse */
     public WareHouse() {

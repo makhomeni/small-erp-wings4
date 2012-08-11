@@ -389,6 +389,7 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 // TODO add your handling code here:
     WareHouse wareHouse = new WareHouse();
     wareHouse.setVisible(true);
+    inventoryDesktopBoard.add(wareHouse);
 }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
