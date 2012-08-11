@@ -98,7 +98,8 @@ public class WareHouse extends InventoryInternalBase {
         postalCodeLabel = new javax.swing.JLabel();
         regionLabel = new javax.swing.JLabel();
         streetAddressLabel = new javax.swing.JLabel();
-        wareHouseorganizationCombo = new javax.swing.JComboBox();
+        wareHouseorganizationCombo = new javax.swing.JComboBox(ItemCreationCombo.comboInitialization("CommonDao","findAllOrganizations", "organizationName"));
+        wareHouseorganizationCombo.setRenderer(new ItemRenderer());
         cancelBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
         countryLabel1 = new javax.swing.JLabel();
@@ -129,7 +130,7 @@ public class WareHouse extends InventoryInternalBase {
 
         streetAddressLabel.setText("Street Address :");
 
-        wareHouseorganizationCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        
 
         cancelBtn.setText("Cancel");
 
@@ -223,7 +224,8 @@ public class WareHouse extends InventoryInternalBase {
                 .addGap(46, 46, 46))
         );
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-493)/2, (screenSize.height-513)/2, 493, 513);
     }// </editor-fold>//GEN-END:initComponents
 
 private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
