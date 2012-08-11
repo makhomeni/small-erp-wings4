@@ -64,8 +64,8 @@ public class WareHouse extends javax.swing.JFrame {
         postalCodeLabel = new javax.swing.JLabel();
         regionLabel = new javax.swing.JLabel();
         streetAddressLabel = new javax.swing.JLabel();
-        wareHouseorganizationCombo =  new javax.swing.JComboBox(ItemCreationCombo.comboInitialization("CommonDao","findAllOrganizations", 
-		"organizationName"));
+        wareHouseorganizationCombo =  new javax.swing.JComboBox(ItemCreationCombo.comboInitialization("CommonDao",
+                "findAllOrganizations", "organizationName"));
         wareHouseorganizationCombo.setRenderer(new ItemRenderer());
         cancelBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
@@ -96,8 +96,6 @@ public class WareHouse extends javax.swing.JFrame {
         regionLabel.setText("Region :");
 
         streetAddressLabel.setText("Street Address :");
-
-        wareHouseorganizationCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cancelBtn.setText("Cancel");
 
