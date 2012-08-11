@@ -141,7 +141,6 @@ public class InventoryDesktop extends InventoryBase {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventory");
-        setResizable(false);
 
         jToolBar1.setBackground(new java.awt.Color(153, 153, 255));
         jToolBar1.setRollover(true);
@@ -396,7 +395,7 @@ private void inventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {/
 
 private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 // TODO add your handling code here:
-    WareHouse wareHouse = new WareHouse();
+    WareHouseGrid wareHouse = WareHouseGrid.getInstance();
     wareHouse.setVisible(true);
     inventoryDesktopBoard.add(wareHouse);
 }//GEN-LAST:event_jMenuItem1ActionPerformed
