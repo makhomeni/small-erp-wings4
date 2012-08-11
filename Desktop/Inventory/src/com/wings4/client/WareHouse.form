@@ -1,0 +1,206 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="organizationNameLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="wareHouseNameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="countryLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="addressOneLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="addressTwoLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="postBoxLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="postalCodeLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="regionLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="streetAddressLabel" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="wareHouseNameTxt" pref="210" max="32767" attributes="1"/>
+                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="saveBtn" min="-2" pref="99" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="cancelBtn" min="-2" pref="93" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="wareHouseorganizationCombo" alignment="0" pref="210" max="32767" attributes="1"/>
+                  </Group>
+                  <Component id="countryTxt" pref="210" max="32767" attributes="1"/>
+                  <Component id="addressOneTxt" pref="210" max="32767" attributes="1"/>
+                  <Component id="addressTwoTxt" pref="210" max="32767" attributes="1"/>
+                  <Component id="postBoxTxt" pref="210" max="32767" attributes="1"/>
+                  <Component id="postCodeTxt" pref="210" max="32767" attributes="1"/>
+                  <Component id="regionTxt" pref="210" max="32767" attributes="1"/>
+                  <Component id="streetAddressTxt" pref="210" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace pref="99" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="organizationNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="wareHouseorganizationCombo" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="wareHouseNameTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="countryTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="countryLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="addressOneTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="addressOneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="addressTwoTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="addressTwoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="postBoxTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="postBoxLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="postCodeTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="postalCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="regionTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="regionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="streetAddressTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="streetAddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="wareHouseNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="saveBtn" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="cancelBtn" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="organizationNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Organization :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="wareHouseNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="WareHouse Name :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="addressOneLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Address 1 :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="addressTwoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Address 2 :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="postBoxLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Post Box :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="postalCodeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Postal Code :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="regionLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Region :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="streetAddressLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Street Address :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="wareHouseorganizationCombo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="cancelBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="saveBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="countryLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Country :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="wareHouseNameTxt">
+    </Component>
+    <Component class="javax.swing.JTextField" name="countryTxt">
+    </Component>
+    <Component class="javax.swing.JTextField" name="addressOneTxt">
+    </Component>
+    <Component class="javax.swing.JTextField" name="addressTwoTxt">
+    </Component>
+    <Component class="javax.swing.JTextField" name="postBoxTxt">
+    </Component>
+    <Component class="javax.swing.JTextField" name="postCodeTxt">
+    </Component>
+    <Component class="javax.swing.JTextField" name="regionTxt">
+    </Component>
+    <Component class="javax.swing.JTextField" name="streetAddressTxt">
+    </Component>
+  </SubComponents>
+</Form>

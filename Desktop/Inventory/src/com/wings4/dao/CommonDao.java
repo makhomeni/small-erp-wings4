@@ -44,4 +44,8 @@ public class CommonDao {
     public static String findAllUsers(){
         return FindAllResourceFeed.restFeedInitialization("user");
     }
+    
+    public static String findAllOrganizations(){
+        return FindAllResourceFeed.restFeedInitialization("organization");
+    }
 }
