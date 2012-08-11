@@ -18,8 +18,6 @@ import com.jabait.security.Address
 import javax.ws.rs.PathParam
 
 @Path("/api/warehouse")
-@Consumes(['application/xml', 'application/json'])
-@Produces(['application/xml', 'application/json'])
 class WarehouseResource {
 
     def warehouseResourceService
@@ -28,6 +26,7 @@ class WarehouseResource {
     @Consumes(["application/json"])
     @Produces(["application/json"])
     Response createWareHouse(String wareHouse){
+        println "wareHouse " + wareHouse
         JSONObject wareHouseObject = new JSONObject(wareHouse);
 
         Organization organization = Organization.get(Integer.parseInt(wareHouseObject.get("organization").toString()));
@@ -46,7 +45,12 @@ class WarehouseResource {
         address.region = region;
         address.streetAddress = streetAddress;
 
-        created Address.save(address);
+        Warehouse warehouse = new Warehouse();
+        warehouse.organization = organization;
+        warehouse.wareHouseName =  wareHouseObject.get("wareHouseName").toString();
+        warehouse.address = address;
+
+        created warehouse.save(flush: true);
 
 
     }

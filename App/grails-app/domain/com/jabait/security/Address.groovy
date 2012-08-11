@@ -2,6 +2,7 @@ package com.jabait.security
 
 import com.jabait.hrm.Organization
 import com.jabait.hrm.EmployeeProfile
+import com.jabait.scm.Warehouse
 
 class Address {
 
@@ -12,7 +13,8 @@ class Address {
     String region;
     String streetAddress;
 
-    static belongsTo = [organization: Organization, employeeProfile: EmployeeProfile]
+    static belongsTo = [organization: Organization, employeeProfile: EmployeeProfile,
+            wareHouse : Warehouse]
 
     static constraints = {
         country(nullable:false)
@@ -23,5 +25,6 @@ class Address {
         streetAddress(nullable: true)
         organization(nullable: true)
         employeeProfile(nullable: true)
+        wareHouse(nullable: true)
     }
 }
