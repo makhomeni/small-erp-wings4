@@ -10,19 +10,23 @@ import com.jabait.scm.inventory.InventoryRegister
 class SalesOrder extends JobOrder {
 
     Customer customer;
-    Address shippingAddress;
+    String address1;
+    String address2;
     ShippingMethod shippingMethod;
     PaymentTerm paymentTerm;
-    PriceList priceList;
 
     static hasMany = [inventories : InventoryRegister]
 
     static mapping = {
-
         table("sales_order")
     }
 
     static constraints = {
-
+        customer(nullable: true);
+        shippingMethod(nullable: true);
+        address1(nullable: true);
+        address2(nullable: true);
+        paymentTerm(nullable: true);
+        inventories(nullable: true);
     }
 }

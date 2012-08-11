@@ -1,6 +1,8 @@
 package com.jabait.security
 
 import com.jabait.attendance.util.FeatureCollection
+import com.jabait.accounting.PaymentTerm
+import com.jabait.scm.DeliveryTerm
 
 class Feature {
 
@@ -200,6 +202,26 @@ class Feature {
             )
             Authority.get(1).addToFeatures(categoryListFeature).save(flush: true);
         }
+
+    }
+
+    public static initializeSalesOrder(){
+        if(PaymentTerm.count() == 0 ){
+            PaymentTerm paymentTerm = new PaymentTerm();
+            paymentTerm.days = 10;
+            paymentTerm.name = "Late";
+            paymentTerm.description = "Payment will be done in month";
+
+            paymentTerm.save();
+        }
+
+        if(DeliveryTerm.count() == 0){
+            DeliveryTerm deliveryTerm = new DeliveryTerm();
+            deliveryTerm.terms = "test";
+            deliveryTerm.description = "test";
+            deliveryTerm.save();
+        }
+
 
     }
 }
