@@ -15,6 +15,7 @@ import javax.ws.rs.POST
 import org.json.JSONObject
 import com.jabait.hrm.Organization
 import com.jabait.security.Address
+import javax.ws.rs.PathParam
 
 @Path("/api/warehouse")
 @Consumes(['application/xml', 'application/json'])
@@ -51,7 +52,8 @@ class WarehouseResource {
     }
 
     @GET
-    Response read() {
+    @Path("/{id}")
+    Response read(@PathParam("id") Long id) {
         ok warehouseResourceService.read(id)
     }
 
