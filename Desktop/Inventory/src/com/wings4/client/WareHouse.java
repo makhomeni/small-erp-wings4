@@ -10,16 +10,20 @@
  */
 package com.wings4.client;
 
+import com.wings4.Login;
+import com.wings4.util.InventoryConstants;
 import com.wings4.util.InventoryInternalBase;
 import com.wings4.util.Item;
 import com.wings4.util.ItemCreationCombo;
 import com.wings4.util.ItemRenderer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Vector;
-import org.json.JSONArray;
+import com.wings4.util.RESTFeed;
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -36,14 +40,43 @@ public class WareHouse extends InventoryInternalBase {
     
     
     public void saveWareHouse(){
-        JSONObject wareHouseResourceObject = new JSONObject();
         
+        String extendedAddress = addressOneTxt.getText().toString()+" "+addressTwoTxt.getText().toString();
+        JSONObject wareHouseResourceObject = new JSONObject();
+        System.out.println("extendedAddress = " + extendedAddress);
         try{
+            Item organization = (Item) wareHouseorganizationCombo.getSelectedItem();
+            wareHouseResourceObject.put("organization", organization.getId());
+            wareHouseResourceObject.put("country",countryTxt.getText());
+            wareHouseResourceObject.put("extendedAddress", extendedAddress);
+            wareHouseResourceObject.put("poBox", postBoxTxt.getText());
+            wareHouseResourceObject.put("postalCode", postCodeTxt.getText());
+            wareHouseResourceObject.put("region", regionTxt.getText());
+            wareHouseResourceObject.put("streetAddress", streetAddressTxt.getText());
+            wareHouseResourceObject.put("wareHouseName", wareHouseNameTxt.getText());
             
-        }
-        catch(Exception ex){
             
+        }catch (JSONException ex) {
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        String restEndPoint = Login.getRestEndPoint();
+        String resource = "warehouse";
+        
+        RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
+                InventoryConstants.MEDIA_JSON,InventoryConstants.POST, 
+                restEndPoint, resource);
+    restFeed.setJsonObject(wareHouseResourceObject);
+    
+    
+    
+        try {
+            restFeed.restInitialization();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(InventoryCreate.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InventoryCreate.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
     
     
@@ -65,9 +98,7 @@ public class WareHouse extends InventoryInternalBase {
         postalCodeLabel = new javax.swing.JLabel();
         regionLabel = new javax.swing.JLabel();
         streetAddressLabel = new javax.swing.JLabel();
-        wareHouseorganizationCombo =  new javax.swing.JComboBox(ItemCreationCombo.comboInitialization("CommonDao",
-                "findAllOrganizations", "organizationName"));
-        wareHouseorganizationCombo.setRenderer(new ItemRenderer());
+        wareHouseorganizationCombo = new javax.swing.JComboBox();
         cancelBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
         countryLabel1 = new javax.swing.JLabel();
@@ -80,7 +111,7 @@ public class WareHouse extends InventoryInternalBase {
         regionTxt = new javax.swing.JTextField();
         streetAddressTxt = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         organizationNameLabel.setText("Organization :");
 
@@ -98,9 +129,16 @@ public class WareHouse extends InventoryInternalBase {
 
         streetAddressLabel.setText("Street Address :");
 
+        wareHouseorganizationCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         cancelBtn.setText("Cancel");
 
         saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
 
         countryLabel1.setText("Country :");
 
@@ -178,7 +216,7 @@ public class WareHouse extends InventoryInternalBase {
                             .addComponent(streetAddressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(streetAddressLabel)))
                     .addComponent(wareHouseNameLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -187,6 +225,11 @@ public class WareHouse extends InventoryInternalBase {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+// TODO add your handling code here:
+    saveWareHouse();
+}//GEN-LAST:event_saveBtnActionPerformed
 
     /**
      * @param args the command line arguments
