@@ -26,10 +26,10 @@ public class ItemCreationCombo {
      */
     public static Vector<Item> comboInitialization(String className, String methodName, String displayName){
         try{
-            Object object = (Object) className;
             Class<?> c = Class.forName("com.wings4.dao.".concat(className));
             Method method = c.getMethod(methodName);
-            Object ret = method.invoke(object);
+            Object ret = method.invoke(c);
+            System.out.println("rate."+ ret.toString());
             JSONArray jsonArray = new JSONArray(ret.toString());
             return getVectorForCombo(jsonArray, displayName);
         }catch(Exception ex){
@@ -46,6 +46,8 @@ public class ItemCreationCombo {
                 instance = new HashMap<String,Object>();
                 JSONObject deliveryTermObject = (JSONObject)jsonArray.get(i);
                 instance.put("id", deliveryTermObject.get("id"));
+                System.out.println("deliveryTermObject.get(valueToShowInCombo) = " 
+                        + deliveryTermObject.get(valueToShowInCombo));
                 instance.put(valueToShowInCombo, deliveryTermObject.get(valueToShowInCombo));
                 instances.add(instance);
             }

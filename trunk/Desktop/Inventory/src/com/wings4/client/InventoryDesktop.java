@@ -141,7 +141,7 @@ public class InventoryDesktop extends InventoryBase {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventory");
-        setResizable(true);
+        setResizable(false);
 
         jToolBar1.setBackground(new java.awt.Color(153, 153, 255));
         jToolBar1.setRollover(true);
@@ -215,6 +215,11 @@ public class InventoryDesktop extends InventoryBase {
         generalMenu.add(dashboardMenu);
 
         jMenuItem1.setText("Warehouse");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         generalMenu.add(jMenuItem1);
         generalMenu.add(jSeparator2);
 
@@ -379,6 +384,12 @@ private void inventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {/
         product.setVisible(true);
         inventoryDesktopBoard.add(product);
     }//GEN-LAST:event_productToolbarButtonActionPerformed
+
+private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+// TODO add your handling code here:
+    WareHouse wareHouse = new WareHouse();
+    wareHouse.setVisible(true);
+}//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
