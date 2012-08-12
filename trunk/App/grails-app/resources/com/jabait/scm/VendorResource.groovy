@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response
 
 import org.grails.jaxrs.provider.DomainObjectNotFoundException
 import javax.xml.ws.Response
+import javax.ws.rs.Path
 
 
 @Path('/api/vendor')
