@@ -12,6 +12,7 @@ package com.wings4.client;
 
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.model.Category;
 import com.wings4.util.InventoryConstants;
 
 import java.util.ArrayList;
@@ -42,8 +43,8 @@ public class CategoryList extends javax.swing.JFrame {
         categoryScrollPane = new javax.swing.JScrollPane();
         categoryTable = new javax.swing.JTable();
 
-        AnnotationResolver resolver = new AnnotationResolver(com.wings4.model.Category.class);
-        final ObjectTableModel<com.wings4.model.Category> tableModel = new ObjectTableModel<com.wings4.model.Category>(
+        AnnotationResolver resolver = new AnnotationResolver(Category.class);
+        final ObjectTableModel<Category> tableModel = new ObjectTableModel<Category>(
                 resolver, "categoryId,categoryName,parentCategory");
 
         tableModel.setData(getData());
@@ -93,8 +94,8 @@ public class CategoryList extends javax.swing.JFrame {
         });
     }
 
-    private List<com.wings4.model.Category> getData() {
-        List<com.wings4.model.Category> list = new ArrayList<com.wings4.model.Category>();
+    private List<Category> getData() {
+        List<Category> list = new ArrayList<Category>();
         return list;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

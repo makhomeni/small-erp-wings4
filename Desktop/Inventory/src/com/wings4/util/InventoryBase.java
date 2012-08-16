@@ -34,13 +34,15 @@ public class InventoryBase extends JFrame{
     }
     
     public void setDefaultLookAndFeel(){
-        com.incors.plaf.alloy.AlloyLookAndFeel.setProperty("alloy.licenseCode", "2012/09/12#hossaindoula@gmail.com#d0b9db#14dqaq");
-        try {
-            javax.swing.LookAndFeel alloyLnF = new com.incors.plaf.alloy.AlloyLookAndFeel();
-            javax.swing.UIManager.setLookAndFeel(alloyLnF);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            // You may handle the exception here
-        }
+        //LookAndFeelManager.invokeLookAndFeel("AlloyLookAndFeel");
+        LookAndFeelManager.setAlloyLookAndFeel();
+//        com.incors.plaf.alloy.AlloyLookAndFeel.setProperty("alloy.licenseCode", "2012/09/12#hossaindoula@gmail.com#d0b9db#14dqaq");
+//        try {
+//            javax.swing.LookAndFeel alloyLnF = new com.incors.plaf.alloy.AlloyLookAndFeel();
+//            javax.swing.UIManager.setLookAndFeel(alloyLnF);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            // You may handle the exception here
+//        }
     }
     
     public void setDefaultBehavior(){
