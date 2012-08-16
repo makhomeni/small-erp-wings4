@@ -1,15 +1,6 @@
 package com.wings4.dao;
 
-import com.wings4.Login;
-import com.wings4.client.Category;
 import com.wings4.util.FindAllResourceFeed;
-import com.wings4.util.InventoryConstants;
-import com.wings4.util.RESTFeed;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

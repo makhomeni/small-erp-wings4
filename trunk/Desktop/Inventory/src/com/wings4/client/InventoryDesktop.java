@@ -8,8 +8,6 @@ import com.wings4.Login;
 import com.wings4.util.InventoryBase;
 import com.wings4.util.InactivityListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.Action;
 
@@ -228,7 +226,7 @@ public class InventoryDesktop extends InventoryBase {
 
         materialsMenu.setText("Materials");
 
-        categoryMenuItem.setText("Category");
+        categoryMenuItem.setText("CategoryCreate");
         categoryMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 categoryMenuItemActionPerformed(evt);
@@ -237,7 +235,7 @@ public class InventoryDesktop extends InventoryBase {
         materialsMenu.add(categoryMenuItem);
         materialsMenu.add(jSeparator3);
 
-        productMenuItem.setText("Product");
+        productMenuItem.setText("ProductCreate");
         materialsMenu.add(productMenuItem);
         materialsMenu.add(jSeparator4);
 
@@ -348,9 +346,9 @@ public class InventoryDesktop extends InventoryBase {
 
     private void categoryToolBarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryToolBarButtonActionPerformed
         try{
-            Category category = Category.getInstance();
-            category.setVisible(true);
-            inventoryDesktopBoard.add(category); 
+            CategoryCreate categoryCreate = CategoryCreate.getInstance();
+            categoryCreate.setVisible(true);
+            inventoryDesktopBoard.add(categoryCreate);
         }catch(Exception ex){
             this.categoryToolBarButtonActionPerformed(evt);
         }
@@ -387,9 +385,9 @@ private void inventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {/
 
     private void productToolbarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productToolbarButtonActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-        product.setVisible(true);
-        inventoryDesktopBoard.add(product);
+        ProductCreate productCreate = new ProductCreate();
+        productCreate.setVisible(true);
+        inventoryDesktopBoard.add(productCreate);
     }//GEN-LAST:event_productToolbarButtonActionPerformed
 
 private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -402,9 +400,9 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 private void categoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryMenuItemActionPerformed
 // TODO add your handling code here:
    try{
-        Category category = Category.getInstance();
-        category.setVisible(true);
-        inventoryDesktopBoard.add(category); 
+        CategoryCreate categoryCreate = CategoryCreate.getInstance();
+        categoryCreate.setVisible(true);
+        inventoryDesktopBoard.add(categoryCreate);
     }catch(Exception ex){
         this.categoryMenuItemActionPerformed(evt);
     }

@@ -4,7 +4,7 @@
  */
 
 /*
- * Product.java
+ * ProductCreate.java
  *
  * Created on Aug 4, 2012, 10:05:38 PM
  */
@@ -17,10 +17,10 @@ import javax.swing.WindowConstants;
  *
  * @author ronnie
  */
-public class Product extends InventoryInternalBase {
+public class ProductCreate extends InventoryInternalBase {
 
-    /** Creates new form Product */
-    public Product() {
+    /** Creates new form ProductCreate */
+    public ProductCreate() {
         initComponents();
     }
 
@@ -58,9 +58,9 @@ public class Product extends InventoryInternalBase {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Product Create");
+        setTitle("ProductCreate Create");
 
-        jLabel1.setText("Product Name:");
+        jLabel1.setText("ProductCreate Name:");
 
         productNameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,11 +68,11 @@ public class Product extends InventoryInternalBase {
             }
         });
 
-        jLabel2.setText("Category:");
+        jLabel2.setText("CategoryCreate:");
 
         categoryCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel3.setText("Product Type:");
+        jLabel3.setText("ProductCreate Type:");
 
         productTypeCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 

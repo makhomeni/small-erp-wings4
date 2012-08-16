@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JInternalFrame;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -67,7 +67,7 @@ public class InventoryCreate extends InventoryInternalBase {
 
         setTitle("Inventory Create");
 
-        productLabel.setText("Product");
+        productLabel.setText("ProductCreate");
 
         onHandLabel.setText("On Hand");
 
@@ -201,7 +201,7 @@ private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             inventoryResourceObject.put("availableForSale", availableForSaleText.getText());
             inventoryResourceObject.put("availableToPick", availableToPickText.getText());
         } catch (JSONException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryCreate.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String restEndPoint = Login.getRestEndPoint();

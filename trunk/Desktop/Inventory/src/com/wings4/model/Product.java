@@ -14,7 +14,7 @@ public class Product {
     @Resolvable(colName = "ID")
     private Integer productId;
 
-    @Resolvable(colName = "Product Name")
+    @Resolvable(colName = "ProductCreate Name")
     private String productName;
 
     @Resolvable(colName = "Stock Keeping Unit")
@@ -29,7 +29,7 @@ public class Product {
     @Resolvable(colName = "ID")
     private String productCategory;
 
-    @Resolvable(colName = "Product Details")
+    @Resolvable(colName = "ProductCreate Details")
     private String productDetails;
 
     public Product(Integer productId, String productName, String stockKeepingUnit, String universalProductCode,

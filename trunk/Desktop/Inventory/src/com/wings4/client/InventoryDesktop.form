@@ -273,7 +273,7 @@
               <Color blue="ff" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/wings4/resource/category.png"/>
+              <Image iconType="3" name="/com/wings4/resource/categoryCreate.png"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -289,7 +289,7 @@
               <Color blue="ff" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/wings4/resource/product.png"/>
+              <Image iconType="3" name="/com/wings4/resource/productCreate.png"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
