@@ -62,9 +62,9 @@ public class CategoryCreate extends InventoryInternalBase {
         setDefaultCloseOperation(2);
         setTitle("CategoryCreate");
 
-        categoryNameLabel.setText("CategoryCreate Name");
+        categoryNameLabel.setText("Category Name");
 
-        jLabel1.setText("Parent CategoryCreate");
+        jLabel1.setText("Parent Category");
 
         parentCategory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
