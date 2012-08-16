@@ -10,7 +10,6 @@
  */
 package com.wings4.client;
 
-import com.wings4.util.BaseGridModel;
 import com.wings4.util.InventoryInternalBase;
 
 import javax.swing.*;
@@ -23,7 +22,6 @@ public class WareHouseGrid extends InventoryInternalBase {
 
     private static volatile WareHouseGrid instance = null;
     private JScrollPane wareHouseGridPanel;
-    private BaseGridModel baseGridModel = new BaseGridModel();
 
     /** Creates new form WareHouseGrid */
     private WareHouseGrid() {
@@ -53,9 +51,6 @@ public class WareHouseGrid extends InventoryInternalBase {
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        wareHouseGridPanel = new JScrollPane();
-        wareHouseGridPanel.setViewportView(baseGridModel);
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,7 +64,7 @@ public class WareHouseGrid extends InventoryInternalBase {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     /**
      * @param args the command line arguments
@@ -82,6 +77,4 @@ public class WareHouseGrid extends InventoryInternalBase {
             }
         });
     }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
 }

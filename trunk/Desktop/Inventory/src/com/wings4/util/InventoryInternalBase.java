@@ -25,44 +25,24 @@ public class InventoryInternalBase extends JInternalFrame {
         setLocation(100,100);
         setClosable(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
-        try {
-            UIManager.setLookAndFeel("com.peterswing.white.PeterSwingWhiteLookAndFeel");
-        }
-        catch (UnsupportedLookAndFeelException e) {
-            // handle exception
-        }
-        catch (ClassNotFoundException e) {
-            // handle exception
-        }
-        catch (InstantiationException e) {
-            // handle exception
-        }
-        catch (IllegalAccessException e) {
-            // handle exception
-        }
+        setDefaultLookAndFeel();
     }
 
     public InventoryInternalBase() {
         setDefaultBehavior();
         setLocation(100,100);
         setClosable(true);
-        
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultLookAndFeel();
+    }
+
+    public void setDefaultLookAndFeel(){
+        com.incors.plaf.alloy.AlloyLookAndFeel.setProperty("alloy.licenseCode", "2012/09/12#hossaindoula@gmail.com#d0b9db#14dqaq");
         try {
-            UIManager.setLookAndFeel("com.peterswing.white.PeterSwingWhiteLookAndFeel");
-        }
-        catch (UnsupportedLookAndFeelException e) {
-            // handle exception
-        }
-        catch (ClassNotFoundException e) {
-            // handle exception
-        }
-        catch (InstantiationException e) {
-            // handle exception
-        }
-        catch (IllegalAccessException e) {
-            // handle exception
+            javax.swing.LookAndFeel alloyLnF = new com.incors.plaf.alloy.AlloyLookAndFeel();
+            javax.swing.UIManager.setLookAndFeel(alloyLnF);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            // You may handle the exception here
         }
     }
     

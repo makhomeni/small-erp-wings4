@@ -23,48 +23,25 @@ public class InventoryBase extends JFrame{
     public InventoryBase() {
         setDefaultBehavior();
         setLocation(100,100);
-        
- 
-        try {
-            UIManager.setLookAndFeel("com.peterswing.white.PeterSwingWhiteLookAndFeel");
-        }
-        catch (UnsupportedLookAndFeelException e) {
-            // handle exception
-        }
-        catch (ClassNotFoundException e) {
-            // handle exception
-        }
-        catch (InstantiationException e) {
-            // handle exception
-        }
-        catch (IllegalAccessException e) {
-            // handle exception
-        }
+        setDefaultLookAndFeel();
     }
 
     public InventoryBase(String title) throws HeadlessException {
         super(title);
         setDefaultBehavior();
         setLocation(100,100);
-        
-        try {
-            UIManager.setLookAndFeel("com.peterswing.white.PeterSwingWhiteLookAndFeel");
-        }
-        catch (UnsupportedLookAndFeelException e) {
-            // handle exception
-        }
-        catch (ClassNotFoundException e) {
-            // handle exception
-        }
-        catch (InstantiationException e) {
-            // handle exception
-        }
-        catch (IllegalAccessException e) {
-            // handle exception
-        }
+        setDefaultLookAndFeel();
     }
     
-    
+    public void setDefaultLookAndFeel(){
+        com.incors.plaf.alloy.AlloyLookAndFeel.setProperty("alloy.licenseCode", "2012/09/12#hossaindoula@gmail.com#d0b9db#14dqaq");
+        try {
+            javax.swing.LookAndFeel alloyLnF = new com.incors.plaf.alloy.AlloyLookAndFeel();
+            javax.swing.UIManager.setLookAndFeel(alloyLnF);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            // You may handle the exception here
+        }
+    }
     
     public void setDefaultBehavior(){
         Toolkit kit = Toolkit.getDefaultToolkit();
