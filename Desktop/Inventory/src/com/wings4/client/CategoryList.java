@@ -12,7 +12,6 @@ package com.wings4.client;
 
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
-import com.wings4.model.*;
 import com.wings4.util.InventoryConstants;
 
 import java.util.ArrayList;
@@ -39,7 +38,7 @@ public class CategoryList extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        createCategoryButton = new javax.swing.JButton();
         categoryScrollPane = new javax.swing.JScrollPane();
         categoryTable = new javax.swing.JTable();
 
@@ -54,12 +53,12 @@ public class CategoryList extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource(InventoryConstants.resourceDirectory.
+        createCategoryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(InventoryConstants.resourceDirectory.
                 concat("list-add.png"))));
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        createCategoryButton.setFocusable(false);
+        createCategoryButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        createCategoryButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(createCategoryButton);
 
         categoryScrollPane.setViewportView(categoryTable);
 
@@ -99,7 +98,7 @@ public class CategoryList extends javax.swing.JFrame {
         return list;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton createCategoryButton;
     private javax.swing.JScrollPane categoryScrollPane;
     private javax.swing.JTable categoryTable;
     private javax.swing.JToolBar jToolBar1;
