@@ -19,22 +19,22 @@ import org.json.JSONObject;
  *
  * @author Administrator
  */
-public class Category extends InventoryInternalBase {
+public class CategoryCreate extends InventoryInternalBase {
 
-    private static volatile Category instance = null;
+    private static volatile CategoryCreate instance = null;
     
     /**
-     * Creates new form Category
+     * Creates new form CategoryCreate
      */
-    private Category() {
+    private CategoryCreate() {
         initComponents();
     }
  
-    public static Category getInstance() {
+    public static CategoryCreate getInstance() {
         if (instance == null) {
-            synchronized (Category.class){
+            synchronized (CategoryCreate.class){
                 if (instance == null) {
-                    instance = new Category();
+                    instance = new CategoryCreate();
                 }
             }
         }
@@ -60,11 +60,11 @@ public class Category extends InventoryInternalBase {
 
         setClosable(true);
         setDefaultCloseOperation(2);
-        setTitle("Category");
+        setTitle("CategoryCreate");
 
-        categoryNameLabel.setText("Category Name");
+        categoryNameLabel.setText("CategoryCreate Name");
 
-        jLabel1.setText("Parent Category");
+        jLabel1.setText("Parent CategoryCreate");
 
         parentCategory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -125,7 +125,7 @@ public class Category extends InventoryInternalBase {
             categoryObject.put("categoryName", categoryNameText.getText());
             categoryObject.put("parentCategory", 1);
         } catch (JSONException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryCreate.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String restEndPoint = Login.getRestEndPoint();
@@ -140,9 +140,9 @@ public class Category extends InventoryInternalBase {
         try {
             restFeed.restInitialization();
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryCreate.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryCreate.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_submitCategoryActionPerformed
 
