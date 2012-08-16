@@ -142,10 +142,10 @@ public class InventoryDesktop extends InventoryBase {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventory");
 
-        jToolBar1.setBackground(new java.awt.Color(153, 153, 255));
+        //jToolBar1.setBackground(new java.awt.Color(153, 153, 255));
         jToolBar1.setRollover(true);
 
-        categoryToolBarButton.setBackground(new java.awt.Color(153, 153, 255));
+
         categoryToolBarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/category.png"))); // NOI18N
         categoryToolBarButton.setFocusable(false);
         categoryToolBarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -157,7 +157,7 @@ public class InventoryDesktop extends InventoryBase {
         });
         jToolBar1.add(categoryToolBarButton);
 
-        productToolbarButton.setBackground(new java.awt.Color(153, 153, 255));
+
         productToolbarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/product.png"))); // NOI18N
         productToolbarButton.setFocusable(false);
         productToolbarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -169,14 +169,14 @@ public class InventoryDesktop extends InventoryBase {
         });
         jToolBar1.add(productToolbarButton);
 
-        purchaseToolbarButton.setBackground(new java.awt.Color(153, 153, 255));
+
         purchaseToolbarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/purchase.png"))); // NOI18N
         purchaseToolbarButton.setFocusable(false);
         purchaseToolbarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         purchaseToolbarButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(purchaseToolbarButton);
 
-        salesToolbarButton.setBackground(new java.awt.Color(153, 153, 255));
+
         salesToolbarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/sales.png"))); // NOI18N
         salesToolbarButton.setFocusable(false);
         salesToolbarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -186,7 +186,6 @@ public class InventoryDesktop extends InventoryBase {
         inventoryDesktopBoard.setBackground(new java.awt.Color(255, 255, 255));
         inventoryDesktopBoard.setForeground(new java.awt.Color(255, 255, 255));
 
-        jMenuBar1.setBackground(new java.awt.Color(153, 153, 255));
 
         fileMenu.setText("File");
 
