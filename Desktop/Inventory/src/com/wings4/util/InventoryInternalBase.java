@@ -4,6 +4,8 @@
  */
 package com.wings4.util;
 
+import com.jidesoft.plaf.LookAndFeelFactory;
+
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
@@ -37,13 +39,8 @@ public class InventoryInternalBase extends JInternalFrame {
     }
 
     public void setDefaultLookAndFeel(){
-        com.incors.plaf.alloy.AlloyLookAndFeel.setProperty("alloy.licenseCode", "2012/09/12#hossaindoula@gmail.com#d0b9db#14dqaq");
-        try {
-            javax.swing.LookAndFeel alloyLnF = new com.incors.plaf.alloy.AlloyLookAndFeel();
-            javax.swing.UIManager.setLookAndFeel(alloyLnF);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            // You may handle the exception here
-        }
+        LookAndFeelManager.setAlloyLookAndFeel();
+        LookAndFeelFactory.installJideExtension(LookAndFeelFactory.ECLIPSE3X_STYLE);
     }
     
     public void setDefaultBehavior(){

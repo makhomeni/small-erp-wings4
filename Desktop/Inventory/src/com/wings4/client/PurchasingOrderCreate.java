@@ -12,13 +12,17 @@ package com.wings4.client;
 
 import com.jidesoft.plaf.eclipse.Eclipse3xJideTabbedPaneUI;
 import com.jidesoft.plaf.eclipse.EclipseJideTabbedPaneUI;
+import com.jidesoft.plaf.eclipse.EclipseMenuUI;
+import com.jidesoft.swing.JideTabbedPane;
 import com.nepxion.swing.icon.IconFactory;
 import com.nepxion.swing.style.button.lite.JEclipseLiteButtonStyle;
 import com.nepxion.swing.style.button.lite.JGlassLiteButtonStyle;
 import com.nepxion.swing.style.button.lite.LiteButtonUI;
 import com.nepxion.swing.style.button.lite.LiteMenuButtonUI;
+import com.nepxion.swing.style.framework.*;
 import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
 import com.wings4.Login;
+import com.wings4.util.EclipseTabbedPaneUI;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.InventoryInternalBase;
 import com.wings4.util.RESTFeed;
@@ -27,6 +31,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import javax.swing.*;
 
 /**
  *
@@ -173,7 +179,14 @@ public class PurchasingOrderCreate extends InventoryInternalBase {
                                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
+        //purchaseOrderTabbedPane.setUI(new Eclipse3xJideTabbedPaneUI());
+        purchaseOrderTabbedPane.setTabShape(0, new JRibbonStyle());
+        purchaseOrderTabbedPane.setBoldActiveTab(true);
+
+        purchaseOrderTabbedPane.setTabShape(new JEclipseStyle());
+
         purchaseOrderTabbedPane.addTab("General Information", IconFactory.getSwingIcon("component/tabbed_pane_16.png"), purchaseOrderPane);
+
 
         vendorLabel.setText("Vendor");
 
