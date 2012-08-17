@@ -4,6 +4,8 @@
  */
 package com.wings4.util;
 
+import com.jidesoft.plaf.LookAndFeelFactory;
+
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -35,7 +37,9 @@ public class InventoryBase extends JFrame{
     
     public void setDefaultLookAndFeel(){
         //LookAndFeelManager.invokeLookAndFeel("AlloyLookAndFeel");
+        //LookAndFeelManager.setAlloyLookAndFeel();
         LookAndFeelManager.setAlloyLookAndFeel();
+        LookAndFeelFactory.installJideExtension(LookAndFeelFactory.ECLIPSE3X_STYLE);
 //        com.incors.plaf.alloy.AlloyLookAndFeel.setProperty("alloy.licenseCode", "2012/09/12#hossaindoula@gmail.com#d0b9db#14dqaq");
 //        try {
 //            javax.swing.LookAndFeel alloyLnF = new com.incors.plaf.alloy.AlloyLookAndFeel();

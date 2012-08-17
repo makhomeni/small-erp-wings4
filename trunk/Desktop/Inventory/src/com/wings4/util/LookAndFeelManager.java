@@ -431,7 +431,7 @@ public class LookAndFeelManager{
             StyleManager.setStyle(styleClass);
         }
 
-        StyleManager.setThemeDecorated(true);
+        StyleManager.setThemeDecorated();
 
         if (StyleContext.isFrameDecorated()){
             StyleManager.setFrameDecorated(StyleContext.isFrameDecorated());
