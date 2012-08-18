@@ -1,0 +1,52 @@
+2012-08-18 13:41:38.686 - <INFO> HttpContext.register(52) | ----- Http Context Initialization Start -----
+2012-08-18 13:41:38.696 - <INFO> HttpLogger.info(35) | Alias : DefaultHttp
+2012-08-18 13:41:38.697 - <INFO> HttpLogger.info(36) | Host : localhost
+2012-08-18 13:41:38.697 - <INFO> HttpLogger.info(37) | Port : 8080
+2012-08-18 13:41:38.697 - <INFO> HttpLogger.info(38) | Path : /Nepxion/XXServerInvoker
+2012-08-18 13:41:38.698 - <INFO> HttpLogger.info(39) | Connection TimeOut : 120000
+2012-08-18 13:41:38.698 - <INFO> HttpLogger.info(40) | Response TimeOut : 120000
+2012-08-18 13:41:38.698 - <INFO> HttpLogger.info(41) | Buffer Size : 8192
+2012-08-18 13:41:38.699 - <INFO> HttpContext.register(79) | ------ Http Context Initialization End ------
+2012-08-18 13:41:38.703 - <INFO> QuartzContext.register(54) | --- Quartz Scheduler Initialization Start ---
+2012-08-18 13:41:38.788 - <INFO> RAMJobStore.initialize(143) | RAMJobStore initialized.
+2012-08-18 13:41:38.789 - <INFO> StdSchedulerFactory.instantiate(919) | Quartz scheduler 'DefaultQuartzScheduler' initialized from the specified file : 'conf/quartz.properties'
+2012-08-18 13:41:38.789 - <INFO> StdSchedulerFactory.instantiate(923) | Quartz scheduler version: 1.4.5
+2012-08-18 13:41:38.789 - <INFO> QuartzContext.register(70) | ---- Quartz Scheduler Initialization End ----
+2012-08-18 13:41:38.815 - <INFO> ActiveXContext.registerStrategy(33) | ----- ActiveX Context Initialization Start -----
+2012-08-18 13:41:38.816 - <INFO> ActiveXContext.registerStrategy(39) | ActiveX Invoker Strategy : Application
+2012-08-18 13:41:38.819 - <INFO> ActiveXContext.registerStrategy(50) | ------ ActiveX Context Initialization End ------
+2012-08-18 13:41:38.825 - <INFO> ExceptionTracerContext.register(31) | ----- Exception Tracer Context Initialization Start -----
+2012-08-18 13:41:38.825 - <INFO> ExceptionTracerContext.register(35) | Exception Tracer Debug : true
+2012-08-18 13:41:38.825 - <INFO> ExceptionTracerContext.register(36) | ------ Exception Tracer Context Initialization End ------
+2012-08-18 13:41:38.830 - <INFO> UIContextRegister.initializeContext(51) | ---- UI Context Initialization Start ----
+2012-08-18 13:41:38.831 - <INFO> UIContextRegister.initStyle(108) | Parameter - style : [com.nepxion.swing.style.framework.JNimbusStyle]
+2012-08-18 13:41:38.831 - <INFO> UIContextRegister.initStyle(109) | Parameter - customStyle : []
+2012-08-18 13:41:38.832 - <INFO> UIContextRegister.initDecorated(140) | Parameter - isFrameDecorated : [false]
+2012-08-18 13:41:38.832 - <INFO> UIContextRegister.initDecorated(141) | Parameter - isDialogDecorated : [false]
+2012-08-18 13:41:40.340 - <INFO> UIContextRegister.initFont(252) | Parameter - fontName : [微软雅黑]
+2012-08-18 13:41:40.340 - <INFO> UIContextRegister.initFont(253) | Parameter - fontStyle : [0]
+2012-08-18 13:41:40.340 - <INFO> UIContextRegister.initFont(254) | Parameter - fontSize : [11]
+2012-08-18 13:41:40.341 - <INFO> UIContextRegister.initFont(255) | Parameter - chartTitleFontName : [SimHei]
+2012-08-18 13:41:40.341 - <INFO> UIContextRegister.initFont(256) | Parameter - chartTitleFontStyle : [0]
+2012-08-18 13:41:40.341 - <INFO> UIContextRegister.initFont(257) | Parameter - chartTitleFontSize : [18]
+2012-08-18 13:41:40.341 - <INFO> UIContextRegister.initFont(258) | Parameter - chartSubTitleFontName : [Dialog]
+2012-08-18 13:41:40.342 - <INFO> UIContextRegister.initFont(259) | Parameter - chartSubTitleFontStyle : [0]
+2012-08-18 13:41:40.342 - <INFO> UIContextRegister.initFont(260) | Parameter - chartSubTitleFontSize : [12]
+2012-08-18 13:41:40.342 - <INFO> UIContextRegister.initFont(261) | Parameter - chartLabelFontName : [Dialog]
+2012-08-18 13:41:40.343 - <INFO> UIContextRegister.initFont(262) | Parameter - chartLabelFontStyle : [0]
+2012-08-18 13:41:40.343 - <INFO> UIContextRegister.initFont(263) | Parameter - chartLabelFontSize : [12]
+2012-08-18 13:41:40.343 - <INFO> UIContextRegister.initFont(264) | Parameter - chartTickLabelFontName : [Dialog]
+2012-08-18 13:41:40.343 - <INFO> UIContextRegister.initFont(265) | Parameter - chartTickLabelFontStyle : [0]
+2012-08-18 13:41:40.344 - <INFO> UIContextRegister.initFont(266) | Parameter - chartTickLabelFontSize : [12]
+2012-08-18 13:41:40.347 - <INFO> UIContextRegister.initPDF(291) | Parameter - chartPDFAuthor : [Haojun Ren]
+2012-08-18 13:41:40.347 - <INFO> UIContextRegister.initPDF(292) | Parameter - chartPDFSubject : [Nepxion]
+2012-08-18 13:41:40.350 - <INFO> UIContextRegister.initButtonUI(347) | Parameter - buttonUI : [com.nepxion.swing.style.button.lite.LiteButtonUI]
+2012-08-18 13:41:40.350 - <INFO> UIContextRegister.initButtonUI(348) | Parameter - buttonStyle : [com.nepxion.swing.style.button.lite.JAlloyLiteButtonStyle]
+2012-08-18 13:41:40.350 - <INFO> UIContextRegister.initButtonUI(349) | Parameter - customButtonUI : []
+2012-08-18 13:41:40.351 - <INFO> UIContextRegister.initButtonUI(350) | Parameter - customButtonStyle : []
+2012-08-18 13:41:40.353 - <INFO> UIContextRegister.initPopupMenuTitle(367) | Parameter - popupMenuTitle : [Inventory]
+2012-08-18 13:41:40.356 - <INFO> UIContextRegister.initIconPath(385) | Parameter - iconPath : [com/nepxion/demo/component/icon/image/]
+2012-08-18 13:41:40.691 - <INFO> UIContextRegister.initTopicComponent(399) | Parameter - topicComponent : [com.wings4.client.DemoCaptionSplashDialog]
+2012-08-18 13:41:41.509 - <INFO> UIContextRegister.initLookAndFeel(430) | Parameter - lookAndFeel : [AlloyLookAndFeel]
+2012-08-18 13:41:41.510 - <INFO> UIContextRegister.initLookAndFeel(431) | Parameter - customLookAndFeel : []
+2012-08-18 13:41:41.510 - <INFO> UIContextRegister.initializeContext(63) | ----- UI Context Initialization End -----
