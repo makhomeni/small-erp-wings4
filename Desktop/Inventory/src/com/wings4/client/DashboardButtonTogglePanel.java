@@ -12,17 +12,17 @@ import javax.swing.*;
  * Time: 10:31 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DemoButtonTogglePanel extends DemoTogglePanel {
+public class DashboardButtonTogglePanel extends DemoTogglePanel {
 
-    public DemoButtonTogglePanel(){
+    public DashboardButtonTogglePanel(){
     }
 
     public void initialize(){
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
         toggleTabbedPane.addTab("Button", IconFactory.getSwingIcon("component/button_16.png"),
                 new DemoToggleTemplate(new DemoButtonPanel()), "Button");
-//        toggleTabbedPane.addTab("ToggleButton", IconFactory.getSwingIcon("component/toggle_button_16.png"),
-//                new DemoToggleTemplate(new DemoToggleButtonPanel()), "ToggleButton");
+        toggleTabbedPane.addTab("ToggleButton", IconFactory.getSwingIcon("component/toggle_button_16.png"),
+                new DemoToggleTemplate(new DemoToggleButtonPanel()), "ToggleButton");
 //        toggleTabbedPane.addTab("MenuButton", IconFactory.getSwingIcon("component/menu_16.png"),
 //                new DemoToggleTemplate(new DemoMenuButtonPanel()), "MenuButton");
 //        toggleTabbedPane.addTab("SplitButton", IconFactory.getSwingIcon("component/popup_menu_16.png"),

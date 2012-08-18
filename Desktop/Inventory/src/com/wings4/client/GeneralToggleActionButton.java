@@ -9,8 +9,8 @@ import com.nepxion.swing.toggle.JToggleActionButton;
  * Time: 10:20 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DemoToggleActionButton extends JToggleActionButton{
-    public DemoToggleActionButton(DemoTogglePanel togglePanel){
+public class GeneralToggleActionButton extends JToggleActionButton{
+    public GeneralToggleActionButton(DemoTogglePanel togglePanel){
         super(DemoToggleContentPanel.getInstance(), togglePanel);
     }
 }
