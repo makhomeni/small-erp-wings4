@@ -62,7 +62,7 @@ public class Dashboard extends JDockableHierarchy {
         ((JMenuItem) menu.getMenuComponent(1)).doClick();
         menuBar.add(menu);
 
-        JBasicMenu helpMenu = new JBasicMenu("°ïÖú", "°ïÖú(H)");
+        JBasicMenu helpMenu = new JBasicMenu("About", "About");
         helpMenu.setMnemonic('H');
         menuBar.add(helpMenu);
 
