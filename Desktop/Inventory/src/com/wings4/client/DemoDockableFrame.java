@@ -17,7 +17,7 @@ import javax.swing.*;
 public class DemoDockableFrame extends JFrameWorkFrame {
 
     public DemoDockableFrame() {
-        super("Nepxion Swing", IconFactory.getSwingIcon(InventoryConstants.resourceDirectory.concat("category.png"))); // new Dimension(850, 650)
+        super("Wings4 Inventory", IconFactory.getSwingIcon(InventoryConstants.resourceDirectory.concat("category.png"))); // new Dimension(850, 650)
 
         Dashboard hierarchy = new Dashboard();
         setHierarchy(hierarchy);
