@@ -24,5 +24,7 @@ public class InventoryConstants {
     public static final String serverAddressPrefix = "http://";
 
     public static final String resourceDirectory = "/com/wings4/resource/";
-    
+
+    public static final String RESOURCE_PATH = "com/wings4/resource/";
+
 }

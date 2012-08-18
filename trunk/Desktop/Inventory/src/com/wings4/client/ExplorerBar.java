@@ -1,6 +1,6 @@
 package com.wings4.client;
 
-import com.nepxion.swing.icon.IconFactory;
+import com.wings4.util.IconFactory;
 import com.nepxion.swing.outlookbar.JFlatOutlookBar;
 
 /**
@@ -23,7 +23,15 @@ public class ExplorerBar extends JFlatOutlookBar {
     }
 
     private ExplorerBar() {
-        addTab("Button Control", IconFactory.getSwingIcon("component/button_16.png"),
-                makeScrollPane(new DemoButtonControlOutlook()), "Button Control Component");
+        addTab("General", IconFactory.getSwingIcon("category.png"),
+                makeScrollPane(new GeneralControlOutlook()), "General");
+        addTab("Materials", IconFactory.getSwingIcon("component/button_16.png"),
+                makeScrollPane(new GeneralControlOutlook()), "Materials");
+        addTab("Sales", IconFactory.getSwingIcon("component/button_16.png"),
+                makeScrollPane(new GeneralControlOutlook()), "Sales");
+        addTab("Purchasing", IconFactory.getSwingIcon("component/button_16.png"),
+                makeScrollPane(new GeneralControlOutlook()), "Purchasing");
+        addTab("Manufacturing", IconFactory.getSwingIcon("component/button_16.png"),
+                makeScrollPane(new GeneralControlOutlook()), "Manufacturing");
     }
 }
