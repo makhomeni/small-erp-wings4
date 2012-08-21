@@ -1,6 +1,6 @@
 package com.wings4.client;
 
-import com.nepxion.swing.icon.IconFactory;
+import com.wings4.util.IconFactory;
 import com.nepxion.swing.splash.JSplashWindow;
 
 /**

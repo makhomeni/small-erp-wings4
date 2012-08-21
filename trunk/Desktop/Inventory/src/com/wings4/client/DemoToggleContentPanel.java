@@ -1,6 +1,6 @@
 package com.wings4.client;
 
-import com.nepxion.swing.icon.IconFactory;
+import com.wings4.util.IconFactory;
 import com.nepxion.swing.toggle.JToggleContentPanel;
 
 import javax.swing.*;
@@ -28,7 +28,7 @@ public class DemoToggleContentPanel extends JToggleContentPanel {
     private DemoToggleContentPanel(){
         super();
 
-        JLabel logoLabel = new JLabel(IconFactory.getSwingIcon("logo.png"));
+        JLabel logoLabel = new JLabel(IconFactory.getSwingIcon("s_logo.png"));
         getHeader().add(logoLabel, BorderLayout.EAST);
     }
 }
