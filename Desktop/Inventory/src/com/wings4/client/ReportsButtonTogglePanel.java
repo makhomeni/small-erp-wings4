@@ -8,40 +8,40 @@ import javax.swing.*;
 /**
  * Created by IntelliJ IDEA.
  * User: ronnie
- * Date: 8/18/12
- * Time: 8:43 PM
+ * Date: 8/21/12
+ * Time: 10:07 PM
  * To change this template use File | Settings | File Templates.
  */
-public class WarehouseButtonTogglePanel extends DemoTogglePanel {
+public class ReportsButtonTogglePanel extends DemoTogglePanel {
 
-    public WarehouseButtonTogglePanel()
+    public ReportsButtonTogglePanel()
     {
     }
 
     public void initialize()
     {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
-        toggleTabbedPane.addTab("CheckBox", IconFactory.getSwingIcon("component/button_16.png"),
-                new DemoToggleTemplate(new DemoCheckBoxPanel()), "CheckBox");
+        toggleTabbedPane.addTab("Reports", IconFactory.getSwingIcon("reportoo.png"),
+                new DemoToggleTemplate(new DemoCheckBoxPanel()), "Reports");
     }
 
     public String getToggleText()
     {
-        return "Warehouse";
+        return "Reports";
     }
 
     public Icon getToggleIcon()
     {
-        return IconFactory.getSwingIcon("warehouse.png");
+        return IconFactory.getSwingIcon("report.png");
     }
 
     public Icon getToggleBannerIcon()
     {
-        return IconFactory.getSwingIcon("warehouse.png");
+        return IconFactory.getSwingIcon("report.png");
     }
 
     public String getToggleDescription()
     {
-        return "Warehouse List";
+        return "All Kinds of Reports";
     }
 }
