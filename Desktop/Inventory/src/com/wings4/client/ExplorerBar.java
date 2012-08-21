@@ -26,7 +26,7 @@ public class ExplorerBar extends JFlatOutlookBar {
         addTab("General", IconFactory.getSwingIcon("category.png"),
                 makeScrollPane(new GeneralControlOutlook()), "General");
         addTab("Materials", IconFactory.getSwingIcon("component/button_16.png"),
-                makeScrollPane(new GeneralControlOutlook()), "Materials");
+                makeScrollPane(new MaterialsControlOutlook()), "Materials");
         addTab("Sales", IconFactory.getSwingIcon("component/button_16.png"),
                 makeScrollPane(new GeneralControlOutlook()), "Sales");
         addTab("Purchasing", IconFactory.getSwingIcon("component/button_16.png"),
