@@ -1,6 +1,6 @@
 package com.wings4.client;
 
-import com.nepxion.swing.icon.IconFactory;
+import com.wings4.util.IconFactory;
 import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
 
 import javax.swing.*;
@@ -32,19 +32,19 @@ public class DashboardButtonTogglePanel extends DemoTogglePanel {
     }
 
     public String getToggleText(){
-        return "Button";
+        return "Dashboard";
     }
 
     public Icon getToggleIcon(){
-        return IconFactory.getSwingIcon("component/button_32.png");
+        return IconFactory.getSwingIcon("dashboard.png");
     }
 
     public Icon getToggleBannerIcon(){
-        return IconFactory.getSwingIcon("component/button_32.png");
+        return IconFactory.getSwingIcon("dashboard.png");
     }
 
     public String getToggleDescription(){
-        return "Multi-style Button ToggleButton MenuButton & SplitButton";
+        return "Dashboard";
     }
 
 }

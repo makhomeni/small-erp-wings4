@@ -18,6 +18,9 @@ public class GeneralControlOutlook extends DemoToggleOutlook {
 
         GeneralToggleActionButton warehouseButton = new GeneralToggleActionButton(new WarehouseButtonTogglePanel());
         addButton(warehouseButton);
+
+        GeneralToggleActionButton reportsButton = new GeneralToggleActionButton(new ReportsButtonTogglePanel());
+        addButton(reportsButton);
 //
 //        GeneralToggleActionButton radioButtonButton = new GeneralToggleActionButton(new DemoRadioButtonTogglePanel());
 //        addButton(radioButtonButton);
