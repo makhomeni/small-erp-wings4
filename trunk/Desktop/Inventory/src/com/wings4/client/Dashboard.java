@@ -308,9 +308,9 @@ public class Dashboard extends JDockableHierarchy {
     }
 
     protected void paintMenuBarBackground(Component component, Graphics g){
-        ITextureStyle textureStyle = new JBlueTextureStyle();
+        //ITextureStyle textureStyle = new JBlueTextureStyle();
 
-        JBackgroundPainter.paintBackground(component, g, textureStyle);
+        //JBackgroundPainter.paintBackground(component, g, textureStyle);
     }
 
     protected int getMenuBarBackgroundHeight(){

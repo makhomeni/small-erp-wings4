@@ -15,18 +15,20 @@ import java.util.logging.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.swing.*;
+
 /**
  *
  * @author Administrator
  */
-public class CategoryCreate extends InventoryInternalBase {
+public class CategoryCreate extends JPanel {
 
     private static volatile CategoryCreate instance = null;
     
     /**
      * Creates new form CategoryCreate
      */
-    private CategoryCreate() {
+    public CategoryCreate() {
         initComponents();
     }
  
@@ -57,10 +59,10 @@ public class CategoryCreate extends InventoryInternalBase {
         parentCategory = new javax.swing.JComboBox();
         submitCategory = new javax.swing.JButton();
         cancelCategory = new javax.swing.JButton();
-
-        setClosable(true);
-        setDefaultCloseOperation(2);
-        setTitle("CategoryCreate");
+//
+//        setClosable(true);
+//        setDefaultCloseOperation(2);
+//        setTitle("CategoryCreate");
 
         categoryNameLabel.setText("Category Name");
 
@@ -77,45 +79,45 @@ public class CategoryCreate extends InventoryInternalBase {
 
         cancelCategory.setText("Cancel");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(categoryNameLabel)
-                    .addComponent(jLabel1))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(submitCategory)
-                        .addGap(33, 33, 33)
-                        .addComponent(cancelCategory))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(categoryNameText, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                        .addComponent(parentCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(77, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(categoryNameLabel)
-                    .addComponent(categoryNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(parentCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitCategory)
-                    .addComponent(cancelCategory))
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
-
-        pack();
+//        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+//        getContentPane().setLayout(layout);
+//        layout.setHorizontalGroup(
+//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(layout.createSequentialGroup()
+//                .addGap(25, 25, 25)
+//                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                    .addComponent(categoryNameLabel)
+//                    .addComponent(jLabel1))
+//                .addGap(25, 25, 25)
+//                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                    .addGroup(layout.createSequentialGroup()
+//                        .addComponent(submitCategory)
+//                        .addGap(33, 33, 33)
+//                        .addComponent(cancelCategory))
+//                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                        .addComponent(categoryNameText, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+//                        .addComponent(parentCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+//                .addContainerGap(77, Short.MAX_VALUE))
+//        );
+//        layout.setVerticalGroup(
+//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(layout.createSequentialGroup()
+//                .addGap(64, 64, 64)
+//                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(categoryNameLabel)
+//                    .addComponent(categoryNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                .addGap(28, 28, 28)
+//                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(jLabel1)
+//                    .addComponent(parentCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                .addGap(68, 68, 68)
+//                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(submitCategory)
+//                    .addComponent(cancelCategory))
+//                .addContainerGap(52, Short.MAX_VALUE))
+//        );
+//
+//        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitCategoryActionPerformed
