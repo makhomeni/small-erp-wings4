@@ -21,7 +21,7 @@ public class ProductButtonTogglePanel extends DemoTogglePanel {
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
         toggleTabbedPane.addTab("Product", IconFactory.getSwingIcon("component/button_16.png"),
-                new DemoToggleTemplate(new CategoryCreate()), "Product");
+                new DemoToggleTemplate(new ProductButtonPanel()), "Product");
 
     }
 

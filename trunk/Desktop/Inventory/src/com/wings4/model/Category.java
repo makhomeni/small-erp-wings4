@@ -14,10 +14,10 @@ public class Category {
     @Resolvable(colName = "ID")
     private Integer categoryId;
 
-    @Resolvable(colName = "CategoryCreate Name")
+    @Resolvable(colName = "Category Name")
     private String categoryName;
 
-    @Resolvable(colName = "Parent CategoryCreate")
+    @Resolvable(colName = "Parent Category")
     private String parentCategory;
 
     public Category(Integer categoryId, String categoryName, String parentCategory) {
