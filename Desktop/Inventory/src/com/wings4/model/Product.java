@@ -14,7 +14,7 @@ public class Product {
     @Resolvable(colName = "ID")
     private Integer productId;
 
-    @Resolvable(colName = "ProductCreate Name")
+    @Resolvable(colName = "Product Name")
     private String productName;
 
     @Resolvable(colName = "Stock Keeping Unit")
@@ -26,7 +26,7 @@ public class Product {
     @Resolvable(colName = "Classification")
     private String productClassification;
 
-    @Resolvable(colName = "ID")
+    @Resolvable(colName = "Category")
     private String productCategory;
 
     @Resolvable(colName = "ProductCreate Details")
