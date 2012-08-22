@@ -8,8 +8,10 @@ import com.nepxion.swing.style.button.flat.FlatButtonUI;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 import com.wings4.model.Category;
+import com.wings4.util.InventoryConstants;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,8 @@ public class CategoryButtonPanel extends JPanel {
 
     private javax.swing.JScrollPane categoryScrollPane;
     private javax.swing.JTable categoryTable;
+    private JToolBar categoryToolBar;
+    private JButton createCategoryButton;
 
     public CategoryButtonPanel() {
         setLayout(new FiledLayout(FiledLayout.COLUMN, FiledLayout.FULL, 0));
@@ -34,8 +38,19 @@ public class CategoryButtonPanel extends JPanel {
 
     public class CategoryListPanel extends JPanel {
         public CategoryListPanel() {
-            setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+            setLayout(new BorderLayout());
             setBorder(BorderManager.createComplexTitledBorder("Category List"));
+
+            categoryToolBar = new JToolBar();
+            createCategoryButton = new JButton();
+
+            createCategoryButton.setIcon(new javax.swing.ImageIcon(getClass().
+                    getResource(InventoryConstants.resourceDirectory.
+                    concat("list-add.png"))));
+            createCategoryButton.setFocusable(false);
+            createCategoryButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+            createCategoryButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+            categoryToolBar.add(createCategoryButton);
 
             categoryScrollPane = new javax.swing.JScrollPane();
             categoryTable = new javax.swing.JTable();
@@ -46,10 +61,9 @@ public class CategoryButtonPanel extends JPanel {
 
             tableModel.setData(getData());
             categoryTable.setModel(tableModel);
-
             categoryScrollPane.setViewportView(categoryTable);
-
-            add(categoryScrollPane);
+            add(categoryToolBar, BorderLayout.PAGE_START);
+            add(categoryScrollPane, BorderLayout.CENTER);
         }
     }
 
