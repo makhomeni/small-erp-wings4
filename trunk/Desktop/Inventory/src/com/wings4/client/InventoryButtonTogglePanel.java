@@ -1,43 +1,43 @@
 package com.wings4.client;
 
-import com.wings4.util.IconFactory;
 import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
+import com.wings4.util.IconFactory;
 
 import javax.swing.*;
 
 /**
  * Created by IntelliJ IDEA.
  * User: ronnie
- * Date: 8/21/12
- * Time: 8:17 PM
+ * Date: 8/22/12
+ * Time: 7:16 PM
  * To change this template use File | Settings | File Templates.
  */
-public class CategoryButtonTogglePanel extends DemoTogglePanel {
+public class InventoryButtonTogglePanel extends DemoTogglePanel {
 
-    public CategoryButtonTogglePanel() {
+    public InventoryButtonTogglePanel() {
     }
 
     @Override
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
-        toggleTabbedPane.addTab("Category", IconFactory.getSwingIcon("component/button_16.png"),
-                new DemoToggleTemplate(new CategoryButtonPanel()), "Category");
+        toggleTabbedPane.addTab("Inventory", IconFactory.getSwingIcon("component/button_16.png"),
+                new DemoToggleTemplate(new CategoryCreate()), "Inventory");
 
     }
 
     public String getToggleText(){
-        return "Category";
+        return "Inventory";
     }
 
     public Icon getToggleIcon(){
-        return IconFactory.getSwingIcon("category.png");
+        return IconFactory.getSwingIcon("inventory.png");
     }
 
     public Icon getToggleBannerIcon(){
-        return IconFactory.getSwingIcon("category.png");
+        return IconFactory.getSwingIcon("inventory.png");
     }
 
     public String getToggleDescription(){
-        return "Category";
+        return "Inventory";
     }
 }

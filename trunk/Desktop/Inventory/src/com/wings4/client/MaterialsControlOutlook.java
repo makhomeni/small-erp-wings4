@@ -17,6 +17,14 @@ public class MaterialsControlOutlook extends DemoToggleOutlook {
         GeneralToggleActionButton categoryButton = new GeneralToggleActionButton(new CategoryButtonTogglePanel());
         addButton(categoryButton);
 
+        GeneralToggleActionButton productButton = new GeneralToggleActionButton(new ProductButtonTogglePanel());
+        addButton(productButton);
+
+        GeneralToggleActionButton inventoryButton = new GeneralToggleActionButton(new InventoryButtonTogglePanel());
+        addButton(inventoryButton);
+
+
+
         ButtonManager.updateUI(this, new Dimension(50, 70), new int[]{VERTICAL, CENTER});
         categoryButton.doClick();
     }
