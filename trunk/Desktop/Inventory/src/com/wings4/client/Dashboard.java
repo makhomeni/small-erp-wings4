@@ -1,27 +1,18 @@
 package com.wings4.client;
 
 import com.jidesoft.swing.JideButton;
-import com.jidesoft.swing.JideMenu;
 import com.nepxion.swing.framework.JFrameWorkStatusBar;
-import com.nepxion.swing.framework.dockable.DockableManager;
 import com.nepxion.swing.framework.dockable.JDockable;
 import com.nepxion.swing.framework.dockable.JDockableHierarchy;
 import com.nepxion.swing.framework.dockable.JDockableView;
-import com.nepxion.swing.gradient.JBackgroundPainter;
 import com.wings4.util.IconFactory;
-import com.nepxion.swing.keystroke.KeyStrokeManager;
-import com.nepxion.swing.menu.JBasicMenu;
 import com.nepxion.swing.menubar.JBasicMenuBar;
 import com.nepxion.swing.menuitem.JBasicMenuItem;
 import com.nepxion.swing.style.texture.ITextureStyle;
 import com.nepxion.swing.style.texture.basic.JBlueTextureStyle;
 import com.nepxion.swing.toolbar.JBasicToolBar;
-import org.jdesktop.layout.*;
 
-import javax.swing.*;
-import javax.swing.GroupLayout;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 /**
  * Created by IntelliJ IDEA.
@@ -44,9 +35,9 @@ public class Dashboard extends JDockableHierarchy {
     }
 
     private void initContentPane(){
-        JDockableView explorerView = new JDockableView(EXPLORER_TITLE, IconFactory.getIcon("logo.png"),
+        JDockableView explorerView = new JDockableView(EXPLORER_TITLE, IconFactory.getIcon("s_logo.png"),
                 EXPLORER_TITLE,ExplorerBar.getInstance());
-        JDockableView contentPaneView = new JDockableView(CONTENT_PANE_TITLE, IconFactory.getIcon("logo.png"),
+        JDockableView contentPaneView = new JDockableView(CONTENT_PANE_TITLE, IconFactory.getIcon("s_logo.png"),
                 CONTENT_PANE_TITLE, DemoToggleContentPanel.getInstance());
 
         JDockable dockable = new JDockable();
@@ -75,9 +66,10 @@ public class Dashboard extends JDockableHierarchy {
         javax.swing.JPopupMenu.Separator jSeparator2 = new javax.swing.JPopupMenu.Separator();
         javax.swing.JMenuItem reportsMenu = new javax.swing.JMenuItem();
         javax.swing.JMenu materialsMenu = new javax.swing.JMenu();
-        javax.swing.JMenuItem categoryMenuItem = new javax.swing.JMenuItem();
+        //javax.swing.JMenuItem categoryMenuItem = new javax.swing.JMenuItem();
+        JBasicMenuItem categoryMenuItem = new JBasicMenuItem(MaterialsController.getCategoryAction());
         javax.swing.JPopupMenu.Separator jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        javax.swing.JMenuItem productMenuItem = new javax.swing.JMenuItem();
+        JBasicMenuItem productMenuItem = new JBasicMenuItem(MaterialsController.getProductAction());
         javax.swing.JPopupMenu.Separator jSeparator4 = new javax.swing.JPopupMenu.Separator();
         javax.swing.JMenuItem inventoryMenuItem = new javax.swing.JMenuItem();
         javax.swing.JPopupMenu.Separator jSeparator5 = new javax.swing.JPopupMenu.Separator();
@@ -151,7 +143,7 @@ public class Dashboard extends JDockableHierarchy {
 
         materialsMenu.setText("Materials");
 
-        categoryMenuItem.setText("CategoryCreate");
+        categoryMenuItem.setText("Category");
         categoryMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 //categoryMenuItemActionPerformed(evt);
@@ -160,7 +152,7 @@ public class Dashboard extends JDockableHierarchy {
         materialsMenu.add(categoryMenuItem);
         materialsMenu.add(jSeparator3);
 
-        productMenuItem.setText("ProductCreate");
+        productMenuItem.setText("Product");
         materialsMenu.add(productMenuItem);
         materialsMenu.add(jSeparator4);
 
@@ -263,7 +255,7 @@ public class Dashboard extends JDockableHierarchy {
 //        helpMenu.setMnemonic('H');
 //        menuBar.add(helpMenu);
 //
-//        JBasicMenuItem aboutMenuItem = new JBasicMenuItem(DemoController.getAboutAction());
+//        JBasicMenuItem aboutMenuItem = new JBasicMenuItem(MaterialsController.getAboutAction());
 //        KeyStrokeManager.registerButton(aboutMenuItem, KeyEvent.VK_F1, 'U');
 //        helpMenu.add(aboutMenuItem);
     }
