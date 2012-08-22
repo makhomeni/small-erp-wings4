@@ -14,7 +14,29 @@ import java.awt.event.ActionEvent;
  * Time: 11:24 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DemoController {
+public class MaterialsController {
+
+    public static JSecurityAction getCategoryAction(){
+        JSecurityAction action = new JSecurityAction() {
+            @Override
+            public void execute(ActionEvent actionEvent) {
+                MaterialsControlOutlook m = new MaterialsControlOutlook();
+            }
+        };
+        return action;
+    }
+
+    public static JSecurityAction getProductAction(){
+        JSecurityAction action = new JSecurityAction() {
+            @Override
+            public void execute(ActionEvent actionEvent) {
+                new MaterialsControlOutlook().productExplore();
+            }
+        };
+        return action;
+    }
+
+
 
     public static JSecurityAction getAboutAction(){
         JSecurityAction action = new JSecurityAction("Look",
