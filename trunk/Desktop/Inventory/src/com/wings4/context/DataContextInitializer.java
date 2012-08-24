@@ -1,4 +1,4 @@
-package com.wings4.client;
+package com.wings4.context;
 
 import com.nepxion.swing.context.DataContextConstants;
 import com.nepxion.swing.context.DataContextRegister;

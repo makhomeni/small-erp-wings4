@@ -1,4 +1,4 @@
-package com.wings4.client;
+package com.wings4.toggle;
 
 import com.wings4.util.IconFactory;
 import com.nepxion.swing.toggle.JToggleContentPanel;
@@ -13,19 +13,19 @@ import java.awt.*;
  * Time: 10:27 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DemoToggleContentPanel extends JToggleContentPanel {
+public class AppToggleContentPanel extends JToggleContentPanel {
 
-    private static DemoToggleContentPanel toggleContentPanel;
+    private static AppToggleContentPanel toggleContentPanel;
 
-    public static DemoToggleContentPanel getInstance(){
+    public static AppToggleContentPanel getInstance(){
         if (toggleContentPanel == null){
-            toggleContentPanel = new DemoToggleContentPanel();
+            toggleContentPanel = new AppToggleContentPanel();
         }
 
         return toggleContentPanel;
     }
 
-    private DemoToggleContentPanel(){
+    private AppToggleContentPanel(){
         super();
 
         JLabel logoLabel = new JLabel(IconFactory.getSwingIcon("s_logo.png"));

@@ -1,4 +1,4 @@
-package com.wings4.client;
+package com.wings4.toggle;
 
 import com.nepxion.swing.toggle.JToggleActionButton;
 
@@ -10,7 +10,7 @@ import com.nepxion.swing.toggle.JToggleActionButton;
  * To change this template use File | Settings | File Templates.
  */
 public class GeneralToggleActionButton extends JToggleActionButton{
-    public GeneralToggleActionButton(DemoTogglePanel togglePanel){
-        super(DemoToggleContentPanel.getInstance(), togglePanel);
+    public GeneralToggleActionButton(AppTogglePanel togglePanel){
+        super(AppToggleContentPanel.getInstance(), togglePanel);
     }
 }

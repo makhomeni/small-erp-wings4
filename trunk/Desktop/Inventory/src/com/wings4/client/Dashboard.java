@@ -5,6 +5,8 @@ import com.nepxion.swing.framework.JFrameWorkStatusBar;
 import com.nepxion.swing.framework.dockable.JDockable;
 import com.nepxion.swing.framework.dockable.JDockableHierarchy;
 import com.nepxion.swing.framework.dockable.JDockableView;
+import com.wings4.controller.MaterialsController;
+import com.wings4.toggle.AppToggleContentPanel;
 import com.wings4.util.IconFactory;
 import com.nepxion.swing.menubar.JBasicMenuBar;
 import com.nepxion.swing.menuitem.JBasicMenuItem;
@@ -38,7 +40,7 @@ public class Dashboard extends JDockableHierarchy {
         JDockableView explorerView = new JDockableView(EXPLORER_TITLE, IconFactory.getIcon("s_logo.png"),
                 EXPLORER_TITLE,ExplorerBar.getInstance());
         JDockableView contentPaneView = new JDockableView(CONTENT_PANE_TITLE, IconFactory.getIcon("s_logo.png"),
-                CONTENT_PANE_TITLE, DemoToggleContentPanel.getInstance());
+                CONTENT_PANE_TITLE, AppToggleContentPanel.getInstance());
 
         JDockable dockable = new JDockable();
         dockable.setOrientation(JDockable.HORIZONTAL_SPLIT);

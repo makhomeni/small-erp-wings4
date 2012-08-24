@@ -1,5 +1,7 @@
 package com.wings4.client;
 
+import com.wings4.outlook.GeneralControlOutlook;
+import com.wings4.outlook.MaterialsControlOutlook;
 import com.wings4.util.IconFactory;
 import com.nepxion.swing.outlookbar.JFlatOutlookBar;
 

@@ -1,27 +1,25 @@
-package com.wings4.client;
+package com.wings4.toggle;
 
-import com.wings4.util.IconFactory;
 import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
+import com.wings4.panel.CategoryCreateButtonPanel;
+import com.wings4.util.IconFactory;
 
 import javax.swing.*;
 
 /**
  * Created by IntelliJ IDEA.
  * User: ronnie
- * Date: 8/21/12
- * Time: 8:17 PM
+ * Date: 8/24/12
+ * Time: 1:48 AM
  * To change this template use File | Settings | File Templates.
  */
-public class CategoryButtonTogglePanel extends DemoTogglePanel {
-
-    public CategoryButtonTogglePanel() {
-    }
+public class CategoryCreateTogglePanel extends AppTogglePanel {
 
     @Override
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
         toggleTabbedPane.addTab("Category", IconFactory.getSwingIcon("component/button_16.png"),
-                new DemoToggleTemplate(new CategoryButtonPanel()), "Category");
+                new AppToggleTemplate(new CategoryCreateButtonPanel()), "Category");
 
     }
 

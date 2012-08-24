@@ -1,4 +1,4 @@
-package com.wings4.client;
+package com.wings4.toggle;
 
 import com.nepxion.swing.button.ButtonManager;
 import com.nepxion.swing.button.JBasicButton;
@@ -26,7 +26,7 @@ import java.io.UnsupportedEncodingException;
  * Time: 10:34 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DemoToggleTemplate extends JContainer {
+public class AppToggleTemplate extends JContainer {
 
     private JComponent viewComponent;
     private JBasicScrollPane codeScrollPane;
@@ -35,7 +35,7 @@ public class DemoToggleTemplate extends JContainer {
 
     private String codeContent;
 
-    public DemoToggleTemplate(JComponent viewComponent){
+    public AppToggleTemplate(JComponent viewComponent){
         this.viewComponent = viewComponent;
 
         codeTextArea = new JBasicTextArea();
@@ -51,68 +51,51 @@ public class DemoToggleTemplate extends JContainer {
         //add(toggleButtonPanel, BorderLayout.SOUTH);
     }
 
-    public class ToggleButtonPanel
-            extends JPanel
-    {
-        public ToggleButtonPanel()
-        {
+    public class ToggleButtonPanel extends JPanel{
+        public ToggleButtonPanel(){
             final JMemoryProgressBar memoryProgressBar = new JMemoryProgressBar();
             DimensionManager.setDimension(memoryProgressBar, new Dimension(120, 25));
             memoryProgressBar.start();
 
             JBasicButton memoryGCButton = new JBasicButton(IconFactory.getSwingIcon("gc.png"), "Garbage Collector");
-            memoryGCButton.addActionListener(new ActionListener()
-            {
-                public void actionPerformed(ActionEvent e)
-                {
+            memoryGCButton.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e){
                     memoryProgressBar.gc();
                 }
             }
             );
 
-            JBasicToggleButton viewToggleButton = new JBasicToggleButton("View", IconFactory.getSwingIcon("component/view.png"), "View", true);
-            viewToggleButton.addActionListener(new ActionListener()
-            {
-                public void actionPerformed(ActionEvent e)
-                {
+            JBasicToggleButton viewToggleButton = new JBasicToggleButton("View",
+                    IconFactory.getSwingIcon("component/view.png"), "View", true);
+            viewToggleButton.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e){
                     addComponent(viewComponent, codeScrollPane, BorderLayout.CENTER);
                 }
-            }
-            );
-            JBasicToggleButton codeToggleButton = new JBasicToggleButton("Code", IconFactory.getSwingIcon("component/java.png"), "Code");
-            codeToggleButton.addActionListener(new ActionListener()
-            {
-                public void actionPerformed(ActionEvent e)
-                {
+            });
+            JBasicToggleButton codeToggleButton = new JBasicToggleButton("Code",
+                    IconFactory.getSwingIcon("component/java.png"), "Code");
+            codeToggleButton.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e){
                     addComponent(codeScrollPane, viewComponent, BorderLayout.CENTER);
 
-                    if (codeContent == null)
-                    {
-                        String projectFolderName = "nepxion-swing-demo";
+                    if (codeContent == null){
+                        String projectFolderName = "Inventory";
                         String codePath = FileUtil.getResourcePath(viewComponent.getClass(), projectFolderName);
 
-                        try
-                        {
+                        try{
                             codeContent = FileUtil.readString(codePath, "GBK", false);
-                        }
-                        catch (FileNotFoundException ex)
-                        {
+                        } catch (FileNotFoundException ex){
                             ex.printStackTrace();
-                        }
-                        catch (UnsupportedEncodingException ex)
-                        {
+                        } catch (UnsupportedEncodingException ex){
                             ex.printStackTrace();
-                        }
-                        catch (IOException ex)
-                        {
+                        } catch (IOException ex){
                             ex.printStackTrace();
                         }
                         codeTextArea.setText(codeContent);
                         codeTextArea.moveCaretPosition(0);
                     }
                 }
-            }
-            );
+            });
 
             setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
             setBorder(BorderFactory.createEmptyBorder(2, 0, 3, 3)); // 2, 0, 1, 1

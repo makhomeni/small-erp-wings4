@@ -1,6 +1,7 @@
-package com.wings4.client;
+package com.wings4.toggle;
 
 import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
+import com.wings4.client.CategoryCreate;
 import com.wings4.util.IconFactory;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ import javax.swing.*;
  * Time: 7:16 PM
  * To change this template use File | Settings | File Templates.
  */
-public class InventoryButtonTogglePanel extends DemoTogglePanel {
+public class InventoryButtonTogglePanel extends AppTogglePanel {
 
     public InventoryButtonTogglePanel() {
     }
@@ -21,7 +22,7 @@ public class InventoryButtonTogglePanel extends DemoTogglePanel {
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
         toggleTabbedPane.addTab("Inventory", IconFactory.getSwingIcon("component/button_16.png"),
-                new DemoToggleTemplate(new CategoryCreate()), "Inventory");
+                new AppToggleTemplate(new CategoryCreate()), "Inventory");
 
     }
 

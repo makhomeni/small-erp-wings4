@@ -1,5 +1,7 @@
-package com.wings4.client;
+package com.wings4.toggle;
 
+import com.wings4.panel.DemoButtonPanel;
+import com.wings4.panel.DemoToggleButtonPanel;
 import com.wings4.util.IconFactory;
 import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
 
@@ -12,7 +14,7 @@ import javax.swing.*;
  * Time: 10:31 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DashboardButtonTogglePanel extends DemoTogglePanel {
+public class DashboardButtonTogglePanel extends AppTogglePanel {
 
     public DashboardButtonTogglePanel(){
     }
@@ -20,15 +22,15 @@ public class DashboardButtonTogglePanel extends DemoTogglePanel {
     public void initialize(){
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
         toggleTabbedPane.addTab("Button", IconFactory.getSwingIcon("component/button_16.png"),
-                new DemoToggleTemplate(new DemoButtonPanel()), "Button");
+                new AppToggleTemplate(new DemoButtonPanel()), "Button");
         toggleTabbedPane.addTab("ToggleButton", IconFactory.getSwingIcon("component/toggle_button_16.png"),
-                new DemoToggleTemplate(new DemoToggleButtonPanel()), "ToggleButton");
+                new AppToggleTemplate(new DemoToggleButtonPanel()), "ToggleButton");
 //        toggleTabbedPane.addTab("MenuButton", IconFactory.getSwingIcon("component/menu_16.png"),
-//                new DemoToggleTemplate(new DemoMenuButtonPanel()), "MenuButton");
+//                new AppToggleTemplate(new DemoMenuButtonPanel()), "MenuButton");
 //        toggleTabbedPane.addTab("SplitButton", IconFactory.getSwingIcon("component/popup_menu_16.png"),
-//                new DemoToggleTemplate(new DemoSplitButtonPanel()), "SplitButton");
+//                new AppToggleTemplate(new DemoSplitButtonPanel()), "SplitButton");
 //        toggleTabbedPane.addTab("SelectorMenuButton", IconFactory.getSwingIcon("component/popup_menu_16.png"),
-//                new DemoToggleTemplate(new DemoSelectorMenuButtonPanel()), "SelectorMenuButton");
+//                new AppToggleTemplate(new DemoSelectorMenuButtonPanel()), "SelectorMenuButton");
     }
 
     public String getToggleText(){

@@ -1,6 +1,7 @@
-package com.wings4.client;
+package com.wings4.outlook;
 
 import com.nepxion.swing.button.ButtonManager;
+import com.wings4.toggle.*;
 
 import java.awt.*;
 
@@ -11,7 +12,7 @@ import java.awt.*;
  * Time: 10:11 AM
  * To change this template use File | Settings | File Templates.
  */
-public class GeneralControlOutlook extends DemoToggleOutlook {
+public class GeneralControlOutlook extends AppToggleOutlook {
     public GeneralControlOutlook(){
         GeneralToggleActionButton dashboardButton = new GeneralToggleActionButton(new DashboardButtonTogglePanel());
         addButton(dashboardButton);

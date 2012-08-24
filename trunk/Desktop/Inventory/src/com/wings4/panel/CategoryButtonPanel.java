@@ -1,17 +1,19 @@
-package com.wings4.client;
+package com.wings4.panel;
 
+import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.border.BorderManager;
-import com.nepxion.swing.button.JBasicButton;
-import com.nepxion.swing.icon.IconFactory;
 import com.nepxion.swing.layout.filed.FiledLayout;
-import com.nepxion.swing.style.button.flat.FlatButtonUI;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.client.CategoryCreate;
 import com.wings4.model.Category;
+import com.wings4.toggle.CategoryCreateTogglePanel;
+import com.wings4.toggle.GeneralToggleActionButton;
 import com.wings4.util.InventoryConstants;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +38,12 @@ public class CategoryButtonPanel extends JPanel {
         add(new CategoryListPanel());
     }
 
+    public CategoryButtonPanel(String create){
+        setLayout(new FiledLayout(FiledLayout.COLUMN, FiledLayout.FULL, 0));
+        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        add(new CategoryCreate());
+    }
+
     public class CategoryListPanel extends JPanel {
         public CategoryListPanel() {
             setLayout(new BorderLayout());
@@ -43,6 +51,15 @@ public class CategoryButtonPanel extends JPanel {
 
             categoryToolBar = new JToolBar();
             createCategoryButton = new JButton();
+
+            createCategoryButton.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    GeneralToggleActionButton categoryButton = new GeneralToggleActionButton(new
+                            CategoryCreateTogglePanel());
+                     categoryButton.doClick();
+                }
+            });
 
             createCategoryButton.setIcon(new javax.swing.ImageIcon(getClass().
                     getResource(InventoryConstants.resourceDirectory.

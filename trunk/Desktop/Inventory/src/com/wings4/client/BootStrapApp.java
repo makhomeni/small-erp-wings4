@@ -1,9 +1,10 @@
 package com.wings4.client;
 
 import com.nepxion.swing.framework.JFrameWorkFrame;
+import com.wings4.context.AppUIContext;
+import com.wings4.context.DataContextInitializer;
+import com.wings4.splash.AppSplashWindow;
 import com.wings4.util.IconFactory;
-import com.nepxion.swing.tray.JTray;
-import com.wings4.util.InventoryConstants;
 
 import javax.swing.*;
 
@@ -14,9 +15,9 @@ import javax.swing.*;
  * Time: 11:28 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DemoDockableFrame extends JFrameWorkFrame {
+public class BootStrapApp extends JFrameWorkFrame {
 
-    public DemoDockableFrame() {
+    public BootStrapApp() {
         super("Wings4 Inventory", IconFactory.getSwingIcon("s_logo.png")); // new Dimension(850, 650)
 
         Dashboard hierarchy = new Dashboard();
@@ -25,10 +26,10 @@ public class DemoDockableFrame extends JFrameWorkFrame {
     
     public static void main(String[] args){
         new DataContextInitializer().initialize();
-        DemoUIContext.initialize();
+        AppUIContext.initialize();
         //new RibbonContextInitializer().initialize();
 
-        final DemoSplashWindow splashWindow = new DemoSplashWindow();
+        final AppSplashWindow splashWindow = new AppSplashWindow();
         splashWindow.setVisible(true);
 
         try{
@@ -39,7 +40,7 @@ public class DemoDockableFrame extends JFrameWorkFrame {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                DemoDockableFrame frame = new DemoDockableFrame();
+                BootStrapApp frame = new BootStrapApp();
                 frame.setExtendedState(MAXIMIZED_BOTH);
                 //frame.setIconImage(com.wings4.util.IconFactory.getSwingImage("scm"));
 
