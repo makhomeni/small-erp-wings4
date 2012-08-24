@@ -2,10 +2,17 @@ package com.wings4.panel;
 
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.layout.FormLayout;
+import com.jidesoft.combobox.TableComboBox;
+import com.jidesoft.swing.JideComboBox;
 import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
+import com.towel.el.annotation.AnnotationResolver;
+import com.towel.swing.table.ObjectTableModel;
+import com.wings4.model.Category;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -34,9 +41,19 @@ public class CategoryCreateButtonPanel extends JPanel {
             builder.appendColumn("3dlu");
             builder.appendColumn("fill:max(pref; 100px)");
 
+            AnnotationResolver resolver = new AnnotationResolver(Category.class);
+            final ObjectTableModel<Category> tableModel = new ObjectTableModel<Category>(
+                    resolver, "categoryId,categoryName,parentCategory");
+            tableModel.setData(getData());
+
 
             JTextField categoryNameText = new JTextField();
-            JComboBox parentCategory = new JComboBox();
+            TableComboBox parentCategory = new TableComboBox(tableModel);
+//            AnnotationResolver resolver = new AnnotationResolver(Category.class);
+//            final ObjectTableModel<Category> tableModel = new ObjectTableModel<Category>(
+//                    resolver, "categoryId,categoryName,parentCategory");
+//            tableModel.setData(getData());
+//            parentCategory.setModel((ComboBoxModel)tableModel);
             JButton submitCategory = new JButton();
             JButton cancelCategory = new JButton();
 
@@ -54,5 +71,10 @@ public class CategoryCreateButtonPanel extends JPanel {
 
             add(builder.getPanel());
         }
+    }
+
+    private List<Category> getData() {
+        List<Category> list = new ArrayList<Category>();
+        return list;
     }
 }
