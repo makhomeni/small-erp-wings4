@@ -1,4 +1,4 @@
-package com.wings4.client;
+package com.wings4.splash;
 
 import com.nepxion.swing.splash.JCaptionSplashDialog;
 import com.wings4.util.IconFactory;
@@ -11,9 +11,9 @@ import com.wings4.util.InventoryConstants;
  * Time: 1:06 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DemoCaptionSplashDialog extends JCaptionSplashDialog {
+public class AppCaptionSplashDialog extends JCaptionSplashDialog {
 
-    public DemoCaptionSplashDialog(){
+    public AppCaptionSplashDialog(){
         super(IconFactory.getSwingIcon(("splash.png")), new int[] {15, 200}, new int[] {220, 90}, new String[]
             {
                 "This is Developed by Wings4",

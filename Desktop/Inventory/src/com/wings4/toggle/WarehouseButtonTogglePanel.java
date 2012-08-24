@@ -1,5 +1,6 @@
-package com.wings4.client;
+package com.wings4.toggle;
 
+import com.wings4.panel.DemoCheckBoxPanel;
 import com.wings4.util.IconFactory;
 import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
 
@@ -8,40 +9,40 @@ import javax.swing.*;
 /**
  * Created by IntelliJ IDEA.
  * User: ronnie
- * Date: 8/21/12
- * Time: 10:07 PM
+ * Date: 8/18/12
+ * Time: 8:43 PM
  * To change this template use File | Settings | File Templates.
  */
-public class ReportsButtonTogglePanel extends DemoTogglePanel {
+public class WarehouseButtonTogglePanel extends AppTogglePanel {
 
-    public ReportsButtonTogglePanel()
+    public WarehouseButtonTogglePanel()
     {
     }
 
     public void initialize()
     {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
-        toggleTabbedPane.addTab("Reports", IconFactory.getSwingIcon("reportoo.png"),
-                new DemoToggleTemplate(new DemoCheckBoxPanel()), "Reports");
+        toggleTabbedPane.addTab("CheckBox", IconFactory.getSwingIcon("component/button_16.png"),
+                new AppToggleTemplate(new DemoCheckBoxPanel()), "CheckBox");
     }
 
     public String getToggleText()
     {
-        return "Reports";
+        return "Warehouse";
     }
 
     public Icon getToggleIcon()
     {
-        return IconFactory.getSwingIcon("report.png");
+        return IconFactory.getSwingIcon("warehouse.png");
     }
 
     public Icon getToggleBannerIcon()
     {
-        return IconFactory.getSwingIcon("report.png");
+        return IconFactory.getSwingIcon("warehouse.png");
     }
 
     public String getToggleDescription()
     {
-        return "All Kinds of Reports";
+        return "Warehouse List";
     }
 }

@@ -1,6 +1,7 @@
-package com.wings4.client;
+package com.wings4.outlook;
 
 import com.nepxion.swing.button.ButtonManager;
+import com.wings4.toggle.*;
 
 import java.awt.*;
 
@@ -11,7 +12,7 @@ import java.awt.*;
  * Time: 8:10 PM
  * To change this template use File | Settings | File Templates.
  */
-public class MaterialsControlOutlook extends DemoToggleOutlook {
+public class MaterialsControlOutlook extends AppToggleOutlook {
 
     public MaterialsControlOutlook() {
         GeneralToggleActionButton categoryButton = new GeneralToggleActionButton(new CategoryButtonTogglePanel());
@@ -42,6 +43,6 @@ public class MaterialsControlOutlook extends DemoToggleOutlook {
 
 
         ButtonManager.updateUI(this, new Dimension(50, 70), new int[]{VERTICAL, CENTER});
-        productButton.doClick();
+        categoryButton.doClick();
     }
 }

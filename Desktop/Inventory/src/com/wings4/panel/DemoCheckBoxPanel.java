@@ -1,4 +1,4 @@
-package com.wings4.client;
+package com.wings4.panel;
 
 import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.checkbox.JBasicCheckBox;

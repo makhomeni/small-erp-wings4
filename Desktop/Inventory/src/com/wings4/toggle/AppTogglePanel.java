@@ -1,4 +1,4 @@
-package com.wings4.client;
+package com.wings4.toggle;
 
 import com.nepxion.swing.framework.ribbon.IRibbonComponent;
 import com.nepxion.swing.icon.IconFactory;
@@ -17,12 +17,11 @@ import java.awt.event.HierarchyEvent;
  * Time: 10:21 AM
  * To change this template use File | Settings | File Templates.
  */
-public abstract class DemoTogglePanel extends JThreadTogglePanel implements IRibbonComponent {
+public abstract class AppTogglePanel extends JThreadTogglePanel implements IRibbonComponent {
 
     private JEclipseTabbedPane toggleTabbedPane;
 
-    public DemoTogglePanel()
-    {
+    public AppTogglePanel(){
         super("Initializing, please wait...");
 
         setToggleBannerIcon(IconFactory.getSwingIcon("banner/edit.png"));
@@ -37,38 +36,30 @@ public abstract class DemoTogglePanel extends JThreadTogglePanel implements IRib
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
 
-        addHierarchyListener(new DisplayAbilityListener()
-        {
-            public void displayAbilityChanged(HierarchyEvent e)
-            {
+        addHierarchyListener(new DisplayAbilityListener(){
+            public void displayAbilityChanged(HierarchyEvent e){
                 execute();
 
                 removeHierarchyListener(this);
             }
-        }
-        );
+        });
     }
 
-    public JEclipseTabbedPane getToggleTabbedPane()
-    {
+    public JEclipseTabbedPane getToggleTabbedPane(){
         return toggleTabbedPane;
     }
 
-    public Component getContentPane()
-    {
+    public Component getContentPane(){
         return toggleTabbedPane;
     }
 
-    public boolean isLoadCache()
-    {
+    public boolean isLoadCache(){
         return toggleTabbedPane != null;
     }
 
     protected void loadForeground(Object data)
-            throws Exception
-    {
-        if (toggleTabbedPane == null)
-        {
+            throws Exception{
+        if (toggleTabbedPane == null){
             toggleTabbedPane = new JEclipseTabbedPane();
             add(toggleTabbedPane, BorderLayout.CENTER);
 
@@ -77,18 +68,15 @@ public abstract class DemoTogglePanel extends JThreadTogglePanel implements IRib
     }
 
     protected Object loadBackground()
-            throws Exception
-    {
+            throws Exception{
         return null;
     }
 
-    public Object getUserObject()
-    {
+    public Object getUserObject(){
         return null;
     }
 
-    public void setUserObject(Object userObject)
-    {
+    public void setUserObject(Object userObject){
 
     }
 

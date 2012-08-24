@@ -1,4 +1,4 @@
-package com.wings4.client;
+package com.wings4.context;
 
 import com.nepxion.swing.activex.ActiveXContext;
 import com.nepxion.util.locale.LocaleContext;
@@ -16,57 +16,45 @@ import java.net.URL;
  * Time: 6:32 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DemoDataContext {
+public class AppDataContext {
 
-    public DemoDataContext()
-    {
-    }
+    public AppDataContext(){}
 
-    public static void initialize()
-    {
+    public static void initialize(){
         //EncodeContext.registerIOCharset("GBK");
         //EncodeContext.registerHttpCharset("UTF-8");
         LocaleContext.registerLocale(LocaleContext.LOCALE_EN_US);
         ActiveXContext.registerStrategy(0);
-        try
-        {
+        try{
             LoggerContext.register();
             QuartzContext.register();
             IPContext.register();
             //ZoneContext.register();
-        }
-        catch(Exception e)
-        {
+        } catch(Exception e){
             e.printStackTrace();
         }
     }
 
-    public static void initialize(URL codeBase)
-    {
+    public static void initialize(URL codeBase){
         //EncodeContext.registerIOCharset("GBK");
         //EncodeContext.registerHttpCharset("UTF-8");
         ActiveXContext.registerStrategy(1);
-        try
-        {
+        try{
             LoggerContext.register(codeBase);
             QuartzContext.register(codeBase);
             IPContext.register(codeBase);
             //ZoneContext.register(codeBase);
-        }
-        catch(Exception e)
-        {
+        } catch(Exception e){
             e.printStackTrace();
         }
         registerURL(codeBase);
     }
 
-    public static void registerURL(URL codeBase)
-    {
+    public static void registerURL(URL codeBase){
         url = codeBase;
     }
 
-    public static URL getURL()
-    {
+    public static URL getURL(){
         return url;
     }
 

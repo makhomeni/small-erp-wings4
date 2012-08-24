@@ -1,4 +1,4 @@
-package com.wings4.client;
+package com.wings4.splash;
 
 import com.wings4.util.IconFactory;
 import com.nepxion.swing.splash.JSplashWindow;
@@ -10,8 +10,8 @@ import com.nepxion.swing.splash.JSplashWindow;
  * Time: 11:36 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DemoSplashWindow extends JSplashWindow{
-    public DemoSplashWindow(){
+public class AppSplashWindow extends JSplashWindow{
+    public AppSplashWindow(){
         super(IconFactory.getSwingIcon("splash.png"));
     }
 }

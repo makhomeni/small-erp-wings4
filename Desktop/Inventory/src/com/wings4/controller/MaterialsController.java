@@ -1,8 +1,9 @@
-package com.wings4.client;
+package com.wings4.controller;
 
 import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.icon.IconFactory;
 import com.nepxion.swing.topic.TopicContext;
+import com.wings4.outlook.MaterialsControlOutlook;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -1,4 +1,4 @@
-package com.wings4.client;
+package com.wings4.context;
 
 import com.nepxion.swing.chart.ChartContext;
 import com.nepxion.swing.icon.IconContext;
@@ -6,6 +6,7 @@ import com.nepxion.swing.popupmenu.PopupMenuContext;
 import com.nepxion.swing.style.framework.JPlasticStyle;
 import com.nepxion.swing.style.framework.StyleContext;
 import com.nepxion.swing.topic.TopicContext;
+import com.wings4.splash.AppCaptionSplashDialog;
 import com.wings4.util.LookAndFeelManager;
 
 /**
@@ -15,14 +16,11 @@ import com.wings4.util.LookAndFeelManager;
  * Time: 6:25 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DemoUIContext {
+public class AppUIContext {
 
-    public DemoUIContext()
-    {
-    }
+    public AppUIContext(){}
 
-    public static void initialize()
-    {
+    public static void initialize(){
         StyleContext.registerStyle(JPlasticStyle.ID);
         StyleContext.registerFrameDecorated(true);
         StyleContext.registerDialogDecorated(true);
@@ -30,7 +28,7 @@ public class DemoUIContext {
         ChartContext.registerChartPDFSubject("Inventory");
         PopupMenuContext.registerTitle("Wings4 Inventory");
         IconContext.registerIconFolder("com/nepxion/demo/component/icon/image/");
-        TopicContext.registerTopicComponent(new DemoCaptionSplashDialog());
+        TopicContext.registerTopicComponent(new AppCaptionSplashDialog());
         LookAndFeelManager.setAlloyLookAndFeel();
     }
 }

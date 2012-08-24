@@ -1,4 +1,4 @@
-package com.wings4.client;
+package com.wings4.toggle;
 
 import com.nepxion.swing.outlookbar.JFlatOutlook;
 
@@ -11,14 +11,13 @@ import javax.swing.*;
  * Time: 10:12 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DemoToggleOutlook extends JFlatOutlook{
-    public DemoToggleOutlook(){
+public class AppToggleOutlook extends JFlatOutlook{
+    public AppToggleOutlook(){
     }
 
-    public void addButton(AbstractButton button)
-    {
+    public void addButton(AbstractButton button){
         super.addButton(button);
 
-        DemoToggleButtonGroup.getInstance().add(button);
+        AppToggleButtonGroup.getInstance().add(button);
     }
 }
