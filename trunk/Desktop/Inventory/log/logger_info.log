@@ -1,20 +1,20 @@
-2012-08-24 22:15:54.349 - <INFO> HttpContext.register(52) | ----- Http Context Initialization Start -----
-2012-08-24 22:15:54.384 - <INFO> HttpLogger.info(35) | Alias : DefaultHttp
-2012-08-24 22:15:54.385 - <INFO> HttpLogger.info(36) | Host : localhost
-2012-08-24 22:15:54.385 - <INFO> HttpLogger.info(37) | Port : 8080
-2012-08-24 22:15:54.385 - <INFO> HttpLogger.info(38) | Path : /Nepxion/XXServerInvoker
-2012-08-24 22:15:54.386 - <INFO> HttpLogger.info(39) | Connection TimeOut : 120000
-2012-08-24 22:15:54.386 - <INFO> HttpLogger.info(40) | Response TimeOut : 120000
-2012-08-24 22:15:54.386 - <INFO> HttpLogger.info(41) | Buffer Size : 8192
-2012-08-24 22:15:54.387 - <INFO> HttpContext.register(79) | ------ Http Context Initialization End ------
-2012-08-24 22:15:54.391 - <INFO> QuartzContext.register(54) | --- Quartz Scheduler Initialization Start ---
-2012-08-24 22:15:54.481 - <INFO> RAMJobStore.initialize(143) | RAMJobStore initialized.
-2012-08-24 22:15:54.482 - <INFO> StdSchedulerFactory.instantiate(919) | Quartz scheduler 'DefaultQuartzScheduler' initialized from the specified file : 'conf/quartz.properties'
-2012-08-24 22:15:54.482 - <INFO> StdSchedulerFactory.instantiate(923) | Quartz scheduler version: 1.4.5
-2012-08-24 22:15:54.482 - <INFO> QuartzContext.register(70) | ---- Quartz Scheduler Initialization End ----
-2012-08-24 22:15:54.509 - <INFO> ActiveXContext.registerStrategy(33) | ----- ActiveX Context Initialization Start -----
-2012-08-24 22:15:54.509 - <INFO> ActiveXContext.registerStrategy(39) | ActiveX Invoker Strategy : Application
-2012-08-24 22:15:54.513 - <INFO> ActiveXContext.registerStrategy(50) | ------ ActiveX Context Initialization End ------
-2012-08-24 22:15:54.518 - <INFO> ExceptionTracerContext.register(31) | ----- Exception Tracer Context Initialization Start -----
-2012-08-24 22:15:54.518 - <INFO> ExceptionTracerContext.register(35) | Exception Tracer Debug : true
-2012-08-24 22:15:54.519 - <INFO> ExceptionTracerContext.register(36) | ------ Exception Tracer Context Initialization End ------
+2012-08-25 13:53:45.657 - <INFO> HttpContext.register(52) | ----- Http Context Initialization Start -----
+2012-08-25 13:53:45.664 - <INFO> HttpLogger.info(35) | Alias : DefaultHttp
+2012-08-25 13:53:45.664 - <INFO> HttpLogger.info(36) | Host : localhost
+2012-08-25 13:53:45.664 - <INFO> HttpLogger.info(37) | Port : 8080
+2012-08-25 13:53:45.664 - <INFO> HttpLogger.info(38) | Path : /Nepxion/XXServerInvoker
+2012-08-25 13:53:45.664 - <INFO> HttpLogger.info(39) | Connection TimeOut : 120000
+2012-08-25 13:53:45.665 - <INFO> HttpLogger.info(40) | Response TimeOut : 120000
+2012-08-25 13:53:45.665 - <INFO> HttpLogger.info(41) | Buffer Size : 8192
+2012-08-25 13:53:45.665 - <INFO> HttpContext.register(79) | ------ Http Context Initialization End ------
+2012-08-25 13:53:45.668 - <INFO> QuartzContext.register(54) | --- Quartz Scheduler Initialization Start ---
+2012-08-25 13:53:45.712 - <INFO> RAMJobStore.initialize(143) | RAMJobStore initialized.
+2012-08-25 13:53:45.712 - <INFO> StdSchedulerFactory.instantiate(919) | Quartz scheduler 'DefaultQuartzScheduler' initialized from the specified file : 'conf/quartz.properties'
+2012-08-25 13:53:45.713 - <INFO> StdSchedulerFactory.instantiate(923) | Quartz scheduler version: 1.4.5
+2012-08-25 13:53:45.713 - <INFO> QuartzContext.register(70) | ---- Quartz Scheduler Initialization End ----
+2012-08-25 13:53:45.727 - <INFO> ActiveXContext.registerStrategy(33) | ----- ActiveX Context Initialization Start -----
+2012-08-25 13:53:45.727 - <INFO> ActiveXContext.registerStrategy(39) | ActiveX Invoker Strategy : Application
+2012-08-25 13:53:45.729 - <INFO> ActiveXContext.registerStrategy(50) | ------ ActiveX Context Initialization End ------
+2012-08-25 13:53:45.731 - <INFO> ExceptionTracerContext.register(31) | ----- Exception Tracer Context Initialization Start -----
+2012-08-25 13:53:45.732 - <INFO> ExceptionTracerContext.register(35) | Exception Tracer Debug : true
+2012-08-25 13:53:45.732 - <INFO> ExceptionTracerContext.register(36) | ------ Exception Tracer Context Initialization End ------

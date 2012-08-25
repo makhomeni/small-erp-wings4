@@ -39,7 +39,7 @@ public class CategoryCreateButtonPanel extends JPanel {
             builder.appendColumn("5dlu");
             builder.appendColumn("right:pref");
             builder.appendColumn("3dlu");
-            builder.appendColumn("fill:max(pref; 100px)");
+            builder.appendColumn("fill:max(pref; 10px)");
 
             AnnotationResolver resolver = new AnnotationResolver(Category.class);
             final ObjectTableModel<Category> tableModel = new ObjectTableModel<Category>(
@@ -49,11 +49,6 @@ public class CategoryCreateButtonPanel extends JPanel {
 
             JTextField categoryNameText = new JTextField();
             TableComboBox parentCategory = new TableComboBox(tableModel);
-//            AnnotationResolver resolver = new AnnotationResolver(Category.class);
-//            final ObjectTableModel<Category> tableModel = new ObjectTableModel<Category>(
-//                    resolver, "categoryId,categoryName,parentCategory");
-//            tableModel.setData(getData());
-//            parentCategory.setModel((ComboBoxModel)tableModel);
             JButton submitCategory = new JButton();
             JButton cancelCategory = new JButton();
 
