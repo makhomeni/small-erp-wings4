@@ -32,6 +32,8 @@ public class BootStrapApp extends JFrameWorkFrame {
         final AppSplashWindow splashWindow = new AppSplashWindow();
         splashWindow.setVisible(true);
 
+        com.jidesoft.utils.Lm.verifyLicense("Wings4", "Inventory", "1234567891012");
+
         try{
             Thread.sleep(1000);
         } catch (InterruptedException e){
