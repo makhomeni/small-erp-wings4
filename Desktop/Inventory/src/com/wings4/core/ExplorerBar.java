@@ -2,6 +2,7 @@ package com.wings4.core;
 
 import com.wings4.core.outlook.GeneralControlOutlook;
 import com.wings4.core.outlook.MaterialsControlOutlook;
+import com.wings4.core.outlook.SalesControlOutlook;
 import com.wings4.util.IconFactory;
 import com.nepxion.swing.outlookbar.JFlatOutlookBar;
 
@@ -30,7 +31,7 @@ public class ExplorerBar extends JFlatOutlookBar {
         addTab("Materials", IconFactory.getSwingIcon("component/button_16.png"),
                 makeScrollPane(new MaterialsControlOutlook()), "Materials");
         addTab("Sales", IconFactory.getSwingIcon("component/button_16.png"),
-                makeScrollPane(new GeneralControlOutlook()), "Sales");
+                makeScrollPane(new SalesControlOutlook()), "Sales");
         addTab("Purchasing", IconFactory.getSwingIcon("component/button_16.png"),
                 makeScrollPane(new GeneralControlOutlook()), "Purchasing");
         addTab("Manufacturing", IconFactory.getSwingIcon("component/button_16.png"),
