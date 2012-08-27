@@ -133,7 +133,7 @@ public class EclipseTabbedPaneUI extends Eclipse3xJideTabbedPaneUI {
     /**
      * Selected labels have a white color.
      *
-     * @see javax.swing.plaf.basic.BasicTabbedPaneUI#paintText(java.awt.Graphics, int, java.awt.Font, java.awt.FontMetrics, int, java.lang.String, java.awt.Rectangle, boolean)
+     * @see javax.swing.plaf.basic.BasicTabbedPaneUI#paintText(java.awt.Graphics, int, java.awt.Font, java.awt.FontMetrics, int, String, java.awt.Rectangle, boolean)
      */
     @Override
     protected void paintText(Graphics g, int tabPlacement, Font font,
