@@ -4,7 +4,7 @@
  */
 package com.wings4;
 
-import com.wings4.client.InventoryDesktop;
+import com.wings4.core.InventoryDesktop;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.RESTFeed;
 import java.awt.event.KeyEvent;
@@ -66,7 +66,7 @@ public class Login extends javax.swing.JDialog {
         setTitle("Login");
         setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+            public void keyPressed(KeyEvent evt) {
                 formKeyPressed(evt);
             }
         });
@@ -91,7 +91,7 @@ public class Login extends javax.swing.JDialog {
             }
         });
         submit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+            public void keyPressed(KeyEvent evt) {
                 submitKeyPressed(evt);
             }
         });
@@ -228,7 +228,7 @@ public class Login extends javax.swing.JDialog {
         loginButtonAction();
     }//GEN-LAST:event_passwordTextActionPerformed
 
-private void submitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_submitKeyPressed
+private void submitKeyPressed(KeyEvent evt) {//GEN-FIRST:event_submitKeyPressed
 // TODO add your handling code here:
     if(evt.getKeyCode() == KeyEvent.VK_ENTER){
         loginButtonAction();
@@ -236,7 +236,7 @@ private void submitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_su
     
 }//GEN-LAST:event_submitKeyPressed
 
-private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+private void formKeyPressed(KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
 // TODO add your handling code here:
 }//GEN-LAST:event_formKeyPressed
 
@@ -256,13 +256,13 @@ private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_form
         try {
             UIManager.setLookAndFeel("com.peterswing.white.PeterSwingWhiteLookAndFeel");
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
