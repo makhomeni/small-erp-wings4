@@ -2,6 +2,7 @@ package com.wings4.core.toggle;
 
 import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
 import com.wings4.core.panel.CategoryButtonPanel;
+import com.wings4.core.panel.RMAButtonPanel;
 import com.wings4.util.IconFactory;
 
 import javax.swing.*;
@@ -22,7 +23,7 @@ public class RMAButtonTogglePanel  extends AppTogglePanel {
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
         toggleTabbedPane.addTab("RMA", IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(new CategoryButtonPanel()), "RMA");
+                new AppToggleTemplate(new RMAButtonPanel()), "RMA");
 
     }
 
