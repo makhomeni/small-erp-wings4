@@ -14,31 +14,29 @@ import java.awt.*;
  */
 public class SalesControlOutlook extends AppToggleOutlook {
 
+
+    GeneralToggleActionButton salesOrderButton = new GeneralToggleActionButton(new SalesOrderButtonTogglePanel());
+    GeneralToggleActionButton pickingButton = new GeneralToggleActionButton(new PickingButtonTogglePanel());
+    GeneralToggleActionButton shippingButton = new GeneralToggleActionButton(new ShippingButtonTogglePanel());
+    GeneralToggleActionButton customerButton = new GeneralToggleActionButton(new CustomerButtonTogglePanel());
+    GeneralToggleActionButton rmaButton = new GeneralToggleActionButton(new RMAButtonTogglePanel());
+    GeneralToggleActionButton pricingButton = new GeneralToggleActionButton(new PricingButtonTogglePanel());
+    GeneralToggleActionButton discountButton = new GeneralToggleActionButton(new DiscountButtonTogglePanel());
+
     public SalesControlOutlook() {
-        GeneralToggleActionButton salesOrderButton = new GeneralToggleActionButton(new SalesOrderButtonTogglePanel());
         addButton(salesOrderButton);
-
-        GeneralToggleActionButton pickingButton = new GeneralToggleActionButton(new PickingButtonTogglePanel());
         addButton(pickingButton);
-
-        GeneralToggleActionButton shippingButton = new GeneralToggleActionButton(new ShippingButtonTogglePanel());
         addButton(shippingButton);
-
-        GeneralToggleActionButton customerButton = new GeneralToggleActionButton(new CustomerButtonTogglePanel());
         addButton(customerButton);
-
-        GeneralToggleActionButton rmaButton = new GeneralToggleActionButton(new RMAButtonTogglePanel());
         addButton(rmaButton);
-
-        GeneralToggleActionButton pricingButton = new GeneralToggleActionButton(new PricingButtonTogglePanel());
         addButton(pricingButton);
-
-        GeneralToggleActionButton discountButton = new GeneralToggleActionButton(new DiscountButtonTogglePanel());
         addButton(discountButton);
+        defaultValueClick();
+    }
 
+    public void defaultValueClick(){
         ButtonManager.updateUI(this, new Dimension(50, 70), new int[]{VERTICAL, CENTER});
         salesOrderButton.doClick();
-
     }
 
 }
