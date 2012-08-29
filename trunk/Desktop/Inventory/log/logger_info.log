@@ -1,20 +1,20 @@
-2012-08-28 00:06:21.853 - <INFO> HttpContext.register(52) | ----- Http Context Initialization Start -----
-2012-08-28 00:06:21.861 - <INFO> HttpLogger.info(35) | Alias : DefaultHttp
-2012-08-28 00:06:21.862 - <INFO> HttpLogger.info(36) | Host : localhost
-2012-08-28 00:06:21.862 - <INFO> HttpLogger.info(37) | Port : 8080
-2012-08-28 00:06:21.862 - <INFO> HttpLogger.info(38) | Path : /Nepxion/XXServerInvoker
-2012-08-28 00:06:21.863 - <INFO> HttpLogger.info(39) | Connection TimeOut : 120000
-2012-08-28 00:06:21.864 - <INFO> HttpLogger.info(40) | Response TimeOut : 120000
-2012-08-28 00:06:21.864 - <INFO> HttpLogger.info(41) | Buffer Size : 8192
-2012-08-28 00:06:21.864 - <INFO> HttpContext.register(79) | ------ Http Context Initialization End ------
-2012-08-28 00:06:21.869 - <INFO> QuartzContext.register(54) | --- Quartz Scheduler Initialization Start ---
-2012-08-28 00:06:21.948 - <INFO> RAMJobStore.initialize(143) | RAMJobStore initialized.
-2012-08-28 00:06:21.948 - <INFO> StdSchedulerFactory.instantiate(919) | Quartz scheduler 'DefaultQuartzScheduler' initialized from the specified file : 'conf/quartz.properties'
-2012-08-28 00:06:21.948 - <INFO> StdSchedulerFactory.instantiate(923) | Quartz scheduler version: 1.4.5
-2012-08-28 00:06:21.949 - <INFO> QuartzContext.register(70) | ---- Quartz Scheduler Initialization End ----
-2012-08-28 00:06:21.975 - <INFO> ActiveXContext.registerStrategy(33) | ----- ActiveX Context Initialization Start -----
-2012-08-28 00:06:21.976 - <INFO> ActiveXContext.registerStrategy(39) | ActiveX Invoker Strategy : Application
-2012-08-28 00:06:21.986 - <INFO> ActiveXContext.registerStrategy(50) | ------ ActiveX Context Initialization End ------
-2012-08-28 00:06:21.994 - <INFO> ExceptionTracerContext.register(31) | ----- Exception Tracer Context Initialization Start -----
-2012-08-28 00:06:21.995 - <INFO> ExceptionTracerContext.register(35) | Exception Tracer Debug : true
-2012-08-28 00:06:21.995 - <INFO> ExceptionTracerContext.register(36) | ------ Exception Tracer Context Initialization End ------
+2012-08-29 22:18:02.921 - <INFO> HttpContext.register(52) | ----- Http Context Initialization Start -----
+2012-08-29 22:18:02.938 - <INFO> HttpLogger.info(35) | Alias : DefaultHttp
+2012-08-29 22:18:02.939 - <INFO> HttpLogger.info(36) | Host : localhost
+2012-08-29 22:18:02.940 - <INFO> HttpLogger.info(37) | Port : 8080
+2012-08-29 22:18:02.941 - <INFO> HttpLogger.info(38) | Path : 
+2012-08-29 22:18:02.941 - <INFO> HttpLogger.info(39) | Connection TimeOut : 120000
+2012-08-29 22:18:02.942 - <INFO> HttpLogger.info(40) | Response TimeOut : 120000
+2012-08-29 22:18:02.942 - <INFO> HttpLogger.info(41) | Buffer Size : 8192
+2012-08-29 22:18:02.943 - <INFO> HttpContext.register(79) | ------ Http Context Initialization End ------
+2012-08-29 22:18:02.950 - <INFO> QuartzContext.register(54) | --- Quartz Scheduler Initialization Start ---
+2012-08-29 22:18:03.197 - <INFO> RAMJobStore.initialize(143) | RAMJobStore initialized.
+2012-08-29 22:18:03.209 - <INFO> StdSchedulerFactory.instantiate(919) | Quartz scheduler 'DefaultQuartzScheduler' initialized from the specified file : 'conf/quartz.properties'
+2012-08-29 22:18:03.211 - <INFO> StdSchedulerFactory.instantiate(923) | Quartz scheduler version: 1.4.5
+2012-08-29 22:18:03.212 - <INFO> QuartzContext.register(70) | ---- Quartz Scheduler Initialization End ----
+2012-08-29 22:18:03.341 - <INFO> ActiveXContext.registerStrategy(33) | ----- ActiveX Context Initialization Start -----
+2012-08-29 22:18:03.341 - <INFO> ActiveXContext.registerStrategy(39) | ActiveX Invoker Strategy : Application
+2012-08-29 22:18:03.344 - <INFO> ActiveXContext.registerStrategy(50) | ------ ActiveX Context Initialization End ------
+2012-08-29 22:18:03.375 - <INFO> ExceptionTracerContext.register(31) | ----- Exception Tracer Context Initialization Start -----
+2012-08-29 22:18:03.376 - <INFO> ExceptionTracerContext.register(35) | Exception Tracer Debug : true
+2012-08-29 22:18:03.376 - <INFO> ExceptionTracerContext.register(36) | ------ Exception Tracer Context Initialization End ------

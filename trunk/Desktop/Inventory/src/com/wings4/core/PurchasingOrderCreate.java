@@ -177,7 +177,7 @@ public class PurchasingOrderCreate extends InventoryInternalBase {
         purchaseOrderTabbedPane.addTab("General Information", IconFactory.getSwingIcon("component/tabbed_pane_16.png"), purchaseOrderPane);
 
 
-        vendorLabel.setText("Vendor");
+        vendorLabel.setText("LocalVendor");
 
         organizationLabel.setText("Organization");
 

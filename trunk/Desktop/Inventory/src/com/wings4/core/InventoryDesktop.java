@@ -308,7 +308,7 @@ public class InventoryDesktop extends InventoryBase {
         purchasingMenu.add(receivingMenuItem);
         purchasingMenu.add(jSeparator14);
 
-        vendorMenuItem.setText("Vendor");
+        vendorMenuItem.setText("LocalVendor");
         purchasingMenu.add(vendorMenuItem);
 
         jMenuBar1.add(purchasingMenu);

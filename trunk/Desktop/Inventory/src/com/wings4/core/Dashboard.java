@@ -227,7 +227,7 @@ public class Dashboard extends JDockableHierarchy {
         purchasingMenu.add(receivingMenuItem);
         purchasingMenu.add(jSeparator14);
 
-        vendorMenuItem.setText("Vendor");
+        vendorMenuItem.setText("LocalVendor");
         purchasingMenu.add(vendorMenuItem);
 
         menuBar.add(purchasingMenu);
