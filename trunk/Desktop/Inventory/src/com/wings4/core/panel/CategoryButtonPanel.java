@@ -5,7 +5,6 @@ import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
-import com.wings4.core.CategoryCreate;
 import com.wings4.model.Category;
 import com.wings4.core.toggle.CategoryCreateTogglePanel;
 import com.wings4.core.toggle.GeneralToggleActionButton;
@@ -38,11 +37,6 @@ public class CategoryButtonPanel extends JPanel {
         add(new CategoryListPanel());
     }
 
-    public CategoryButtonPanel(String create){
-        setLayout(new FiledLayout(FiledLayout.COLUMN, FiledLayout.FULL, 0));
-        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        add(new CategoryCreate());
-    }
 
     public class CategoryListPanel extends JPanel {
         public CategoryListPanel() {

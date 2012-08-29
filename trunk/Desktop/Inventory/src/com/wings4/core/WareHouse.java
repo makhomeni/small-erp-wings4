@@ -57,7 +57,7 @@ public class WareHouse extends InventoryInternalBase {
             
             
         }catch (JSONException ex) {
-            Logger.getLogger(CategoryCreate.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(CategoryCreate.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String restEndPoint = Login.getRestEndPoint();

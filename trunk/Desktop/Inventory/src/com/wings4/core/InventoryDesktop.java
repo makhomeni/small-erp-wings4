@@ -345,13 +345,13 @@ public class InventoryDesktop extends InventoryBase {
     }// </editor-fold>//GEN-END:initComponents
 
     private void categoryToolBarButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_categoryToolBarButtonActionPerformed
-        try{
-            CategoryCreate categoryCreate = CategoryCreate.getInstance();
-            categoryCreate.setVisible(true);
-            inventoryDesktopBoard.add(categoryCreate);
-        }catch(Exception ex){
-            this.categoryToolBarButtonActionPerformed(evt);
-        }
+//        try{
+//            CategoryCreate categoryCreate = CategoryCreate.getInstance();
+//            categoryCreate.setVisible(true);
+//            inventoryDesktopBoard.add(categoryCreate);
+//        }catch(Exception ex){
+//            this.categoryToolBarButtonActionPerformed(evt);
+//        }
     }//GEN-LAST:event_categoryToolBarButtonActionPerformed
 
     private void logoutMenuItemActionPerformed(ActionEvent evt) {//GEN-FIRST:event_logoutMenuItemActionPerformed
@@ -400,9 +400,9 @@ private void jMenuItem1ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenu
 private void categoryMenuItemActionPerformed(ActionEvent evt) {//GEN-FIRST:event_categoryMenuItemActionPerformed
 // TODO add your handling code here:
    try{
-        CategoryCreate categoryCreate = CategoryCreate.getInstance();
-        categoryCreate.setVisible(true);
-        inventoryDesktopBoard.add(categoryCreate);
+//        CategoryCreate categoryCreate = CategoryCreate.getInstance();
+//        categoryCreate.setVisible(true);
+//        inventoryDesktopBoard.add(categoryCreate);
     }catch(Exception ex){
         this.categoryMenuItemActionPerformed(evt);
     }
