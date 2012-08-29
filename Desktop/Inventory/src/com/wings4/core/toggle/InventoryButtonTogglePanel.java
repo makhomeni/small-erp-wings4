@@ -2,6 +2,7 @@ package com.wings4.core.toggle;
 
 import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
 import com.wings4.core.CategoryCreate;
+import com.wings4.core.panel.InventoryButtonPanel;
 import com.wings4.util.IconFactory;
 
 import javax.swing.*;
@@ -22,7 +23,7 @@ public class InventoryButtonTogglePanel extends AppTogglePanel {
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
         toggleTabbedPane.addTab("Inventory", IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(new CategoryCreate()), "Inventory");
+                new AppToggleTemplate(new InventoryButtonPanel()), "Inventory");
 
     }
 
