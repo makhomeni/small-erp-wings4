@@ -201,7 +201,7 @@ private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             inventoryResourceObject.put("availableForSale", availableForSaleText.getText());
             inventoryResourceObject.put("availableToPick", availableToPickText.getText());
         } catch (JSONException ex) {
-            Logger.getLogger(CategoryCreate.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(CategoryCreate.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String restEndPoint = Login.getRestEndPoint();

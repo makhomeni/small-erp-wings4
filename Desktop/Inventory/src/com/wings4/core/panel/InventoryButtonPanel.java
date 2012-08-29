@@ -39,8 +39,8 @@ public class InventoryButtonPanel extends JPanel {
 
             AnnotationResolver resolver = new AnnotationResolver(InventoryRegister.class);
             final ObjectTableModel<InventoryRegister> tableModel = new ObjectTableModel<InventoryRegister>(
-                    resolver, "id,productName,onHand" +
-                    "phoneNumber,address,contact,reference,billingAddress");
+                    resolver, "id,productName,onHand,onOrder,allocated,committed,unavailable,backOrdered,dropShip," +
+                    "availableForSale,availableToPick");
 
             tableModel.setData(getData());
             customerTable.setModel(tableModel);

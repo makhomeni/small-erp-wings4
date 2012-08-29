@@ -1,7 +1,6 @@
 package com.wings4.core.toggle;
 
 import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
-import com.wings4.core.CategoryCreate;
 import com.wings4.core.panel.InventoryButtonPanel;
 import com.wings4.util.IconFactory;
 
