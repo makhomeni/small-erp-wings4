@@ -4,10 +4,11 @@ import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
-import com.wings4.model.Product;
 import com.wings4.model.SalesOrder;
+import com.wings4.util.IconFactory;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +21,11 @@ import java.util.List;
  */
 public class SalesOrderButtonPanel extends JPanel {
 
-    private JScrollPane productScrollPane;
-    private JTable productTable;
+    private JScrollPane salesOrderListHolder;
+    private JTable salesOrderTable;
+    private JToolBar salesOrderToolBar;
+    private JButton createSalesOrderButton;
+    private JButton reportSalesOrderButton;
 
     public SalesOrderButtonPanel() {
         setLayout(new FiledLayout(FiledLayout.COLUMN, FiledLayout.FULL, 0));
@@ -32,23 +36,43 @@ public class SalesOrderButtonPanel extends JPanel {
 
     public class SalesOrderListPanel extends JPanel {
         public SalesOrderListPanel() {
-            setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+            setLayout(new BorderLayout());
             setBorder(BorderManager.createComplexTitledBorder("Sales Order List"));
 
-            productScrollPane = new JScrollPane();
-            productTable = new JTable();
+            salesOrderListHolder = new JScrollPane();
+            salesOrderTable = new JTable();
+            salesOrderToolBar = new JToolBar();
+            createSalesOrderButton = new JButton();
+            reportSalesOrderButton = new JButton();
+
+
+            createSalesOrderButton.setIcon(IconFactory.getSwingIcon("list-add.png"));
+
+            createSalesOrderButton.setFocusable(false);
+            createSalesOrderButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            createSalesOrderButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            salesOrderToolBar.add(createSalesOrderButton);
+
+
+            reportSalesOrderButton.setIcon(IconFactory.getSwingIcon("document-print.png"));
+            reportSalesOrderButton.setFocusable(false);
+            reportSalesOrderButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            reportSalesOrderButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            salesOrderToolBar.add(reportSalesOrderButton);
+
+
 
             AnnotationResolver resolver = new AnnotationResolver(SalesOrder.class);
             final ObjectTableModel<SalesOrder> tableModel = new ObjectTableModel<SalesOrder>(
-                    resolver, "productId,productName,stockKeepingUnit,universalProductCode," +
-                    "productClassification,productCategory");
+                    resolver, "id,jobName,orderQuantity,createdDate,createdBy,status,priority,isSent,deliveryTerm,dueDate,isArchived");
 
             tableModel.setData(getData());
-            productTable.setModel(tableModel);
+            salesOrderTable.setModel(tableModel);
 
-            productScrollPane.setViewportView(productTable);
+            salesOrderListHolder.setViewportView(salesOrderTable);
 
-            add(productScrollPane);
+            add(salesOrderToolBar,BorderLayout.PAGE_START);
+            add(salesOrderListHolder, BorderLayout.CENTER);
         }
     }
 

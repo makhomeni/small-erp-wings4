@@ -5,7 +5,6 @@ import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 import com.wings4.model.PurchaseOrder;
-import com.wings4.model.Vendor;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -40,8 +39,7 @@ public class PurchaseOrderButtonPanel extends JPanel {
 
             AnnotationResolver resolver = new AnnotationResolver(PurchaseOrder.class);
             final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
-                    resolver, "productId,productName,stockKeepingUnit,universalProductCode," +
-                    "productClassification,productCategory");
+                    resolver, "id,vendor,shippingAddress,organization,shippingMethod,paymentTerm");
 
             tableModel.setData(getData());
             purchaseOrderTable.setModel(tableModel);
