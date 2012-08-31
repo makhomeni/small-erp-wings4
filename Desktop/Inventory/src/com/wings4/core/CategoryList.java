@@ -12,6 +12,7 @@ package com.wings4.core;
 
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.dao.MaterialDao;
 import com.wings4.model.Category;
 import com.wings4.util.InventoryConstants;
 
@@ -47,7 +48,7 @@ public class CategoryList extends javax.swing.JFrame {
         final ObjectTableModel<Category> tableModel = new ObjectTableModel<Category>(
                 resolver, "categoryId,categoryName,parentCategory");
 
-        tableModel.setData(getData());
+        tableModel.setData(MaterialDao.findAllCategories());
         categoryTable.setModel(tableModel);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

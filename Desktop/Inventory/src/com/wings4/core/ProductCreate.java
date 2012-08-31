@@ -10,13 +10,17 @@
  */
 package com.wings4.core;
 
+import com.wings4.util.InventoryBase;
 import com.wings4.util.InventoryInternalBase;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author ronnie
  */
-public class ProductCreate extends InventoryInternalBase {
+public class ProductCreate extends InventoryBase {
 
     /** Creates new form ProductCreate */
     public ProductCreate() {
@@ -55,7 +59,6 @@ public class ProductCreate extends InventoryInternalBase {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
-        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ProductCreate Create");
 
@@ -240,6 +243,23 @@ public class ProductCreate extends InventoryInternalBase {
         String sku = skuText.getText();
         String upc = upcText.getText();
     }//GEN-LAST:event_saveGeneralProductButtonActionPerformed
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+
+            public void run() {
+                new ProductCreate().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox categoryCombo;

@@ -20,6 +20,8 @@ public class Category {
     @Resolvable(colName = "Parent Category")
     private String parentCategory;
 
+    public Category(){}
+
     public Category(Integer categoryId, String categoryName, String parentCategory) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
