@@ -32,6 +32,8 @@ public class Product {
     @Resolvable(colName = "ProductCreate Details")
     private String productDetails;
 
+    public Product() {}
+
     public Product(Integer productId, String productName, String stockKeepingUnit, String universalProductCode,
                    String productClassification, String productCategory, String productDetails) {
         this.productId = productId;

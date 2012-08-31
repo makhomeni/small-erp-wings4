@@ -1,12 +1,19 @@
 package com.wings4.core.panel;
 
+import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.core.toggle.GeneralToggleActionButton;
+import com.wings4.core.toggle.InventoryCreateTogglePanel;
+import com.wings4.core.toggle.ProductCreateTogglePanel;
 import com.wings4.model.InventoryRegister;
+import com.wings4.util.InventoryConstants;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +26,12 @@ import java.util.List;
  */
 public class InventoryButtonPanel extends JPanel {
 
-    private JScrollPane customerListHolder;
-    private JTable customerTable;
+    private JScrollPane inventoryListHolder;
+    private JTable inventoryTable;
+
+    private JToolBar inventoryToolBar;
+    private JButton createInventoryButton;
+    private JButton reportInventoryButton;
 
     public InventoryButtonPanel() {
         setLayout(new FiledLayout(FiledLayout.COLUMN, FiledLayout.FULL, 0));
@@ -31,11 +42,41 @@ public class InventoryButtonPanel extends JPanel {
 
     public class InventoryListPanel extends JPanel {
         public InventoryListPanel() {
-            setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+            setLayout(new BorderLayout());
             setBorder(BorderManager.createComplexTitledBorder("Inventory List"));
 
-            customerListHolder = new JScrollPane();
-            customerTable = new JTable();
+            inventoryListHolder = new JScrollPane();
+            inventoryTable = new JTable();
+
+
+            inventoryToolBar = new JToolBar();
+            createInventoryButton = new JButton();
+            reportInventoryButton = new JButton();
+
+            createInventoryButton.setIcon(new ImageIcon(getClass().
+                    getResource(InventoryConstants.resourceDirectory.
+                            concat("list-add.png"))));
+            createInventoryButton.setFocusable(false);
+            createInventoryButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            createInventoryButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            inventoryToolBar.add(createInventoryButton);
+
+            createInventoryButton.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    GeneralToggleActionButton inventoryCreateButton = new GeneralToggleActionButton(new
+                            InventoryCreateTogglePanel());
+                    inventoryCreateButton.doClick();
+                }
+            });
+
+            reportInventoryButton.setIcon(new ImageIcon(getClass().
+                    getResource(InventoryConstants.resourceDirectory.
+                            concat("document-print.png"))));
+            reportInventoryButton.setFocusable(false);
+            reportInventoryButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            reportInventoryButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            inventoryToolBar.add(reportInventoryButton);
 
             AnnotationResolver resolver = new AnnotationResolver(InventoryRegister.class);
             final ObjectTableModel<InventoryRegister> tableModel = new ObjectTableModel<InventoryRegister>(
@@ -43,11 +84,12 @@ public class InventoryButtonPanel extends JPanel {
                     "availableForSale,availableToPick");
 
             tableModel.setData(getData());
-            customerTable.setModel(tableModel);
+            inventoryTable.setModel(tableModel);
 
-            customerListHolder.setViewportView(customerTable);
+            inventoryListHolder.setViewportView(inventoryTable);
 
-            add(customerListHolder);
+            add(inventoryToolBar, BorderLayout.PAGE_START);
+            add(inventoryListHolder, BorderLayout.CENTER);
         }
     }
 

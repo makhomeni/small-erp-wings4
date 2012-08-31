@@ -5,6 +5,7 @@ import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.dao.MaterialDao;
 import com.wings4.model.Category;
 import com.wings4.core.toggle.CategoryCreateTogglePanel;
 import com.wings4.core.toggle.GeneralToggleActionButton;
@@ -70,7 +71,7 @@ public class CategoryButtonPanel extends JPanel {
             final ObjectTableModel<Category> tableModel = new ObjectTableModel<Category>(
                     resolver, "categoryId,categoryName,parentCategory");
 
-            tableModel.setData(getData());
+            tableModel.setData(MaterialDao.findAllCategories());
             categoryTable.setModel(tableModel);
             categoryScrollPane.setViewportView(categoryTable);
             add(categoryToolBar, BorderLayout.PAGE_START);
