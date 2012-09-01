@@ -23,37 +23,4 @@ public class BootStrapApp extends JFrameWorkFrame {
         Dashboard hierarchy = new Dashboard();
         setHierarchy(hierarchy);
     }
-    
-    public static void main(String[] args){
-        new DataContextInitializer().initialize();
-        AppUIContext.initialize();
-        //new RibbonContextInitializer().initialize();
-
-        final AppSplashWindow splashWindow = new AppSplashWindow();
-        splashWindow.setVisible(true);
-
-        com.jidesoft.utils.Lm.verifyLicense("Wings4", "Inventory", "1234567891012");
-
-        try{
-            Thread.sleep(1000);
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        }
-
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                BootStrapApp frame = new BootStrapApp();
-                frame.setExtendedState(MAXIMIZED_BOTH);
-                //frame.setIconImage(com.wings4.util.IconFactory.getSwingImage("scm"));
-
-                //JTray tray = new JTray(frame);
-                //tray.setAlwaysShowBalloon(true);
-
-                splashWindow.setVisible(false);
-                //tray.setVisible(true);
-                frame.setVisible(true);
-                frame.toFront();
-            }
-        });
-    }
 }
