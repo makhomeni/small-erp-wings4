@@ -6,6 +6,7 @@ class Category {
     Category parentCategory;
 
     static constraints = {
+        categoryName(unique:  true);
         parentCategory(nullable: true);
     }
 }

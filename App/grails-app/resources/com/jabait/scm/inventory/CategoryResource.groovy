@@ -32,22 +32,46 @@ class CategoryResource {
     }
 
     @GET
-    @Produces(["application/xml"])
     Response readAll(){
-        ok inventoryService.readAllCategories();
+        List<Category> categories = inventoryService.readAllCategories();
+        Map<String,Object> categoryMap;
+        List<Map<String,Object>> allCategories = new ArrayList<Map<String,Object>>();
+        for (Category category: categories) {
+            categoryMap = new HashMap<String,Object>();
+            categoryMap.put("id", category.id);
+            categoryMap.put("categoryName", category.categoryName);
+            categoryMap.put("parentCategory", category?.parentCategory?.categoryName);
+
+            allCategories.add(categoryMap);
+        }
+        ok allCategories;
     }
 
     @POST
-    @Produces([MediaType.APPLICATION_JSON])
-    @Consumes([MediaType.APPLICATION_JSON])
     Response create(String category){
         
         JSONObject categoryJsonObject = new JSONObject(category);
-        Category parentCategory = Category.get(Long.valueOf(
-                categoryJsonObject.get("parentCategory").toString()));
+
+
         Category categoryDto = new Category();
         categoryDto.categoryName = categoryJsonObject.get("categoryName").toString();
-        categoryDto.parentCategory = parentCategory;
+
+        println "categoryDto = " + categoryJsonObject.length()
+
+
+        try{
+
+            if(categoryJsonObject.length() == 2){
+                Category parentCategory = Category?.get(Long.valueOf(
+                        categoryJsonObject?.get("parentCategory")?.toString()));
+                categoryDto.parentCategory = parentCategory;
+            }
+
+        } catch(Exception ex){
+
+        }
+
+
         created categoryDto.save();
     }
 }
