@@ -1,5 +1,6 @@
 package com.wings4.core.panel;
 
+import com.jidesoft.navigation.BreadcrumbBar;
 import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
@@ -30,6 +31,7 @@ public class CategoryButtonPanel extends JPanel {
     private JTable categoryTable;
     private JToolBar categoryToolBar;
     private JButton createCategoryButton;
+    private BreadcrumbBar breadcrumbBar;
 
     public CategoryButtonPanel() {
         setLayout(new FiledLayout(FiledLayout.COLUMN, FiledLayout.FULL, 0));
@@ -46,6 +48,8 @@ public class CategoryButtonPanel extends JPanel {
 
             categoryToolBar = new JToolBar();
             createCategoryButton = new JButton();
+            breadcrumbBar = new BreadcrumbBar();
+
 
             createCategoryButton.addActionListener(new JSecurityAction() {
                 @Override
@@ -74,6 +78,7 @@ public class CategoryButtonPanel extends JPanel {
             tableModel.setData(MaterialDao.findAllCategories());
             categoryTable.setModel(tableModel);
             categoryScrollPane.setViewportView(categoryTable);
+            add(breadcrumbBar, BorderLayout.PAGE_START);
             add(categoryToolBar, BorderLayout.PAGE_START);
             add(categoryScrollPane, BorderLayout.CENTER);
         }

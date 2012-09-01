@@ -6,7 +6,11 @@ import com.jidesoft.combobox.TableComboBox;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.dao.MaterialDao;
 import com.wings4.model.Category;
+import com.wings4.model.ProductClassification;
+import com.wings4.model.ProductType;
+import com.wings4.model.UnitOfMeasure;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -39,17 +43,39 @@ public class ProductCreateButtonPanel extends JPanel {
             builder.appendColumn("3dlu");
             builder.appendColumn("fill:max(pref; 10px)");
 
-            AnnotationResolver resolver = new AnnotationResolver(Category.class);
-            final ObjectTableModel<Category> tableModel = new ObjectTableModel<Category>(
-                    resolver, "categoryId,categoryName,parentCategory");
-            tableModel.setData(getData());
+            AnnotationResolver categoryResolver = new AnnotationResolver(Category.class);
+            final ObjectTableModel<Category> categoryTableModel = new ObjectTableModel<Category>(
+                    categoryResolver, "categoryId,categoryName,parentCategory");
+            categoryTableModel.setData(MaterialDao.findAllCategories());
+
+
+            AnnotationResolver productTypeResolver = new AnnotationResolver(ProductType.class);
+            final ObjectTableModel<ProductType> productTypeTableModel = new ObjectTableModel<ProductType>(
+                    productTypeResolver, "productTypeId,name,description");
+            productTypeTableModel.setData(MaterialDao.findAllProductTypes());
+
+
+            AnnotationResolver uomResolver = new AnnotationResolver(UnitOfMeasure.class);
+            final ObjectTableModel<UnitOfMeasure> uomTableModel = new ObjectTableModel<UnitOfMeasure>(
+                    uomResolver, "id,uom,description");
+            uomTableModel.setData(MaterialDao.findAllUnitOfMeasures());
+
+
+            AnnotationResolver classificationResolver = new AnnotationResolver(ProductClassification.class);
+            final ObjectTableModel<ProductClassification> classificationTableModel
+                    = new ObjectTableModel<ProductClassification>(classificationResolver, "classificationId," +
+                    "classification,description");
+            classificationTableModel.setData(MaterialDao.findAllProductClassifications());
+
+
+
 
 
             JTextField productNameText = new JTextField();
-            TableComboBox productType = new TableComboBox();
-            TableComboBox category = new TableComboBox(tableModel);
-            TableComboBox productClassification = new TableComboBox();
-            TableComboBox unitOfMeasure = new TableComboBox();
+            TableComboBox productType = new TableComboBox(productTypeTableModel);
+            TableComboBox category = new TableComboBox(categoryTableModel);
+            TableComboBox productClassification = new TableComboBox(classificationTableModel);
+            TableComboBox unitOfMeasure = new TableComboBox(uomTableModel);
             JTextField licenseInfoText = new JTextField();
             JTextField stockKeepingUnitText = new JTextField();
             JTextField universalProductCodeText = new JTextField();
@@ -90,8 +116,4 @@ public class ProductCreateButtonPanel extends JPanel {
         }
     }
 
-    private List<Category> getData() {
-        List<Category> list = new ArrayList<Category>();
-        return list;
-    }
 }

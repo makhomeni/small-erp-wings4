@@ -3,6 +3,8 @@ package com.wings4.core.panel;
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jidesoft.combobox.TableComboBox;
+import com.jidesoft.dialog.JideOptionPane;
+import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
@@ -10,6 +12,7 @@ import com.wings4.dao.MaterialDao;
 import com.wings4.model.Category;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,8 +49,8 @@ public class CategoryCreateButtonPanel extends JPanel {
             tableModel.setData(MaterialDao.findAllCategories());
 
 
-            JTextField categoryNameText = new JTextField();
-            TableComboBox parentCategory = new TableComboBox(tableModel);
+            final JTextField categoryNameText = new JTextField();
+            final TableComboBox parentCategory = new TableComboBox(tableModel);
             JButton submitCategory = new JButton();
             JButton cancelCategory = new JButton();
 
@@ -64,11 +67,27 @@ public class CategoryCreateButtonPanel extends JPanel {
             builder.append(cancelCategory);
 
             add(builder.getPanel());
+
+            submitCategory.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    Category category = new Category();
+                    category.setCategoryName(categoryNameText.getText());
+                    try {
+                        category.setParentCategory(parentCategory.getSelectedItem().toString());
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                    if(MaterialDao.saveCategory(category))
+                        JideOptionPane.showMessageDialog(null, "Category Saved Successfully", "Success",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    else
+                        JideOptionPane.showMessageDialog(null, "Category Saved Failed", "Failed",
+                                JOptionPane.ERROR_MESSAGE);
+                }
+            });
         }
     }
 
-    private List<Category> getData() {
-        List<Category> list = new ArrayList<Category>();
-        return list;
-    }
 }

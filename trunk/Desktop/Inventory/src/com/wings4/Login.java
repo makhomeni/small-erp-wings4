@@ -4,17 +4,22 @@
  */
 package com.wings4;
 
+import com.wings4.core.BootStrapApp;
 import com.wings4.core.InventoryDesktop;
+import com.wings4.core.context.AppUIContext;
+import com.wings4.core.context.DataContextInitializer;
+import com.wings4.core.splash.AppSplashWindow;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.RESTFeed;
+
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
+import javax.swing.*;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,9 +67,19 @@ public class Login extends javax.swing.JDialog {
         serverText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
         setResizable(false);
+
+
+
+
+
+
+
+
+
+
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(KeyEvent evt) {
                 formKeyPressed(evt);
@@ -198,26 +213,28 @@ public class Login extends javax.swing.JDialog {
         } catch (JSONException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         restEndPoint = InventoryConstants.serverAddressPrefix.concat(serverAddress.concat(":").concat(serverPort).
                 concat("/").concat(InventoryConstants.appName).concat("/api/"));
         System.out.println("restEndPoint = " + restEndPoint.concat("user"));
-        
+
         RESTFeed restFeed = new RESTFeed(InventoryConstants.MEDIA_JSON,
-                InventoryConstants.MEDIA_JSON,InventoryConstants.POST, 
+                InventoryConstants.MEDIA_JSON,InventoryConstants.POST,
                 restEndPoint, "user");
         restFeed.setJsonObject(userObject);
         try {
             restFeed.restInitialization();
-            InventoryDesktop desktop = new InventoryDesktop();
-            desktop.setVisible(true);
-            this.setVisible(false);
+            BootStrapApp frame = new BootStrapApp();
+            frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+            this.dispose();
+            frame.setVisible(true);
+            frame.toFront();
         } catch (MalformedURLException ex) {
             JOptionPane.showMessageDialog(null,"The URL Provided is incorrect" + ex,"Login Error",JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,"Bad Usernam/Password combination provided" + ex,"Login Error",JOptionPane.ERROR_MESSAGE);
-        }  
-        
+        }
+
     }
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         loginButtonAction();
@@ -233,7 +250,7 @@ private void submitKeyPressed(KeyEvent evt) {//GEN-FIRST:event_submitKeyPressed
     if(evt.getKeyCode() == KeyEvent.VK_ENTER){
         loginButtonAction();
     }
-    
+
 }//GEN-LAST:event_submitKeyPressed
 
 private void formKeyPressed(KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
@@ -243,36 +260,38 @@ private void formKeyPressed(KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            UIManager.setLookAndFeel("com.peterswing.white.PeterSwingWhiteLookAndFeel");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+    public static void main(String[] args){
+        new DataContextInitializer().initialize();
+        AppUIContext.initialize();
+        //new RibbonContextInitializer().initialize();
+
+        final AppSplashWindow splashWindow = new AppSplashWindow();
+        splashWindow.setVisible(true);
+
+        com.jidesoft.utils.Lm.verifyLicense("Wings4", "Inventory", "1234567891012");
+
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
         }
-        //</editor-fold>
 
-        /*
-         * Create and display the form
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
+        SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                Login login = new Login();
+
+                //BootStrapApp frame = new BootStrapApp();
+                //frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+                //frame.setIconImage(com.wings4.util.IconFactory.getSwingImage("scm"));
+
+                //JTray tray = new JTray(frame);
+                //tray.setAlwaysShowBalloon(true);
+
+                splashWindow.setVisible(false);
+                login.setVisible(true);
+                //tray.setVisible(true);
+                //frame.setVisible(true);
+                //frame.toFront();
             }
         });
     }
