@@ -288,6 +288,7 @@ public class Dashboard extends JDockableHierarchy {
             }
         });
         toolBar.add(productToolbarButton);
+        toolBar.addSeparator();
 
         JideButton purchaseToolbarButton = new JideButton();
         purchaseToolbarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wings4/resource/purchase.png"))); // NOI18N
