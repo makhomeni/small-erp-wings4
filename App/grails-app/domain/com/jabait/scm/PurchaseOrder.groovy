@@ -5,6 +5,7 @@ import com.jabait.scm.inventory.ShippingMethod
 import com.jabait.scm.inventory.Product
 import com.jabait.hrm.Organization
 import com.jabait.accounting.PaymentTerm
+import com.jabait.scm.inventory.InventoryRegister
 
 class PurchaseOrder extends JobOrder {
 
@@ -14,7 +15,7 @@ class PurchaseOrder extends JobOrder {
     ShippingMethod shippingMethod;
     PaymentTerm paymentTerm;
 
-    static hasMany = [products : Product]
+    static hasMany = [inventoryRegisters : InventoryRegister]
 
     static mapping = {
         table("purchase_order")
