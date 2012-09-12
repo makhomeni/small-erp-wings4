@@ -51,14 +51,9 @@ class CategoryResource {
     Response create(String category){
         
         JSONObject categoryJsonObject = new JSONObject(category);
-
-
         Category categoryDto = new Category();
         categoryDto.categoryName = categoryJsonObject.get("categoryName").toString();
-
-        println "categoryDto = " + categoryJsonObject.length()
-
-
+        println "categoryDto = " + categoryJsonObject.length();
         try{
 
             if(categoryJsonObject.length() == 2){
