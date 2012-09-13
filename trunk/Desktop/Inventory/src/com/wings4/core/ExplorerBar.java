@@ -1,9 +1,6 @@
 package com.wings4.core;
 
-import com.wings4.core.outlook.GeneralControlOutlook;
-import com.wings4.core.outlook.MaterialsControlOutlook;
-import com.wings4.core.outlook.PurchaseControlOutlook;
-import com.wings4.core.outlook.SalesControlOutlook;
+import com.wings4.core.outlook.*;
 import com.wings4.util.IconFactory;
 import com.nepxion.swing.outlookbar.JFlatOutlookBar;
 
@@ -37,5 +34,7 @@ public class ExplorerBar extends JFlatOutlookBar {
                 makeScrollPane(new PurchaseControlOutlook()), "Purchasing");
         addTab("Manufacturing", IconFactory.getSwingIcon("component/button_16.png"),
                 makeScrollPane(new GeneralControlOutlook()), "Manufacturing");
+        addTab("Manufacturing", IconFactory.getSwingIcon("component/button_16.png"),
+                makeScrollPane(new TestControlOutlook()), "Manufacturing");
     }
 }

@@ -1,28 +1,26 @@
 package com.wings4.core.toggle;
 
-import com.wings4.util.JEclipseTabbedPane;
-import com.wings4.core.panel.SalesOrderButtonPanel;
+import com.wings4.core.panel.CategoryCreateButtonPanel;
+import com.wings4.core.panel.SalesOrderCreatePanel;
 import com.wings4.util.IconFactory;
+import com.wings4.util.JEclipseTabbedPane;
 
 import javax.swing.*;
 
 /**
  * Created by IntelliJ IDEA.
- * User: ronnie
- * Date: 8/27/12
- * Time: 11:01 PM
+ * User: Administrator
+ * Date: 9/13/12
+ * Time: 10:22 AM
  * To change this template use File | Settings | File Templates.
  */
-public class SalesOrderButtonTogglePanel extends AppTogglePanel {
-
-    public SalesOrderButtonTogglePanel() {
-    }
+public class SalseOrderCreateTogglePanel  extends AppTogglePanel {
 
     @Override
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
         toggleTabbedPane.addTab("Sales Order", IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(new SalesOrderButtonPanel()), "Sales Order");
+                new AppToggleTemplate(new SalesOrderCreatePanel()), "Sales Order");
 
     }
 

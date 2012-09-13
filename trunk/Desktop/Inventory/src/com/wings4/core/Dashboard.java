@@ -63,7 +63,7 @@ public class Dashboard extends JDockableHierarchy {
         javax.swing.JPopupMenu.Separator jSeparator1 = new javax.swing.JPopupMenu.Separator();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenu generalMenu = new javax.swing.JMenu();
-        javax.swing.JMenuItem dashboardMenu = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem dashboardMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenuItem jMenuItem1 = new javax.swing.JMenuItem();
         javax.swing.JPopupMenu.Separator jSeparator2 = new javax.swing.JPopupMenu.Separator();
         javax.swing.JMenuItem reportsMenu = new javax.swing.JMenuItem();
@@ -126,8 +126,8 @@ public class Dashboard extends JDockableHierarchy {
 
         generalMenu.setText("General");
 
-        dashboardMenu.setText("Dashboard");
-        generalMenu.add(dashboardMenu);
+        dashboardMenuItem.setText("Dashboard");
+        generalMenu.add(dashboardMenuItem);
 
         jMenuItem1.setText("Warehouse");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {

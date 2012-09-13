@@ -1,14 +1,20 @@
 package com.wings4.core.panel;
 
+import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.core.toggle.CategoryCreateTogglePanel;
+import com.wings4.core.toggle.GeneralToggleActionButton;
+import com.wings4.core.toggle.SalesOrderButtonTogglePanel;
+import com.wings4.core.toggle.SalseOrderCreateTogglePanel;
 import com.wings4.model.SalesOrder;
 import com.wings4.util.IconFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +51,14 @@ public class SalesOrderButtonPanel extends JPanel {
             createSalesOrderButton = new JButton();
             reportSalesOrderButton = new JButton();
 
-
+            createSalesOrderButton.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    GeneralToggleActionButton categoryButton = new GeneralToggleActionButton(new
+                            SalseOrderCreateTogglePanel());
+                    categoryButton.doClick();
+                }
+            });
             createSalesOrderButton.setIcon(IconFactory.getSwingIcon("list-add.png"));
 
             createSalesOrderButton.setFocusable(false);
