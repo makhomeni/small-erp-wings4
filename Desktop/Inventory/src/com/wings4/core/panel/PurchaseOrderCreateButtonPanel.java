@@ -17,6 +17,7 @@ import org.jdesktop.swingx.JXTextField;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.Vector;
 
 /**
  *
@@ -51,6 +52,8 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
 //                    ,organization,shippingMethod,paymentTerm
                     resolver2, "id,vendor");
+            Vector<Vector<String>> data = new Vector<Vector<String>>();
+            Vector<String> insideData = new Vector<String>();
 //            tableModel.setData(MaterialDao.findAllCategories());
 //            final ObjectTableModel<Organization> 
             final ObjectTableModel< Customer> tableModelCustomer = new ObjectTableModel< Customer>(
