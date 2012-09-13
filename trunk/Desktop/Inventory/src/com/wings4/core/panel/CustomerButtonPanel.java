@@ -70,6 +70,8 @@ public class CustomerButtonPanel extends JPanel {
             createCategoryButton.setVerticalTextPosition(SwingConstants.BOTTOM);
             categoryToolBar.add(createCategoryButton);
 
+
+
             categoryScrollPane = new JScrollPane();
             categoryTable = new JTable();
 
@@ -81,6 +83,7 @@ public class CustomerButtonPanel extends JPanel {
 //            tableModel.setData();
             categoryTable.setModel(tableModel);
             categoryScrollPane.setViewportView(categoryTable);
+
             add(breadcrumbBar, BorderLayout.PAGE_START);
             add(categoryToolBar, BorderLayout.PAGE_START);
             add(categoryScrollPane, BorderLayout.CENTER);
