@@ -9,9 +9,11 @@ import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.VendorButtonTogglePanel;
+import com.wings4.dao.CommonDao;
 import com.wings4.dao.MaterialDao;
 import com.wings4.model.Category;
 import com.wings4.model.Customer;
+import com.wings4.model.Organization;
 import com.wings4.model.PurchaseOrder;
 import org.jdesktop.swingx.JXTextField;
 
@@ -49,22 +51,25 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
 
             AnnotationResolver resolver = new AnnotationResolver( Customer.class);
             AnnotationResolver resolver2 = new AnnotationResolver( PurchaseOrder.class);
+            AnnotationResolver resolver3 = new AnnotationResolver( Organization.class);
             final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
 //                    ,organization,shippingMethod,paymentTerm
                     resolver2, "id,vendor");
-            Vector<Vector<String>> data = new Vector<Vector<String>>();
-            Vector<String> insideData = new Vector<String>();
+
 //            tableModel.setData(MaterialDao.findAllCategories());
 //            final ObjectTableModel<Organization> 
             final ObjectTableModel< Customer> tableModelCustomer = new ObjectTableModel< Customer>(
                     resolver, "id,firstName,lastName,emailId,organization,mobileNumber,phoneNumber,address,contact,reference,billingAddress");
 
+            final ObjectTableModel<Organization> tableModelOrganization = new ObjectTableModel< Organization>(
+                    resolver3, "id,organizationName");
+            tableModelOrganization.setData(CommonDao.findAllOrganizations());
 
             final TableComboBox vendorCombo = new TableComboBox(tableModelCustomer);
 
             final  JTextField shippingAddressText = new JXTextField();
 
-            final TableComboBox organizationCombo = new TableComboBox(tableModel);
+            final TableComboBox organizationCombo = new TableComboBox(tableModelOrganization);
             final TableComboBox shippingMethodCombo = new TableComboBox(tableModel);
             final TableComboBox paymentTermCombo = new TableComboBox(tableModel);
 
