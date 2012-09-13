@@ -1,14 +1,19 @@
 package com.wings4.core.panel;
 
 import com.jidesoft.navigation.BreadcrumbBar;
+import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.core.toggle.CustomerCreateTogglePanel;
+import com.wings4.core.toggle.GeneralToggleActionButton;
 import com.wings4.model.PurchaseOrder;
 import com.wings4.util.InventoryConstants;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +45,20 @@ public class PurchaseOrderButtonPanel extends JPanel {
             setBorder(BorderManager.createComplexTitledBorder("Purchase Order List"));
 
             purchaseOrderToolbar = new JToolBar();
-            //button
             createPurchaseOrderButton = new JButton();
+            breadCrumbBar = new BreadcrumbBar();
+
+            //button
+
+            createPurchaseOrderButton.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    GeneralToggleActionButton categoryButton = new GeneralToggleActionButton(new
+                            PurchaseOrderCreateTogglePanel());
+                    categoryButton.doClick();
+                }
+            });
+
             createPurchaseOrderButton.setIcon(new ImageIcon(getClass().
                     getResource(InventoryConstants.resourceDirectory.
                             concat("list-add.png"))));
@@ -64,7 +81,9 @@ public class PurchaseOrderButtonPanel extends JPanel {
 
             purchaseOrderListHolder.setViewportView(purchaseOrderTable);
 
-            add(purchaseOrderListHolder);
+            add(breadCrumbBar, BorderLayout.PAGE_START);
+            add(purchaseOrderToolbar, BorderLayout.PAGE_START);
+            add(purchaseOrderListHolder, BorderLayout.CENTER);
 
         }
     }
