@@ -3,7 +3,7 @@ package com.wings4.core.toggle;
 import com.nepxion.swing.framework.ribbon.IRibbonComponent;
 import com.nepxion.swing.icon.IconFactory;
 import com.nepxion.swing.listener.DisplayAbilityListener;
-import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
+import com.wings4.util.JEclipseTabbedPane;
 import com.nepxion.swing.toggle.JThreadTogglePanel;
 
 import javax.swing.*;

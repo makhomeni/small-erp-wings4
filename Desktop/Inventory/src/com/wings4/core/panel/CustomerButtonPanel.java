@@ -1,12 +1,22 @@
 package com.wings4.core.panel;
 
+import com.jidesoft.navigation.BreadcrumbBar;
+import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.core.toggle.CategoryCreateTogglePanel;
+import com.wings4.core.toggle.CustomerCreateTogglePanel;
+import com.wings4.core.toggle.GeneralToggleActionButton;
+import com.wings4.dao.MaterialDao;
+import com.wings4.model.Category;
 import com.wings4.model.Customer;
+import com.wings4.util.InventoryConstants;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,40 +29,67 @@ import java.util.List;
  */
 public class CustomerButtonPanel extends JPanel {
 
-    private JScrollPane customerListHolder;
-    private JTable customerTable;
+    private JScrollPane categoryScrollPane;
+    private JTable categoryTable;
+    private JToolBar categoryToolBar;
+    private JButton createCategoryButton;
+    private BreadcrumbBar breadcrumbBar;
 
     public CustomerButtonPanel() {
         setLayout(new FiledLayout(FiledLayout.COLUMN, FiledLayout.FULL, 0));
         setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-        add(new CustomerListPanel());
+        add(new CategoryListPanel());
     }
 
-    public class CustomerListPanel extends JPanel {
-        public CustomerListPanel() {
-            setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+
+    public class CategoryListPanel extends JPanel {
+        public CategoryListPanel() {
+            setLayout(new BorderLayout());
             setBorder(BorderManager.createComplexTitledBorder("Customer List"));
 
-            customerListHolder = new JScrollPane();
-            customerTable = new JTable();
+            categoryToolBar = new JToolBar();
+            createCategoryButton = new JButton();
+            breadcrumbBar = new BreadcrumbBar();
+
+
+            createCategoryButton.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    GeneralToggleActionButton categoryButton = new GeneralToggleActionButton(new
+                            CustomerCreateTogglePanel());
+                    categoryButton.doClick();
+                }
+            });
+
+            createCategoryButton.setIcon(new ImageIcon(getClass().
+                    getResource(InventoryConstants.resourceDirectory.
+                            concat("list-add.png"))));
+            createCategoryButton.setFocusable(false);
+            createCategoryButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            createCategoryButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            categoryToolBar.add(createCategoryButton);
+
+            categoryScrollPane = new JScrollPane();
+            categoryTable = new JTable();
 
             AnnotationResolver resolver = new AnnotationResolver(Customer.class);
             final ObjectTableModel<Customer> tableModel = new ObjectTableModel<Customer>(
                     resolver, "id,firstName,lastName,emailId,organization,mobileNumber," +
                     "phoneNumber,address,contact,reference,billingAddress");
 
-            tableModel.setData(getData());
-            customerTable.setModel(tableModel);
-
-            customerListHolder.setViewportView(customerTable);
-
-            add(customerListHolder);
+//            tableModel.setData();
+            categoryTable.setModel(tableModel);
+            categoryScrollPane.setViewportView(categoryTable);
+            add(breadcrumbBar, BorderLayout.PAGE_START);
+            add(categoryToolBar, BorderLayout.PAGE_START);
+            add(categoryScrollPane, BorderLayout.CENTER);
         }
     }
 
-    private List<Customer> getData() {
-        List<Customer> list = new ArrayList<Customer>();
+    private List<Category> getData() {
+        List<Category> list = new ArrayList<Category>();
         return list;
     }
 }
+

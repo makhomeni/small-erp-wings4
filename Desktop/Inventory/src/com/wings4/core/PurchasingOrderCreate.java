@@ -12,7 +12,7 @@ package com.wings4.core;
 
 import com.nepxion.swing.icon.IconFactory;
 import com.nepxion.swing.style.framework.*;
-import com.nepxion.swing.tabbedpane.JEclipseTabbedPane;
+import com.wings4.util.JEclipseTabbedPane;
 import com.wings4.Login;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.InventoryInternalBase;

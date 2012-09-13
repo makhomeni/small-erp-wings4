@@ -9,14 +9,14 @@ import javax.swing.*;
 
 /**
  * Created by IntelliJ IDEA.
- * User: ronnie
- * Date: 8/18/12
- * Time: 10:31 AM
+ * User: Administrator
+ * Date: 9/13/12
+ * Time: 12:03 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DashboardButtonTogglePanel extends AppTogglePanel {
+public class TestButtonTogglePanel  extends AppTogglePanel {
 
-    public DashboardButtonTogglePanel(){
+    public TestButtonTogglePanel(){
     }
 
     public void initialize(){
@@ -34,7 +34,7 @@ public class DashboardButtonTogglePanel extends AppTogglePanel {
     }
 
     public String getToggleText(){
-        return "Dashboard";
+        return "TestTogol";
     }
 
     public Icon getToggleIcon(){
@@ -46,7 +46,7 @@ public class DashboardButtonTogglePanel extends AppTogglePanel {
     }
 
     public String getToggleDescription(){
-        return "Dashboard";
+        return "TestTogol";
     }
 
 }

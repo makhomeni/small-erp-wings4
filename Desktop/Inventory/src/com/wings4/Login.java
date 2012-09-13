@@ -9,6 +9,7 @@ import com.wings4.core.InventoryDesktop;
 import com.wings4.core.context.AppUIContext;
 import com.wings4.core.context.DataContextInitializer;
 import com.wings4.core.splash.AppSplashWindow;
+import com.wings4.util.InventoryBase;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.RESTFeed;
 
@@ -28,7 +29,7 @@ import org.json.JSONObject;
  *
  * @author Administrator
  */
-public class Login extends javax.swing.JDialog {
+public class Login extends InventoryBase {
 
     private static String restEndPoint;
 
