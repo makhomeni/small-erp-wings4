@@ -67,36 +67,4 @@ public class CommonDao {
         return organizations;
     }
 
-    public static List<Category> findAllCategories(){
-
-        List<Category> categories = new ArrayList<Category>();
-        try{
-            String allCategories = FindAllResourceFeed.restFeedInitialization("category");
-            JSONArray jsonArray = new JSONArray(allCategories);
-            System.out.println("jsonArray.length() = " + jsonArray.length());
-            for(int i = 0; i < jsonArray.length(); i++){
-                JSONObject categoryObject = (JSONObject)jsonArray.get(i);
-                Category category = new Category();
-                category.setCategoryId(Integer.parseInt(categoryObject.get("id").toString()));
-                category.setCategoryName(categoryObject.get("categoryName").toString());
-                String parentCategory = "";
-                if(categoryObject.get("parentCategory") != null ){
-                    System.out.println("parentCategory = " + parentCategory);
-                    parentCategory = categoryObject.get("parentCategory").toString();
-                }
-
-
-                category.setParentCategory(parentCategory.equals("") ? "" : parentCategory);
-
-                categories.add(category);
-            }
-        } catch (JSONException ex){
-            ex.printStackTrace();
-        } catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-
-        return categories;
-    }
 }
