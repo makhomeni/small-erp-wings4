@@ -12,28 +12,31 @@ import javax.ws.rs.core.Response
 import org.grails.jaxrs.provider.DomainObjectNotFoundException
 import javax.xml.ws.Response
 import javax.ws.rs.Path
+import javax.ws.rs.core.Response
+import javax.ws.rs.PathParam
+import com.jabait.hrm.Organization
 
 
 @Path('/api/vendor')
-@Consumes(['application/xml', 'application/json'])
-@Produces(['application/xml', 'application/json'])
 class VendorResource {
 
     def vendorResourceService
     def id
 
     @GET
-    Response read() {
+    @Path("/{id}")
+    Response read(@PathParam("id") Long id) {
         ok vendorResourceService.read(id)
     }
 
+
     @GET
-    Response readAll() {
-        ok vendorResourceService.readAll()
+    Response readAll(){
+        ok vendorResourceService.readAll();
     }
 
     @PUT
-    Response update(Vendor dto) {
+    Response update(Organization dto) {
         dto.id = id
         ok vendorResourceService.update(dto)
     }
