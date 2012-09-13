@@ -8,7 +8,8 @@ import com.jabait.scm.inventory.PriceList
 import com.jabait.scm.inventory.InventoryRegister
 
 class SalesOrder extends JobOrder {
-
+    
+    Integer id;
     Customer customer;
     String address1;
     String address2;
