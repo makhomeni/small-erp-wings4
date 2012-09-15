@@ -14,19 +14,74 @@ import javax.ws.rs.Path
 import javax.ws.rs.POST
 import org.json.JSONObject
 import javax.ws.rs.PathParam
+import com.jabait.hrm.Organization
+import com.jabait.accounting.PaymentTerm
+import com.jabait.scm.inventory.ShippingMethod
+import com.jabait.security.User
 
 @Path('/api/salesOrder')
 class SalesOrderResource {
 
     def salesOrderResourceService
-    def id
-
     @POST
     @Produces(["applicatio/json"])
     @Consumes(["applicatio/json"])
     Response createSalesOrder(String salesOrder){
         JSONObject jsonObject = new JSONObject(salesOrder);
+
+        Referral referral = new Referral();
+        referral.firstName = "sdfsdf";
+        referral.lastName = "sdfsdf";
+        referral.organization = Organization.get(1);
+        referral.save(flush: true);
+
+
+        Customer customer = new Customer();
+        customer.address = "s";
+        customer.billingAddress = "dsf";
+        customer.firstName = "sdf";
+        customer.lastName = "sdf";
+        customer.organization = Organization.get(1);
+        customer.phoneNumber = "3432";
+        customer.mobileNumber = "342";
+        customer.reference = referral;
+        customer.save(flush: true);
+        
+        PaymentTerm paymentTerm = new PaymentTerm();
+        paymentTerm.name = "asfd";
+        paymentTerm.days = 10;
+        paymentTerm.description = "324";
+        paymentTerm.save(flush: true);
+        
+        ShippingMethod shippingMethod = new ShippingMethod();
+        shippingMethod.shippingMethod = "DHL";
+        shippingMethod.description = "sdf";
+        shippingMethod.save(flush: true); 
+        
+        DeliveryTerm deliveryTerm = new DeliveryTerm();
+        deliveryTerm.terms = "sdfsdf";
+        deliveryTerm.description = "sdfsd";
+        deliveryTerm.save(flush: true);
+
+        SalesOrder sales = new SalesOrder();
+        sales.address1 = "some";
+        sales.address2 = "some2";
+        sales.customer = customer;
+        sales.paymentTerm = paymentTerm;
+        sales.shippingMethod = shippingMethod;
+        sales.createdBy = User.get(1);
+        sales.createdDate = new Date();
+        sales.deliveryTerm = deliveryTerm;
+        sales.dueDate = new Date();
+        sales.isArchived = true;
+        sales.isSent = true;
+        sales.jobName = "SO";
+        sales.priority = 1;
+
+        ok sales.save(flush:  true);
     }
+
+    def id
 
     @GET
     @Path("/{id}")
