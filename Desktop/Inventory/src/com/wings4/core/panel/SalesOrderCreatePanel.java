@@ -84,7 +84,7 @@ public class SalesOrderCreatePanel  extends JPanel {
                         ex.printStackTrace();
                     }
 
-                    if(MaterialDao.saveCategory(category))
+                    if(MaterialDao.saveSalesOrder(category))
                         JideOptionPane.showMessageDialog(null, "Category Saved Successfully", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
                     else

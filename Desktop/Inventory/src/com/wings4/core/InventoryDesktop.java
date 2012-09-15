@@ -363,9 +363,9 @@ public class InventoryDesktop extends InventoryBase {
 
 private void purchasingOrderMenuItemActionPerformed(ActionEvent evt) {//GEN-FIRST:event_purchasingOrderMenuItemActionPerformed
 // TODO add your handling code here:
-    PurchasingOrderCreate purchasOrderCreate = new PurchasingOrderCreate();
-    purchasOrderCreate.setVisible(true);
-    inventoryDesktopBoard.add(purchasOrderCreate);
+//    PurchasingOrderCreate purchasOrderCreate = new PurchasingOrderCreate();
+//    purchasOrderCreate.setVisible(true);
+//    inventoryDesktopBoard.add(purchasOrderCreate);
     
 }//GEN-LAST:event_purchasingOrderMenuItemActionPerformed
 
