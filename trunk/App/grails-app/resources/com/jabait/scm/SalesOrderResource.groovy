@@ -23,9 +23,8 @@ import com.jabait.security.User
 class SalesOrderResource {
 
     def salesOrderResourceService
+
     @POST
-    @Produces(["applicatio/json"])
-    @Consumes(["applicatio/json"])
     Response createSalesOrder(String salesOrder){
         JSONObject jsonObject = new JSONObject(salesOrder);
 
@@ -45,7 +44,12 @@ class SalesOrderResource {
         customer.phoneNumber = "3432";
         customer.mobileNumber = "342";
         customer.reference = referral;
+        customer.emailId = "sdfsdf";
         customer.save(flush: true);
+        
+        if(customer.hasErrors()){
+            println("sdf" + customer.errors)
+        }
         
         PaymentTerm paymentTerm = new PaymentTerm();
         paymentTerm.name = "asfd";
@@ -56,7 +60,7 @@ class SalesOrderResource {
         ShippingMethod shippingMethod = new ShippingMethod();
         shippingMethod.shippingMethod = "DHL";
         shippingMethod.description = "sdf";
-        shippingMethod.save(flush: true); 
+        shippingMethod.save(flush: true);
         
         DeliveryTerm deliveryTerm = new DeliveryTerm();
         deliveryTerm.terms = "sdfsdf";
@@ -77,6 +81,12 @@ class SalesOrderResource {
         sales.isSent = true;
         sales.jobName = "SO";
         sales.priority = 1;
+
+        if(sales.hasErrors()){
+            println("sdf" + sales.errors);
+        }
+
+        println("salesOrderResource")
 
         ok sales.save(flush:  true);
     }
