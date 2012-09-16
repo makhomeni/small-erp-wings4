@@ -11,10 +11,7 @@ import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.VendorButtonTogglePanel;
 import com.wings4.dao.CommonDao;
 import com.wings4.dao.MaterialDao;
-import com.wings4.model.Category;
-import com.wings4.model.Customer;
-import com.wings4.model.Organization;
-import com.wings4.model.PurchaseOrder;
+import com.wings4.model.*;
 import org.jdesktop.swingx.JXTextField;
 
 import javax.swing.*;
@@ -52,6 +49,8 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             AnnotationResolver customerResolver = new AnnotationResolver( Customer.class);
             AnnotationResolver purchaseOrderResolver = new AnnotationResolver( PurchaseOrder.class);
             AnnotationResolver organizationResolver = new AnnotationResolver( Organization.class);
+            AnnotationResolver shippingMethodResolver = new AnnotationResolver(ShippingMethod.class);
+
             final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
 //                    ,organization,shippingMethod,paymentTerm
                     purchaseOrderResolver, "id,vendor");
@@ -63,14 +62,20 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
 
             final ObjectTableModel<Organization> tableModelOrganization = new ObjectTableModel< Organization>(
                     organizationResolver, "id,organizationName");
+            final ObjectTableModel<ShippingMethod> tableModelShippingMethod = new ObjectTableModel< ShippingMethod>(
+                    shippingMethodResolver, "id,shippingMethod");
+
             tableModelOrganization.setData(CommonDao.findAllOrganizations());
+            tableModelShippingMethod.setData(CommonDao.findAllShippingMethods());
+
+
 
             final TableComboBox vendorCombo = new TableComboBox(tableModelCustomer);
 
             final  JTextField shippingAddressText = new JXTextField();
 
             final TableComboBox organizationCombo = new TableComboBox(tableModelOrganization);
-            final TableComboBox shippingMethodCombo = new TableComboBox(tableModel);
+            final TableComboBox shippingMethodCombo = new TableComboBox(tableModelShippingMethod);
             final TableComboBox paymentTermCombo = new TableComboBox(tableModel);
 
 
