@@ -78,11 +78,11 @@ public class SalesOrderCreatePanel  extends JPanel {
                 public void execute(ActionEvent actionEvent) {
                     Category category = new Category();
                     category.setCategoryName(categoryNameText.getText());
-                    try {
-                        category.setParentCategory(parentCategory.getSelectedItem().toString());
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
+//                    try {
+//                        category.setParentCategory(parentCategory.getSelectedItem().toString());
+//                    } catch (Exception ex) {
+//                        ex.printStackTrace();
+//                    }
 
                     if(MaterialDao.saveSalesOrder(category))
                         JideOptionPane.showMessageDialog(null, "Category Saved Successfully", "Success",

@@ -41,12 +41,11 @@ public class PurchaseOrderButtonPanel extends JPanel {
 
     public class PurchaseOrderListPanel extends JPanel {
         public PurchaseOrderListPanel() {
-            setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+            setLayout(new BorderLayout());
             setBorder(BorderManager.createComplexTitledBorder("Purchase Order List"));
 
             purchaseOrderToolbar = new JToolBar();
             createPurchaseOrderButton = new JButton();
-            breadCrumbBar = new BreadcrumbBar();
 
             //button
 
@@ -80,8 +79,6 @@ public class PurchaseOrderButtonPanel extends JPanel {
             purchaseOrderTable.setModel(tableModel);
 
             purchaseOrderListHolder.setViewportView(purchaseOrderTable);
-
-            add(breadCrumbBar, BorderLayout.PAGE_START);
             add(purchaseOrderToolbar, BorderLayout.PAGE_START);
             add(purchaseOrderListHolder, BorderLayout.CENTER);
 

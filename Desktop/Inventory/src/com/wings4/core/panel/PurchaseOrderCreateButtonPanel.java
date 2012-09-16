@@ -49,20 +49,20 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             builder.appendColumn("3dlu");
             builder.appendColumn("fill:max(pref; 10px)");
 
-            AnnotationResolver resolver = new AnnotationResolver( Customer.class);
-            AnnotationResolver resolver2 = new AnnotationResolver( PurchaseOrder.class);
-            AnnotationResolver resolver3 = new AnnotationResolver( Organization.class);
+            AnnotationResolver customerResolver = new AnnotationResolver( Customer.class);
+            AnnotationResolver purchaseOrderResolver = new AnnotationResolver( PurchaseOrder.class);
+            AnnotationResolver organizationResolver = new AnnotationResolver( Organization.class);
             final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
 //                    ,organization,shippingMethod,paymentTerm
-                    resolver2, "id,vendor");
+                    purchaseOrderResolver, "id,vendor");
 
 //            tableModel.setData(MaterialDao.findAllCategories());
 //            final ObjectTableModel<Organization> 
             final ObjectTableModel< Customer> tableModelCustomer = new ObjectTableModel< Customer>(
-                    resolver, "id,firstName,lastName,emailId,organization,mobileNumber,phoneNumber,address,contact,reference,billingAddress");
+                    customerResolver, "id,firstName,lastName,emailId,organization,mobileNumber,phoneNumber,address,contact,reference,billingAddress");
 
             final ObjectTableModel<Organization> tableModelOrganization = new ObjectTableModel< Organization>(
-                    resolver3, "id,organizationName");
+                    organizationResolver, "id,organizationName");
             tableModelOrganization.setData(CommonDao.findAllOrganizations());
 
             final TableComboBox vendorCombo = new TableComboBox(tableModelCustomer);
