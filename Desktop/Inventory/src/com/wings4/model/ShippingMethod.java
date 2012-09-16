@@ -12,17 +12,28 @@ import com.towel.el.annotation.Resolvable;
 public class ShippingMethod {
 
     @Resolvable(colName = "ID")
-    private Integer shippingMethodId;
+    private Integer id;
 
     @Resolvable(colName = "Description")
     private String description;
 
-    public Integer getShippingMethodId() {
-        return shippingMethodId;
+    @Resolvable(colName = "Shipping Method")
+    private String shippingMethod;
+
+    public String getShippingMethod() {
+        return shippingMethod;
     }
 
-    public void setShippingMethodId(Integer shippingMethodId) {
-        this.shippingMethodId = shippingMethodId;
+    public void setShippingMethod(String shippingMethod) {
+        this.shippingMethod = shippingMethod;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDescription() {
