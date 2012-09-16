@@ -21,8 +21,8 @@ public class MaterialsControlOutlook extends AppToggleOutlook {
         GeneralToggleActionButton productButton = new GeneralToggleActionButton(new ProductButtonTogglePanel());
         addButton(productButton);
 
-        GeneralToggleActionButton inventoryButton = new GeneralToggleActionButton(new InventoryButtonTogglePanel());
-        addButton(inventoryButton);
+        GeneralToggleActionButton stockButton = new GeneralToggleActionButton(new InventoryButtonTogglePanel());
+        addButton(stockButton);
 
 
 

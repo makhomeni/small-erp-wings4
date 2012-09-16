@@ -50,7 +50,6 @@ public class CommonDao {
         try{
             String allOrganizations = FindAllResourceFeed.restFeedInitialization("organization");
             JSONArray jsonArray = new JSONArray(allOrganizations);
-            System.out.println("length of organization json array" + jsonArray.length());
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject organizationObject = (JSONObject)jsonArray.get(i);
                 Organization organization = new Organization();

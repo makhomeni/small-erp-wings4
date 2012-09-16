@@ -21,13 +21,13 @@ public class InventoryButtonTogglePanel extends AppTogglePanel {
     @Override
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
-        toggleTabbedPane.addTab("Inventory", IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(new InventoryButtonPanel()), "Inventory");
+        toggleTabbedPane.addTab("Stock", IconFactory.getSwingIcon("component/button_16.png"),
+                new AppToggleTemplate(new InventoryButtonPanel()), "Stock");
 
     }
 
     public String getToggleText(){
-        return "Inventory";
+        return "Stock";
     }
 
     public Icon getToggleIcon(){
@@ -39,6 +39,6 @@ public class InventoryButtonTogglePanel extends AppTogglePanel {
     }
 
     public String getToggleDescription(){
-        return "Inventory";
+        return "Stock";
     }
 }
