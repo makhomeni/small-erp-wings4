@@ -3,6 +3,7 @@ package com.wings4.dao;
 import com.wings4.model.Category;
 import com.wings4.model.Organization;
 import com.wings4.model.ShippingMethod;
+import com.wings4.model.Vendor;
 import com.wings4.util.FindAllResourceFeed;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -87,5 +88,27 @@ public class CommonDao {
 
 
         return shippingMethods;
+    }
+
+    public static List<Vendor>  findAllVendors(){
+
+        List<Vendor> vendors = new ArrayList<Vendor>();
+        try{
+            String allVendors = FindAllResourceFeed.restFeedInitialization("vendor");
+            JSONArray jsonArray = new JSONArray(allVendors);
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject vendorObject = (JSONObject)jsonArray.get(i);
+                Vendor vendor = new Vendor();
+                vendor.setId(Integer.parseInt(vendorObject.get("id").toString()));
+                vendor.setFirstName(vendorObject.get("firstName").toString());
+
+                vendors.add(vendor);
+            }
+        }catch(JSONException jE){
+            jE.printStackTrace();
+        }
+
+
+        return vendors;
     }
 }

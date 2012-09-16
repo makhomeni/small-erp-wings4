@@ -50,6 +50,7 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             AnnotationResolver purchaseOrderResolver = new AnnotationResolver( PurchaseOrder.class);
             AnnotationResolver organizationResolver = new AnnotationResolver( Organization.class);
             AnnotationResolver shippingMethodResolver = new AnnotationResolver(ShippingMethod.class);
+            AnnotationResolver vendorResolver = new AnnotationResolver(Vendor.class);
 
             final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
 //                    ,organization,shippingMethod,paymentTerm
@@ -65,12 +66,16 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             final ObjectTableModel<ShippingMethod> tableModelShippingMethod = new ObjectTableModel< ShippingMethod>(
                     shippingMethodResolver, "id,shippingMethod");
 
+            final ObjectTableModel<Vendor> tableModelVendor = new ObjectTableModel< Vendor>(
+                    vendorResolver, "id,firstName");
+
             tableModelOrganization.setData(CommonDao.findAllOrganizations());
             tableModelShippingMethod.setData(CommonDao.findAllShippingMethods());
+            tableModelVendor.setData(CommonDao.findAllVendors());
 
 
 
-            final TableComboBox vendorCombo = new TableComboBox(tableModelCustomer);
+            final TableComboBox vendorCombo = new TableComboBox(tableModelVendor);
 
             final  JTextField shippingAddressText = new JXTextField();
 
