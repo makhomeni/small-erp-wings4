@@ -2,6 +2,7 @@ package com.wings4.dao;
 
 import com.wings4.model.Category;
 import com.wings4.model.Organization;
+import com.wings4.model.ShippingMethod;
 import com.wings4.util.FindAllResourceFeed;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -66,4 +67,25 @@ public class CommonDao {
         return organizations;
     }
 
+    public static List<ShippingMethod>  findAllShippingMethods(){
+
+        List<ShippingMethod> shippingMethods = new ArrayList<ShippingMethod>();
+        try{
+            String allShippingMethods = FindAllResourceFeed.restFeedInitialization("shippingMethod");
+            JSONArray jsonArray = new JSONArray(allShippingMethods);
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject shippingMethodObject = (JSONObject)jsonArray.get(i);
+                ShippingMethod shippingMethod = new ShippingMethod();
+                shippingMethod.setId(Integer.parseInt(shippingMethodObject.get("id").toString()));
+                shippingMethod.setShippingMethod(shippingMethodObject.get("shippingMethod").toString());
+
+                shippingMethods.add(shippingMethod);
+            }
+        }catch(JSONException jE){
+            jE.printStackTrace();
+        }
+
+
+        return shippingMethods;
+    }
 }
