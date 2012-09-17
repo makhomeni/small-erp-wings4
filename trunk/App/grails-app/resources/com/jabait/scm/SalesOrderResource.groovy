@@ -68,6 +68,7 @@ class SalesOrderResource {
         deliveryTerm.save(flush: true);
 
         SalesOrder sales = new SalesOrder();
+
         sales.address1 = "some";
         sales.address2 = "some2";
         sales.customer = customer;
@@ -81,14 +82,22 @@ class SalesOrderResource {
         sales.isSent = true;
         sales.jobName = "SO";
         sales.priority = 1;
+        sales.orderQuantity = 10;
+        sales.status = 1;
 
         if(sales.hasErrors()){
             println("sdf" + sales.errors);
         }
 
+        if(sales.save(flush: true)){
+            println("saved");
+        } else {
+            print("not saved");
+        }
+
         println("salesOrderResource")
 
-        ok sales.save(flush:  true);
+        ok sales.save();
     }
 
     def id

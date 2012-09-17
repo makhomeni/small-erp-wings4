@@ -22,7 +22,7 @@ class JobOrder {
     Boolean isArchived;
 
     static mapping = {
-        tablePerSubclass(true);
+        tablePerHierarchy(false);
         createdDate(sqlType: 'date');
         dueDate(sqlType: 'date');
     }
