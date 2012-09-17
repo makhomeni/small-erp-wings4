@@ -8,6 +8,7 @@ import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.dao.JobDao;
 import com.wings4.dao.MaterialDao;
 import com.wings4.model.Category;
 import com.wings4.model.SalesOrder;
@@ -84,7 +85,7 @@ public class SalesOrderCreatePanel  extends JPanel {
 //                        ex.printStackTrace();
 //                    }
 
-                    if(MaterialDao.saveSalesOrder(category))
+                    if(JobDao.saveSalesOrder(new SalesOrder()))
                         JideOptionPane.showMessageDialog(null, "Category Saved Successfully", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
                     else
