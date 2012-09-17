@@ -38,20 +38,6 @@ public class MaterialDao {
             return false;
         }
     }
-
-    public static boolean saveSalesOrder(Category category){
-        try {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("categoryName", category.getCategoryName());
-            System.out.println("category.getParentCategory() = " + category.getParentCategory());
-            jsonObject.put("parentCategory", category.getParentCategory());
-            POSTResourceFeed.post("salesOrder", jsonObject);
-            return true;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return false;
-        }
-    }
     
     public static List<Category> findAllCategories(){
 
