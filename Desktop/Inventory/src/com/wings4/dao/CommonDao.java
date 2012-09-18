@@ -1,9 +1,6 @@
 package com.wings4.dao;
 
-import com.wings4.model.Category;
-import com.wings4.model.Organization;
-import com.wings4.model.ShippingMethod;
-import com.wings4.model.Vendor;
+import com.wings4.model.*;
 import com.wings4.util.FindAllResourceFeed;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,8 +34,27 @@ public class CommonDao {
     }
 
 
-    public static String findAllPaymentTerms(){
-        return FindAllResourceFeed.restFeedInitialization("paymentTerm");
+    public static List<PaymentTerm> findAllPaymentTerms(){
+        List<PaymentTerm> paymentTerms = new ArrayList<PaymentTerm>();
+        try{
+            String allPaymentTerms = FindAllResourceFeed.restFeedInitialization("paymentTerm");
+            JSONArray jsonArray = new JSONArray(allPaymentTerms);
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject paymentTermsObject = (JSONObject)jsonArray.get(i);
+//                Organization organization = new Organization();
+                PaymentTerm paymentTerm = new PaymentTerm();
+                paymentTerm.setPaymentTermId(Integer.parseInt(paymentTermsObject .get("id").toString()));
+                paymentTerm.setName(paymentTermsObject .get("name").toString());
+
+                paymentTerms.add(paymentTerm);
+            }
+        }catch(JSONException jE){
+            jE.printStackTrace();
+        }
+
+
+        return paymentTerms;
+//        return FindAllResourceFeed.restFeedInitialization("paymentTerm");
     }
 
     //user related
