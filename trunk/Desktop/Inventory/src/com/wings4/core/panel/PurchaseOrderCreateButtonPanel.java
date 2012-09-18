@@ -123,6 +123,14 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
                 public void execute(ActionEvent actionEvent) {
                     JideOptionPane.showMessageDialog(null, "Purchase Order Submitted Successfully", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
+                    PurchaseOrder purchaseOrder = new PurchaseOrder();
+                    System.out.println(organizationCombo.getSelectedItem().toString());
+                    purchaseOrder.setOrganization(organizationCombo.getSelectedItem().toString());
+                    purchaseOrder.setPaymentTerm(paymentTermCombo.getSelectedItem().toString());
+                    purchaseOrder.setShippingAddress(shippingAddressText.getText());
+                    purchaseOrder.setShippingMethod(shippingMethodCombo.getSelectedItem().toString());
+                    purchaseOrder.setVendor(vendorCombo.getSelectedItem().toString());
+                    CommonDao.savePurchaseOrder(purchaseOrder);
 //                    Category category = new Category();
 //                    category.setCategoryName(categoryNameText.getText());
 //                    try {

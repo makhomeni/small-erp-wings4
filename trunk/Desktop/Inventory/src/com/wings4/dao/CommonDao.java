@@ -2,6 +2,7 @@ package com.wings4.dao;
 
 import com.wings4.model.*;
 import com.wings4.util.FindAllResourceFeed;
+import com.wings4.util.POSTResourceFeed;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -126,5 +127,19 @@ public class CommonDao {
 
 
         return vendors;
+    }
+
+    public static boolean savePurchaseOrder(PurchaseOrder purchaseOrder){
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("organizationId", purchaseOrder.getOrganization());
+            jsonObject.put("paymentTermId", purchaseOrder.getPaymentTerm());
+            POSTResourceFeed.post("purchaseOrder", jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return false;
+
     }
 }
