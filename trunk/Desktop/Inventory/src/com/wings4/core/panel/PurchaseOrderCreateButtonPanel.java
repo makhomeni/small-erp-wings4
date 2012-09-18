@@ -51,6 +51,7 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             AnnotationResolver organizationResolver = new AnnotationResolver( Organization.class);
             AnnotationResolver shippingMethodResolver = new AnnotationResolver(ShippingMethod.class);
             AnnotationResolver vendorResolver = new AnnotationResolver(Vendor.class);
+            AnnotationResolver paymentTermResolver = new AnnotationResolver(PaymentTerm.class);
 
             final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
 //                    ,organization,shippingMethod,paymentTerm
@@ -69,9 +70,13 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             final ObjectTableModel<Vendor> tableModelVendor = new ObjectTableModel< Vendor>(
                     vendorResolver, "id,firstName");
 
+            final ObjectTableModel<PaymentTerm> tableModelPaymentTerm = new ObjectTableModel<PaymentTerm>(
+                    paymentTermResolver, "paymentTermId,name");
+
             tableModelOrganization.setData(CommonDao.findAllOrganizations());
             tableModelShippingMethod.setData(CommonDao.findAllShippingMethods());
             tableModelVendor.setData(CommonDao.findAllVendors());
+            tableModelPaymentTerm.setData(CommonDao.findAllPaymentTerms());
 
 
 
@@ -81,7 +86,7 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
 
             final TableComboBox organizationCombo = new TableComboBox(tableModelOrganization);
             final TableComboBox shippingMethodCombo = new TableComboBox(tableModelShippingMethod);
-            final TableComboBox paymentTermCombo = new TableComboBox(tableModel);
+            final TableComboBox paymentTermCombo = new TableComboBox(tableModelPaymentTerm);
 
 
             final TableComboBox parentCategory = new TableComboBox(tableModel);
