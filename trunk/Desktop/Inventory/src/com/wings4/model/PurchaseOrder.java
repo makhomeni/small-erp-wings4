@@ -14,8 +14,12 @@ public class PurchaseOrder {
     @Resolvable(colName = "ID")
     private Integer id;
 
-    @Resolvable(colName = "LocalVendor")
+    @Resolvable(colName = "Vendor Name")
     private String vendor;
+
+    @Resolvable(colName = "Job Name")
+    private String jonName;
+
 
     @Resolvable(colName = "Shipping Address")
     private String shippingAddress;
@@ -97,5 +101,13 @@ public class PurchaseOrder {
 
     public void setOrderQuantity(String orderQuantity) {
         this.orderQuantity = orderQuantity;
+    }
+
+    public String getJonName() {
+        return jonName;
+    }
+
+    public void setJonName(String jonName) {
+        this.jonName = jonName;
     }
 }

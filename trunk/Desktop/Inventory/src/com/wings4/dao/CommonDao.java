@@ -152,7 +152,13 @@ public class CommonDao {
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject purchaseOrderObject = (JSONObject)jsonArray.get(i);
                 PurchaseOrder purchaseOrder = new PurchaseOrder();
-                purchaseOrder.setVendor(purchaseOrderObject.get("vendor").toString());
+
+                JSONObject vendorJson = (JSONObject)purchaseOrderObject.get("vendor");
+                purchaseOrder.setVendor(vendorJson.get("firstName").toString() +" " +vendorJson.get("lastName").toString());
+
+                JSONObject orgaJsonObject = (JSONObject)purchaseOrderObject.get("organization");
+                purchaseOrder.setOrganization(orgaJsonObject.get("organizationName").toString());
+
                 purchaseOrders.add(purchaseOrder);
             }
         } catch (JSONException e) {
@@ -172,11 +178,15 @@ public class CommonDao {
             jsonObject.put("deliveryTermId", purchaseOrder.getDeliveryTerm());
             jsonObject.put("shippingAddress", purchaseOrder.getShippingAddress());
             jsonObject.put("orderQuantity", purchaseOrder.getOrderQuantity());
+            jsonObject.put("jobName", purchaseOrder.getJonName());
             POSTResourceFeed.post("purchaseOrder", jsonObject);
-        } catch (JSONException e) {
-            e.printStackTrace();  
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+
         }
-        return false;
+
 
     }
 }
