@@ -17,6 +17,7 @@ import com.jabait.hrm.Organization
 import com.jabait.accounting.PaymentTerm
 import com.jabait.security.User
 import com.jabait.scm.inventory.ShippingMethod
+import javax.ws.rs.PathParam
 
 @Path('/api/purchaseOrder')
 @Consumes(['application/xml', 'application/json'])
@@ -26,9 +27,28 @@ class PurchaseOrderResource {
     def purchaseOrderResourceService
     def id
 
+
     @GET
-    Response read() {
-        ok purchaseOrderResourceService.read(id)
+    @Path("/{id}")
+    Response read(@PathParam("id") Long id) {
+           ok purchaseOrderResourceService.read(id)
+    }
+
+    @GET
+    Response readAll(){
+        List<PurchaseOrder> purchaseOrders = purchaseOrderResourceService.readAll();
+        Map<String,Object> purchaseOrderMap;
+        List<Map<String,Object>> allPurchaseOrders = new ArrayList<Map<String,Object>>();
+        for (PurchaseOrder purchaseOrder: purchaseOrders) {
+            purchaseOrderMap = new HashMap<String,Object>();
+            purchaseOrderMap.put("id", purchaseOrder.id);
+            purchaseOrderMap.put("vendor", purchaseOrder.vendor);
+            purchaseOrderMap.put("organization", purchaseOrder.organization);
+//            purchaseOrderMap.put("parentCategory", category?.parentCategory?.categoryName);
+
+            allPurchaseOrders.add(purchaseOrderMap);
+        }
+        ok allPurchaseOrders;
     }
 
     @PUT
@@ -44,34 +64,48 @@ class PurchaseOrderResource {
 
     @POST
     Response create(String purchaseOrderJson){
+//        println "in web";
 
         JSONObject jsonObject = new JSONObject(purchaseOrderJson);
         PurchaseOrder purchaseOrder = new PurchaseOrder();
+//        println "orga id = "+jsonObject.get("organizationId").toString()
         purchaseOrder.organization = Organization.get(Integer.parseInt(jsonObject.get("organizationId").toString()));
+
+//        println "shippingMethodId id = "+jsonObject.get("shippingMethodId").toString()
         purchaseOrder.shippingMethod = ShippingMethod.get(Integer.parseInt(jsonObject.get("shippingMethodId").toString()));
+
+//        println "paymentTermId id = "+jsonObject.get("paymentTermId").toString()
         purchaseOrder.paymentTerm = PaymentTerm.get(Integer.parseInt(jsonObject.get("paymentTermId").toString()));
         purchaseOrder.shippingAddress = jsonObject.get("shippingAddress");
+
+//        println "vendorId id = "+jsonObject.get("vendorId").toString()
         purchaseOrder.vendor = Vendor.get(Integer.parseInt(jsonObject.get("vendorId").toString()));
+
         purchaseOrder.createdBy = User.get(1);
         purchaseOrder.createdDate = new Date();
+
+//        println "deliveryTermId id = "+jsonObject.get("deliveryTermId").toString()
         purchaseOrder.deliveryTerm = DeliveryTerm.get(Integer.parseInt(jsonObject.get("deliveryTermId").toString()));
+
         purchaseOrder.dueDate = new Date();
         purchaseOrder.isArchived = false;
         purchaseOrder.isSent = false;
-        purchaseOrder.jobName = "purchase order";
+        purchaseOrder.jobName = jsonObject.get("jobName");
         purchaseOrder.orderQuantity = Integer.parseInt(jsonObject.get("orderQuantity").toString());
         purchaseOrder.priority = 1;
 
         purchaseOrder.status = 1;
-        created purchaseOrder.save();
-//        if (purchaseOrder.save()) {
-//            println "saved";
-//        } else {
-//            purchaseOrder.errors.each {
-//                println it;
-//            }
-//            println "not saved";
-//        }
+
+        if (purchaseOrder.save()) {
+            println "saved";
+            created true;
+        } else {
+            purchaseOrder.errors.each {
+                println it;
+            }
+            println "not saved";
+            created false;
+        }
 
 
     }

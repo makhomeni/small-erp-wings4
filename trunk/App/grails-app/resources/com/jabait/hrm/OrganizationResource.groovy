@@ -22,6 +22,7 @@ class OrganizationResource {
     @GET
     @Path("/{id}")
     Response read(@PathParam("id") Long id) {
+        println("enter in resource");
         ok organizationResourceService.read(id)
     }
 
