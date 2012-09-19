@@ -23,8 +23,23 @@ public class CommonDao {
 
     //for delivery term
 
-    public static String findAllDeliveryTerms(){
-        return FindAllResourceFeed.restFeedInitialization("delivery");
+    public static List<DeliveryTerm> findAllDeliveryTerms(){
+        List<DeliveryTerm> deliveryTerms = new ArrayList<DeliveryTerm>();
+        String allDeliveryTerms = FindAllResourceFeed.restFeedInitialization("delivery");
+        try {
+            JSONArray jsonArray = new JSONArray(allDeliveryTerms);
+            for(int i =0; i < jsonArray.length(); i++){
+                JSONObject deliveryTermsObject = (JSONObject)jsonArray.get(i);
+                DeliveryTerm deliveryTerm = new DeliveryTerm();
+                deliveryTerm.setId(Integer.parseInt(deliveryTermsObject.get("id").toString()));
+                deliveryTerm.setTerms(deliveryTermsObject.get("terms").toString());
+                deliveryTerms.add(deliveryTerm);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();  
+        }
+
+        return deliveryTerms;
     }
 
 
@@ -150,11 +165,16 @@ public class CommonDao {
 
         JSONObject jsonObject = new JSONObject();
         try {
+            jsonObject.put("vendorId", purchaseOrder.getVendor());
             jsonObject.put("organizationId", purchaseOrder.getOrganization());
+            jsonObject.put("shippingMethodId", purchaseOrder.getShippingMethod());
             jsonObject.put("paymentTermId", purchaseOrder.getPaymentTerm());
+            jsonObject.put("deliveryTermId", purchaseOrder.getDeliveryTerm());
+            jsonObject.put("shippingAddress", purchaseOrder.getShippingAddress());
+            jsonObject.put("orderQuantity", purchaseOrder.getOrderQuantity());
             POSTResourceFeed.post("purchaseOrder", jsonObject);
         } catch (JSONException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();  
         }
         return false;
 
