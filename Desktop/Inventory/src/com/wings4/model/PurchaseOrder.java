@@ -29,6 +29,20 @@ public class PurchaseOrder {
     @Resolvable(colName = "Payment Term")
     private String paymentTerm;
 
+    @Resolvable(colName = "Delivery Term")
+    private String deliveryTerm;
+
+    @Resolvable(colName = "Order Quantity")
+    private String orderQuantity;
+
+    public String getDeliveryTerm() {
+        return deliveryTerm;
+    }
+
+    public void setDeliveryTerm(String deliveryTerm) {
+        this.deliveryTerm = deliveryTerm;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -75,5 +89,13 @@ public class PurchaseOrder {
 
     public void setPaymentTerm(String paymentTerm) {
         this.paymentTerm = paymentTerm;
+    }
+
+    public String getOrderQuantity() {
+        return orderQuantity;
+    }
+
+    public void setOrderQuantity(String orderQuantity) {
+        this.orderQuantity = orderQuantity;
     }
 }

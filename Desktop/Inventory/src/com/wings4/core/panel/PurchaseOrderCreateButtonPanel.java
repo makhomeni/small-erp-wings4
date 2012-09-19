@@ -52,6 +52,7 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             AnnotationResolver shippingMethodResolver = new AnnotationResolver(ShippingMethod.class);
             AnnotationResolver vendorResolver = new AnnotationResolver(Vendor.class);
             AnnotationResolver paymentTermResolver = new AnnotationResolver(PaymentTerm.class);
+            AnnotationResolver deliveryTermResolver = new AnnotationResolver(DeliveryTerm.class);
 
             final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
 //                    ,organization,shippingMethod,paymentTerm
@@ -73,10 +74,14 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             final ObjectTableModel<PaymentTerm> tableModelPaymentTerm = new ObjectTableModel<PaymentTerm>(
                     paymentTermResolver, "paymentTermId,name");
 
+            final ObjectTableModel<DeliveryTerm> tableModelDeliveryTerm= new ObjectTableModel<DeliveryTerm>(
+                    deliveryTermResolver, "id,terms");
+
             tableModelOrganization.setData(CommonDao.findAllOrganizations());
             tableModelShippingMethod.setData(CommonDao.findAllShippingMethods());
             tableModelVendor.setData(CommonDao.findAllVendors());
             tableModelPaymentTerm.setData(CommonDao.findAllPaymentTerms());
+            tableModelDeliveryTerm.setData(CommonDao.findAllDeliveryTerms());
 
 
 
@@ -87,6 +92,9 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             final TableComboBox organizationCombo = new TableComboBox(tableModelOrganization);
             final TableComboBox shippingMethodCombo = new TableComboBox(tableModelShippingMethod);
             final TableComboBox paymentTermCombo = new TableComboBox(tableModelPaymentTerm);
+            final TableComboBox deliveryTermCombo = new TableComboBox(tableModelDeliveryTerm);
+
+            final JTextField orderQuantity = new JTextField();
 
 
             final TableComboBox parentCategory = new TableComboBox(tableModel);
@@ -107,6 +115,12 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             builder.nextLine();
 
             builder.append("Payment Term", paymentTermCombo);
+            builder.nextLine();
+
+            builder.append("Delivery Term", deliveryTermCombo);
+            builder.nextLine();
+
+            builder.append("Order Quantity", orderQuantity);
             builder.nextLine();
 
 
@@ -130,6 +144,8 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
                     purchaseOrder.setShippingAddress(shippingAddressText.getText());
                     purchaseOrder.setShippingMethod(shippingMethodCombo.getSelectedItem().toString());
                     purchaseOrder.setVendor(vendorCombo.getSelectedItem().toString());
+                    purchaseOrder.setDeliveryTerm(deliveryTermCombo.getSelectedItem().toString());
+                    purchaseOrder.setOrderQuantity(orderQuantity.getText());
                     CommonDao.savePurchaseOrder(purchaseOrder);
 //                    Category category = new Category();
 //                    category.setCategoryName(categoryNameText.getText());
