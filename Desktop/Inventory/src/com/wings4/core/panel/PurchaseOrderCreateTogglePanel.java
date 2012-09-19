@@ -19,7 +19,7 @@ public class PurchaseOrderCreateTogglePanel extends AppTogglePanel {
     @Override
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
-        toggleTabbedPane.addTab("Customer", IconFactory.getSwingIcon("component/button_16.png"),
+        toggleTabbedPane.addTab("Create Purchase Order", IconFactory.getSwingIcon("component/button_16.png"),
                 new AppToggleTemplate(new PurchaseOrderCreateButtonPanel()), "Purchase Order");
 
     }

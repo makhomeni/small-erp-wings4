@@ -8,6 +8,7 @@ import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.CustomerCreateTogglePanel;
 import com.wings4.core.toggle.GeneralToggleActionButton;
+import com.wings4.dao.CommonDao;
 import com.wings4.model.PurchaseOrder;
 import com.wings4.util.InventoryConstants;
 
@@ -39,12 +40,17 @@ public class PurchaseOrderButtonPanel extends JPanel {
         add(new PurchaseOrderListPanel());
     }
 
+
+    /**
+     * this class is for showing purchase order list
+     */
     public class PurchaseOrderListPanel extends JPanel {
         public PurchaseOrderListPanel() {
             setLayout(new BorderLayout());
             setBorder(BorderManager.createComplexTitledBorder("Purchase Order List"));
 
             purchaseOrderToolbar = new JToolBar();
+            //create a button for new purchase order add option
             createPurchaseOrderButton = new JButton();
 
             //button
@@ -71,11 +77,13 @@ public class PurchaseOrderButtonPanel extends JPanel {
             purchaseOrderListHolder = new JScrollPane();
             purchaseOrderTable = new JTable();
 
+
+            //set the resolver to get the fields
             AnnotationResolver resolver = new AnnotationResolver(PurchaseOrder.class);
             final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
-                    resolver, "id,vendor,shippingAddress,organization,shippingMethod,paymentTerm");
+                    resolver, "vendor");
 
-            tableModel.setData(getData());
+            tableModel.setData(CommonDao.findAllPurchaseOrders());
             purchaseOrderTable.setModel(tableModel);
 
             purchaseOrderListHolder.setViewportView(purchaseOrderTable);
