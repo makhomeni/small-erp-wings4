@@ -47,31 +47,32 @@ class PurchaseOrderResource {
 
         JSONObject jsonObject = new JSONObject(purchaseOrderJson);
         PurchaseOrder purchaseOrder = new PurchaseOrder();
-        purchaseOrder.organization = Organization.get(1);
-        purchaseOrder.paymentTerm = PaymentTerm.get(1);
-        purchaseOrder.shippingAddress = "sdsdsd";
-        purchaseOrder.vendor = Vendor.get(1);
+        purchaseOrder.organization = Organization.get(Integer.parseInt(jsonObject.get("organizationId").toString()));
+        purchaseOrder.shippingMethod = ShippingMethod.get(Integer.parseInt(jsonObject.get("shippingMethodId").toString()));
+        purchaseOrder.paymentTerm = PaymentTerm.get(Integer.parseInt(jsonObject.get("paymentTermId").toString()));
+        purchaseOrder.shippingAddress = jsonObject.get("shippingAddress");
+        purchaseOrder.vendor = Vendor.get(Integer.parseInt(jsonObject.get("vendorId").toString()));
         purchaseOrder.createdBy = User.get(1);
         purchaseOrder.createdDate = new Date();
-        purchaseOrder.deliveryTerm = DeliveryTerm.get(1);
+        purchaseOrder.deliveryTerm = DeliveryTerm.get(Integer.parseInt(jsonObject.get("deliveryTermId").toString()));
         purchaseOrder.dueDate = new Date();
         purchaseOrder.isArchived = false;
         purchaseOrder.isSent = false;
         purchaseOrder.jobName = "purchase order";
-        purchaseOrder.orderQuantity = 1;
+        purchaseOrder.orderQuantity = Integer.parseInt(jsonObject.get("orderQuantity").toString());
         purchaseOrder.priority = 1;
-        purchaseOrder.shippingMethod = ShippingMethod.get(1);
+
         purchaseOrder.status = 1;
-        if (purchaseOrder.save()) {
-            println "saved";
-        } else {
-            purchaseOrder.errors.each {
-                println it;
-            }
-            println "not saved";
-        }
-        String organizationName = jsonObject.get("organizationId");
-        println "organizationName = $organizationName"
+        created purchaseOrder.save();
+//        if (purchaseOrder.save()) {
+//            println "saved";
+//        } else {
+//            purchaseOrder.errors.each {
+//                println it;
+//            }
+//            println "not saved";
+//        }
+
 
     }
 
