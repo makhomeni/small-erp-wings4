@@ -81,7 +81,7 @@ public class PurchaseOrderButtonPanel extends JPanel {
             //set the resolver to get the fields
             AnnotationResolver resolver = new AnnotationResolver(PurchaseOrder.class);
             final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
-                    resolver, "vendor");
+                    resolver, "vendor,organization");
 
             tableModel.setData(CommonDao.findAllPurchaseOrders());
             purchaseOrderTable.setModel(tableModel);

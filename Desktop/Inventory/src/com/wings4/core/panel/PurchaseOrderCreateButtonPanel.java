@@ -88,6 +88,7 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             final TableComboBox vendorCombo = new TableComboBox(tableModelVendor);
 
             final  JTextField shippingAddressText = new JXTextField();
+            final  JTextField jobNameTest = new JXTextField();
 
             final TableComboBox organizationCombo = new TableComboBox(tableModelOrganization);
             final TableComboBox shippingMethodCombo = new TableComboBox(tableModelShippingMethod);
@@ -103,6 +104,9 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
 
 
             builder.append("Vendor:", vendorCombo);
+            builder.nextLine();
+
+            builder.append("Job Name:", jobNameTest);
             builder.nextLine();
 
             builder.append("Shipping Address", shippingAddressText);
@@ -135,9 +139,9 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             submitPurchaseOrder.addActionListener(new JSecurityAction() {
                 @Override
                 public void execute(ActionEvent actionEvent) {
-                    JideOptionPane.showMessageDialog(null, "Purchase Order Submitted Successfully", "Success",
-                                JOptionPane.INFORMATION_MESSAGE);
+
                     PurchaseOrder purchaseOrder = new PurchaseOrder();
+
                     System.out.println(organizationCombo.getSelectedItem().toString());
                     purchaseOrder.setOrganization(organizationCombo.getSelectedItem().toString());
                     purchaseOrder.setPaymentTerm(paymentTermCombo.getSelectedItem().toString());
@@ -146,21 +150,16 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
                     purchaseOrder.setVendor(vendorCombo.getSelectedItem().toString());
                     purchaseOrder.setDeliveryTerm(deliveryTermCombo.getSelectedItem().toString());
                     purchaseOrder.setOrderQuantity(orderQuantity.getText());
-                    CommonDao.savePurchaseOrder(purchaseOrder);
-//                    Category category = new Category();
-//                    category.setCategoryName(categoryNameText.getText());
-//                    try {
-//                        category.setParentCategory(parentCategory.getSelectedItem().toString());
-//                    } catch (Exception ex) {
-//                        ex.printStackTrace();
-//                    }
-//
-//                    if(MaterialDao.saveCategory(category))
-//                        JideOptionPane.showMessageDialog(null, "Category Saved Successfully", "Success",
-//                                JOptionPane.INFORMATION_MESSAGE);
-//                    else
-//                        JideOptionPane.showMessageDialog(null, "Category Saved Failed", "Failed",
-//                                JOptionPane.ERROR_MESSAGE);
+                    purchaseOrder.setJonName(jobNameTest.getText());
+
+                    if (CommonDao.savePurchaseOrder(purchaseOrder)) {
+                        JideOptionPane.showMessageDialog(null, "Purchase Order Saved Successfully", "Success",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JideOptionPane.showMessageDialog(null, "Purchase Order Saved Failed", "Failed",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+
                 }
             });
         }
