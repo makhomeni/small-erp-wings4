@@ -14,11 +14,15 @@ import java.awt.*;
  */
 public class PurchaseControlOutlook extends AppToggleOutlook {
 
+    //puchase order menu
     GeneralToggleActionButton purchaseOrderButton = new GeneralToggleActionButton(new PurchaseOrderButtonTogglePanel());
+    //Receiving menu
     GeneralToggleActionButton receivingButton = new GeneralToggleActionButton(new ReceivingButtonTogglePanel());
+    //vendor menu
     GeneralToggleActionButton vendorButton = new GeneralToggleActionButton(new VendorButtonTogglePanel());
 
     public PurchaseControlOutlook() {
+        //each menus are added here
         addButton(purchaseOrderButton);
         addButton(receivingButton);
         addButton(vendorButton);

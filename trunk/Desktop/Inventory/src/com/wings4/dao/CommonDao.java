@@ -128,6 +128,23 @@ public class CommonDao {
 
         return vendors;
     }
+    
+    public static List<PurchaseOrder> findAllPurchaseOrders(){
+        List<PurchaseOrder> purchaseOrders = new ArrayList<PurchaseOrder>();
+        String allPurchaseOrders = FindAllResourceFeed.restFeedInitialization("purchaseOrder");
+        try {
+            JSONArray jsonArray = new JSONArray(allPurchaseOrders);
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject purchaseOrderObject = (JSONObject)jsonArray.get(i);
+                PurchaseOrder purchaseOrder = new PurchaseOrder();
+                purchaseOrder.setVendor(purchaseOrderObject.get("vendor").toString());
+                purchaseOrders.add(purchaseOrder);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return purchaseOrders;
+    }
 
     public static boolean savePurchaseOrder(PurchaseOrder purchaseOrder){
 
