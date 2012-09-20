@@ -10,6 +10,7 @@ class Purchase {
     Date purchaseDate;
     Double price;
     Integer quantity;
+    String purchaseType;
 
     static constraints = {
     }
