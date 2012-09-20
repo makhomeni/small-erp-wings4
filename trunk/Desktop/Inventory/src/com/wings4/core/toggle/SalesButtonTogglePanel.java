@@ -1,26 +1,28 @@
-package com.wings4.core.panel;
+package com.wings4.core.toggle;
 
-import com.wings4.core.toggle.AppTogglePanel;
-import com.wings4.core.toggle.AppToggleTemplate;
+import com.wings4.core.panel.PurchaseOrderButtonPanel;
 import com.wings4.util.IconFactory;
 import com.wings4.util.JEclipseTabbedPane;
 
 import javax.swing.*;
 
 /**
- * Created by IntelliJ IDEA.
+ * Created with IntelliJ IDEA.
  * User: Administrator
- * Date: 9/13/12
- * Time: 2:49 PM
+ * Date: 8/28/12
+ * Time: 8:34 AM
  * To change this template use File | Settings | File Templates.
  */
-public class PurchaseOrderCreateTogglePanel extends AppTogglePanel {
+public class SalesButtonTogglePanel extends AppTogglePanel {
+
+    public SalesButtonTogglePanel() {
+    }
 
     @Override
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
-        toggleTabbedPane.addTab("Create Purchase Order", IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(new PurchaseOrderCreateButtonPanel()), "Purchase Order");
+        toggleTabbedPane.addTab("Purchase Order", IconFactory.getSwingIcon("component/button_16.png"),
+                new AppToggleTemplate(new PurchaseOrderButtonPanel()), "Purchase Order");
 
     }
 
