@@ -32,11 +32,11 @@ public class PurchaseOrderButtonTogglePanel extends AppTogglePanel {
     }
 
     public Icon getToggleIcon(){
-        return IconFactory.getSwingIcon("purchase.png");
+        return IconFactory.getSwingIcon("purchase_order.png");
     }
 
     public Icon getToggleBannerIcon(){
-        return IconFactory.getSwingIcon("purchase.png");
+        return IconFactory.getSwingIcon("purchase_order.png");
     }
 
     public String getToggleDescription(){
