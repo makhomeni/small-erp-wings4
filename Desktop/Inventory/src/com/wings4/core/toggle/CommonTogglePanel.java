@@ -7,6 +7,7 @@ import com.wings4.util.JEclipseTabbedPane;
 import javax.swing.*;
 
 /**
+ *
  * Created by IntelliJ IDEA.
  * User: Administrator
  * Date: 9/20/12
@@ -40,7 +41,7 @@ public class CommonTogglePanel extends AppTogglePanel{
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
         toggleTabbedPane.addTab(this.menuName, IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(buttonPanel), this.menuName);
+                new AppToggleTemplate(buttonPanel));
 
     }
 
