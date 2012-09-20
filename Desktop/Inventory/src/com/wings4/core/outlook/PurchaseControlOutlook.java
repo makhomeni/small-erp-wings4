@@ -16,6 +16,10 @@ public class PurchaseControlOutlook extends AppToggleOutlook {
 
     //puchase order menu
     GeneralToggleActionButton purchaseOrderButton = new GeneralToggleActionButton(new PurchaseOrderButtonTogglePanel());
+    //purchase menu
+    GeneralToggleActionButton purchaseButton = new GeneralToggleActionButton(
+            new CommonTogglePanel("purchase", "Purchase", "purchase.png", "purchase.png",
+                    "to create purchase", new PurchaseOrderButtonTogglePanel()));
     //Receiving menu
     GeneralToggleActionButton receivingButton = new GeneralToggleActionButton(new ReceivingButtonTogglePanel());
     //vendor menu
@@ -26,6 +30,7 @@ public class PurchaseControlOutlook extends AppToggleOutlook {
         addButton(purchaseOrderButton);
         addButton(receivingButton);
         addButton(vendorButton);
+        addButton(purchaseButton);
 
         defaultValueClick();
     }
