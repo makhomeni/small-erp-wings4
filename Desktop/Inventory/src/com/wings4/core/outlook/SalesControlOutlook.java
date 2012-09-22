@@ -16,6 +16,7 @@ public class SalesControlOutlook extends AppToggleOutlook {
 
 
     GeneralToggleActionButton salesOrderButton = new GeneralToggleActionButton(new SalesOrderButtonTogglePanel());
+    GeneralToggleActionButton salesButton = new GeneralToggleActionButton(new SalesButtonTogglePanel());
     GeneralToggleActionButton pickingButton = new GeneralToggleActionButton(new PickingButtonTogglePanel());
     GeneralToggleActionButton shippingButton = new GeneralToggleActionButton(new ShippingButtonTogglePanel());
     GeneralToggleActionButton customerButton = new GeneralToggleActionButton(new CustomerButtonTogglePanel());
@@ -25,6 +26,7 @@ public class SalesControlOutlook extends AppToggleOutlook {
 
     public SalesControlOutlook() {
         addButton(salesOrderButton);
+        addButton(salesButton);
         addButton(pickingButton);
         addButton(shippingButton);
         addButton(customerButton);

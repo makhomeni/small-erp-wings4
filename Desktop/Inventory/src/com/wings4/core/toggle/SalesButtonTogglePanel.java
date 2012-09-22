@@ -21,13 +21,13 @@ public class SalesButtonTogglePanel extends AppTogglePanel {
     @Override
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
-        toggleTabbedPane.addTab("Purchase Order", IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(new PurchaseOrderButtonPanel()), "Purchase Order");
+        toggleTabbedPane.addTab("Sales", IconFactory.getSwingIcon("component/button_16.png"),
+                new AppToggleTemplate(new PurchaseOrderButtonPanel()), "Sales");
 
     }
 
     public String getToggleText(){
-        return "Purchase Order";
+        return "Sales";
     }
 
     public Icon getToggleIcon(){
@@ -39,6 +39,6 @@ public class SalesButtonTogglePanel extends AppTogglePanel {
     }
 
     public String getToggleDescription(){
-        return "Purchase Order";
+        return "Sales";
     }
 }
