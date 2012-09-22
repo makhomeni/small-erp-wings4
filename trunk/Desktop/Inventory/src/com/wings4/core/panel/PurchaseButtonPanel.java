@@ -89,9 +89,4 @@ public class PurchaseButtonPanel extends JPanel {
 
         }
     }
-
-    private List<PurchaseOrder> getData() {
-        List<PurchaseOrder> list = new ArrayList<PurchaseOrder>();
-        return list;
-    }
 }
