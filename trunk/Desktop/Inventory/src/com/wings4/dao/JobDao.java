@@ -1,8 +1,17 @@
 package com.wings4.dao;
 
+import com.wings4.model.Purchase;
+import com.wings4.model.PurchaseOrder;
+import com.wings4.model.Sales;
 import com.wings4.model.SalesOrder;
+import com.wings4.util.FindAllResourceFeed;
 import com.wings4.util.POSTResourceFeed;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,5 +34,57 @@ public class JobDao {
             ex.printStackTrace();
             return false;
         }
+    }
+
+    public static List<Sales> findAllSales() {
+        return null;
+    }
+
+    public static List<PurchaseOrder> findAllPurchaseOrders(){
+        List<PurchaseOrder> purchaseOrders = new ArrayList<PurchaseOrder>();
+        String allPurchaseOrders = FindAllResourceFeed.restFeedInitialization("purchaseOrder");
+        try {
+            JSONArray jsonArray = new JSONArray(allPurchaseOrders);
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject purchaseOrderObject = (JSONObject)jsonArray.get(i);
+                PurchaseOrder purchaseOrder = new PurchaseOrder();
+
+                JSONObject vendorJson = (JSONObject)purchaseOrderObject.get("vendor");
+                purchaseOrder.setVendor(vendorJson.get("firstName").toString() +" " +vendorJson.get("lastName").toString());
+
+                JSONObject orgaJsonObject = (JSONObject)purchaseOrderObject.get("organization");
+                purchaseOrder.setOrganization(orgaJsonObject.get("organizationName").toString());
+
+                purchaseOrders.add(purchaseOrder);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return purchaseOrders;
+    }
+
+    public static boolean savePurchaseOrder(PurchaseOrder purchaseOrder){
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("vendorId", purchaseOrder.getVendor());
+            jsonObject.put("organizationId", purchaseOrder.getOrganization());
+            jsonObject.put("shippingMethodId", purchaseOrder.getShippingMethod());
+            jsonObject.put("paymentTermId", purchaseOrder.getPaymentTerm());
+            jsonObject.put("deliveryTermId", purchaseOrder.getDeliveryTerm());
+            jsonObject.put("shippingAddress", purchaseOrder.getShippingAddress());
+            jsonObject.put("orderQuantity", purchaseOrder.getOrderQuantity());
+            jsonObject.put("jobName", purchaseOrder.getJonName());
+            POSTResourceFeed.post("purchaseOrder", jsonObject);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+
+        }
+    }
+
+    public static List<Purchase> findAllPurchases(){
+        return null;
     }
 }

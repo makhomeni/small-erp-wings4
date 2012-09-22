@@ -7,6 +7,8 @@ import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.GeneralToggleActionButton;
 import com.wings4.core.toggle.PurchaseCreateTogglePanel;
 import com.wings4.dao.CommonDao;
+import com.wings4.dao.JobDao;
+import com.wings4.model.Purchase;
 import com.wings4.model.PurchaseOrder;
 import com.wings4.util.InventoryConstants;
 
@@ -76,11 +78,11 @@ public class PurchaseButtonPanel extends JPanel {
 
 
             //set the resolver to get the fields
-            AnnotationResolver resolver = new AnnotationResolver(PurchaseOrder.class);
-            final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
+            AnnotationResolver resolver = new AnnotationResolver(Purchase.class);
+            final ObjectTableModel<Purchase> tableModel = new ObjectTableModel<Purchase>(
                     resolver, "vendor,organization");
 
-            tableModel.setData(CommonDao.findAllPurchaseOrders());
+            tableModel.setData(JobDao.findAllPurchases());
             purchaseTable.setModel(tableModel);
 
             purchaseListHolder.setViewportView(purchaseTable);

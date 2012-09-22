@@ -10,6 +10,7 @@ import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.VendorButtonTogglePanel;
 import com.wings4.dao.CommonDao;
+import com.wings4.dao.JobDao;
 import com.wings4.dao.MaterialDao;
 import com.wings4.model.*;
 import org.jdesktop.swingx.JXTextField;
@@ -152,7 +153,7 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
                     purchaseOrder.setOrderQuantity(orderQuantity.getText());
                     purchaseOrder.setJonName(jobNameTest.getText());
 
-                    if (CommonDao.savePurchaseOrder(purchaseOrder)) {
+                    if (JobDao.savePurchaseOrder(purchaseOrder)) {
                         JideOptionPane.showMessageDialog(null, "Purchase Order Saved Successfully", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
                     } else {
