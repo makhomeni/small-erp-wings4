@@ -20,7 +20,7 @@ class Vendor {
     static hasMany = [products : Product]
 
     static mapping = {
-        tablePerSubclass(true)
+        tablePerHierarchy(false);
     }
 
     static constraints = {
