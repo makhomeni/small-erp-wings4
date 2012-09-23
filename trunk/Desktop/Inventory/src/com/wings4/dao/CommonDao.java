@@ -201,6 +201,7 @@ public class CommonDao {
     }
 
     public static boolean saveLocalVendor(LocalVendor localVendor){
+        System.out.println("localVendor.getName() = " + localVendor.getName());
         JSONObject jsonObject = new JSONObject(localVendor);
         POSTResourceFeed.post("localVendor", jsonObject);
         return false;

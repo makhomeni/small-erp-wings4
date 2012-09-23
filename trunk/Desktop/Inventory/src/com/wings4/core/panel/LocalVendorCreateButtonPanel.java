@@ -37,15 +37,15 @@ public class LocalVendorCreateButtonPanel extends JPanel {
             builder.appendColumn("3dlu");
             builder.appendColumn("fill:max(pref; 10px)");
 
-            JTextField vendorFirstNameText = new JTextField();
-            JTextField vendorLastNameText = new JTextField();
-            JTextField addressNameText = new JTextField();
-            JTextField extendedAddressNameText = new JTextField();
-            JTextField countryText = new JTextField();
-            JTextField mobileNumberText = new JTextField();
-            JTextField phoneNumberText = new JTextField();
-            JTextField emailIdText = new JTextField();
-            JTextArea description = new JTextArea();
+            final JTextField vendorFirstNameText = new JTextField();
+            final JTextField vendorLastNameText = new JTextField();
+            final JTextField addressNameText = new JTextField();
+            final JTextField extendedAddressNameText = new JTextField();
+            final JTextField countryText = new JTextField();
+            final JTextField mobileNumberText = new JTextField();
+            final JTextField phoneNumberText = new JTextField();
+            final JTextField emailIdText = new JTextField();
+            final JTextArea description = new JTextArea();
             
             JButton submit = new JButton();
             JButton cancel = new JButton();
@@ -80,16 +80,17 @@ public class LocalVendorCreateButtonPanel extends JPanel {
             submit.setText("Submit");
             cancel.setText("Cancel");
 
-            final String localVendorName = vendorFirstNameText.getText().concat(" ").concat(vendorLastNameText.getText());
-            final String address = addressNameText.getText().concat(" ").concat(extendedAddressNameText.getText());
-            final String phoneNumber = mobileNumberText.getText().concat(" ").concat(phoneNumberText.getText());
-            final String email = emailIdText.getText();
-            final String descriptionTxt = description.getText();
-            final String country = countryText.getText();
-            
             submit.addActionListener(new JSecurityAction() {
                 @Override
                 public void execute(ActionEvent actionEvent) {
+
+                    String localVendorName = vendorFirstNameText.getText().concat(" ").concat(vendorLastNameText.getText());
+                    String address = addressNameText.getText().concat(" ").concat(extendedAddressNameText.getText());
+                    String phoneNumber = mobileNumberText.getText().concat(" ").concat(phoneNumberText.getText());
+                    String email = emailIdText.getText();
+                    String descriptionTxt = description.getText();
+                    String country = countryText.getText();
+
                     LocalVendor localVendor = new LocalVendor();
                     localVendor.setName(localVendorName);
                     localVendor.setAddress(address);
