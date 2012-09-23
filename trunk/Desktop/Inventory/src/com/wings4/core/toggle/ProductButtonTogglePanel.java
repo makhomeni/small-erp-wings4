@@ -1,5 +1,6 @@
 package com.wings4.core.toggle;
 
+import com.wings4.util.InventoryConstants;
 import com.wings4.util.JEclipseTabbedPane;
 import com.wings4.core.panel.ProductButtonPanel;
 import com.wings4.util.IconFactory;
@@ -21,13 +22,13 @@ public class ProductButtonTogglePanel extends AppTogglePanel {
     @Override
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
-        toggleTabbedPane.addTab("Product", IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(new ProductButtonPanel()), "Product");
+        toggleTabbedPane.addTab(InventoryConstants.PRODUCT, IconFactory.getSwingIcon("component/button_16.png"),
+                new AppToggleTemplate(new ProductButtonPanel()), InventoryConstants.PRODUCT);
 
     }
 
     public String getToggleText(){
-        return "Product";
+        return InventoryConstants.PRODUCT;
     }
 
     public Icon getToggleIcon(){
@@ -39,6 +40,6 @@ public class ProductButtonTogglePanel extends AppTogglePanel {
     }
 
     public String getToggleDescription(){
-        return "Product";
+        return InventoryConstants.PRODUCT;
     }
 }

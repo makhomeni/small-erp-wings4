@@ -1,14 +1,19 @@
 package com.wings4.core.panel;
 
+import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.core.toggle.GeneralToggleActionButton;
+import com.wings4.core.toggle.LocalVendorCreateTogglePanel;
 import com.wings4.dao.CommonDao;
 import com.wings4.model.LocalVendor;
+import com.wings4.util.InventoryConstants;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +50,32 @@ public class LocalVendorButtonPanel extends JPanel {
 
             vendorListHolder = new JScrollPane();
             vendorTable = new JTable();
+
+            createLocalVendorButton.setIcon(new ImageIcon(getClass().
+                    getResource(InventoryConstants.resourceDirectory.
+                            concat("list-add.png"))));
+            createLocalVendorButton.setFocusable(false);
+            createLocalVendorButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            createLocalVendorButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            localVendorToolBar.add(createLocalVendorButton);
+
+            createLocalVendorButton.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    GeneralToggleActionButton productCreateButton = new GeneralToggleActionButton(new
+                            LocalVendorCreateTogglePanel());
+                    productCreateButton.doClick();
+                }
+            });
+
+            reportLocalVendorButton.setIcon(new ImageIcon(getClass().
+                    getResource(InventoryConstants.resourceDirectory.
+                            concat("document-print.png"))));
+            reportLocalVendorButton.setFocusable(false);
+            reportLocalVendorButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            reportLocalVendorButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            localVendorToolBar.add(reportLocalVendorButton);
+
 
             AnnotationResolver resolver = new AnnotationResolver(LocalVendor.class);
             final ObjectTableModel<LocalVendor> tableModel = new ObjectTableModel<LocalVendor>(

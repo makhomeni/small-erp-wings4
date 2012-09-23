@@ -1,5 +1,6 @@
 package com.wings4.core.toggle;
 
+import com.wings4.util.InventoryConstants;
 import com.wings4.util.JEclipseTabbedPane;
 import com.wings4.core.panel.CategoryCreateButtonPanel;
 import com.wings4.util.IconFactory;
@@ -18,13 +19,13 @@ public class CategoryCreateTogglePanel extends AppTogglePanel {
     @Override
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
-        toggleTabbedPane.addTab("Category", IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(new CategoryCreateButtonPanel()), "Category");
+        toggleTabbedPane.addTab(InventoryConstants.CATEGORY_ADD, IconFactory.getSwingIcon("component/button_16.png"),
+                new AppToggleTemplate(new CategoryCreateButtonPanel()), InventoryConstants.CATEGORY_ADD);
 
     }
 
     public String getToggleText(){
-        return "Category";
+        return InventoryConstants.CATEGORY_ADD;
     }
 
     public Icon getToggleIcon(){
@@ -36,6 +37,6 @@ public class CategoryCreateTogglePanel extends AppTogglePanel {
     }
 
     public String getToggleDescription(){
-        return "Category";
+        return InventoryConstants.CATEGORY_ADD;
     }
 }
