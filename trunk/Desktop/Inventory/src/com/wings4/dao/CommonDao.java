@@ -164,10 +164,40 @@ public class CommonDao {
             }
         } catch(JSONException jE){
             jE.printStackTrace();
+        } catch (Exception ex){
+            ex.printStackTrace();
         }
 
 
         return localVendors;
+    }
+
+    public static List<ExternalVendor>  findAllExternalVendors(){
+
+        List<ExternalVendor> externalVendors = new ArrayList<ExternalVendor>();
+        try{
+            String allVendors = FindAllResourceFeed.restFeedInitialization("externalVendor");
+            JSONArray jsonArray = new JSONArray(allVendors);
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject vendorObject = (JSONObject)jsonArray.get(i);
+                ExternalVendor externalVendor = new ExternalVendor();
+                externalVendor.setId(Integer.parseInt(vendorObject.get("id").toString()));
+                externalVendor.setName(vendorObject.get("name").toString());
+                externalVendor.setOrganization(vendorObject.get("organization").toString());
+                externalVendor.setAddress(vendorObject.get("address").toString());
+                externalVendor.setPhoneNumber(vendorObject.get("phoneNumber").toString());
+                externalVendor.setEmail(vendorObject.get("email").toString());
+
+                externalVendors.add(externalVendor);
+            }
+        } catch(JSONException jE){
+            jE.printStackTrace();
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+
+        return externalVendors;
     }
 
     public static boolean saveLocalVendor(LocalVendor localVendor){
