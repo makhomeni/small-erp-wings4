@@ -83,6 +83,11 @@ public class LocalVendorCreateButtonPanel extends JPanel {
             submit.addActionListener(new JSecurityAction() {
                 @Override
                 public void execute(ActionEvent actionEvent) {
+                    LocalVendor localVendor = new LocalVendor();
+                    localVendor.setName("Mohammed");
+                    localVendor.setAddress("");
+                    localVendor.setEmail("hossaindoula@gmail.com");
+                    localVendor.setEmail("hossaindoula@gmail.com");
                     CommonDao.saveLocalVendor(new LocalVendor());
                 }
             });
