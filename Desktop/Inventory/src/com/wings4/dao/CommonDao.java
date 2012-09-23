@@ -143,4 +143,30 @@ public class CommonDao {
 
         return vendors;
     }
+
+    public static List<LocalVendor>  findAllLocalVendors(){
+
+        List<LocalVendor> localVendors = new ArrayList<LocalVendor>();
+        try{
+            String allVendors = FindAllResourceFeed.restFeedInitialization("localVendor");
+            JSONArray jsonArray = new JSONArray(allVendors);
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject vendorObject = (JSONObject)jsonArray.get(i);
+                LocalVendor localVendor = new LocalVendor();
+                localVendor.setId(Integer.parseInt(vendorObject.get("id").toString()));
+                localVendor.setName(vendorObject.get("name").toString());
+                localVendor.setOrganization(vendorObject.get("organization").toString());
+                localVendor.setAddress(vendorObject.get("address").toString());
+                localVendor.setPhoneNumber(vendorObject.get("phoneNumber").toString());
+                localVendor.setEmail(vendorObject.get("email").toString());
+
+                localVendors.add(localVendor);
+            }
+        } catch(JSONException jE){
+            jE.printStackTrace();
+        }
+
+
+        return localVendors;
+    }
 }
