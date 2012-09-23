@@ -5,6 +5,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.wings4.dao.CommonDao;
+import com.wings4.model.ExternalVendor;
 import com.wings4.model.LocalVendor;
 
 import javax.swing.*;
@@ -84,7 +85,7 @@ public class ExternalVendorCreateButtonPanel extends JPanel {
             submit.addActionListener(new JSecurityAction() {
                 @Override
                 public void execute(ActionEvent actionEvent) {
-                    CommonDao.saveLocalVendor(new LocalVendor());
+                    CommonDao.saveExternalVendor(new ExternalVendor());
                 }
             });
 

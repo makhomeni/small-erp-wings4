@@ -201,9 +201,24 @@ public class CommonDao {
     }
 
     public static boolean saveLocalVendor(LocalVendor localVendor){
-        System.out.println("localVendor.getName() = " + localVendor.getName());
-        JSONObject jsonObject = new JSONObject(localVendor);
-        POSTResourceFeed.post("localVendor", jsonObject);
-        return false;
+        try{
+            JSONObject jsonObject = new JSONObject(localVendor);
+            POSTResourceFeed.post("localVendor", jsonObject);
+            return true;
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean saveExternalVendor(ExternalVendor externalVendor){
+        try{
+            JSONObject jsonObject = new JSONObject(externalVendor);
+            POSTResourceFeed.post("externalVendor", jsonObject);
+            return true;
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
     }
 }
