@@ -37,7 +37,8 @@ public class JobDao {
     }
 
     public static List<Sales> findAllSales() {
-        return null;
+        List<Sales> saleses = new ArrayList<Sales>();
+        return saleses;
     }
 
     public static List<PurchaseOrder> findAllPurchaseOrders(){
@@ -52,13 +53,15 @@ public class JobDao {
                 JSONObject vendorJson = (JSONObject)purchaseOrderObject.get("vendor");
                 purchaseOrder.setVendor(vendorJson.get("firstName").toString() +" " +vendorJson.get("lastName").toString());
 
-                JSONObject orgaJsonObject = (JSONObject)purchaseOrderObject.get("organization");
-                purchaseOrder.setOrganization(orgaJsonObject.get("organizationName").toString());
+                JSONObject organizationJsonObject = (JSONObject)purchaseOrderObject.get("organization");
+                purchaseOrder.setOrganization(organizationJsonObject.get("organizationName").toString());
 
                 purchaseOrders.add(purchaseOrder);
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        } catch (Exception ex){
+            ex.printStackTrace();
         }
         return purchaseOrders;
     }
@@ -85,6 +88,7 @@ public class JobDao {
     }
 
     public static List<Purchase> findAllPurchases(){
-        return null;
+        List<Purchase> purchases = new ArrayList<Purchase>();
+        return purchases;
     }
 }
