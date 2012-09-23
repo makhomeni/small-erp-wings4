@@ -28,6 +28,25 @@ public class LocalVendor {
 
     @Resolvable(colName = "Email")
     private String email;
+    
+    private String description;
+    private String country;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
     public Integer getId() {
         return id;
