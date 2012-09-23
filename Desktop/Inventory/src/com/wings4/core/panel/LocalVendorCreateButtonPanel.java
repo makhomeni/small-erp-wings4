@@ -79,16 +79,25 @@ public class LocalVendorCreateButtonPanel extends JPanel {
 
             submit.setText("Submit");
             cancel.setText("Cancel");
+
+            final String localVendorName = vendorFirstNameText.getText().concat(" ").concat(vendorLastNameText.getText());
+            final String address = addressNameText.getText().concat(" ").concat(extendedAddressNameText.getText());
+            final String phoneNumber = mobileNumberText.getText().concat(" ").concat(phoneNumberText.getText());
+            final String email = emailIdText.getText();
+            final String descriptionTxt = description.getText();
+            final String country = countryText.getText();
             
             submit.addActionListener(new JSecurityAction() {
                 @Override
                 public void execute(ActionEvent actionEvent) {
                     LocalVendor localVendor = new LocalVendor();
-                    localVendor.setName("Mohammed");
-                    localVendor.setAddress("");
-                    localVendor.setEmail("hossaindoula@gmail.com");
-                    localVendor.setEmail("hossaindoula@gmail.com");
-                    CommonDao.saveLocalVendor(new LocalVendor());
+                    localVendor.setName(localVendorName);
+                    localVendor.setAddress(address);
+                    localVendor.setPhoneNumber(phoneNumber);
+                    localVendor.setEmail(email);
+                    localVendor.setDescription(descriptionTxt);
+                    localVendor.setCountry(country);
+                    CommonDao.saveLocalVendor(localVendor);
                 }
             });
 
