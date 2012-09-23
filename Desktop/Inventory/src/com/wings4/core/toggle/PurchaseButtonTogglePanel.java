@@ -2,6 +2,7 @@ package com.wings4.core.toggle;
 
 import com.wings4.core.panel.PurchaseButtonPanel;
 import com.wings4.util.IconFactory;
+import com.wings4.util.InventoryConstants;
 import com.wings4.util.JEclipseTabbedPane;
 
 import javax.swing.*;
@@ -21,13 +22,13 @@ public class PurchaseButtonTogglePanel extends AppTogglePanel {
     @Override
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
-        toggleTabbedPane.addTab("Purchase list", IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(new PurchaseButtonPanel()), "Purchase");
+        toggleTabbedPane.addTab(InventoryConstants.PURCHASE, IconFactory.getSwingIcon("component/button_16.png"),
+                new AppToggleTemplate(new PurchaseButtonPanel()), InventoryConstants.PURCHASE);
 
     }
 
     public String getToggleText(){
-        return "Purchase";
+        return InventoryConstants.PURCHASE;
     }
 
     public Icon getToggleIcon(){
@@ -39,6 +40,6 @@ public class PurchaseButtonTogglePanel extends AppTogglePanel {
     }
 
     public String getToggleDescription(){
-        return "Purchase";
+        return InventoryConstants.PURCHASE;
     }
 }
