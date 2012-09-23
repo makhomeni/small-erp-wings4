@@ -169,4 +169,8 @@ public class CommonDao {
 
         return localVendors;
     }
+
+    public static boolean saveLocalVendor(LocalVendor localVendor){
+        return false;
+    }
 }
