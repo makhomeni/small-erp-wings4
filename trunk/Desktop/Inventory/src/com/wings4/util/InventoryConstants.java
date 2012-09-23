@@ -8,7 +8,7 @@ package com.wings4.util;
  *
  * @author ronnie
  */
-public class InventoryConstants {
+public interface InventoryConstants {
     
     public static final String MEDIA_JSON = "application/json";
     public static final String MEDIA_XML = "application/xml";
