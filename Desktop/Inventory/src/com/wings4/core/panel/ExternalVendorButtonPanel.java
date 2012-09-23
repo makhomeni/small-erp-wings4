@@ -7,11 +7,12 @@ import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.ExternalVendorCreateTogglePanel;
 import com.wings4.core.toggle.GeneralToggleActionButton;
+import com.wings4.dao.CommonDao;
 import com.wings4.model.ExternalVendor;
-import com.wings4.model.LocalVendor;
 import com.wings4.util.InventoryConstants;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +28,9 @@ public class ExternalVendorButtonPanel extends JPanel {
 
     private JScrollPane vendorListHolder;
     private JTable vendorTable;
-    private JToolBar localVendorToolBar;
-    private JButton createLocalVendorButton;
-    private JButton reportLocalVendorButton;
+    private JToolBar externalVendorToolBar;
+    private JButton createExternalVendorButton;
+    private JButton reportExternalVendorButton;
 
     public ExternalVendorButtonPanel() {
         setLayout(new FiledLayout(FiledLayout.COLUMN, FiledLayout.FULL, 0));
@@ -40,8 +41,8 @@ public class ExternalVendorButtonPanel extends JPanel {
 
     public class ExternalVendorListPanel extends JPanel {
         public ExternalVendorListPanel() {
-            setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-            setBorder(BorderManager.createComplexTitledBorder("LocalVendor List"));
+            setLayout(new BorderLayout());
+            setBorder(BorderManager.createComplexTitledBorder(InventoryConstants.EXTERNAL_VENDOR));
 
             vendorListHolder = new JScrollPane();
             vendorTable = new JTable();
@@ -49,15 +50,19 @@ public class ExternalVendorButtonPanel extends JPanel {
             vendorListHolder = new JScrollPane();
             vendorTable = new JTable();
 
-            createLocalVendorButton.setIcon(new ImageIcon(getClass().
+            createExternalVendorButton = new JButton();
+            reportExternalVendorButton = new JButton();
+            externalVendorToolBar = new JToolBar();
+
+            createExternalVendorButton.setIcon(new ImageIcon(getClass().
                     getResource(InventoryConstants.resourceDirectory.
                             concat("list-add.png"))));
-            createLocalVendorButton.setFocusable(false);
-            createLocalVendorButton.setHorizontalTextPosition(SwingConstants.CENTER);
-            createLocalVendorButton.setVerticalTextPosition(SwingConstants.BOTTOM);
-            localVendorToolBar.add(createLocalVendorButton);
+            createExternalVendorButton.setFocusable(false);
+            createExternalVendorButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            createExternalVendorButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            externalVendorToolBar.add(createExternalVendorButton);
 
-            createLocalVendorButton.addActionListener(new JSecurityAction() {
+            createExternalVendorButton.addActionListener(new JSecurityAction() {
                 @Override
                 public void execute(ActionEvent actionEvent) {
                     GeneralToggleActionButton productCreateButton = new GeneralToggleActionButton(new
@@ -66,30 +71,26 @@ public class ExternalVendorButtonPanel extends JPanel {
                 }
             });
 
-            reportLocalVendorButton.setIcon(new ImageIcon(getClass().
+            reportExternalVendorButton.setIcon(new ImageIcon(getClass().
                     getResource(InventoryConstants.resourceDirectory.
                             concat("document-print.png"))));
-            reportLocalVendorButton.setFocusable(false);
-            reportLocalVendorButton.setHorizontalTextPosition(SwingConstants.CENTER);
-            reportLocalVendorButton.setVerticalTextPosition(SwingConstants.BOTTOM);
-            localVendorToolBar.add(reportLocalVendorButton);
+            reportExternalVendorButton.setFocusable(false);
+            reportExternalVendorButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            reportExternalVendorButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            externalVendorToolBar.add(reportExternalVendorButton);
 
             AnnotationResolver resolver = new AnnotationResolver(ExternalVendor.class);
             final ObjectTableModel<ExternalVendor> tableModel = new ObjectTableModel<ExternalVendor>(
                     resolver, "id,name,organization,address," +
                     "phoneNumber,email,country,carrier");
 
-            tableModel.setData(getData());
+            tableModel.setData(CommonDao.findAllExternalVendors());
             vendorTable.setModel(tableModel);
 
             vendorListHolder.setViewportView(vendorTable);
 
-            add(vendorListHolder);
+            add(externalVendorToolBar, BorderLayout.PAGE_START);
+            add(vendorListHolder, BorderLayout.CENTER);
         }
-    }
-
-    private List<ExternalVendor> getData() {
-        List<ExternalVendor> list = new ArrayList<ExternalVendor>();
-        return list;
     }
 }
