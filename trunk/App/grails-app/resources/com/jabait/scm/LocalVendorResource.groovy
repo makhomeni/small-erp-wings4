@@ -25,16 +25,16 @@ class LocalVendorResource {
     Response create(String vendor){
         JSONObject vendorJson = new JSONObject(vendor);
         LocalVendor localVendor = new LocalVendor();
-        localVendor.firstName = vendorJson.get("firstName").toString();
-        localVendor.lastName = vendorJson.get("lastName").toString();
-        localVendor.organization = Organization.get(Long.parseLong(vendorJson.get("organization").toString()));
-        localVendor.address = vendorJson.get("address").toString();
-        localVendor.extendedAddress = vendorJson.get("extendedAddress").toString();
+        localVendor.firstName = vendorJson.get("name").toString().split(" ")[0];
+        localVendor.lastName = vendorJson.get("name").toString().split(" ")[1];
+        localVendor.organization = Organization.get(1);
+        localVendor.address = vendorJson.get("address").toString().split(" ")[0];
+        localVendor.extendedAddress = vendorJson.get("address").toString().split(" ")[1];
         localVendor.country = vendorJson.get("country").toString();
-        localVendor.mobileNo = vendorJson.get("mobile").toString();
+        localVendor.mobileNo = vendorJson.get("phoneNumber").toString().split(" ")[1];
         localVendor.description = vendorJson.get("description").toString();
-        localVendor.emailId = vendorJson.get("emailId").toString();
-        localVendor.phoneNo = vendorJson.get("phoneNo").toString();
+        localVendor.emailId = vendorJson.get("email").toString();
+        localVendor.phoneNo = vendorJson.get("phoneNumber").toString().split(" ")[0];
 
         ok localVendor.save(flush: true);
     }
