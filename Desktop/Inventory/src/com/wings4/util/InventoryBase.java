@@ -51,7 +51,7 @@ public class InventoryBase extends JFrame{
     
     public void setDefaultBehavior(){
         Toolkit kit = Toolkit.getDefaultToolkit();
-        URL imageUrl = ClassLoader.getSystemResource("com/wings4/resource/logo.png");
+        URL imageUrl = ClassLoader.getSystemResource("com/wings4/resource/s_logo.png");
         Image favIcon = kit.createImage(imageUrl);
         this.setIconImage(favIcon);
         
