@@ -87,7 +87,8 @@ public class LocalVendorButtonPanel extends JPanel {
 
             vendorListHolder.setViewportView(vendorTable);
 
-            add(vendorListHolder);
+            add(localVendorToolBar, BorderLayout.PAGE_START);
+            add(vendorListHolder, BorderLayout.CENTER);
         }
     }
 

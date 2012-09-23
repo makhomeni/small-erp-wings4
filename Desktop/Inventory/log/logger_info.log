@@ -1,20 +1,20 @@
-2012-09-23 13:02:02.529 - <INFO> HttpContext.register(52) | ----- Http Context Initialization Start -----
-2012-09-23 13:02:02.536 - <INFO> HttpLogger.info(35) | Alias : DefaultHttp
-2012-09-23 13:02:02.536 - <INFO> HttpLogger.info(36) | Host : localhost
-2012-09-23 13:02:02.536 - <INFO> HttpLogger.info(37) | Port : 8080
-2012-09-23 13:02:02.536 - <INFO> HttpLogger.info(38) | Path : 
-2012-09-23 13:02:02.536 - <INFO> HttpLogger.info(39) | Connection TimeOut : 120000
-2012-09-23 13:02:02.537 - <INFO> HttpLogger.info(40) | Response TimeOut : 120000
-2012-09-23 13:02:02.537 - <INFO> HttpLogger.info(41) | Buffer Size : 8192
-2012-09-23 13:02:02.537 - <INFO> HttpContext.register(79) | ------ Http Context Initialization End ------
-2012-09-23 13:02:02.540 - <INFO> QuartzContext.register(54) | --- Quartz Scheduler Initialization Start ---
-2012-09-23 13:02:02.589 - <INFO> RAMJobStore.initialize(143) | RAMJobStore initialized.
-2012-09-23 13:02:02.590 - <INFO> StdSchedulerFactory.instantiate(919) | Quartz scheduler 'DefaultQuartzScheduler' initialized from the specified file : 'conf/quartz.properties'
-2012-09-23 13:02:02.590 - <INFO> StdSchedulerFactory.instantiate(923) | Quartz scheduler version: 1.4.5
-2012-09-23 13:02:02.590 - <INFO> QuartzContext.register(70) | ---- Quartz Scheduler Initialization End ----
-2012-09-23 13:02:02.605 - <INFO> ActiveXContext.registerStrategy(33) | ----- ActiveX Context Initialization Start -----
-2012-09-23 13:02:02.605 - <INFO> ActiveXContext.registerStrategy(39) | ActiveX Invoker Strategy : Application
-2012-09-23 13:02:02.607 - <INFO> ActiveXContext.registerStrategy(50) | ------ ActiveX Context Initialization End ------
-2012-09-23 13:02:02.611 - <INFO> ExceptionTracerContext.register(31) | ----- Exception Tracer Context Initialization Start -----
-2012-09-23 13:02:02.611 - <INFO> ExceptionTracerContext.register(35) | Exception Tracer Debug : true
-2012-09-23 13:02:02.611 - <INFO> ExceptionTracerContext.register(36) | ------ Exception Tracer Context Initialization End ------
+2012-09-23 16:31:44.994 - <INFO> HttpContext.register(52) | ----- Http Context Initialization Start -----
+2012-09-23 16:31:45.024 - <INFO> HttpLogger.info(35) | Alias : DefaultHttp
+2012-09-23 16:31:45.028 - <INFO> HttpLogger.info(36) | Host : localhost
+2012-09-23 16:31:45.028 - <INFO> HttpLogger.info(37) | Port : 8080
+2012-09-23 16:31:45.029 - <INFO> HttpLogger.info(38) | Path : 
+2012-09-23 16:31:45.029 - <INFO> HttpLogger.info(39) | Connection TimeOut : 120000
+2012-09-23 16:31:45.029 - <INFO> HttpLogger.info(40) | Response TimeOut : 120000
+2012-09-23 16:31:45.030 - <INFO> HttpLogger.info(41) | Buffer Size : 8192
+2012-09-23 16:31:45.030 - <INFO> HttpContext.register(79) | ------ Http Context Initialization End ------
+2012-09-23 16:31:45.045 - <INFO> QuartzContext.register(54) | --- Quartz Scheduler Initialization Start ---
+2012-09-23 16:31:45.318 - <INFO> RAMJobStore.initialize(143) | RAMJobStore initialized.
+2012-09-23 16:31:45.327 - <INFO> StdSchedulerFactory.instantiate(919) | Quartz scheduler 'DefaultQuartzScheduler' initialized from the specified file : 'conf/quartz.properties'
+2012-09-23 16:31:45.331 - <INFO> StdSchedulerFactory.instantiate(923) | Quartz scheduler version: 1.4.5
+2012-09-23 16:31:45.333 - <INFO> QuartzContext.register(70) | ---- Quartz Scheduler Initialization End ----
+2012-09-23 16:31:45.463 - <INFO> ActiveXContext.registerStrategy(33) | ----- ActiveX Context Initialization Start -----
+2012-09-23 16:31:45.463 - <INFO> ActiveXContext.registerStrategy(39) | ActiveX Invoker Strategy : Application
+2012-09-23 16:31:45.472 - <INFO> ActiveXContext.registerStrategy(50) | ------ ActiveX Context Initialization End ------
+2012-09-23 16:31:45.480 - <INFO> ExceptionTracerContext.register(31) | ----- Exception Tracer Context Initialization Start -----
+2012-09-23 16:31:45.481 - <INFO> ExceptionTracerContext.register(35) | Exception Tracer Debug : true
+2012-09-23 16:31:45.481 - <INFO> ExceptionTracerContext.register(36) | ------ Exception Tracer Context Initialization End ------
