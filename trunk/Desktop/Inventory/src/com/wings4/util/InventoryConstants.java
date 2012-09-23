@@ -46,6 +46,8 @@ public interface InventoryConstants {
     public static final String PURCHASE_ADD = PURCHASE.concat(ADD);
     public static final String LOCAL_VENDOR = "Local Vendor";
     public static final String LOCAL_VENDOR_ADD = LOCAL_VENDOR.concat(ADD);
+    public static final String EXTERNAL_VENDOR = "External Vendor";
+    public static final String EXTERNAL_VENDOR_ADD = EXTERNAL_VENDOR.concat(ADD);
 
     public static final String CURRENT_USER_ID = "currentUserId";
     public static final String DEFAULT_CSR_GROUP_ID = "defaultcsrgroupid";
