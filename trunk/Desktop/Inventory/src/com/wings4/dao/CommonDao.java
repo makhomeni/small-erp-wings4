@@ -201,6 +201,8 @@ public class CommonDao {
     }
 
     public static boolean saveLocalVendor(LocalVendor localVendor){
+        JSONObject jsonObject = new JSONObject(localVendor);
+        POSTResourceFeed.post("localVendor", jsonObject);
         return false;
     }
 }
