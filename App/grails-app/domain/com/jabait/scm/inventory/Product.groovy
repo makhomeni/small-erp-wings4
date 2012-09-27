@@ -32,7 +32,7 @@ class Product {
         image(nullable: true);
     }
 
-    public static initialize(){
+    public static void initialize(){
         if(Product.getCount() == 0){
             Product product = new Product();
 

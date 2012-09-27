@@ -17,6 +17,7 @@ import com.jabait.scm.inventory.Product
 import com.jabait.scm.Customer
 import com.jabait.accounting.PaymentTerm
 import com.jabait.scm.DeliveryTerm
+import com.jabait.scm.inventory.Category
 
 class BootStrap {
 
@@ -35,8 +36,10 @@ class BootStrap {
         Accounts.initialize();
         ProductClassification.initialize();
         UnitOfMeasure.initialize();
+
         ProductType.initialize();
         Carrier.initialize();
+        Category.initialize();
         Product.initialize();
         Customer.initialize();
         PaymentTerm.initialize();

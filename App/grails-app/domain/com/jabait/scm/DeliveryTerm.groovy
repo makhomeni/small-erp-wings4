@@ -8,7 +8,7 @@ class DeliveryTerm {
     static constraints = {
     }
 
-    public static initialize(){
+    public static void initialize(){
         if(DeliveryTerm.getCount() == 0){
             DeliveryTerm deliveryTerm = new DeliveryTerm();
             deliveryTerm.terms = "test";
