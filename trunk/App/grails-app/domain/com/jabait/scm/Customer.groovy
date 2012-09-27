@@ -22,7 +22,7 @@ class Customer {
     //ContactPerson contact; //why do you guys again and again putting contact person whereas Masum in the 
     //last meeting with Mr. Harun he was asking what is non-sense of com.jabait.scm.ContactPerson
     //I am removing it. Please don't put unnecessary things as these are creating confusion
-    Referral reference;
+//    Referral reference;
     //Address billingAddress; //If you are specifying address then why do you need another address of Address keep
     //consistency
     String billingAddress;
@@ -30,6 +30,21 @@ class Customer {
     static mapping = {
         table('inventory_customer')
         autoImport(false)
+    }
+
+    public static initialize(){
+        if(Customer.getCount() == 0){
+            Customer customer = new Customer();
+            customer.firstName = "Masum";
+            customer.lastName = "Dewan";
+            customer.emailId = "masum@yahoo.com";
+            customer.organization = Organization.get(1);
+            customer.mobileNumber = "09123456789";
+            customer.phoneNumber = "0212345";
+            customer.address = "318/A";
+            customer.billingAddress = "319/A";
+
+        }
     }
 
 }
