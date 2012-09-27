@@ -3,8 +3,9 @@ package com.jabait.scm.inventory
 class InventoryRegister {
     
     Product product;
-    Integer onHand = 0;
-    Integer onOrder = 0;
+    Integer onHand = 0; //when purchased then quantity will be added if sold subtracted to the onHand
+    Integer onPurchaseOrder = 0;//how many product is ordered will be added
+    Integer onSalesOrder = 0;
     Integer allocated = 0;
     Integer committed = 0;
     Integer unavailable = 0;
