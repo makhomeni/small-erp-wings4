@@ -10,6 +10,7 @@ import com.jabait.scm.inventory.InventoryRegister
 class PurchaseOrder extends JobOrder {
 
     Vendor vendor;
+    Product product;
     String shippingAddress;
     Organization organization;
     ShippingMethod shippingMethod;

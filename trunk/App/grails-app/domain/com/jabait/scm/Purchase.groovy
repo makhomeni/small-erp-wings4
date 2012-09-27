@@ -6,7 +6,8 @@ import com.jabait.scm.inventory.Product
 class Purchase {
 
     Vendor vendor;
-    Product product;
+//    Product product;
+    PurchaseOrder purchaseOrder;
     Date purchaseDate;
     Double price;
     Integer quantity;

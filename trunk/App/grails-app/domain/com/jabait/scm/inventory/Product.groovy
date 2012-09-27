@@ -13,7 +13,7 @@ class Product {
     String licenseInfo;
     ProductClassification classification;
     ProductImage image;
-    UnitOfMeasure unitOfMeasure; //kg,meter,feet
+    String unitOfMeasure; //kg,meter,feet
     String alertNotes;
     String productDetails;
     Boolean taxable = false;
@@ -30,5 +30,23 @@ class Product {
         classification(nullable: false);
         unitOfMeasure(nullable: true);
         image(nullable: true);
+    }
+
+    public static initialize(){
+        Product product = new Product();
+        product.stockKeepingUnit = "Test";
+        product.universalProductCode = "001";
+        product.productCategory = Category.get(1);
+        product.productName = "Chemical";
+        product.unitOfMeasure = "KG";
+        product.productType = ProductType.get(1);
+        product.licenseInfo = "12345";
+        product.alertNotes = "no";
+        product.productDetails = "product details";
+        product.taxable = true;
+        product.active = true;
+
+        product.active = true;
+
     }
 }
