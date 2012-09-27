@@ -15,36 +15,39 @@ public class PurchaseOrder {
     private Integer id;
 
     @Resolvable(colName = "Vendor Name")
-    private String vendor;
+    private String vendorId;
 
     @Resolvable(colName = "Job Name")
-    private String jonName;
+    private String jobName;
 
 
     @Resolvable(colName = "Shipping Address")
     private String shippingAddress;
 
     @Resolvable(colName = "Organization")
-    private String organization;
+    private String organizationId;
 
     @Resolvable(colName = "Shipping Method")
-    private String shippingMethod;
+    private String shippingMethodId;
 
     @Resolvable(colName = "Payment Term")
-    private String paymentTerm;
+    private String paymentTermId;
 
     @Resolvable(colName = "Delivery Term")
-    private String deliveryTerm;
+    private String deliveryTermId;
 
     @Resolvable(colName = "Order Quantity")
     private String orderQuantity;
 
-    public String getDeliveryTerm() {
-        return deliveryTerm;
+    @Resolvable(colName = "Product")
+    private String productId;
+
+    public String getDeliveryTermId() {
+        return deliveryTermId;
     }
 
-    public void setDeliveryTerm(String deliveryTerm) {
-        this.deliveryTerm = deliveryTerm;
+    public void setDeliveryTermId(String deliveryTermId) {
+        this.deliveryTermId = deliveryTermId;
     }
 
     public Integer getId() {
@@ -55,12 +58,12 @@ public class PurchaseOrder {
         this.id = id;
     }
 
-    public String getVendor() {
-        return vendor;
+    public String getVendorId() {
+        return vendorId;
     }
 
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
+    public void setVendorId(String vendorId) {
+        this.vendorId = vendorId;
     }
 
     public String getShippingAddress() {
@@ -71,28 +74,28 @@ public class PurchaseOrder {
         this.shippingAddress = shippingAddress;
     }
 
-    public String getOrganization() {
-        return organization;
+    public String getOrganizationId() {
+        return organizationId;
     }
 
-    public void setOrganization(String organization) {
-        this.organization = organization;
+    public void setOrganizationId(String organizationId) {
+        this.organizationId = organizationId;
     }
 
-    public String getShippingMethod() {
-        return shippingMethod;
+    public String getShippingMethodId() {
+        return shippingMethodId;
     }
 
-    public void setShippingMethod(String shippingMethod) {
-        this.shippingMethod = shippingMethod;
+    public void setShippingMethodId(String shippingMethodId) {
+        this.shippingMethodId = shippingMethodId;
     }
 
-    public String getPaymentTerm() {
-        return paymentTerm;
+    public String getPaymentTermId() {
+        return paymentTermId;
     }
 
-    public void setPaymentTerm(String paymentTerm) {
-        this.paymentTerm = paymentTerm;
+    public void setPaymentTermId(String paymentTermId) {
+        this.paymentTermId = paymentTermId;
     }
 
     public String getOrderQuantity() {
@@ -103,11 +106,19 @@ public class PurchaseOrder {
         this.orderQuantity = orderQuantity;
     }
 
-    public String getJonName() {
-        return jonName;
+    public String getJobName() {
+        return jobName;
     }
 
-    public void setJonName(String jonName) {
-        this.jonName = jonName;
+    public void setJobName(String jobName) {
+        this.jobName = jobName;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 }

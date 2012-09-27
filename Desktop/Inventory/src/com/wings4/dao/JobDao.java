@@ -51,10 +51,10 @@ public class JobDao {
                 PurchaseOrder purchaseOrder = new PurchaseOrder();
 
                 JSONObject vendorJson = (JSONObject)purchaseOrderObject.get("vendor");
-                purchaseOrder.setVendor(vendorJson.get("firstName").toString() +" " +vendorJson.get("lastName").toString());
+                purchaseOrder.setVendorId(vendorJson.get("firstName").toString() + " " + vendorJson.get("lastName").toString());
 
                 JSONObject organizationJsonObject = (JSONObject)purchaseOrderObject.get("organization");
-                purchaseOrder.setOrganization(organizationJsonObject.get("organizationName").toString());
+                purchaseOrder.setOrganizationId(organizationJsonObject.get("organizationName").toString());
 
                 purchaseOrders.add(purchaseOrder);
             }
@@ -68,16 +68,16 @@ public class JobDao {
 
     public static boolean savePurchaseOrder(PurchaseOrder purchaseOrder){
 
-        JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject = new JSONObject(purchaseOrder);
         try {
-            jsonObject.put("vendorId", purchaseOrder.getVendor());
-            jsonObject.put("organizationId", purchaseOrder.getOrganization());
-            jsonObject.put("shippingMethodId", purchaseOrder.getShippingMethod());
-            jsonObject.put("paymentTermId", purchaseOrder.getPaymentTerm());
-            jsonObject.put("deliveryTermId", purchaseOrder.getDeliveryTerm());
-            jsonObject.put("shippingAddress", purchaseOrder.getShippingAddress());
-            jsonObject.put("orderQuantity", purchaseOrder.getOrderQuantity());
-            jsonObject.put("jobName", purchaseOrder.getJonName());
+//            jsonObject.put("vendorId", purchaseOrder.getVendorId());
+//            jsonObject.put("organizationId", purchaseOrder.getOrganizationId());
+//            jsonObject.put("shippingMethodId", purchaseOrder.getShippingMethodId());
+//            jsonObject.put("paymentTermId", purchaseOrder.getPaymentTermId());
+//            jsonObject.put("deliveryTermId", purchaseOrder.getDeliveryTermId());
+//            jsonObject.put("shippingAddress", purchaseOrder.getShippingAddress());
+//            jsonObject.put("orderQuantity", purchaseOrder.getOrderQuantity());
+//            jsonObject.put("jobName", purchaseOrder.getJobName());
             POSTResourceFeed.post("purchaseOrder", jsonObject);
             return true;
         } catch (Exception e) {

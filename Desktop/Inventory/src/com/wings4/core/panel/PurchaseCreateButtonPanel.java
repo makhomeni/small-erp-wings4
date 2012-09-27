@@ -11,7 +11,6 @@ import com.towel.swing.table.ObjectTableModel;
 import com.wings4.dao.CommonDao;
 import com.wings4.dao.JobDao;
 import com.wings4.model.*;
-import org.jdesktop.swingx.JXTextField;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -96,7 +95,7 @@ public class PurchaseCreateButtonPanel extends JPanel {
                     PurchaseOrder purchaseOrder = new PurchaseOrder();
 
 
-                    purchaseOrder.setVendor(vendorCombo.getSelectedItem().toString());
+                    purchaseOrder.setVendorId(vendorCombo.getSelectedItem().toString());
 
 
                     if (JobDao.savePurchaseOrder(purchaseOrder)) {
