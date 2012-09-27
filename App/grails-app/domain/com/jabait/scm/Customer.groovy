@@ -43,7 +43,7 @@ class Customer {
             customer.phoneNumber = "0212345";
             customer.address = "318/A";
             customer.billingAddress = "319/A";
-
+            customer.save();
         }
     }
 
