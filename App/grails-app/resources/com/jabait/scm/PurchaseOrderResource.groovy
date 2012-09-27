@@ -18,6 +18,8 @@ import com.jabait.accounting.PaymentTerm
 import com.jabait.security.User
 import com.jabait.scm.inventory.ShippingMethod
 import javax.ws.rs.PathParam
+import com.jabait.scm.inventory.Product
+import com.jabait.scm.inventory.InventoryRegister
 
 @Path('/api/purchaseOrder')
 @Consumes(['application/xml', 'application/json'])
@@ -80,6 +82,8 @@ class PurchaseOrderResource {
 
 //        println "vendorId id = "+jsonObject.get("vendorId").toString()
         purchaseOrder.vendor = Vendor.get(Integer.parseInt(jsonObject.get("vendorId").toString()));
+        Product product = Product.get(Integer.parseInt(jsonObject.get("productId").toString()));
+        purchaseOrder.product = product;
 
         purchaseOrder.createdBy = User.get(1);
         purchaseOrder.createdDate = new Date();
@@ -91,10 +95,25 @@ class PurchaseOrderResource {
         purchaseOrder.isArchived = false;
         purchaseOrder.isSent = false;
         purchaseOrder.jobName = jsonObject.get("jobName");
-        purchaseOrder.orderQuantity = Integer.parseInt(jsonObject.get("orderQuantity").toString());
+        Integer orderQuantity =  Integer.parseInt(jsonObject.get("orderQuantity").toString());
+        purchaseOrder.orderQuantity = orderQuantity;
         purchaseOrder.priority = 1;
 
         purchaseOrder.status = 1;
+
+        InventoryRegister inventoryRegister = new InventoryRegister();
+        inventoryRegister.product =  product;
+        inventoryRegister.onHand = orderQuantity;
+        inventoryRegister.onPurchaseOrder = orderQuantity;
+
+        if (inventoryRegister.save()) {
+            println "saved successfully";
+        } else {
+            inventoryRegister.errors.each {
+                println it;
+            }
+        }
+        
 
         if (purchaseOrder.save()) {
             println "saved";
