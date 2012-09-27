@@ -33,4 +33,21 @@ class Vendor {
         emailId(nullable: true);
         phoneNo(nullable: true);
     }
+
+    public static void initialize(){
+        if(Vendor.getCount()){
+            Vendor vendor = new Vendor();
+            vendor.firstName = "Saleh Enam";
+            vendor.lastName = "Shohag";
+            vendor.organization = Organization.get(1);
+            vendor.address = "318/A";
+            vendor.extendedAddress = "318/A";
+            vendor.country = "Bangladesh";
+            vendor.mobileNo = "0191147868";
+            vendor.description = "test vendor";
+            vendor.emailId = "shohag@yahoo.com";
+            vendor.phoneNo = "02456789";
+            vendor.save();
+        }
+    }
 }
