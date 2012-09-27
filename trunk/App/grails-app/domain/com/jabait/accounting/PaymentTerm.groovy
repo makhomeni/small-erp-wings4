@@ -12,7 +12,7 @@ class PaymentTerm {
         description(nullable: true)
     }
 
-    public static initialize(){
+    public static void initialize(){
         if(PaymentTerm.getCount() == 0){
             PaymentTerm paymentTerm = new PaymentTerm();
             paymentTerm.name = "late";

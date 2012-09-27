@@ -32,7 +32,7 @@ class Customer {
         autoImport(false)
     }
 
-    public static initialize(){
+    public static void initialize(){
         if(Customer.getCount() == 0){
             Customer customer = new Customer();
             customer.firstName = "Masum";
