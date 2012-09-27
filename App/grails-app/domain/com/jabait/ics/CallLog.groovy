@@ -2,6 +2,7 @@ package com.jabait.ics
 
 import java.sql.Time
 import com.jabait.hrm.EmployeeProfile
+import com.jabait.scm.Customer
 
 class CallLog {
 
