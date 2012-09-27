@@ -20,6 +20,9 @@ public class Customer {
     @Resolvable(colName = "Last Name")
     private String lastName;
 
+    @Resolvable(colName = "Name")
+    private String name;
+
     @Resolvable(colName = "Email Id")
     private String emailId;
 
@@ -131,5 +134,13 @@ public class Customer {
 
     public void setBillingAddress(String billingAddress) {
         this.billingAddress = billingAddress;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -51,6 +51,7 @@ public class JobDao {
                 PurchaseOrder purchaseOrder = new PurchaseOrder();
 
                 JSONObject vendorJson = (JSONObject)purchaseOrderObject.get("vendor");
+                purchaseOrder.setId(Integer.parseInt(purchaseOrderObject.get("id").toString()));
                 purchaseOrder.setVendorId(vendorJson.get("firstName").toString() + " " + vendorJson.get("lastName").toString());
 
                 JSONObject organizationJsonObject = (JSONObject)purchaseOrderObject.get("organization");
