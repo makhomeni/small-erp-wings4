@@ -2,8 +2,6 @@ package com.wings4.model;
 
 import com.towel.el.annotation.Resolvable;
 
-import java.util.Date;
-
 /**
  * Created by IntelliJ IDEA.
  * User: ronnie
@@ -19,6 +17,9 @@ public class Purchase {
     @Resolvable(colName = "Vendor")
     private String vendor;
 
+    @Resolvable(colName = "Purchase Order")
+    private String purchaseOrder;
+
     @Resolvable(colName = "Product")
     private String product;
 
@@ -26,10 +27,10 @@ public class Purchase {
     private String purchaseDate;
 
     @Resolvable(colName = "Price")
-    private Double price;
+    private String price;
 
     @Resolvable(colName = "Quantity")
-    private Integer quantity;
+    private String quantity;
 
     @Resolvable(colName = "Purchase Type")
     private String purchaseType;
@@ -50,6 +51,14 @@ public class Purchase {
         this.vendor = vendor;
     }
 
+    public String getPurchaseOrder() {
+        return purchaseOrder;
+    }
+
+    public void setPurchaseOrder(String purchaseOrder) {
+        this.purchaseOrder = purchaseOrder;
+    }
+
     public String getProduct() {
         return product;
     }
@@ -66,19 +75,19 @@ public class Purchase {
         this.purchaseDate = purchaseDate;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public Integer getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
