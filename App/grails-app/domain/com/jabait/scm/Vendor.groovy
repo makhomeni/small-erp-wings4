@@ -35,7 +35,7 @@ class Vendor {
     }
 
     public static void initialize(){
-        if(Vendor.getCount()){
+        if(Vendor.getCount() == 0){
             Vendor vendor = new Vendor();
             vendor.firstName = "Saleh Enam";
             vendor.lastName = "Shohag";
