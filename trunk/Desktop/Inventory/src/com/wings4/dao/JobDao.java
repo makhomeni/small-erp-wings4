@@ -88,6 +88,19 @@ public class JobDao {
         }
     }
 
+    public static boolean savePurchase(Purchase purchase){
+
+        JSONObject jsonObject = new JSONObject(purchase);
+        try {
+            POSTResourceFeed.post("purchase", jsonObject);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+
+        }
+    }
+
     public static List<Purchase> findAllPurchases(){
         List<Purchase> purchases = new ArrayList<Purchase>();
         return purchases;
