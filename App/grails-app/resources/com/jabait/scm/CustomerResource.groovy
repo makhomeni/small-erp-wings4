@@ -11,18 +11,24 @@ import javax.ws.rs.core.Response
 
 import org.grails.jaxrs.provider.DomainObjectNotFoundException
 import javax.ws.rs.Path
+import javax.ws.rs.PathParam
 
 @Path('/api/customer')
-@Consumes(['application/xml','application/json'])
-@Produces(['application/xml','application/json'])
 class CustomerResource {
     
     def customerResourceService
     def id
     
     @GET
-    Response read() {
-        ok customerResourceService.read(id)
+    @Path("/{id}")
+    Response read(@PathParam("id") Long id) {
+        ok customerResourceService.read(id);
+    }
+
+    @GET
+    Response readAll(){
+        println "in customer";
+        ok customerResourceService.readAll();
     }
     
     @PUT
