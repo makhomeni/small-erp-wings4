@@ -13,6 +13,7 @@ import com.jabait.util.UnitOfMeasure
 import com.jabait.scm.inventory.ProductType
 import com.jabait.util.Carrier
 import com.jabait.scm.SalesOrder
+import com.jabait.scm.inventory.Product
 
 class BootStrap {
 
@@ -33,7 +34,7 @@ class BootStrap {
         UnitOfMeasure.initialize();
         ProductType.initialize();
         Carrier.initialize();
-
+        Product.initialize();
     }
     def destroy = {
     }
