@@ -153,6 +153,7 @@ public class CommonDao {
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject productObject = (JSONObject)jsonArray.get(i);
                 Product product = new Product();
+                System.out.println(" product id = "+productObject.get("id").toString());
                 product.setProductId(Integer.parseInt(productObject.get("id").toString()));
                 product.setProductName(productObject.get("productName").toString());
 
