@@ -52,22 +52,21 @@ class ProductResource {
     }
 
 
-    @GET
-    Response readProductType(@QueryParam("utilType") String utilType){
-        if(utilType.equals("productType")){
-            List<ProductType> allProductTypes = ProductType.list();
-            ok allProductTypes;
-        } else if(utilType.equals("classification")){
-            List<ProductClassification> allProductClassifications = ProductClassification.list();
-            ok allProductClassifications;
-        } else if(utilType.equals("uom")){
-            List<UnitOfMeasure> allUnitOfMeasures = UnitOfMeasure.list();
-            ok allUnitOfMeasures;
-        }
-    }
+//    @GET
+//    Response readProductType(@QueryParam("utilType") String utilType){
+//        if(utilType.equals("productType")){
+//            List<ProductType> allProductTypes = ProductType.list();
+//            ok allProductTypes;
+//        } else if(utilType.equals("classification")){
+//            List<ProductClassification> allProductClassifications = ProductClassification.list();
+//            ok allProductClassifications;
+//        } else if(utilType.equals("uom")){
+//            List<UnitOfMeasure> allUnitOfMeasures = UnitOfMeasure.list();
+//            ok allUnitOfMeasures;
+//        }
+//    }
 
     @GET
-    @Produces(["application/xml"])
     Response readAll(){
         ok inventoryService.readAllProducts();
     }
