@@ -15,6 +15,8 @@ import com.jabait.util.Carrier
 import com.jabait.scm.SalesOrder
 import com.jabait.scm.inventory.Product
 import com.jabait.scm.Customer
+import com.jabait.accounting.PaymentTerm
+import com.jabait.scm.DeliveryTerm
 
 class BootStrap {
 
@@ -37,6 +39,8 @@ class BootStrap {
         Carrier.initialize();
         Product.initialize();
         Customer.initialize();
+        PaymentTerm.initialize();
+        DeliveryTerm.initialize();
     }
     def destroy = {
     }
