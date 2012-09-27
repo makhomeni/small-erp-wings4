@@ -82,7 +82,7 @@ public class PurchaseOrderButtonPanel extends JPanel {
             //set the resolver to get the fields
             AnnotationResolver resolver = new AnnotationResolver(PurchaseOrder.class);
             final ObjectTableModel<PurchaseOrder> tableModel = new ObjectTableModel<PurchaseOrder>(
-                    resolver, "id,vendor,organization");
+                    resolver, "id,vendorId,organizationId");
 
             tableModel.setData(JobDao.findAllPurchaseOrders());
             purchaseOrderTable.setModel(tableModel);

@@ -8,16 +8,13 @@ import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
-import com.wings4.core.toggle.VendorButtonTogglePanel;
 import com.wings4.dao.CommonDao;
 import com.wings4.dao.JobDao;
-import com.wings4.dao.MaterialDao;
 import com.wings4.model.*;
 import org.jdesktop.swingx.JXTextField;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.util.Vector;
 
 /**
  *
@@ -52,6 +49,7 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             AnnotationResolver organizationResolver = new AnnotationResolver( Organization.class);
             AnnotationResolver shippingMethodResolver = new AnnotationResolver(ShippingMethod.class);
             AnnotationResolver vendorResolver = new AnnotationResolver(Vendor.class);
+            AnnotationResolver productResolver = new AnnotationResolver(Product.class);
             AnnotationResolver paymentTermResolver = new AnnotationResolver(PaymentTerm.class);
             AnnotationResolver deliveryTermResolver = new AnnotationResolver(DeliveryTerm.class);
 
@@ -72,6 +70,10 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             final ObjectTableModel<Vendor> tableModelVendor = new ObjectTableModel< Vendor>(
                     vendorResolver, "id,firstName");
 
+            final ObjectTableModel<Product> tableModelProduct = new ObjectTableModel<Product>(
+                    productResolver, "productId,productName");
+
+
             final ObjectTableModel<PaymentTerm> tableModelPaymentTerm = new ObjectTableModel<PaymentTerm>(
                     paymentTermResolver, "paymentTermId,name");
 
@@ -81,12 +83,14 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
             tableModelOrganization.setData(CommonDao.findAllOrganizations());
             tableModelShippingMethod.setData(CommonDao.findAllShippingMethods());
             tableModelVendor.setData(CommonDao.findAllVendors());
+            tableModelProduct.setData(CommonDao.findAllProducts());
             tableModelPaymentTerm.setData(CommonDao.findAllPaymentTerms());
             tableModelDeliveryTerm.setData(CommonDao.findAllDeliveryTerms());
 
 
 
             final TableComboBox vendorCombo = new TableComboBox(tableModelVendor);
+            final TableComboBox productCombo = new TableComboBox(tableModelProduct);
 
             final  JTextField shippingAddressText = new JXTextField();
             final  JTextField jobNameTest = new JXTextField();
@@ -105,6 +109,9 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
 
 
             builder.append("Vendor:", vendorCombo);
+            builder.nextLine();
+
+            builder.append("Product:", productCombo);
             builder.nextLine();
 
             builder.append("Job Name:", jobNameTest);
@@ -144,14 +151,16 @@ public class PurchaseOrderCreateButtonPanel extends JPanel {
                     PurchaseOrder purchaseOrder = new PurchaseOrder();
 
                     System.out.println(organizationCombo.getSelectedItem().toString());
-                    purchaseOrder.setOrganization(organizationCombo.getSelectedItem().toString());
-                    purchaseOrder.setPaymentTerm(paymentTermCombo.getSelectedItem().toString());
+
+                    purchaseOrder.setOrganizationId(organizationCombo.getSelectedItem().toString());
+                    purchaseOrder.setPaymentTermId(paymentTermCombo.getSelectedItem().toString());
                     purchaseOrder.setShippingAddress(shippingAddressText.getText());
-                    purchaseOrder.setShippingMethod(shippingMethodCombo.getSelectedItem().toString());
-                    purchaseOrder.setVendor(vendorCombo.getSelectedItem().toString());
-                    purchaseOrder.setDeliveryTerm(deliveryTermCombo.getSelectedItem().toString());
+                    purchaseOrder.setShippingMethodId(shippingMethodCombo.getSelectedItem().toString());
+                    purchaseOrder.setVendorId(vendorCombo.getSelectedItem().toString());
+                    purchaseOrder.setProductId(productCombo.getSelectedItem().toString());
+                    purchaseOrder.setDeliveryTermId(deliveryTermCombo.getSelectedItem().toString());
                     purchaseOrder.setOrderQuantity(orderQuantity.getText());
-                    purchaseOrder.setJonName(jobNameTest.getText());
+                    purchaseOrder.setJobName(jobNameTest.getText());
 
                     if (JobDao.savePurchaseOrder(purchaseOrder)) {
                         JideOptionPane.showMessageDialog(null, "Purchase Order Saved Successfully", "Success",
