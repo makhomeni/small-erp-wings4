@@ -8,6 +8,7 @@ import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.CustomerCreateTogglePanel;
 import com.wings4.core.toggle.GeneralToggleActionButton;
+import com.wings4.core.toggle.PurchaseCreateTogglePanel;
 import com.wings4.dao.CommonDao;
 import com.wings4.dao.JobDao;
 import com.wings4.model.PurchaseOrder;
@@ -31,6 +32,7 @@ public class PurchaseOrderButtonPanel extends JPanel {
     private JScrollPane purchaseOrderListHolder;
     private JTable purchaseOrderTable;
     private JButton createPurchaseOrderButton;
+    private JButton createSalesButton;
     private BreadcrumbBar breadCrumbBar;
     private JToolBar purchaseOrderToolbar;
 
@@ -53,6 +55,7 @@ public class PurchaseOrderButtonPanel extends JPanel {
             purchaseOrderToolbar = new JToolBar();
             //create a button for new purchase order add option
             createPurchaseOrderButton = new JButton();
+            createSalesButton = new JButton();
 
             //button
 
@@ -72,6 +75,23 @@ public class PurchaseOrderButtonPanel extends JPanel {
             createPurchaseOrderButton.setHorizontalTextPosition(SwingConstants.CENTER);
             createPurchaseOrderButton.setVerticalTextPosition(SwingConstants.BOTTOM);
             purchaseOrderToolbar.add(createPurchaseOrderButton);
+
+            createSalesButton.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    GeneralToggleActionButton purchaseButton = new GeneralToggleActionButton(new
+                            PurchaseCreateTogglePanel());
+                    purchaseButton.doClick();
+                }
+            });
+
+            createSalesButton.setIcon(new ImageIcon(getClass().
+                    getResource(InventoryConstants.resourceDirectory.
+                            concat("list-add.png"))));
+            createSalesButton.setFocusable(true);
+            createSalesButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            createSalesButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            purchaseOrderToolbar.add(createSalesButton);
 
 
 
@@ -94,8 +114,5 @@ public class PurchaseOrderButtonPanel extends JPanel {
         }
     }
 
-    private List<PurchaseOrder> getData() {
-        List<PurchaseOrder> list = new ArrayList<PurchaseOrder>();
-        return list;
-    }
+
 }

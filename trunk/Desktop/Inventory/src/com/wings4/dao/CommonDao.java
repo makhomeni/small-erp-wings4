@@ -167,6 +167,29 @@ public class CommonDao {
         return products;
     }
 
+    public static List<Customer>  findAllCustomers(){
+
+        List<Customer> customers = new ArrayList<Customer>();
+        try{
+            String allCustomers = FindAllResourceFeed.restFeedInitialization("customer");
+            JSONArray jsonArray = new JSONArray(allCustomers);
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject customerObject = (JSONObject)jsonArray.get(i);
+                Product product = new Product();
+                Customer customer = new Customer();
+                System.out.println(" product id = "+customerObject.get("id").toString());
+                customer.setId(Integer.parseInt(customerObject.get("id").toString()));
+                customer.setName(customerObject.get("firstName").toString() + "" + customerObject.get("lastName").toString());
+                customers.add(customer);
+            }
+        }catch(JSONException jE){
+            jE.printStackTrace();
+        }
+
+
+        return customers;
+    }
+
     public static List<LocalVendor>  findAllLocalVendors(){
 
         List<LocalVendor> localVendors = new ArrayList<LocalVendor>();
