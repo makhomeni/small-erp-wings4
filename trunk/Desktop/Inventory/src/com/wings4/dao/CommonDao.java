@@ -247,11 +247,12 @@ public class CommonDao {
                 JSONObject vendorObject = (JSONObject)jsonArray.get(i);
                 ExternalVendor externalVendor = new ExternalVendor();
                 externalVendor.setId(Integer.parseInt(vendorObject.get("id").toString()));
-                externalVendor.setName(vendorObject.get("name").toString());
+                externalVendor.setName(vendorObject.get("firstName").toString() + " "+
+                        vendorObject.get("lastName").toString());
                 externalVendor.setOrganization(vendorObject.get("organization").toString());
                 externalVendor.setAddress(vendorObject.get("address").toString());
-                externalVendor.setPhoneNumber(vendorObject.get("phoneNumber").toString());
-                externalVendor.setEmail(vendorObject.get("email").toString());
+                externalVendor.setPhoneNumber(vendorObject.get("phoneNo").toString());
+                externalVendor.setEmail(vendorObject.get("emailId").toString());
 
                 externalVendors.add(externalVendor);
             }
