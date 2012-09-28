@@ -200,11 +200,12 @@ public class CommonDao {
                 JSONObject vendorObject = (JSONObject)jsonArray.get(i);
                 LocalVendor localVendor = new LocalVendor();
                 localVendor.setId(Integer.parseInt(vendorObject.get("id").toString()));
-                localVendor.setName(vendorObject.get("name").toString());
-                localVendor.setOrganization(vendorObject.get("organization").toString());
+                localVendor.setName(vendorObject.get("firstName").toString() + " "+
+                        vendorObject.get("lastName").toString());
+//                localVendor.setOrganization(vendorObject.get("organization").toString());
                 localVendor.setAddress(vendorObject.get("address").toString());
-                localVendor.setPhoneNumber(vendorObject.get("phoneNumber").toString());
-                localVendor.setEmail(vendorObject.get("email").toString());
+                localVendor.setPhoneNumber(vendorObject.get("phoneNo").toString());
+                localVendor.setEmail(vendorObject.get("emailId").toString());
 
                 localVendors.add(localVendor);
             }
