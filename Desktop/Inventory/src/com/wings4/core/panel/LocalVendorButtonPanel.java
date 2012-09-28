@@ -79,8 +79,7 @@ public class LocalVendorButtonPanel extends JPanel {
 
             AnnotationResolver resolver = new AnnotationResolver(LocalVendor.class);
             final ObjectTableModel<LocalVendor> tableModel = new ObjectTableModel<LocalVendor>(
-                    resolver, "id,name,organization,address," +
-                    "phoneNumber,email");
+                    resolver, "id,name,organization,address,phoneNumber,email");
 
             tableModel.setData(CommonDao.findAllLocalVendors());
             vendorTable.setModel(tableModel);
