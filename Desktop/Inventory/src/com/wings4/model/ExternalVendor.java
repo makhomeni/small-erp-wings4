@@ -28,12 +28,15 @@ public class ExternalVendor {
 
     @Resolvable(colName = "Email")
     private String email;
-    
+
     @Resolvable(colName = "Country")
     private String country;
 
     @Resolvable(colName = "Carrier")
     private String carrier;
+
+    @Resolvable(colName = "Description")
+    private String description;
 
     public Integer getId() {
         return id;
@@ -97,5 +100,13 @@ public class ExternalVendor {
 
     public void setCarrier(String carrier) {
         this.carrier = carrier;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
