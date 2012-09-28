@@ -17,22 +17,22 @@ public class SalesControlOutlook extends AppToggleOutlook {
 
     GeneralToggleActionButton salesOrderButton = new GeneralToggleActionButton(new SalesOrderButtonTogglePanel());
     GeneralToggleActionButton salesButton = new GeneralToggleActionButton(new SalesButtonTogglePanel());
-    GeneralToggleActionButton pickingButton = new GeneralToggleActionButton(new PickingButtonTogglePanel());
-    GeneralToggleActionButton shippingButton = new GeneralToggleActionButton(new ShippingButtonTogglePanel());
+//    GeneralToggleActionButton pickingButton = new GeneralToggleActionButton(new PickingButtonTogglePanel());
+//    GeneralToggleActionButton shippingButton = new GeneralToggleActionButton(new ShippingButtonTogglePanel());
     GeneralToggleActionButton customerButton = new GeneralToggleActionButton(new CustomerButtonTogglePanel());
-    GeneralToggleActionButton rmaButton = new GeneralToggleActionButton(new RMAButtonTogglePanel());
-    GeneralToggleActionButton pricingButton = new GeneralToggleActionButton(new PricingButtonTogglePanel());
-    GeneralToggleActionButton discountButton = new GeneralToggleActionButton(new DiscountButtonTogglePanel());
+//    GeneralToggleActionButton rmaButton = new GeneralToggleActionButton(new RMAButtonTogglePanel());
+//    GeneralToggleActionButton pricingButton = new GeneralToggleActionButton(new PricingButtonTogglePanel());
+//    GeneralToggleActionButton discountButton = new GeneralToggleActionButton(new DiscountButtonTogglePanel());
 
     public SalesControlOutlook() {
         addButton(salesOrderButton);
         addButton(salesButton);
-        addButton(pickingButton);
-        addButton(shippingButton);
+//        addButton(pickingButton);
+//        addButton(shippingButton);
         addButton(customerButton);
-        addButton(rmaButton);
-        addButton(pricingButton);
-        addButton(discountButton);
+//        addButton(rmaButton);
+//        addButton(pricingButton);
+//        addButton(discountButton);
         defaultValueClick();
     }
 
