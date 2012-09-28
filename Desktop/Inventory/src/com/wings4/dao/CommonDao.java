@@ -190,6 +190,24 @@ public class CommonDao {
         return customers;
     }
 
+    public  static List<SalesOrder> findAllSalesOrder(){
+        List<SalesOrder> salesOrders = new ArrayList<SalesOrder>();
+        try{
+            String allSalesOrder = FindAllResourceFeed.restFeedInitialization("salesOrder");
+            JSONArray jsonArray = new JSONArray(allSalesOrder);
+            for(int i = 0;i<jsonArray.length();i++){
+                JSONObject salesOrderObject = (JSONObject)jsonArray.get(i);
+                SalesOrder salesOrder = new  SalesOrder();
+//                salesOrder.setJobName();
+            }
+
+        }catch(JSONException jE){
+            jE.printStackTrace();
+        }
+
+        return salesOrders;
+    }
+
     public static List<LocalVendor>  findAllLocalVendors(){
 
         List<LocalVendor> localVendors = new ArrayList<LocalVendor>();
