@@ -5,10 +5,7 @@ import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
-import com.wings4.core.toggle.CategoryCreateTogglePanel;
-import com.wings4.core.toggle.GeneralToggleActionButton;
-import com.wings4.core.toggle.SalesOrderButtonTogglePanel;
-import com.wings4.core.toggle.SalseOrderCreateTogglePanel;
+import com.wings4.core.toggle.*;
 import com.wings4.model.SalesOrder;
 import com.wings4.util.IconFactory;
 
@@ -31,6 +28,7 @@ public class SalesOrderButtonPanel extends JPanel {
     private JTable salesOrderTable;
     private JToolBar salesOrderToolBar;
     private JButton createSalesOrderButton;
+    private JButton salesOrderCreate;
     private JButton reportSalesOrderButton;
 
     public SalesOrderButtonPanel() {
@@ -49,6 +47,7 @@ public class SalesOrderButtonPanel extends JPanel {
             salesOrderTable = new JTable();
             salesOrderToolBar = new JToolBar();
             createSalesOrderButton = new JButton();
+            salesOrderCreate = new JButton();
             reportSalesOrderButton = new JButton();
 
             createSalesOrderButton.addActionListener(new JSecurityAction() {
@@ -59,7 +58,18 @@ public class SalesOrderButtonPanel extends JPanel {
                     categoryButton.doClick();
                 }
             });
+
+            salesOrderCreate.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    GeneralToggleActionButton salesButton = new GeneralToggleActionButton(new
+                            SalesCreateTogglePanel());
+                    salesButton.doClick();
+                }
+            });
+
             createSalesOrderButton.setIcon(IconFactory.getSwingIcon("list-add.png"));
+            salesOrderCreate.setIcon(IconFactory.getSwingIcon("list-add.png"));
 
             createSalesOrderButton.setFocusable(false);
             createSalesOrderButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -72,6 +82,11 @@ public class SalesOrderButtonPanel extends JPanel {
             reportSalesOrderButton.setHorizontalTextPosition(SwingConstants.CENTER);
             reportSalesOrderButton.setVerticalTextPosition(SwingConstants.BOTTOM);
             salesOrderToolBar.add(reportSalesOrderButton);
+
+            salesOrderCreate.setFocusable(false);
+            salesOrderCreate.setHorizontalTextPosition(SwingConstants.CENTER);
+            salesOrderCreate.setVerticalTextPosition(SwingConstants.BOTTOM);
+            salesOrderToolBar.add(salesOrderCreate);
 
 
 
