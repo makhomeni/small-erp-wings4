@@ -15,6 +15,7 @@ import org.json.JSONObject
 import javax.ws.rs.POST
 import com.jabait.hrm.Organization
 import com.jabait.util.Carrier
+import javax.ws.rs.PathParam
 
 @Path('/api/externalVendor')
 class ExternalVendorResource {
@@ -23,8 +24,14 @@ class ExternalVendorResource {
     def id
 
     @GET
-    Response read() {
+    @Path("/{id}")
+    Response read(@PathParam("id") Long id) {
         ok externalVendorResourceService.read(id)
+    }
+
+    @GET
+    Response readAll(){
+        ok ExternalVendor.findAll();
     }
 
     @PUT

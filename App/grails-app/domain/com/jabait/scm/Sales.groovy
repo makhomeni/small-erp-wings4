@@ -1,14 +1,13 @@
 package com.jabait.scm
 
-import com.jabait.scm.inventory.Product
 
 class Sales {
     Customer customer;
-    Product product;
+    SalesOrder salesOrder;
     Date salesDate;
     Double price;
     Integer quantity;
-    String salesOrder;
+    String salesType;
 
     static constraints = {
     }

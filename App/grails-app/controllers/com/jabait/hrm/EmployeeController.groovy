@@ -13,6 +13,12 @@ import org.json.JSONObject
 import org.codehaus.groovy.grails.web.json.JSONArray
 import com.jabait.hrm.payroll.AllowanceType
 import com.jabait.hrm.payroll.Allowance
+import com.jabait.scm.inventory.Category
+import com.jabait.scm.inventory.ProductType
+import com.jabait.scm.inventory.ProductClassification
+import com.jabait.scm.inventory.Product
+import com.jabait.scm.Vendor
+import com.jabait.scm.inventory.ShippingMethod
 
 
 class EmployeeController {
@@ -394,5 +400,54 @@ class EmployeeController {
 
         render([details: operationResultList,  result: result] as JSON);
 
+    }
+    def test(){
+//        Product product = new Product();
+//
+//        product.stockKeepingUnit = "Test";
+//        product.universalProductCode = "001";
+//        product.productCategory = Category.get(1);
+//        product.productName = "Chemical";
+//        product.unitOfMeasure = "KG";
+//        product.productType = ProductType.get(1);
+//        product.licenseInfo = "12345";
+//        product.classification = ProductClassification.get(1);
+//        product.alertNotes = "no";
+//        product.productDetails = "product details";
+//        product.taxable = true;
+//        product.active = true;
+//
+//        if (product.save()) {
+//            println "saved";
+//        } else {
+//            println "not saved";
+//            product.errors.each {
+//                println it;
+//
+//            }
+//        }
+//        Vendor vendor = new Vendor();
+//        vendor.firstName = "Saleh Enam";
+//        vendor.lastName = "Shohag";
+//        vendor.organization = Organization.get(1);
+//        vendor.address = "318/A";
+//        vendor.extendedAddress = "318/A";
+//        vendor.country = "Bangladesh";
+//        vendor.mobileNo = "0191147868";
+//        vendor.description = "test vendor";
+//        vendor.emailId = "shohag@yahoo.com";
+//        vendor.phoneNo = "02456789";
+//        vendor.save();
+        ShippingMethod shippingMethod1 = new ShippingMethod();
+        shippingMethod1.shippingMethod = "On Ship";
+        shippingMethod1.description = "Product will be transported using ship";
+        if (shippingMethod1.save()) {
+            println "saved";
+        } else {
+            println "not saved";
+            shippingMethod1.errors.each {
+                println it;
+            }
+        }
     }
 }
