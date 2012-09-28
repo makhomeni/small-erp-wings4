@@ -109,7 +109,7 @@ class PurchaseOrderResource {
 //            inventoryRegister1.onHand = inventoryRegister1.onHand + orderQuantity;
             def newValue = inventoryRegister1.onPurchaseOrder + orderQuantity;
             inventoryRegisterUpdate.onPurchaseOrder = newValue;
-              if (inventoryRegisterUpdate.save()) {
+              if (inventoryRegisterUpdate.save(flush: true)) {
                   println "updated";
               } else {
                   println "not saved inventory";
