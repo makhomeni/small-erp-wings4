@@ -24,7 +24,7 @@ public class JobDao {
 
     public static boolean saveSalesOrder(SalesOrder salesOrder){
         try {
-            JSONObject jsonObject = new JSONObject();
+            JSONObject jsonObject = new JSONObject(salesOrder);
 //            jsonObject.put("categoryName", salesOrder.getCategoryName());
 //            System.out.println("category.getParentCategory() = " + category.getParentCategory());
 //            jsonObject.put("parentCategory", category.getParentCategory());
@@ -35,6 +35,19 @@ public class JobDao {
             return false;
         }
     }
+
+    public static  boolean saveSales(Sales sales){
+       try{
+           JSONObject jsonObject =new JSONObject(sales);
+           POSTResourceFeed.post("sales",jsonObject);
+           return true;
+
+       }catch (Exception ex){
+           ex.printStackTrace();
+           return false;
+       }
+    }
+
 
     public static List<Sales> findAllSales() {
         List<Sales> saleses = new ArrayList<Sales>();
