@@ -43,9 +43,67 @@ public class SalesOrder {
     @Resolvable(colName = "Due Date")
     private String dueDate;
 
+    @Resolvable(colName = "Customer")
+    private String customer;
+
+    @Resolvable(colName = "address1")
+    private String address1;
+
+    @Resolvable(colName = "address2")
+    private String address2;
+
+    @Resolvable(colName = "Shipping Method")
+    private String shippingMethod;
+
+
+
+    @Resolvable(colName = "Payment Term")
+    private String paymentTerm;
+
+    @Resolvable(colName = "Product")
+    private String product;
+
+
+
+
+
+
+
 
     @Resolvable(colName = "Is Archived")
     private String isArchived;
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
+    public String getShippingMethod() {
+        return shippingMethod;
+    }
+
+    public void setShippingMethod(String shippingMethod) {
+        this.shippingMethod = shippingMethod;
+    }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public String getPaymentTerm() {
+        return paymentTerm;
+    }
+
+    public void setPaymentTerm(String paymentTerm) {
+        this.paymentTerm = paymentTerm;
+    }
 
     public Integer getId() {
         return id;
@@ -57,6 +115,14 @@ public class SalesOrder {
 
     public String getJobName() {
         return jobName;
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
     }
 
     public void setJobName(String jobName) {
@@ -133,5 +199,13 @@ public class SalesOrder {
 
     public void setArchived(String archived) {
         isArchived = archived;
+    }
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(String address1) {
+        this.address1 = address1;
     }
 }
