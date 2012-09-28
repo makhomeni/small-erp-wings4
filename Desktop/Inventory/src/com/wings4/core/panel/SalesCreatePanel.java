@@ -120,48 +120,10 @@ public class SalesCreatePanel   extends JPanel {
                         JideOptionPane.showMessageDialog(null, "Purchase Order Saved Failed", "Failed",
                                 JOptionPane.ERROR_MESSAGE);
                     }
-//                    PurchaseOrder purchaseOrder = new PurchaseOrder();
-//
-//                    System.out.println(organizationCombo.getSelectedItem().toString());
-//
-//                    purchaseOrder.setOrganizationId(organizationCombo.getSelectedItem().toString());
-//                    purchaseOrder.setPaymentTermId(paymentTermCombo.getSelectedItem().toString());
-//                    purchaseOrder.setShippingAddress(shippingAddressText.getText());
-//                    purchaseOrder.setShippingMethodId(shippingMethodCombo.getSelectedItem().toString());
-//                    purchaseOrder.setVendorId(vendorCombo.getSelectedItem().toString());
-//                    purchaseOrder.setProductId(productCombo.getSelectedItem().toString());
-//                    purchaseOrder.setDeliveryTermId(deliveryTermCombo.getSelectedItem().toString());
-//                    purchaseOrder.setOrderQuantity(orderQuantity.getText());
-//                    purchaseOrder.setJobName(jobNameTest.getText());
-//
-//                    if (JobDao.savePurchaseOrder(purchaseOrder)) {
-//                        JideOptionPane.showMessageDialog(null, "Purchase Order Saved Successfully", "Success",
-//                                JOptionPane.INFORMATION_MESSAGE);
-//                    } else {
-//                        JideOptionPane.showMessageDialog(null, "Purchase Order Saved Failed", "Failed",
-//                                JOptionPane.ERROR_MESSAGE);
-//                    }
+
                 }
             });
-//            submitCategory.addActionListener(new JSecurityAction() {
-//                @Override
-//                public void execute(ActionEvent actionEvent) {
-//                    Category category = new Category();
-//                    category.setCategoryName(categoryNameText.getText());
-////                    try {
-////                        category.setParentCategory(parentCategory.getSelectedItem().toString());
-////                    } catch (Exception ex) {
-////                        ex.printStackTrace();
-////                    }
-//
-//                    if(JobDao.saveSalesOrder(new SalesOrder()))
-//                        JideOptionPane.showMessageDialog(null, "Category Saved Successfully", "Success",
-//                                JOptionPane.INFORMATION_MESSAGE);
-//                    else
-//                        JideOptionPane.showMessageDialog(null, "Category Saved Failed", "Failed",
-//                                JOptionPane.ERROR_MESSAGE);
-//                }
-//            });
+
         }
     }
 
