@@ -101,19 +101,34 @@ class PurchaseOrderResource {
 
         purchaseOrder.status = 1;
 
-        InventoryRegister inventoryRegister = new InventoryRegister();
-        inventoryRegister.product =  product;
-        inventoryRegister.onHand = orderQuantity;
-        inventoryRegister.onPurchaseOrder = orderQuantity;
+        InventoryRegister inventoryRegister1 = InventoryRegister.findByProduct(product);
 
-        if (inventoryRegister.save()) {
-            println "saved successfully";
-        } else {
-            inventoryRegister.errors.each {
-                println it;
+        if(inventoryRegister1){
+            println "got inventory";
+            InventoryRegister inventoryRegisterUpdate = InventoryRegister.get(inventoryRegister1.id);
+//            inventoryRegister1.onHand = inventoryRegister1.onHand + orderQuantity;
+            def newValue = inventoryRegister1.onPurchaseOrder + orderQuantity;
+            inventoryRegisterUpdate.onPurchaseOrder = newValue;
+              if (inventoryRegisterUpdate.save()) {
+                  println "updated";
+              } else {
+                  println "not saved inventory";
+              }
+        }else{
+            InventoryRegister inventoryRegister = new InventoryRegister();
+            inventoryRegister.product =  product;
+//            inventoryRegister.onHand = orderQuantity;
+            inventoryRegister.onPurchaseOrder = orderQuantity;
+            if (inventoryRegister.save()) {
+                println "saved successfully";
+            } else {
+                inventoryRegister.errors.each {
+                    println it;
+                }
             }
         }
-        
+
+
 
         if (purchaseOrder.save()) {
             println "saved";
