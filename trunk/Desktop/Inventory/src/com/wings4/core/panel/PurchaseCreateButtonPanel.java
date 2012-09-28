@@ -65,7 +65,8 @@ public class PurchaseCreateButtonPanel extends JPanel {
 
             final JTextField priceTextField = new JTextField();
             final JTextField quantity = new JTextField();
-            final JTextField purchaseType = new JTextField();
+            String[] purchaseTypeValue = {"A", "B", "C"};
+            final JComboBox purchaseTypeCombo = new JComboBox(purchaseTypeValue);
 
 
 
@@ -87,7 +88,7 @@ public class PurchaseCreateButtonPanel extends JPanel {
             builder.append("Quantity:", quantity);
             builder.nextLine();
 
-            builder.append("Purchase Type:", purchaseType);
+            builder.append("Purchase Type:", purchaseTypeCombo);
             builder.nextLine();
 
 
@@ -103,9 +104,6 @@ public class PurchaseCreateButtonPanel extends JPanel {
                 @Override
                 public void execute(ActionEvent actionEvent) {
 
-                    JideOptionPane.showMessageDialog(null, "Successfully submitted", "Success",
-                            JOptionPane.INFORMATION_MESSAGE);
-
 
                     Purchase purchase = new Purchase();
 
@@ -113,7 +111,7 @@ public class PurchaseCreateButtonPanel extends JPanel {
                     purchase.setPurchaseOrder(purchaseOrderCombo.getSelectedItem().toString());
                     purchase.setPrice(priceTextField.getText());
                     purchase.setQuantity(quantity.getText());
-                    purchase.setPurchaseType(purchaseType.getText());
+                    purchase.setPurchaseType(purchaseTypeCombo.getSelectedItem().toString());
 
 
 //                    purchaseOrder.setVendorId(vendorCombo.getSelectedItem().toString());
