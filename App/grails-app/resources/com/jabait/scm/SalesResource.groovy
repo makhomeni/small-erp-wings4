@@ -14,6 +14,7 @@ import javax.ws.rs.Path
 import javax.ws.rs.PathParam
 import javax.ws.rs.POST
 import org.json.JSONObject
+import com.jabait.scm.inventory.Product
 
 @Path("/api/sales")
 class SalesResource {
@@ -48,6 +49,31 @@ class SalesResource {
 
         JSONObject jsonObject = new JSONObject(salesJson);
         Sales sales = new Sales();
+        Customer customer = Customer.get(Integer.parseInt(jsonObject.get("customerName").toString()));
+        sales.customer=customer;
+        Double price = Double.parseDouble(jsonObject.get("price").toString());
+        sales.price = price;
+        Product product = Product.get(Integer.parseInt(jsonObject.get("productName").toString()));
+        sales.product =product;
+
+        sales.quantity =Integer.parseInt(jsonObject.get("quantity").toString());
+        sales.salesDate = new Date();
+        String salesOrder = "test";
+        sales.salesOrder = salesOrder;
+
+        if (sales.save()) {
+            println "saved";
+            created true;
+        } else {
+            sales.errors.each {
+                println it;
+            }
+            println "not saved";
+            created false;
+        }
+
+
+
 //        sales.
 
     }
