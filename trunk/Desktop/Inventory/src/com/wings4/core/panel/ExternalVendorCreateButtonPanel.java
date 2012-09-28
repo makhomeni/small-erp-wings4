@@ -2,9 +2,11 @@ package com.wings4.core.panel;
 
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.layout.FormLayout;
+import com.jidesoft.dialog.JideOptionPane;
 import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.wings4.dao.CommonDao;
+import com.wings4.dao.JobDao;
 import com.wings4.model.ExternalVendor;
 import com.wings4.model.LocalVendor;
 
@@ -39,15 +41,15 @@ public class ExternalVendorCreateButtonPanel extends JPanel {
             builder.appendColumn("3dlu");
             builder.appendColumn("fill:max(pref; 10px)");
 
-            JTextField vendorFirstNameText = new JTextField();
-            JTextField vendorLastNameText = new JTextField();
-            JTextField addressNameText = new JTextField();
-            JTextField extendedAddressNameText = new JTextField();
-            JTextField countryText = new JTextField();
-            JTextField mobileNumberText = new JTextField();
-            JTextField phoneNumberText = new JTextField();
-            JTextField emailIdText = new JTextField();
-            JTextArea description = new JTextArea();
+            final JTextField vendorFirstNameText = new JTextField();
+            final JTextField vendorLastNameText = new JTextField();
+            final JTextField addressNameText = new JTextField();
+            final JTextField extendedAddressNameText = new JTextField();
+            final JTextField countryText = new JTextField();
+            final JTextField mobileNumberText = new JTextField();
+            final JTextField phoneNumberText = new JTextField();
+            final JTextField emailIdText = new JTextField();
+            final JTextArea description = new JTextArea();
 
             JButton submit = new JButton();
             JButton cancel = new JButton();
@@ -85,7 +87,32 @@ public class ExternalVendorCreateButtonPanel extends JPanel {
             submit.addActionListener(new JSecurityAction() {
                 @Override
                 public void execute(ActionEvent actionEvent) {
-                    CommonDao.saveExternalVendor(new ExternalVendor());
+//                    CommonDao.saveExternalVendor(new ExternalVendor());
+                    String localVendorName = vendorFirstNameText.getText().concat(" ").concat(vendorLastNameText.getText());
+                    String address = addressNameText.getText().concat(" ").concat(extendedAddressNameText.getText());
+                    String phoneNumber = mobileNumberText.getText().concat(" ").concat(phoneNumberText.getText());
+                    String email = emailIdText.getText();
+                    String descriptionTxt = description.getText();
+                    String country = countryText.getText();
+
+                    ExternalVendor externalVendor = new ExternalVendor();
+                    externalVendor.setName(localVendorName);
+                    externalVendor.setAddress(address);
+                    externalVendor.setPhoneNumber(phoneNumber);
+                    externalVendor.setEmail(email);
+                    externalVendor.setDescription(descriptionTxt);
+                    externalVendor.setCountry(country);
+//                    CommonDao.saveLocalVendor(externalVendor);
+
+
+                    if (CommonDao.saveExternalVendor(externalVendor)) {
+                        JideOptionPane.showMessageDialog(null, "External Vendor Saved Successfully", "Success",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JideOptionPane.showMessageDialog(null, "External Vendor Save Failed", "Failure",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                    
                 }
             });
 
