@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
  * Date: 9/23/12
  * Time: 4:58 PM
  * To change this template use File | Settings | File Templates.
+ *
  */
 public class ExternalVendorCreateButtonPanel extends JPanel {
 
