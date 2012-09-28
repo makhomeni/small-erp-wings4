@@ -32,9 +32,9 @@ public class ExplorerBar extends JFlatOutlookBar {
                 makeScrollPane(new SalesControlOutlook()), "Sales");
         addTab("Purchasing", IconFactory.getSwingIcon("component/button_16.png"),
                 makeScrollPane(new PurchaseControlOutlook()), "Purchasing");
-        addTab("Manufacturing", IconFactory.getSwingIcon("component/button_16.png"),
-                makeScrollPane(new GeneralControlOutlook()), "Manufacturing");
-        addTab("Manufacturing", IconFactory.getSwingIcon("component/button_16.png"),
-                makeScrollPane(new TestControlOutlook()), "Manufacturing");
+//        addTab("Manufacturing", IconFactory.getSwingIcon("component/button_16.png"),
+//                makeScrollPane(new GeneralControlOutlook()), "Manufacturing");
+//        addTab("Manufacturing", IconFactory.getSwingIcon("component/button_16.png"),
+//                makeScrollPane(new TestControlOutlook()), "Manufacturing");
     }
 }

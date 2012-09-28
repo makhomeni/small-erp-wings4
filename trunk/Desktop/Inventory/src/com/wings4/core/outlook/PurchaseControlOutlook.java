@@ -19,14 +19,14 @@ public class PurchaseControlOutlook extends AppToggleOutlook {
     //purchase menu
     GeneralToggleActionButton purchaseButton = new GeneralToggleActionButton(new PurchaseButtonTogglePanel());
     //Receiving menu
-    GeneralToggleActionButton receivingButton = new GeneralToggleActionButton(new ReceivingButtonTogglePanel());
+//    GeneralToggleActionButton receivingButton = new GeneralToggleActionButton(new ReceivingButtonTogglePanel());
     //vendor menu
     GeneralToggleActionButton vendorButton = new GeneralToggleActionButton(new VendorButtonTogglePanel());
 
     public PurchaseControlOutlook() {
         //each menus are added here
         addButton(purchaseOrderButton);
-        addButton(receivingButton);
+//        addButton(receivingButton);
         addButton(vendorButton);
         addButton(purchaseButton);
 
