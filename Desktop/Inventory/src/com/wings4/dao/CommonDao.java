@@ -274,11 +274,12 @@ public class CommonDao {
             JSONArray jsonArray = new JSONArray(allWareHouses);
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject warehouseObject = (JSONObject)jsonArray.get(i);
-                ExternalVendor externalVendor = new ExternalVendor();
                 Warehouse warehouse = new Warehouse();
                 warehouse.setId(Integer.parseInt(warehouseObject.get("id").toString()));
                 warehouse.setWareHouseName(warehouseObject.get("wareHouseName").toString());
-                warehouse.setOrganization(warehouseObject.get("organization").toString());
+
+                JSONObject organizationJsonObject = (JSONObject)warehouseObject.get("organization");
+                warehouse.setOrganization(organizationJsonObject.get("organizationName").toString());
 
                 warehouses.add(warehouse);
             }
