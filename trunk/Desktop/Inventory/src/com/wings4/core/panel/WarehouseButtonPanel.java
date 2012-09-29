@@ -27,7 +27,6 @@ public class WarehouseButtonPanel extends JPanel {
     private JScrollPane wareHouseListHolder;
     private JTable warehouseTable;
     private JButton createPurchaseOrderButton;
-    private JButton createSalesButton;
     private JToolBar warehouseToolbar;
 
     public WarehouseButtonPanel() {
@@ -49,18 +48,17 @@ public class WarehouseButtonPanel extends JPanel {
             warehouseToolbar = new JToolBar();
             //create a button for new purchase order add option
             createPurchaseOrderButton = new JButton();
-            createSalesButton = new JButton();
 
             //button
 
-            createPurchaseOrderButton.addActionListener(new JSecurityAction() {
-                @Override
-                public void execute(ActionEvent actionEvent) {
-                    GeneralToggleActionButton categoryButton = new GeneralToggleActionButton(new
-                            PurchaseOrderCreateTogglePanel());
-                    categoryButton.doClick();
-                }
-            });
+//            createPurchaseOrderButton.addActionListener(new JSecurityAction() {
+//                @Override
+//                public void execute(ActionEvent actionEvent) {
+//                    GeneralToggleActionButton categoryButton = new GeneralToggleActionButton(new
+//                            PurchaseOrderCreateTogglePanel());
+//                    categoryButton.doClick();
+//                }
+//            });
 
             createPurchaseOrderButton.setIcon(new ImageIcon(getClass().
                     getResource(InventoryConstants.resourceDirectory.
@@ -70,22 +68,7 @@ public class WarehouseButtonPanel extends JPanel {
             createPurchaseOrderButton.setVerticalTextPosition(SwingConstants.BOTTOM);
             warehouseToolbar.add(createPurchaseOrderButton);
 
-            createSalesButton.addActionListener(new JSecurityAction() {
-                @Override
-                public void execute(ActionEvent actionEvent) {
-                    GeneralToggleActionButton purchaseButton = new GeneralToggleActionButton(new
-                            PurchaseCreateTogglePanel());
-                    purchaseButton.doClick();
-                }
-            });
 
-            createSalesButton.setIcon(new ImageIcon(getClass().
-                    getResource(InventoryConstants.resourceDirectory.
-                            concat("list-add.png"))));
-            createSalesButton.setFocusable(true);
-            createSalesButton.setHorizontalTextPosition(SwingConstants.CENTER);
-            createSalesButton.setVerticalTextPosition(SwingConstants.BOTTOM);
-            warehouseToolbar.add(createSalesButton);
 
 
 
