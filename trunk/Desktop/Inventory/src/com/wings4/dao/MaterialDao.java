@@ -123,7 +123,7 @@ public class MaterialDao {
     public static List<ProductType> findAllProductTypes(){
         List<ProductType> productTypes = new ArrayList<ProductType>();
         try {
-            String allProductTypes = FindAllResourceFeed.restFeedInitialization("product?utilType=productType");
+            String allProductTypes = FindAllResourceFeed.restFeedInitialization("productUtil?utilType=productType");
             JSONArray jsonArray = new JSONArray(allProductTypes);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject productTypeObject = (JSONObject)jsonArray.get(i);
@@ -143,7 +143,7 @@ public class MaterialDao {
     public static List<ProductClassification> findAllProductClassifications(){
         List<ProductClassification> classifications = new ArrayList<ProductClassification>();
         try {
-            String allProductClassifications = FindAllResourceFeed.restFeedInitialization("product?utilType=classification");
+            String allProductClassifications = FindAllResourceFeed.restFeedInitialization("productUtil?utilType=classification");
             JSONArray jsonArray = new JSONArray(allProductClassifications);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject classificationObject = (JSONObject)jsonArray.get(i);
@@ -163,7 +163,7 @@ public class MaterialDao {
     public static List<UnitOfMeasure> findAllUnitOfMeasures(){
         List<UnitOfMeasure> uoms = new ArrayList<UnitOfMeasure>();
         try {
-            String allUnitOfMeasures = FindAllResourceFeed.restFeedInitialization("product?utilType=uom");
+            String allUnitOfMeasures = FindAllResourceFeed.restFeedInitialization("productUtil?utilType=uom");
             JSONArray jsonArray = new JSONArray(allUnitOfMeasures);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject uomObject = (JSONObject)jsonArray.get(i);
