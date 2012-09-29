@@ -63,7 +63,20 @@ class WarehouseResource {
 
     @GET
     Response readAll(){
-        ok warehouseResourceService.readAll();
+        List<Warehouse> warehouses = warehouseResourceService.readAll();
+        Map<String,Object> warehouseMap;
+        List<Map<String,Object>> allWarehouses = new ArrayList<Map<String,Object>>();
+        for (Warehouse warehouse: warehouses) {
+            warehouseMap = new HashMap<String,Object>();
+            warehouseMap.put("id", warehouse.id);
+            warehouseMap.put("wareHouseName", warehouse.wareHouseName);
+            warehouseMap.put("organization", warehouse.organization);
+//            purchaseOrderMap.put("parentCategory", category?.parentCategory?.categoryName);
+
+            allWarehouses.add(warehouseMap);
+        }
+        ok allWarehouses;
+
     }
 
     @PUT
