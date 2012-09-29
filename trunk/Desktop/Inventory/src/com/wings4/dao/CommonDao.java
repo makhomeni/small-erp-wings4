@@ -266,15 +266,15 @@ public class CommonDao {
         return externalVendors;
     }
 
-    public static List<Warehouse>  findAllWarehouses(){
+    public static List<WareHouse>  findAllWarehouses(){
 
-        List<Warehouse> warehouses = new ArrayList<Warehouse>();
+        List<WareHouse> warehouses = new ArrayList<WareHouse>();
         try{
             String allWareHouses= FindAllResourceFeed.restFeedInitialization("warehouse");
             JSONArray jsonArray = new JSONArray(allWareHouses);
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject warehouseObject = (JSONObject)jsonArray.get(i);
-                Warehouse warehouse = new Warehouse();
+                WareHouse warehouse = new WareHouse();
                 warehouse.setId(Integer.parseInt(warehouseObject.get("id").toString()));
                 warehouse.setWareHouseName(warehouseObject.get("wareHouseName").toString());
 
