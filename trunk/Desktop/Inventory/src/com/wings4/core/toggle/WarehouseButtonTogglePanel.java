@@ -1,6 +1,7 @@
 package com.wings4.core.toggle;
 
 import com.wings4.core.panel.DemoCheckBoxPanel;
+import com.wings4.core.panel.WarehouseButtonPanel;
 import com.wings4.util.IconFactory;
 import com.wings4.util.JEclipseTabbedPane;
 
@@ -22,8 +23,8 @@ public class WarehouseButtonTogglePanel extends AppTogglePanel {
     public void initialize()
     {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
-        toggleTabbedPane.addTab("CheckBox", IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(new DemoCheckBoxPanel()), "CheckBox");
+        toggleTabbedPane.addTab("Warehouse", IconFactory.getSwingIcon("component/button_16.png"),
+                new AppToggleTemplate(new WarehouseButtonPanel()), "Warehouse");
     }
 
     public String getToggleText()

@@ -266,6 +266,32 @@ public class CommonDao {
         return externalVendors;
     }
 
+    public static List<Warehouse>  findAllWarehouses(){
+
+        List<Warehouse> warehouses = new ArrayList<Warehouse>();
+        try{
+            String allWareHouses= FindAllResourceFeed.restFeedInitialization("warehouse");
+            JSONArray jsonArray = new JSONArray(allWareHouses);
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject warehouseObject = (JSONObject)jsonArray.get(i);
+                ExternalVendor externalVendor = new ExternalVendor();
+                Warehouse warehouse = new Warehouse();
+                warehouse.setId(Integer.parseInt(warehouseObject.get("id").toString()));
+                warehouse.setWareHouseName(warehouseObject.get("wareHouseName").toString());
+                warehouse.setOrganization(warehouseObject.get("organization").toString());
+
+                warehouses.add(warehouse);
+            }
+        } catch(JSONException jE){
+            jE.printStackTrace();
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+
+        return warehouses;
+    }
+
     public static boolean saveLocalVendor(LocalVendor localVendor){
         try{
             JSONObject jsonObject = new JSONObject(localVendor);
