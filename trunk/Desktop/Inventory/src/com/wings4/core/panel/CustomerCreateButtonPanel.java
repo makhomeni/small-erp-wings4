@@ -8,9 +8,11 @@ import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.dao.CommonDao;
 import com.wings4.dao.MaterialDao;
 import com.wings4.model.Category;
 import com.wings4.model.Customer;
+import com.wings4.model.Organization;
 import org.jdesktop.swingx.JXTextField;
 
 import javax.swing.*;
@@ -43,10 +45,10 @@ public class CustomerCreateButtonPanel  extends JPanel {
             builder.appendColumn("3dlu");
             builder.appendColumn("fill:max(pref; 10px)");
 
-            AnnotationResolver resolver = new AnnotationResolver( Customer.class);
-            final ObjectTableModel< Customer> tableModel = new ObjectTableModel< Customer>(
-                    resolver, "id,firstName,lastName,emailId,organization,mobileNumber,phoneNumber,address,contact,reference,billingAddress");
-//            tableModel.setData(MaterialDao.findAllCategories());
+            AnnotationResolver organizationResolver = new AnnotationResolver( Organization.class);
+            final ObjectTableModel<Organization> tableModelOrganization = new ObjectTableModel< Organization>(
+                    organizationResolver, "id,organizationName");
+            tableModelOrganization.setData(CommonDao.findAllOrganizations());
 
             final  JTextField firstNameText = new JXTextField();
             final  JTextField lastNameText = new JXTextField();
@@ -54,16 +56,17 @@ public class CustomerCreateButtonPanel  extends JPanel {
             final  JTextField mobileNumberText = new JXTextField();
             final  JTextField phoneNumberText = new JXTextField();
             final  JTextField addressText = new JXTextField();
+            final  JTextField billingAddressText = new JXTextField();
 
-            final TableComboBox organizationCombo = new TableComboBox(tableModel);
-            final TableComboBox contactPersonCombo = new TableComboBox(tableModel);
-            final TableComboBox referralCombo = new TableComboBox(tableModel);
-            final TableComboBox billingAddressCombo = new TableComboBox(tableModel);
+            final TableComboBox organizationCombo = new TableComboBox(tableModelOrganization);
+//            final TableComboBox contactPersonCombo = new TableComboBox(tableModel);
+//            final TableComboBox referralCombo = new TableComboBox(tableModel);
+//            final TableComboBox billingAddressCombo = new TableComboBox(tableModel);
 
-            final JTextField categoryNameText = new JTextField();
-            final TableComboBox parentCategory = new TableComboBox(tableModel);
-            JButton submitCategory = new JButton();
-            JButton cancelCategory = new JButton();
+//            final JTextField categoryNameText = new JTextField();
+//            final TableComboBox parentCategory = new TableComboBox(tableModel);
+            JButton submitCustomer = new JButton();
+            JButton cancelCustomer = new JButton();
 
 
             builder.append("First Name:", firstNameText);
@@ -84,38 +87,37 @@ public class CustomerCreateButtonPanel  extends JPanel {
             builder.append("Address:", addressText);
             builder.nextLine();
 
+            builder.append(" Billing Address :",billingAddressText);
+            builder.nextLine();
+
             builder.append("Organization:", organizationCombo);
             builder.nextLine();
+//
 
-            builder.append("Contact Person:", contactPersonCombo);
-            builder.nextLine();
 
-            builder.append("Referral :", referralCombo);
-            builder.nextLine();
+            submitCustomer.setText("Submit");
+            cancelCustomer.setText("Cancel");
 
-            builder.append("Billing Address:", billingAddressCombo);
-            builder.nextLine();
-
-            submitCategory.setText("Submit");
-            cancelCategory.setText("Cancel");
-
-            builder.append(submitCategory);
-            builder.append(cancelCategory);
+            builder.append(submitCustomer);
+            builder.append(cancelCustomer);
 
             add(builder.getPanel());
 
-            submitCategory.addActionListener(new JSecurityAction() {
+            submitCustomer.addActionListener(new JSecurityAction() {
                 @Override
                 public void execute(ActionEvent actionEvent) {
-                    Category category = new Category();
-                    category.setCategoryName(categoryNameText.getText());
-                    try {
-                        category.setParentCategory(parentCategory.getSelectedItem().toString());
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
 
-                    if(MaterialDao.saveCategory(category))
+                    Customer customer = new Customer();
+                    customer.setFirstName(firstNameText.getText());
+                    customer.setLastName(lastNameText.getText());
+                    customer.setEmailId(emailIdText.getText());
+                    customer.setOrganization(organizationCombo.getSelectedItem().toString());
+                    customer.setMobileNumber(mobileNumberText.getText());
+                    customer.setPhoneNumber(phoneNumberText.getText());
+                    customer.setAddress(addressText.getText());
+                    customer.setBillingAddress(billingAddressText.getText());
+
+                    if(CommonDao.saveCustomer(customer))
                         JideOptionPane.showMessageDialog(null, "Category Saved Successfully", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
                     else
