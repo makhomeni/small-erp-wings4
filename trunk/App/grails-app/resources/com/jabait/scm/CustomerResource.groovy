@@ -12,6 +12,9 @@ import javax.ws.rs.core.Response
 import org.grails.jaxrs.provider.DomainObjectNotFoundException
 import javax.ws.rs.Path
 import javax.ws.rs.PathParam
+import javax.ws.rs.POST
+import org.json.JSONObject
+import com.jabait.hrm.Organization
 
 @Path('/api/customer')
 class CustomerResource {
@@ -35,6 +38,22 @@ class CustomerResource {
     Response update(Customer dto) {
         dto.id = id
         ok customerResourceService.update(dto)
+    }
+    @POST
+    Response createCustomer(String JsonCustomer){
+        JSONObject jsonObject = new JSONObject(JsonCustomer);
+        Customer customer = new Customer();
+        customer.firstName = jsonObject.get("firstName").toString();
+        customer.lastName = jsonObject.get("lastName").toString();
+        customer.emailId = jsonObject.get("emailId");
+        Organization organization = Organization.get(Integer.parseInt(jsonObject.get("organization").toString()));
+        customer.organization = organization;
+        customer.mobileNumber = jsonObject.get("mobileNumber").toString();
+        customer.phoneNumber = jsonObject.get("phoneNumber").toString();
+        customer.address = jsonObject.get("address").toString();
+        customer.billingAddress = jsonObject.get("billingAddress").toString();
+
+        ok customer.save(flush: true);
     }
     
     @DELETE
