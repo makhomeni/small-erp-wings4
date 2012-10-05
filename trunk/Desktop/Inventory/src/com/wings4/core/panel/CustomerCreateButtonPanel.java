@@ -57,8 +57,10 @@ public class CustomerCreateButtonPanel  extends JPanel {
             final  JTextField phoneNumberText = new JXTextField();
             final  JTextField addressText = new JXTextField();
             final  JTextField billingAddressText = new JXTextField();
+            
+            final JTextField organizationText = new JXTextField();
 
-            final TableComboBox organizationCombo = new TableComboBox(tableModelOrganization);
+//            final TableComboBox organizationCombo = new TableComboBox(tableModelOrganization);
 //            final TableComboBox contactPersonCombo = new TableComboBox(tableModel);
 //            final TableComboBox referralCombo = new TableComboBox(tableModel);
 //            final TableComboBox billingAddressCombo = new TableComboBox(tableModel);
@@ -87,10 +89,10 @@ public class CustomerCreateButtonPanel  extends JPanel {
             builder.append("Address:", addressText);
             builder.nextLine();
 
-            builder.append(" Billing Address :",billingAddressText);
+            builder.append(" Billing Address :", billingAddressText);
             builder.nextLine();
 
-            builder.append("Organization:", organizationCombo);
+            builder.append("Organization:", organizationText);
             builder.nextLine();
 //
 
@@ -111,7 +113,7 @@ public class CustomerCreateButtonPanel  extends JPanel {
                     customer.setFirstName(firstNameText.getText());
                     customer.setLastName(lastNameText.getText());
                     customer.setEmailId(emailIdText.getText());
-                    customer.setOrganization(organizationCombo.getSelectedItem().toString());
+                    customer.setOrganization(organizationText.getText());
                     customer.setMobileNumber(mobileNumberText.getText());
                     customer.setPhoneNumber(phoneNumberText.getText());
                     customer.setAddress(addressText.getText());

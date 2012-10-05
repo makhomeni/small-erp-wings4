@@ -244,7 +244,7 @@ public class Login extends InventoryBase {
         final AppSplashWindow splashWindow = new AppSplashWindow();
         splashWindow.setVisible(true);
 
-        com.jidesoft.utils.Lm.verifyLicense("Wings4", "Inventory", "1234567891012");
+        com.jidesoft.utils.Lm.verifyLicense("REST", "Stock", "0123456789101");
 
         try{
             Thread.sleep(1000);
