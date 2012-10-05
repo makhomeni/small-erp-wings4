@@ -156,6 +156,9 @@ public class CommonDao {
                 System.out.println(" product id = "+productObject.get("id").toString());
                 product.setProductId(Integer.parseInt(productObject.get("id").toString()));
                 product.setProductName(productObject.get("productName").toString());
+                product.setStockKeepingUnit(productObject.get("stockKeepingUnit").toString());
+                product.setUniversalProductCode(productObject.get("universalProductCode").toString());
+                product.setProductCategory(productObject.get("productCategory").toString());
 
                 products.add(product);
             }
@@ -168,7 +171,7 @@ public class CommonDao {
     }
 
     public static List<Customer>  findAllCustomers(){
-
+        System.out.println("Here");
         List<Customer> customers = new ArrayList<Customer>();
         try{
             String allCustomers = FindAllResourceFeed.restFeedInitialization("customer");
@@ -179,7 +182,8 @@ public class CommonDao {
                 Customer customer = new Customer();
                 System.out.println(" product id = "+customerObject.get("id").toString());
                 customer.setId(Integer.parseInt(customerObject.get("id").toString()));
-                customer.setName(customerObject.get("firstName").toString() + "" + customerObject.get("lastName").toString());
+                customer.setFirstName(customerObject.get("firstName").toString());
+                customer.setFirstName(customerObject.get("lastName").toString());
                 customers.add(customer);
             }
         }catch(JSONException jE){
@@ -198,7 +202,20 @@ public class CommonDao {
             for(int i = 0;i<jsonArray.length();i++){
                 JSONObject salesOrderObject = (JSONObject)jsonArray.get(i);
                 SalesOrder salesOrder = new  SalesOrder();
-//                salesOrder.setJobName();
+                salesOrder.setId(Integer.parseInt(salesOrderObject.get("id").toString()));
+                salesOrder.setJobName(salesOrderObject.get("jobName").toString());
+                salesOrder.setOrderQuantity(salesOrderObject.get("orderQuantity").toString());
+                salesOrder.setCreatedDate(salesOrderObject.get("createdDate").toString());
+//                salesOrder.setCreatedBy(salesOrderObject.get("createdBy").toString());
+                salesOrder.setStatus(salesOrderObject.get("status").toString());
+                salesOrder.setPriority(salesOrderObject.get("priority").toString());
+                salesOrder.setSent(salesOrderObject.get("isSent").toString());
+//                salesOrder.setDeliveryTerm(salesOrderObject.get("deliveryTerm").toString());
+                salesOrder.setDueDate(salesOrderObject.get("dueDate").toString());
+                salesOrder.setArchived(salesOrderObject.get("isArchived").toString());
+
+                salesOrders.add(salesOrder);
+
             }
 
         }catch(JSONException jE){
@@ -265,7 +282,28 @@ public class CommonDao {
 
         return externalVendors;
     }
+    public static boolean saveCustomer(Customer customer){
+        try{
+            JSONObject jsonObject = new JSONObject(customer);
+            POSTResourceFeed.post("customer", jsonObject);
+            return true;
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
 
+    public static  boolean  saveProduct(Product product){
+        try{
+            JSONObject jsonObject = new JSONObject(product);
+            POSTResourceFeed.post("product",jsonObject);
+            return true;
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
     public static List<WareHouse>  findAllWarehouses(){
 
         List<WareHouse> warehouses = new ArrayList<WareHouse>();
