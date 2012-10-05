@@ -158,6 +158,10 @@ class SalesOrderResource {
     Response read(@PathParam("id") Long id) {
         ok salesOrderResourceService.read(id)
     }
+    @GET
+    Response readAll(){
+        ok salesOrderResourceService.readAll();
+    }
 
     @PUT
     Response update(SalesOrder dto) {
