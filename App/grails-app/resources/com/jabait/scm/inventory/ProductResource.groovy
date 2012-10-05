@@ -48,11 +48,12 @@ class ProductResource {
         productCreate.taxable = true;
         productCreate.active = true;
         if (productCreate.save()) {
-            println "saved successfully";
+            created true;
         } else {
             productCreate.errors.each {
                 println it;
             }
+            created false;
         }
     }
 
