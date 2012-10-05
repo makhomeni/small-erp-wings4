@@ -28,20 +28,32 @@ class ProductResource {
     @Consumes(["application/json"])
     @Produces(["application/json"])
     Response createProduct(String product){
-        JSONObject productSave = new JSONObject(product);
-        Product productObject = new Product();
-        productObject.productName = productSave.get("productName");
-        productObject.productCategory = Category.get(Integer.parseInt(productSave.get("productName").toString()));
-        productObject.stockKeepingUnit = productSave.get("stockKeepingUnit");
-        productObject.unitOfMeasure = UnitOfMeasure.get(Integer.parseInt(
-                productSave.get("unitOfMeasure").toString()));
-        productObject.productType = ProductType.get(Integer.parseInt(productSave.get("productName").toString()));
-        productObject.universalProductCode = productSave.get("universalProductCode");
-        productObject.licenseInfo = productSave.get("licenseInfo");
-        productObject.classification = ProductClassification.get(Integer.parseInt(
-                productSave.get("universalProductCode").toString()));
+        JSONObject jsonObject = new JSONObject(product);
+        Product productCreate = new Product();
+//        DeliveryTerm.get(Integer.parseInt(jsonObject.get("deliveryTerm").toString()));
+        Category category = Category.get(Integer.parseInt(jsonObject.get("productCategory").toString()));
+        ProductType productType = ProductType.get(Integer.parseInt(jsonObject.get("productType").toString()));
+        ProductClassification productClassification = ProductClassification.get(Integer.parseInt(jsonObject.get("productClassification").toString()));
 
-        ok inventoryService.save(productObject);
+        productCreate.stockKeepingUnit = jsonObject.get("stockKeepingUnit").toString();
+        productCreate.universalProductCode = jsonObject.get("universalProductCode").toString();
+        productCreate.productCategory = category;
+        productCreate.productName = jsonObject.get("productName").toString()
+        productCreate.unitOfMeasure = jsonObject.get("unitOfMeasure").toString();
+        productCreate.productType = productType;
+        productCreate.licenseInfo = jsonObject.get("licenseInfo").toString();
+        productCreate.classification = productClassification;
+        productCreate.alertNotes = "no";
+        productCreate.productDetails = "product details";
+        productCreate.taxable = true;
+        productCreate.active = true;
+        if (productCreate.save()) {
+            println "saved successfully";
+        } else {
+            productCreate.errors.each {
+                println it;
+            }
+        }
     }
 
     @GET
