@@ -32,6 +32,21 @@ public class Product {
     @Resolvable(colName = "ProductCreate Details")
     private String productDetails;
 
+    @Resolvable(colName = "Product Type")
+    private String productType;
+
+
+    @Resolvable(colName = "License Info")
+    private String licenseInfo;
+
+    @Resolvable(colName = "Unit of Measure")
+    private String unitOfMeasure;
+
+
+
+
+
+
     public Product() {}
 
     public Product(Integer productId, String productName, String stockKeepingUnit, String universalProductCode,
@@ -51,6 +66,30 @@ public class Product {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public String getLicenseInfo() {
+        return licenseInfo;
+    }
+
+    public void setLicenseInfo(String licenseInfo) {
+        this.licenseInfo = licenseInfo;
+    }
+
+    public String getUnitOfMeasure() {
+        return unitOfMeasure;
+    }
+
+    public void setUnitOfMeasure(String unitOfMeasure) {
+        this.unitOfMeasure = unitOfMeasure;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
 
     public String getProductName() {

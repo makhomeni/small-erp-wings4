@@ -20,8 +20,6 @@ public class Customer {
     @Resolvable(colName = "Last Name")
     private String lastName;
 
-    @Resolvable(colName = "Name")
-    private String name;
 
     @Resolvable(colName = "Email Id")
     private String emailId;
@@ -37,12 +35,6 @@ public class Customer {
 
     @Resolvable(colName = "Address")
     private String address;
-
-    @Resolvable(colName = "Contact")
-    private String contact;
-
-    @Resolvable(colName = "Reference")
-    private String reference;
 
     @Resolvable(colName = "Billing Address")
     private String billingAddress;
@@ -112,21 +104,6 @@ public class Customer {
         this.address = address;
     }
 
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
 
     public String getBillingAddress() {
         return billingAddress;
@@ -136,11 +113,5 @@ public class Customer {
         this.billingAddress = billingAddress;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }
