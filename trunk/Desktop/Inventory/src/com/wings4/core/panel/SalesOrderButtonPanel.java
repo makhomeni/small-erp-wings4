@@ -6,6 +6,7 @@ import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.*;
+import com.wings4.dao.CommonDao;
 import com.wings4.model.SalesOrder;
 import com.wings4.util.IconFactory;
 
@@ -92,9 +93,9 @@ public class SalesOrderButtonPanel extends JPanel {
 
             AnnotationResolver resolver = new AnnotationResolver(SalesOrder.class);
             final ObjectTableModel<SalesOrder> tableModel = new ObjectTableModel<SalesOrder>(
-                    resolver, "id,jobName,orderQuantity,createdDate,createdBy,status,priority,isSent,deliveryTerm,dueDate,isArchived");
+                    resolver, "id,jobName,orderQuantity,createdDate,status,priority,isSent,dueDate,isArchived");
 
-            tableModel.setData(getData());
+            tableModel.setData(CommonDao.findAllSalesOrder());
             salesOrderTable.setModel(tableModel);
 
             salesOrderListHolder.setViewportView(salesOrderTable);

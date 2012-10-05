@@ -56,7 +56,7 @@ public class SalesOrderCreatePanel  extends JPanel {
                     deliveryTermResolver, "id,terms");
 
             final ObjectTableModel<Customer> tableModelCustomer = new ObjectTableModel< Customer>(
-                    customerResolver, "id,firstName,lastName,emailId,organization,mobileNumber,phoneNumber,address,contact,reference,billingAddress");
+                    customerResolver, "id,firstName");
 
             final ObjectTableModel<ShippingMethod> tableModelShippingMethod = new ObjectTableModel< ShippingMethod>(
                     shippingMethodResolver, "id,shippingMethod");
@@ -154,10 +154,10 @@ public class SalesOrderCreatePanel  extends JPanel {
 //                    salesOrder.set
 
                     if (JobDao.saveSalesOrder(salesOrder))
-                        JideOptionPane.showMessageDialog(null, "Category Saved Successfully", "Success",
+                        JideOptionPane.showMessageDialog(null, "Sales Order Saved Successfully", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
                     else
-                        JideOptionPane.showMessageDialog(null, "Category Saved Failed", "Failed",
+                        JideOptionPane.showMessageDialog(null, "Sales Order Saved Failed", "Failed",
                                 JOptionPane.ERROR_MESSAGE);
                 }
             });
