@@ -7,6 +7,7 @@ import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.GeneralToggleActionButton;
 import com.wings4.core.toggle.ProductCreateTogglePanel;
+import com.wings4.dao.CommonDao;
 import com.wings4.model.Product;
 import com.wings4.util.InventoryConstants;
 
@@ -80,10 +81,9 @@ public class ProductButtonPanel extends JPanel {
 
             AnnotationResolver resolver = new AnnotationResolver(Product.class);
             final ObjectTableModel<Product> tableModel = new ObjectTableModel<Product>(
-                    resolver, "productId,productName,stockKeepingUnit,universalProductCode," +
-                    "productClassification,productCategory");
+                    resolver, "productId,productName,stockKeepingUnit,universalProductCode,productCategory");
 
-            tableModel.setData(getData());
+            tableModel.setData(CommonDao.findAllProducts());
             productTable.setModel(tableModel);
 
             productScrollPane.setViewportView(productTable);

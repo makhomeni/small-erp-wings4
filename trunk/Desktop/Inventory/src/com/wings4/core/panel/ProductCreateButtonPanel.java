@@ -3,16 +3,18 @@ package com.wings4.core.panel;
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jidesoft.combobox.TableComboBox;
+import com.jidesoft.dialog.JideOptionPane;
+import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.dao.CommonDao;
+import com.wings4.dao.JobDao;
 import com.wings4.dao.MaterialDao;
-import com.wings4.model.Category;
-import com.wings4.model.ProductClassification;
-import com.wings4.model.ProductType;
-import com.wings4.model.UnitOfMeasure;
+import com.wings4.model.*;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,14 +73,14 @@ public class ProductCreateButtonPanel extends JPanel {
 
 
 
-            JTextField productNameText = new JTextField();
-            TableComboBox productType = new TableComboBox(productTypeTableModel);
-            TableComboBox category = new TableComboBox(categoryTableModel);
-            TableComboBox productClassification = new TableComboBox(classificationTableModel);
-            TableComboBox unitOfMeasure = new TableComboBox(uomTableModel);
-            JTextField licenseInfoText = new JTextField();
-            JTextField stockKeepingUnitText = new JTextField();
-            JTextField universalProductCodeText = new JTextField();
+            final JTextField productNameText = new JTextField();
+            final TableComboBox productType = new TableComboBox(productTypeTableModel);
+            final TableComboBox category = new TableComboBox(categoryTableModel);
+            final TableComboBox productClassification = new TableComboBox(classificationTableModel);
+            final TableComboBox unitOfMeasure = new TableComboBox(uomTableModel);
+            final JTextField licenseInfoText = new JTextField();
+            final JTextField stockKeepingUnitText = new JTextField();
+            final JTextField universalProductCodeText = new JTextField();
             JButton submitCategory = new JButton();
             JButton cancelCategory = new JButton();
 
@@ -113,6 +115,28 @@ public class ProductCreateButtonPanel extends JPanel {
             builder.append(cancelCategory);
 
             add(builder.getPanel());
+            submitCategory.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+
+                    Product product = new Product();
+                    product.setProductName(productNameText.getText());
+                    product.setProductCategory(category.getSelectedItem().toString());
+                    product.setProductType(productType.getSelectedItem().toString());
+                    product.setProductClassification(productClassification.getSelectedItem().toString());
+                    product.setStockKeepingUnit(stockKeepingUnitText.getText());
+                    product.setUniversalProductCode(universalProductCodeText.getText());
+                    product.setUnitOfMeasure(unitOfMeasure.getSelectedItem().toString());
+                    product.setLicenseInfo(licenseInfoText.getText());
+
+                    if (CommonDao.saveProduct(product))
+                        JideOptionPane.showMessageDialog(null, "Product Saved Successfully", "Success",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    else
+                        JideOptionPane.showMessageDialog(null, "Product Saved Failed", "Failed",
+                                JOptionPane.ERROR_MESSAGE);
+                }
+            });
         }
     }
 
