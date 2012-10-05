@@ -64,12 +64,6 @@ public class SalesOrder {
     private String product;
 
 
-
-
-
-
-
-
     @Resolvable(colName = "Is Archived")
     private String isArchived;
 
