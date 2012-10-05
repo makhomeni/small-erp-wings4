@@ -46,8 +46,7 @@ class CustomerResource {
         customer.firstName = jsonObject.get("firstName").toString();
         customer.lastName = jsonObject.get("lastName").toString();
         customer.emailId = jsonObject.get("emailId");
-        Organization organization = Organization.get(Integer.parseInt(jsonObject.get("organization").toString()));
-        customer.organization = organization;
+        customer.organizationName = organization;
         customer.mobileNumber = jsonObject.get("mobileNumber").toString();
         customer.phoneNumber = jsonObject.get("phoneNumber").toString();
         customer.address = jsonObject.get("address").toString();

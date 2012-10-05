@@ -15,7 +15,7 @@ class Customer {
     String firstName;
     String lastName;                        
     String emailId;
-    Organization organization;
+    String organizationName;
     String mobileNumber;
     String phoneNumber;
     String address;
