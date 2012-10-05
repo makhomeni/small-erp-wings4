@@ -54,7 +54,7 @@ public class SalesCreatePanel   extends JPanel {
 
 
             final ObjectTableModel<Customer> tableModelCustomer = new ObjectTableModel< Customer>(
-                    customerResolver, "id,firstName,lastName,emailId,organization,mobileNumber,phoneNumber,address,contact,reference,billingAddress");
+                    customerResolver, "id,firstName");
 
             final ObjectTableModel<Product> tableModelProduct = new ObjectTableModel<Product>(
                     productResolver, "productId,productName");
@@ -114,10 +114,10 @@ public class SalesCreatePanel   extends JPanel {
                     sales.setPrice(Double.parseDouble(priceText.getText()));
                     sales.setQuantity(Integer.parseInt(quantityText.getText()));
                     if (JobDao.saveSales(sales)) {
-                        JideOptionPane.showMessageDialog(null, "Purchase Order Saved Successfully", "Success",
+                        JideOptionPane.showMessageDialog(null, "Sales Saved Successfully", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        JideOptionPane.showMessageDialog(null, "Purchase Order Saved Failed", "Failed",
+                        JideOptionPane.showMessageDialog(null, "Sales Saved Failed", "Failed",
                                 JOptionPane.ERROR_MESSAGE);
                     }
 

@@ -8,7 +8,7 @@ import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.GeneralToggleActionButton;
 import com.wings4.core.toggle.PurchaseCreateTogglePanel;
 import com.wings4.dao.CommonDao;
-import com.wings4.model.Warehouse;
+import com.wings4.model.WareHouse;
 import com.wings4.util.InventoryConstants;
 
 import javax.swing.*;
@@ -77,8 +77,8 @@ public class WarehouseButtonPanel extends JPanel {
 
 
             //set the resolver to get the fields
-            AnnotationResolver resolver = new AnnotationResolver(Warehouse.class);
-            final ObjectTableModel<Warehouse> tableModel = new ObjectTableModel<Warehouse>(
+            AnnotationResolver resolver = new AnnotationResolver(WareHouse.class);
+            final ObjectTableModel<WareHouse> tableModel = new ObjectTableModel<WareHouse>(
                     resolver, "id,organization,wareHouseName");
 
             tableModel.setData(CommonDao.findAllWarehouses());
