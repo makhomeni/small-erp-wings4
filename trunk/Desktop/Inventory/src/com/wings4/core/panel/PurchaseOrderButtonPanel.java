@@ -12,7 +12,9 @@ import com.wings4.core.toggle.PurchaseCreateTogglePanel;
 import com.wings4.dao.CommonDao;
 import com.wings4.dao.JobDao;
 import com.wings4.model.PurchaseOrder;
+import com.wings4.util.IconFactory;
 import com.wings4.util.InventoryConstants;
+import com.wings4.util.PrintUtilities;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,6 +37,7 @@ public class PurchaseOrderButtonPanel extends JPanel {
     private JButton createSalesButton;
     private BreadcrumbBar breadCrumbBar;
     private JToolBar purchaseOrderToolbar;
+    private JButton reportSalesOrderButton;
 
     public PurchaseOrderButtonPanel() {
         setLayout(new FiledLayout(FiledLayout.COLUMN, FiledLayout.FULL, 0));
@@ -56,6 +59,7 @@ public class PurchaseOrderButtonPanel extends JPanel {
             //create a button for new purchase order add option
             createPurchaseOrderButton = new JButton();
             createSalesButton = new JButton();
+            reportSalesOrderButton = new JButton();
 
             //button
 
@@ -76,6 +80,17 @@ public class PurchaseOrderButtonPanel extends JPanel {
             createPurchaseOrderButton.setVerticalTextPosition(SwingConstants.BOTTOM);
             purchaseOrderToolbar.add(createPurchaseOrderButton);
 
+            reportSalesOrderButton.setIcon(IconFactory.getSwingIcon("document-print.png"));
+            reportSalesOrderButton.setFocusable(false);
+            reportSalesOrderButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            reportSalesOrderButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            reportSalesOrderButton.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    PrintUtilities.printComponent(purchaseOrderListHolder);
+                }
+            });
+
             createSalesButton.addActionListener(new JSecurityAction() {
                 @Override
                 public void execute(ActionEvent actionEvent) {
@@ -91,6 +106,18 @@ public class PurchaseOrderButtonPanel extends JPanel {
             createSalesButton.setFocusable(true);
             createSalesButton.setHorizontalTextPosition(SwingConstants.CENTER);
             createSalesButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+
+
+            reportSalesOrderButton.setIcon(IconFactory.getSwingIcon("document-print.png"));
+            reportSalesOrderButton.setFocusable(false);
+            reportSalesOrderButton.setHorizontalTextPosition(SwingConstants.CENTER);
+            reportSalesOrderButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            reportSalesOrderButton.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    PrintUtilities.printComponent(purchaseOrderListHolder);
+                }
+            });
             purchaseOrderToolbar.add(createSalesButton);
 
 

@@ -10,6 +10,7 @@ import com.wings4.core.toggle.ProductCreateTogglePanel;
 import com.wings4.dao.CommonDao;
 import com.wings4.model.Product;
 import com.wings4.util.InventoryConstants;
+import com.wings4.util.PrintUtilities;
 
 import javax.swing.*;
 import java.awt.*;
@@ -75,6 +76,12 @@ public class ProductButtonPanel extends JPanel {
             reportProductButton.setFocusable(false);
             reportProductButton.setHorizontalTextPosition(SwingConstants.CENTER);
             reportProductButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            reportProductButton.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    PrintUtilities.printComponent(productScrollPane);
+                }
+            });
             productToolBar.add(reportProductButton);
 
 

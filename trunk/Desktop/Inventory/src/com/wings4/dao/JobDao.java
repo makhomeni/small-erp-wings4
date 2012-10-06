@@ -38,7 +38,7 @@ public class JobDao {
 
     public static  boolean saveSales(Sales sales){
        try{
-           JSONObject jsonObject =new JSONObject(sales);
+           JSONObject jsonObject = new JSONObject(sales);
            POSTResourceFeed.post("sales",jsonObject);
            return true;
 

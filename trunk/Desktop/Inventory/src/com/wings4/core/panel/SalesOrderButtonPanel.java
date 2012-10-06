@@ -9,6 +9,8 @@ import com.wings4.core.toggle.*;
 import com.wings4.dao.CommonDao;
 import com.wings4.model.SalesOrder;
 import com.wings4.util.IconFactory;
+import com.wings4.util.InventoryConstants;
+import com.wings4.util.PrintUtilities;
 
 import javax.swing.*;
 import java.awt.*;
@@ -82,6 +84,12 @@ public class SalesOrderButtonPanel extends JPanel {
             reportSalesOrderButton.setFocusable(false);
             reportSalesOrderButton.setHorizontalTextPosition(SwingConstants.CENTER);
             reportSalesOrderButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+            reportSalesOrderButton.addActionListener(new JSecurityAction() {
+                @Override
+                public void execute(ActionEvent actionEvent) {
+                    PrintUtilities.printComponent(salesOrderListHolder);
+                }
+            });
             salesOrderToolBar.add(reportSalesOrderButton);
 
             salesOrderCreate.setFocusable(false);

@@ -43,87 +43,89 @@ public class SalesCreatePanel   extends JPanel {
             builder.appendColumn("fill:max(pref; 10px)");
 
 
+            AnnotationResolver vendorResolver = new AnnotationResolver(Vendor.class);
+            AnnotationResolver productResolver = new AnnotationResolver(PurchaseOrder.class);
 
 
-            AnnotationResolver customerResolver = new AnnotationResolver( Customer.class);
-            AnnotationResolver productResolver = new AnnotationResolver(Product.class);
+            final ObjectTableModel<Vendor> tableModelVendor = new ObjectTableModel<Vendor>(
+                    vendorResolver, "id,firstName");
+
+            final ObjectTableModel<PurchaseOrder> tableModelPurchaseOrder = new ObjectTableModel<PurchaseOrder>(
+                    productResolver, "id,jobName");
 
 
-
-
-
-
-            final ObjectTableModel<Customer> tableModelCustomer = new ObjectTableModel< Customer>(
-                    customerResolver, "id,firstName");
-
-            final ObjectTableModel<Product> tableModelProduct = new ObjectTableModel<Product>(
-                    productResolver, "productId,productName");
-
-
-
-            tableModelCustomer.setData(CommonDao.findAllCustomers());
-            tableModelProduct.setData(CommonDao.findAllProducts());
-            //tableModel.setData(MaterialDao.findAllCategories());
+            tableModelVendor.setData(CommonDao.findAllVendors());
+            tableModelPurchaseOrder.setData(JobDao.findAllPurchaseOrders());
 
 
 
-            final JTextField priceText = new JTextField();
-            final JTextField quantityText = new JTextField();
-            final JTextField salesOrderText = new JTextField();
+            final TableComboBox vendorCombo = new TableComboBox(tableModelVendor);
+            final TableComboBox purchaseOrderCombo = new TableComboBox(tableModelPurchaseOrder);
 
-
-
-            final TableComboBox productCombo = new TableComboBox(tableModelProduct);
-            final TableComboBox customerCombo = new TableComboBox(tableModelCustomer);
+            final JTextField priceTextField = new JTextField();
+            final JTextField quantity = new JTextField();
+            String[] purchaseTypeValue = {"A", "B", "C"};
+            final JComboBox purchaseTypeCombo = new JComboBox(purchaseTypeValue);
 
 
 
 
-            JButton submitSales = new JButton();
-            JButton cancelSales = new JButton();
 
-            builder.append("Customer:",customerCombo);
+            JButton submitPurchase = new JButton();
+            JButton cancelPurchase = new JButton();
+
+
+            builder.append("Vendor:", vendorCombo);
             builder.nextLine();
-            builder.append("Product :",productCombo);
+
+            builder.append("Purchase Order:", purchaseOrderCombo);
             builder.nextLine();
-            builder.append("Price :", priceText);
+
+            builder.append("Price:", priceTextField);
             builder.nextLine();
-            builder.append("Quantity :",quantityText);
+
+            builder.append("Quantity:", quantity);
             builder.nextLine();
-            builder.append("Sales :",salesOrderText);
+
+            builder.append("Purchase Type:", purchaseTypeCombo);
             builder.nextLine();
 
 
+            submitPurchase.setText("Submit");
+            cancelPurchase .setText("Cancel");
 
-
-            submitSales.setText("Submit");
-            cancelSales.setText("Cancel");
-
-            builder.append(submitSales);
-            builder.append(cancelSales);
-
+            builder.append(submitPurchase);
+            builder.append(cancelPurchase );
 
             add(builder.getPanel());
 
-            submitSales.addActionListener(new JSecurityAction() {
+            submitPurchase.addActionListener(new JSecurityAction() {
                 @Override
                 public void execute(ActionEvent actionEvent) {
+
+
                     Sales sales = new Sales();
-                    sales.setCustomerName(customerCombo.getSelectedItem().toString());
-                    sales.setProductName(productCombo.getSelectedItem().toString());
-                    sales.setPrice(Double.parseDouble(priceText.getText()));
-                    sales.setQuantity(Integer.parseInt(quantityText.getText()));
+
+                    sales.setCustomerName(vendorCombo.getSelectedItem().toString());
+                    sales.setSalesOrder(purchaseOrderCombo.getSelectedItem().toString());
+                    sales.setPrice(Double.parseDouble(priceTextField.getText()));
+                    sales.setQuantity(Integer.parseInt(quantity.getText()));
+                    sales.setSalesType(purchaseTypeCombo.getSelectedItem().toString());
+
+
+//                    purchaseOrder.setVendorId(vendorCombo.getSelectedItem().toString());
+
+
                     if (JobDao.saveSales(sales)) {
                         JideOptionPane.showMessageDialog(null, "Sales Saved Successfully", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        JideOptionPane.showMessageDialog(null, "Sales Saved Failed", "Failed",
+                        JideOptionPane.showMessageDialog(null, "Sales Save Failed", "Failure",
                                 JOptionPane.ERROR_MESSAGE);
                     }
 
                 }
             });
-
         }
     }
 
