@@ -45,8 +45,8 @@ class CustomerResource {
         Customer customer = new Customer();
         customer.firstName = jsonObject.get("firstName").toString();
         customer.lastName = jsonObject.get("lastName").toString();
-        customer.emailId = jsonObject.get("emailId");
-        customer.organizationName = organization;
+        customer.emailId = jsonObject.get("emailId").toString();
+        customer.organizationName = jsonObject.get("organization").toString();
         customer.mobileNumber = jsonObject.get("mobileNumber").toString();
         customer.phoneNumber = jsonObject.get("phoneNumber").toString();
         customer.address = jsonObject.get("address").toString();
