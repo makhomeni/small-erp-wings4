@@ -14,6 +14,8 @@ import javax.ws.rs.Path
 import javax.ws.rs.PathParam
 import javax.ws.rs.POST
 import org.json.JSONObject
+import com.jabait.scm.inventory.InventoryRegister
+import com.jabait.scm.inventory.Product
 
 @Path('/api/purchase')
 class PurchaseResource {
@@ -44,7 +46,7 @@ class PurchaseResource {
     }
 
     @POST
-    Response createSales(String purchaseJson){
+    Response createPurchase(String purchaseJson){
 
         JSONObject jsonObject = new JSONObject(purchaseJson);
         Purchase purchase = new Purchase();
@@ -55,21 +57,47 @@ class PurchaseResource {
         purchase.purchaseType = jsonObject.get("purchaseType").toString();
         purchase.purchaseDate = new Date();
 
+        Product product = purchase.purchaseOrder.product;
+
+        InventoryRegister inventoryRegister1 = InventoryRegister.findByProduct(product);
+
+        if(inventoryRegister1){
+            println "got inventory";
+            InventoryRegister inventoryRegisterUpdate = InventoryRegister.get(inventoryRegister1.id);
+//            inventoryRegister1.onHand = inventoryRegister1.onHand + orderQuantity;
+            def newValue = inventoryRegister1.onPurchaseOrder + purchase.purchaseOrder.orderQuantity;
+            inventoryRegisterUpdate.onPurchaseOrder = newValue;
+            if (inventoryRegisterUpdate.save(flush: true)) {
+                println "updated";
+            } else {
+                println "not saved inventory";
+            }
+        }else{
+            InventoryRegister inventoryRegister = new InventoryRegister();
+            inventoryRegister.product =  product;
+            inventoryRegister.onHand += purchase.purchaseOrder.orderQuantity;
+            inventoryRegister.onPurchaseOrder = purchase.purchaseOrder.orderQuantity;
+            if (inventoryRegister.save()) {
+                println "saved successfully";
+            } else {
+                inventoryRegister.errors.each {
+                    println it;
+                }
+            }
+        }
+
+
         if(purchase.save()){
             println "saved";
-            created true;    
+            ok purchase;
         }else{
             
             println "not saved";
             purchase.errors.each {
                 println it;
             }
-            created false;
+            ok purchase;
         }
-        
-        
-
-
     }
 
 }

@@ -14,7 +14,7 @@ import javax.ws.rs.Path
 import javax.ws.rs.POST
 import org.json.JSONObject
 
-@Path('/api/inventoryRegister')
+@Path('/api/inventory')
 class InventoryRegisterResource {
 
     def inventoryRegisterResourceService
@@ -52,8 +52,8 @@ class InventoryRegisterResource {
     }
 
     @GET
-    Response read() {
-        ok inventoryRegisterResourceService.read(id)
+    Response readAll() {
+        ok inventoryRegisterResourceService.readAll()
     }
 
     @PUT

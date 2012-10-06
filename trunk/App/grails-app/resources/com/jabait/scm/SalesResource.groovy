@@ -15,6 +15,7 @@ import javax.ws.rs.PathParam
 import javax.ws.rs.POST
 import org.json.JSONObject
 import com.jabait.scm.inventory.Product
+import com.jabait.scm.inventory.InventoryRegister
 
 @Path("/api/sales")
 class SalesResource {
@@ -46,36 +47,45 @@ class SalesResource {
 
     @POST
     Response createSales(String salesJson){
-
         JSONObject jsonObject = new JSONObject(salesJson);
         Sales sales = new Sales();
-        Customer customer = Customer.get(Integer.parseInt(jsonObject.get("customerName").toString()));
-        sales.customer=customer;
-        Double price = Double.parseDouble(jsonObject.get("price").toString());
-        sales.price = price;
-        Product product = Product.get(Integer.parseInt(jsonObject.get("productName").toString()));
-        sales.product =product;
-
-        sales.quantity =Integer.parseInt(jsonObject.get("quantity").toString());
+        sales.customer = Customer.get(Integer.parseInt(jsonObject.get("customer").toString()));
+        sales.salesOrder = SalesOrder.get(Integer.parseInt(jsonObject.get("salesOrder").toString()))
+        sales.price = Integer.parseInt(jsonObject.get("price").toString());
+        sales.quantity = Integer.parseInt(jsonObject.get("quantity").toString());
+        sales.salesType = jsonObject.get("salesType").toString();
         sales.salesDate = new Date();
-        String salesOrder = "test";
-        sales.salesOrder = salesOrder;
 
-        if (sales.save()) {
-            println "saved";
-            created true;
-        } else {
-            sales.errors.each {
-                println it;
+        Product product = sales.salesOrder.product;
+
+        InventoryRegister inventoryRegister1 = InventoryRegister.findByProduct(product);
+
+        if(inventoryRegister1){
+            InventoryRegister inventoryRegisterUpdate = InventoryRegister.get(inventoryRegister1.id);
+            inventoryRegister1.onHand = inventoryRegister1.onHand - sales.salesOrder.orderQuantity;
+            def newValue = inventoryRegister1.onSalesOrder + sales.salesOrder.orderQuantity;
+            inventoryRegisterUpdate.onSalesOrder = newValue;
+            if (inventoryRegisterUpdate.save(flush: true)) {
+                println "updated";
+            } else {
+                println "not saved inventory";
             }
-            println "not saved";
-            created false;
+        }else{
+
         }
 
 
+        if(sales.save()){
+            println "saved";
+            ok sales;
+        }else{
 
-//        sales.
-
+            println "not saved";
+            sales.errors.each {
+                println it;
+            }
+            ok sales;
+        }
     }
 
 }
