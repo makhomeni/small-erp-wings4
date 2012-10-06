@@ -22,6 +22,8 @@ import com.wings4.util.PrintUtilities;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
@@ -31,6 +33,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 /**
  * Created by IntelliJ IDEA.
@@ -91,6 +94,7 @@ public class InventoryButtonPanel extends JPanel {
                 HeaderStyleModel, StyleModel {
             private static final long serialVersionUID = 7142342324546147914L;
             private Object[][] values;
+            private ArrayList<TableModelListener> listeners = new ArrayList<TableModelListener>();
 
             public CellStyle getHeaderStyleAt(int rowIndex, int columnIndex) {
                 if (columnIndex >= 4 && columnIndex <= 7) {
@@ -205,7 +209,7 @@ public class InventoryButtonPanel extends JPanel {
                 }
                 if (values == null) {
 
-                    values = new Object[MaterialDao.findAllInventories().size()][8];
+                    /*values = new Object[MaterialDao.findAllInventories().size()][8];
                     for(int i = 0; i < MaterialDao.findAllInventories().size(); i++){
                         System.out.println("values[i].length = " + values[i].length);
                         for(int j = 0; j < values[i].length; j++){
@@ -214,7 +218,7 @@ public class InventoryButtonPanel extends JPanel {
                             else if(i == 1)
                                 values[j][1] = MaterialDao.findAllInventories().get(j).getProductName();
                         }
-                    }
+                    }*/
                     /*values[0][0] = 1398695d;
                     values[0][1] = 1430276d;
                     values[0][2] = 1447157d;
@@ -306,8 +310,8 @@ public class InventoryButtonPanel extends JPanel {
                 }
 
                 
-                if(columnIndex == 0)
-                    return MaterialDao.findAllInventories().get(0).getId();
+//                if(columnIndex == 0)
+//                    return MaterialDao.findAllInventories().get(0).getId();
                 /*if (columnIndex == 0) {
                     return 2011 - 1 - rowIndex;
                 }
@@ -335,6 +339,14 @@ public class InventoryButtonPanel extends JPanel {
                     return summary;
                 }*/
                 return null;
+            }
+
+            public void setValueAt(Object aValue, int row, int column) {
+                TableModelEvent tableModelEvent = new TableModelEvent(this, row,
+                        row, column, TableModelEvent.UPDATE);
+                for (TableModelListener l: listeners)
+                    l.tableChanged(tableModelEvent);
+
             }
 
             @Override
@@ -550,6 +562,8 @@ public class InventoryButtonPanel extends JPanel {
             _subHeaderModel = new DummyHeaderTableModel(_model);
             _pane = new TableScrollPane(_model, _subHeaderModel, _totalModel, true);
 
+
+
             //_pane.setCorner(JScrollPane.UPPER_LEFT_CORNER, new JButton());
 //            _pane.setColumnHeaderView(columnLabel);
 //            _pane.setRowHeaderView(rowLabel);
@@ -588,6 +602,14 @@ public class InventoryButtonPanel extends JPanel {
             _pane.getRowHeaderColumnHeaderTable().setBorder(border);
             _pane.getColumnHeaderTable().setBorder(border);
             _pane.getRowFooterColumnHeaderTable().setBorder(border);
+
+            List<InventoryRegister> inventoryRegisters = MaterialDao.findAllInventories();
+            for (int i = 0; i < inventoryRegisters.size(); i++) {
+                System.out.println("i = " + i);
+                InventoryRegister inventoryRegister = inventoryRegisters.get(i);
+                System.out.println("inventoryRegister.getProductName() = " + inventoryRegister.getId());
+                _pane.getMainTable().setValueAt(inventoryRegister.getId(), 1, 0);
+            }
 
             TableHeaderPopupMenuInstaller installer = new TableHeaderPopupMenuInstaller(_pane.getMainTable()) {
                 @Override
