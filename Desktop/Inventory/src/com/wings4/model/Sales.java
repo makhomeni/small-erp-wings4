@@ -28,6 +28,24 @@ public class Sales {
 
     @Resolvable(colName = "Price")
     private Double price;
+    private String salesOrder;
+    private String salesType;
+
+    public String getSalesType() {
+        return salesType;
+    }
+
+    public void setSalesType(String salesType) {
+        this.salesType = salesType;
+    }
+
+    public String getSalesOrder() {
+        return salesOrder;
+    }
+
+    public void setSalesOrder(String salesOrder) {
+        this.salesOrder = salesOrder;
+    }
 
     public Integer getId() {
         return id;

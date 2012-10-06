@@ -15,6 +15,7 @@ import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.GeneralToggleActionButton;
 import com.wings4.core.toggle.InventoryCreateTogglePanel;
 import com.wings4.core.toggle.ProductCreateTogglePanel;
+import com.wings4.dao.MaterialDao;
 import com.wings4.model.InventoryRegister;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.PrintUtilities;
@@ -89,7 +90,7 @@ public class InventoryButtonPanel extends JPanel {
         class DummyTableModel extends AbstractMultiTableModel implements ColumnIdentifierTableModel,
                 HeaderStyleModel, StyleModel {
             private static final long serialVersionUID = 7142342324546147914L;
-            private Double[][] values;
+            private Object[][] values;
 
             public CellStyle getHeaderStyleAt(int rowIndex, int columnIndex) {
                 if (columnIndex >= 4 && columnIndex <= 7) {
@@ -203,7 +204,16 @@ public class InventoryButtonPanel extends JPanel {
                     }
                 }
                 if (values == null) {
-                    values = new Double[11][8];
+
+                    values = new Object[MaterialDao.findAllInventories().size()][8];
+                    for(int i = 0; i < MaterialDao.findAllInventories().size(); i++){
+                        for(int j = 0; j < values[i].length; j++){
+                            if(j == 0){
+                                values[i][j] = MaterialDao.findAllInventories().get(j).getId();
+                            }
+                            //
+                        }
+                    }
 //                    values[0][0] = 1398695d;
 //                    values[0][1] = 1430276d;
 //                    values[0][2] = 1447157d;
