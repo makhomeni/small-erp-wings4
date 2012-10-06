@@ -207,109 +207,114 @@ public class InventoryButtonPanel extends JPanel {
 
                     values = new Object[MaterialDao.findAllInventories().size()][8];
                     for(int i = 0; i < MaterialDao.findAllInventories().size(); i++){
+                        System.out.println("values[i].length = " + values[i].length);
                         for(int j = 0; j < values[i].length; j++){
-                            if(j == 0){
-                                values[i][j] = MaterialDao.findAllInventories().get(j).getId();
-                            }
-                            //
+                            if(i == 0)
+                                values[j][0] = MaterialDao.findAllInventories().get(j).getId();
+                            else if(i == 1)
+                                values[j][1] = MaterialDao.findAllInventories().get(j).getProductName();
                         }
                     }
-//                    values[0][0] = 1398695d;
-//                    values[0][1] = 1430276d;
-//                    values[0][2] = 1447157d;
-//                    values[0][3] = 1490965d;
-//                    values[0][4] = 110934d;
-//                    values[0][5] = 107759d;
-//                    values[0][6] = 124032d;
-//                    values[0][7] = 135152d;
-//                    values[1][0] = 1241294d;
-//                    values[1][1] = 1226253d;
-//                    values[1][2] = 1289095d;
-//                    values[1][3] = 1353997d;
-//                    values[1][4] = 36559d;
-//                    values[1][5] = 49946d;
-//                    values[1][6] = 95282d;
-//                    values[1][7] = 104617d;
-//                    values[2][0] = 1623674d;
-//                    values[2][1] = 1687223d;
-//                    values[2][2] = 1661264d;
-//                    values[2][3] = 1400121d;
-//                    values[2][4] = 120311d;
-//                    values[2][5] = 99284d;
-//                    values[2][6] = 120320d;
-//                    values[2][7] = -73490d;
-//                    values[3][0] = 1456498d;
-//                    values[3][1] = 1494618d;
-//                    values[3][2] = 1521356d;
-//                    values[3][3] = 1585911d;
-//                    values[3][4] = 120354d;
-//                    values[3][5] = 126496d;
-//                    values[3][6] = 76348d;
-//                    values[3][7] = 119686d;
-//                    values[4][0] = 1445585d;
-//                    values[4][1] = 1454570d;
-//                    values[4][2] = 1452573d;
-//                    values[4][3] = 1428549d;
-//                    values[4][4] = 122653d;
-//                    values[4][5] = 112943d;
-//                    values[4][6] = 122834d;
-//                    values[4][7] = 111922d;
-//                    values[5][0] = 1300210d;
-//                    values[5][1] = 1322831d;
-//                    values[5][2] = 1373056d;
-//                    values[5][3] = 1412359d;
-//                    values[5][4] = 92180d;
-//                    values[5][5] = 97277d;
-//                    values[5][6] = 105470d;
-//                    values[5][7] = 106082d;
-//                    values[6][0] = 1182609d;
-//                    values[6][1] = 1222192d;
-//                    values[6][2] = 1243017d;
-//                    values[6][3] = 1284205d;
-//                    values[6][4] = 77185d;
-//                    values[6][5] = 85249d;
-//                    values[6][6] = 87432d;
-//                    values[6][7] = 97998d;
-//                    values[7][0] = 1101612d;
-//                    values[7][1] = 1073429d;
-//                    values[7][2] = 1103876d;
-//                    values[7][3] = 1114595d;
-//                    values[7][4] = 59496d;
-//                    values[7][5] = 48201d;
-//                    values[7][6] = 50763d;
-//                    values[7][7] = 78128d;
-//                    values[8][0] = 1024201d;
-//                    values[8][1] = 1048687d;
-//                    values[8][2] = 1064492d;
-//                    values[8][3] = 1077936d;
-//                    values[8][4] = 25422d;
-//                    values[8][5] = 36375d;
-//                    values[8][6] = 38694d;
-//                    values[8][7] = 39239d;
-//                    values[9][0] = 1114705d;
-//                    values[9][1] = 1093520d;
-//                    values[9][2] = 1058748d;
-//                    values[9][3] = 1029272d;
-//                    values[9][4] = -133d;
-//                    values[9][5] = 14493d;
-//                    values[9][6] = 8353d;
-//                    values[9][7] = 13126d;
-//                    values[10][0] = 1119619d;
-//                    values[10][1] = 1127677d;
-//                    values[10][2] = 1143982d;
-//                    values[10][3] = 1122837d;
-//                    values[10][4] = 77113d;
-//                    values[10][5] = 69331d;
-//                    values[10][6] = 71194d;
-//                    values[10][7] = 52707d;
+                    /*values[0][0] = 1398695d;
+                    values[0][1] = 1430276d;
+                    values[0][2] = 1447157d;
+                    values[0][3] = 1490965d;
+                    values[0][4] = 110934d;
+                    values[0][5] = 107759d;
+                    values[0][6] = 124032d;
+                    values[0][7] = 135152d;
+                    values[1][0] = 1241294d;
+                    values[1][1] = 1226253d;
+                    values[1][2] = 1289095d;
+                    values[1][3] = 1353997d;
+                    values[1][4] = 36559d;
+                    values[1][5] = 49946d;
+                    values[1][6] = 95282d;
+                    values[1][7] = 104617d;
+                    values[2][0] = 1623674d;
+                    values[2][1] = 1687223d;
+                    values[2][2] = 1661264d;
+                    values[2][3] = 1400121d;
+                    values[2][4] = 120311d;
+                    values[2][5] = 99284d;
+                    values[2][6] = 120320d;
+                    values[2][7] = -73490d;
+                    values[3][0] = 1456498d;
+                    values[3][1] = 1494618d;
+                    values[3][2] = 1521356d;
+                    values[3][3] = 1585911d;
+                    values[3][4] = 120354d;
+                    values[3][5] = 126496d;
+                    values[3][6] = 76348d;
+                    values[3][7] = 119686d;
+                    values[4][0] = 1445585d;
+                    values[4][1] = 1454570d;
+                    values[4][2] = 1452573d;
+                    values[4][3] = 1428549d;
+                    values[4][4] = 122653d;
+                    values[4][5] = 112943d;
+                    values[4][6] = 122834d;
+                    values[4][7] = 111922d;
+                    values[5][0] = 1300210d;
+                    values[5][1] = 1322831d;
+                    values[5][2] = 1373056d;
+                    values[5][3] = 1412359d;
+                    values[5][4] = 92180d;
+                    values[5][5] = 97277d;
+                    values[5][6] = 105470d;
+                    values[5][7] = 106082d;
+                    values[6][0] = 1182609d;
+                    values[6][1] = 1222192d;
+                    values[6][2] = 1243017d;
+                    values[6][3] = 1284205d;
+                    values[6][4] = 77185d;
+                    values[6][5] = 85249d;
+                    values[6][6] = 87432d;
+                    values[6][7] = 97998d;
+                    values[7][0] = 1101612d;
+                    values[7][1] = 1073429d;
+                    values[7][2] = 1103876d;
+                    values[7][3] = 1114595d;
+                    values[7][4] = 59496d;
+                    values[7][5] = 48201d;
+                    values[7][6] = 50763d;
+                    values[7][7] = 78128d;
+                    values[8][0] = 1024201d;
+                    values[8][1] = 1048687d;
+                    values[8][2] = 1064492d;
+                    values[8][3] = 1077936d;
+                    values[8][4] = 25422d;
+                    values[8][5] = 36375d;
+                    values[8][6] = 38694d;
+                    values[8][7] = 39239d;
+                    values[9][0] = 1114705d;
+                    values[9][1] = 1093520d;
+                    values[9][2] = 1058748d;
+                    values[9][3] = 1029272d;
+                    values[9][4] = -133d;
+                    values[9][5] = 14493d;
+                    values[9][6] = 8353d;
+                    values[9][7] = 13126d;
+                    values[10][0] = 1119619d;
+                    values[10][1] = 1127677d;
+                    values[10][2] = 1143982d;
+                    values[10][3] = 1122837d;
+                    values[10][4] = 77113d;
+                    values[10][5] = 69331d;
+                    values[10][6] = 71194d;
+                    values[10][7] = 52707d;*/
                 }
+
+                
+                if(columnIndex == 0)
+                    return MaterialDao.findAllInventories().get(0).getId();
                 /*if (columnIndex == 0) {
                     return 2011 - 1 - rowIndex;
                 }
                 else if (columnIndex <= 8 && rowIndex <= 10) {
                     return values[rowIndex][columnIndex - 1];
-                }
-                else if (columnIndex == 9) {
+                }*/
+                /*else if (columnIndex == 9) {
                     Double summary = 0d;
                     for (int i = 1; i <= 4; i++) {
                         Object value = getValueAt(rowIndex, i);

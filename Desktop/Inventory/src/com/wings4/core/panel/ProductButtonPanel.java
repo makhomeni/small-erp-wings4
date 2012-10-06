@@ -1,5 +1,9 @@
 package com.wings4.core.panel;
 
+import ar.com.fdvs.dj.core.DynamicJasperHelper;
+import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
+import ar.com.fdvs.dj.domain.DynamicReport;
+import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
 import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
@@ -8,14 +12,20 @@ import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.GeneralToggleActionButton;
 import com.wings4.core.toggle.ProductCreateTogglePanel;
 import com.wings4.dao.CommonDao;
+import com.wings4.dao.MaterialDao;
 import com.wings4.model.Product;
 import com.wings4.util.InventoryConstants;
 import com.wings4.util.PrintUtilities;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -79,7 +89,23 @@ public class ProductButtonPanel extends JPanel {
             reportProductButton.addActionListener(new JSecurityAction() {
                 @Override
                 public void execute(ActionEvent actionEvent) {
-                    PrintUtilities.printComponent(productScrollPane);
+                    try{
+                        FastReportBuilder fastReportBuilder = new FastReportBuilder();
+                        DynamicReport dynamicReport = fastReportBuilder.addColumn("productId", "productId", Integer.class.getName(),30)
+                                .addColumn("productName", "productName", String.class.getName(), 100)
+                                .setTitle("Product Report")
+                                .setSubtitle("The Report is Generated at " + new Date())
+                                .setPrintBackgroundOnOddRows(true)
+                                .setUseFullPageWidth(true)
+                                .build();
+                        JRDataSource productDataSource = new JRBeanCollectionDataSource(MaterialDao.findAllProducts());
+
+                        JasperPrint jasperPrint = DynamicJasperHelper.generateJasperPrint(dynamicReport,
+                                new ClassicLayoutManager(), productDataSource);
+                        JasperViewer.viewReport(jasperPrint);
+                    } catch (Exception ex){
+
+                    }
                 }
             });
             productToolBar.add(reportProductButton);
