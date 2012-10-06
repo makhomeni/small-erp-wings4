@@ -85,10 +85,11 @@ public class MaterialDao {
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject productObject = (JSONObject)jsonArray.get(i);
                 Product product = new Product();
+                product.setProductId(Integer.parseInt(productObject.get("id").toString()));
                 product.setProductName(productObject.get("productName").toString());
-                product.setProductCategory(productObject.get("category").toString());
+                product.setProductCategory(productObject.get("productCategory").toString());
                 product.setProductClassification(productObject.get("classification").toString());
-                product.setProductDetails(productObject.get("details").toString());
+                product.setProductDetails(productObject.get("productDetails").toString());
                 product.setStockKeepingUnit(productObject.get("stockKeepingUnit").toString());
 
                 products.add(product);
