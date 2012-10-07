@@ -96,6 +96,8 @@ public class InventoryButtonPanel extends JPanel {
             private Object[][] values;
             private ArrayList<TableModelListener> listeners = new ArrayList<TableModelListener>();
 
+            List<InventoryRegister> inventories = MaterialDao.findAllInventories();
+
             public CellStyle getHeaderStyleAt(int rowIndex, int columnIndex) {
                 if (columnIndex >= 4 && columnIndex <= 7) {
                     return SALES_STYLE;
@@ -208,6 +210,7 @@ public class InventoryButtonPanel extends JPanel {
                     }
                 }
                 if (values == null) {
+                    values = new Object[inventories.size()][8];
 
                     /*values = new Object[MaterialDao.findAllInventories().size()][8];
                     for(int i = 0; i < MaterialDao.findAllInventories().size(); i++){
@@ -308,6 +311,14 @@ public class InventoryButtonPanel extends JPanel {
                     values[10][6] = 71194d;
                     values[10][7] = 52707d;*/
                 }
+                if(columnIndex == 0 && rowIndex == 0){
+                    return inventories.get(0).getId();
+                } else if(columnIndex == 0 && rowIndex > 0){
+                    long id = inventories.get(0).getId();
+                    return id + rowIndex;
+                }
+
+                
 
                 
 //                if(columnIndex == 0)
@@ -341,13 +352,10 @@ public class InventoryButtonPanel extends JPanel {
                 return null;
             }
 
-            public void setValueAt(Object aValue, int row, int column) {
-                TableModelEvent tableModelEvent = new TableModelEvent(this, row,
-                        row, column, TableModelEvent.UPDATE);
-                for (TableModelListener l: listeners)
-                    l.tableChanged(tableModelEvent);
+            /*public void setValueAt(Object aValue, int row, int column) {
 
-            }
+
+            }*/
 
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -562,8 +570,6 @@ public class InventoryButtonPanel extends JPanel {
             _subHeaderModel = new DummyHeaderTableModel(_model);
             _pane = new TableScrollPane(_model, _subHeaderModel, _totalModel, true);
 
-
-
             //_pane.setCorner(JScrollPane.UPPER_LEFT_CORNER, new JButton());
 //            _pane.setColumnHeaderView(columnLabel);
 //            _pane.setRowHeaderView(rowLabel);
@@ -603,13 +609,6 @@ public class InventoryButtonPanel extends JPanel {
             _pane.getColumnHeaderTable().setBorder(border);
             _pane.getRowFooterColumnHeaderTable().setBorder(border);
 
-            List<InventoryRegister> inventoryRegisters = MaterialDao.findAllInventories();
-            for (int i = 0; i < inventoryRegisters.size(); i++) {
-                System.out.println("i = " + i);
-                InventoryRegister inventoryRegister = inventoryRegisters.get(i);
-                System.out.println("inventoryRegister.getProductName() = " + inventoryRegister.getId());
-                _pane.getMainTable().setValueAt(inventoryRegister.getId(), 1, 0);
-            }
 
             TableHeaderPopupMenuInstaller installer = new TableHeaderPopupMenuInstaller(_pane.getMainTable()) {
                 @Override
