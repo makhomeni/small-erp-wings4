@@ -311,14 +311,16 @@ public class InventoryButtonPanel extends JPanel {
                     values[10][6] = 71194d;
                     values[10][7] = 52707d;*/
                 }
-                if(columnIndex == 0 && rowIndex == 0){
-                    return inventories.get(0).getId();
-                } else if(columnIndex == 0 && rowIndex > 0){
-                    long id = inventories.get(0).getId();
-                    return id + rowIndex;
-                }
+                if(inventories.size() > 0){
+                    if(columnIndex == 0 && rowIndex == 0){
+                        return inventories.get(0).getId();
+                    } else if(columnIndex == 0 && rowIndex > 0){
+                        long id = inventories.get(0).getId();
+                        return id + rowIndex;
+                    } else if(columnIndex == 1){
 
-                
+                    }
+                }
 
                 
 //                if(columnIndex == 0)

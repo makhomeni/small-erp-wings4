@@ -120,6 +120,20 @@ public class MaterialDao {
         }
         return inventoryRegisters;
     }
+
+    public static Product findProductById(long id){
+        Product product = new Product();
+        try{
+            String productString = FindAllResourceFeed.restFeedInitialization("product/"+id);
+            JSONArray jsonArray = new JSONArray(productString);
+            System.out.println("jsonArray.length() = " + jsonArray.length());
+            //product.setProductName();
+        } catch (Exception ex){
+
+        }
+
+        return new Product();
+    }
     
     public static List<ProductType> findAllProductTypes(){
         List<ProductType> productTypes = new ArrayList<ProductType>();
