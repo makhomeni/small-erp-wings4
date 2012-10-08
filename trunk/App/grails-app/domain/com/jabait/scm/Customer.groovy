@@ -38,7 +38,7 @@ class Customer {
             customer.firstName = "Masum";
             customer.lastName = "Dewan";
             customer.emailId = "masum@yahoo.com";
-            customer.organization = Organization.get(1);
+            customer.organizationName = "Wings4";
             customer.mobileNumber = "09123456789";
             customer.phoneNumber = "0212345";
             customer.address = "318/A";
