@@ -201,14 +201,14 @@ public class InventoryButtonPanel extends JPanel {
             }
 
             public Object getValueAt(int rowIndex, int columnIndex) {
-                if (rowIndex > 10) {
+                /*if (rowIndex > 10) {
                     if (columnIndex == 0) {
                         return "";
                     }
                     else {
                         return null;
                     }
-                }
+                }*/
                 if (values == null) {
                     values = new Object[inventories.size()][8];
 
@@ -321,9 +321,28 @@ public class InventoryButtonPanel extends JPanel {
                                 return inventories.get(0).getProductName();
                             case 2:
                                 return inventories.get(0).getProductName();
+                            case 3:
+                                return inventories.get(0).getOnHand();
+                            case 4:
+                                return inventories.get(0).getOnHandFromLocalSupplier();
+                            case 5:
+                                return inventories.get(0).getOnHandImportByLC();
+                            case 6:
+                                return inventories.get(0).getOnSalesReturn();
+                            case 7:
+                                return inventories.get(0).getOnLoanReturn();
+                            case 8:
+                                return inventories.get(0).getUnavailableFromSales();
+                            case 9:
+                                return inventories.get(0).getUnavailableFromSample();
+                            case 10:
+                                return inventories.get(0).getUnavailableFromLoan();
+                            case 11:
+                                return inventories.get(0).getUnavailable();
                         }
-                    } else if(columnIndex == 0 && rowIndex > 0){
+                    } else if(columnIndex == 0 && rowIndex > 0 && inventories.size() > 1){
                         long id = inventories.get(0).getId();
+                        while (rowIndex == inventories.size())
                         return id + rowIndex;
                     } else if(columnIndex == 1 && rowIndex > 0){
 
@@ -515,7 +534,7 @@ public class InventoryButtonPanel extends JPanel {
             }
 
             public Object getValueAt(int rowIndex, int columnIndex) {
-                if (columnIndex == 0) {
+                /*if (columnIndex == 0) {
                     return "2011";
                 }
                 else if (columnIndex == 1) {
@@ -543,7 +562,7 @@ public class InventoryButtonPanel extends JPanel {
                         }
                     }
                     return summary;
-                }
+                }*/
                 return null;
             }
 
@@ -809,13 +828,7 @@ public class InventoryButtonPanel extends JPanel {
             });
             inventoryToolBar.add(reportInventoryButton);
 
-            AnnotationResolver resolver = new AnnotationResolver(InventoryRegister.class);
-            final ObjectTableModel<InventoryRegister> tableModel = new ObjectTableModel<InventoryRegister>(
-                    resolver, "id,productName,onHand,onOrder,allocated,committed,unavailable,backOrdered,dropShip," +
-                    "availableForSale,availableToPick");
 
-            //tableModel.setData(getData());
-            inventoryTable.setModel(tableModel);
 
             inventoryListHolder.setViewportView(inventoryTable);
 
