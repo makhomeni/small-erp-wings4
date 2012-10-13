@@ -53,7 +53,28 @@ class InventoryRegisterResource {
 
     @GET
     Response readAll() {
-        ok inventoryRegisterResourceService.readAll()
+        Map<String,Object> inventoryMap;
+        List<Map<String,Object>> inventories = new ArrayList<Map<String,Object>>();
+        List<InventoryRegister> inventoryRegisters = InventoryRegister.list();
+        for (InventoryRegister inventoryRegister : inventoryRegisters) {
+            inventoryMap = new HashMap<String,Object>();
+            inventoryMap.put("id", inventoryRegister.id);
+            inventoryMap.put("productName", inventoryRegister.product.productName);
+            inventoryMap.put("substituteProductName", inventoryRegister.product.productName);
+            inventoryMap.put("openingBalance", inventoryRegister.onHand);
+            inventoryMap.put("fromLocalVendors", inventoryRegister.onHandFromLocalSupplier);
+            inventoryMap.put("importByLC", inventoryRegister.onHandImportByLC);
+            inventoryMap.put("salesReturn", inventoryRegister.onHandImportByLC);
+            inventoryMap.put("loanReturn", inventoryRegister.onHandImportByLC);
+            inventoryMap.put("sales", inventoryRegister.unavailableFromSales);
+            inventoryMap.put("sample", inventoryRegister.unavailableFromSample);
+            inventoryMap.put("loan", inventoryRegister.unavailableFromLoan);
+            inventoryMap.put("closingBalance", inventoryRegister.unavailable);
+
+            inventories.add(inventoryMap);
+        }
+
+        ok inventories
     }
 
     @PUT
