@@ -113,6 +113,7 @@ public class MaterialDao {
                 JSONObject inventoryObject = (JSONObject)jsonArray.get(i);
                 InventoryRegister inventoryRegister = new InventoryRegister();
                 inventoryRegister.setId(Integer.parseInt(inventoryObject.get("id").toString()));
+                inventoryRegister.setProductName(inventoryObject.get("productName").toString());
                 inventoryRegisters.add(inventoryRegister);
             }
         } catch (Exception ex) {
