@@ -197,7 +197,7 @@ public class InventoryButtonPanel extends JPanel {
 
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                return columnIndex == 0 ? String.class : Double.class;
+                return String.class;
             }
 
             public Object getValueAt(int rowIndex, int columnIndex) {
@@ -312,14 +312,23 @@ public class InventoryButtonPanel extends JPanel {
                     values[10][7] = 52707d;*/
                 }
                 if(inventories.size() > 0){
-                    if(columnIndex == 0 && rowIndex == 0){
-                        return inventories.get(0).getId();
+
+                    if(rowIndex == 0){
+                        switch (columnIndex) {
+                            case 0:
+                                return inventories.get(0).getId();
+                            case 1:
+                                return inventories.get(0).getProductName();
+                            case 2:
+                                return inventories.get(0).getProductName();
+                        }
                     } else if(columnIndex == 0 && rowIndex > 0){
                         long id = inventories.get(0).getId();
                         return id + rowIndex;
-                    } else if(columnIndex == 1){
+                    } else if(columnIndex == 1 && rowIndex > 0){
 
                     }
+
                 }
 
                 
@@ -434,14 +443,12 @@ public class InventoryButtonPanel extends JPanel {
                     return "Average";
                 }
                 else {
-                    Double summary = 0d;
+                    Object summary = "";
                     for (int i = 0; i < _model.getRowCount(); i++) {
                         Object value = _model.getValueAt(i, columnIndex);
-                        if (value instanceof Double) {
-                            summary += (Double) value;
-                        }
+                        summary = value;
                     }
-                    return summary / 12;
+                    return summary;
                 }
             }
 
@@ -807,7 +814,7 @@ public class InventoryButtonPanel extends JPanel {
                     resolver, "id,productName,onHand,onOrder,allocated,committed,unavailable,backOrdered,dropShip," +
                     "availableForSale,availableToPick");
 
-            tableModel.setData(getData());
+            //tableModel.setData(getData());
             inventoryTable.setModel(tableModel);
 
             inventoryListHolder.setViewportView(inventoryTable);
@@ -859,10 +866,5 @@ public class InventoryButtonPanel extends JPanel {
                 }
             }
         }
-    }
-
-    private List<InventoryRegister> getData() {
-        List<InventoryRegister> list = new ArrayList<InventoryRegister>();
-        return list;
     }
 }
