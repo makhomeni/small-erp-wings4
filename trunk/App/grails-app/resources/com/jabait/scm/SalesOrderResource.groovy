@@ -160,7 +160,18 @@ class SalesOrderResource {
     }
     @GET
     Response readAll(){
-        ok salesOrderResourceService.readAll();
+        List<SalesOrder> salesOrders = SalesOrder.list();
+        Map<String,Object> salesOrderMap;
+        List<Map<String,Object>> allSalesOrders = new ArrayList<Map<String,Object>>();
+        for (SalesOrder salesOrder: salesOrders) {
+            salesOrderMap = new HashMap<String,Object>();
+            salesOrderMap.put("id", salesOrder.id);
+            salesOrderMap.put("customer", salesOrder.customer.firstName + " " + salesOrder.customer.lastName);
+//            purchaseOrderMap.put("parentCategory", category?.parentCategory?.categoryName);
+
+            allSalesOrders.add(salesOrderMap);
+        }
+        ok allSalesOrders;
     }
 
     @PUT
