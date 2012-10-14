@@ -8,6 +8,8 @@ import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.core.toggle.GeneralToggleActionButton;
+import com.wings4.core.toggle.ProductButtonTogglePanel;
 import com.wings4.dao.CommonDao;
 import com.wings4.dao.JobDao;
 import com.wings4.dao.MaterialDao;
@@ -129,9 +131,15 @@ public class ProductCreateButtonPanel extends JPanel {
                     product.setUnitOfMeasure(unitOfMeasure.getSelectedItem().toString());
                     product.setLicenseInfo(licenseInfoText.getText());
 
-                    if (CommonDao.saveProduct(product))
+                    if (CommonDao.saveProduct(product))  {
                         JideOptionPane.showMessageDialog(null, "Product Saved Successfully", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
+                        try{
+                            GeneralToggleActionButton productButton = new GeneralToggleActionButton(new
+                                    ProductButtonTogglePanel());
+                            productButton.doClick();
+                        } catch (Exception ex){}
+                    }
                     else
                         JideOptionPane.showMessageDialog(null, "Product Saved Failed", "Failed",
                                 JOptionPane.ERROR_MESSAGE);

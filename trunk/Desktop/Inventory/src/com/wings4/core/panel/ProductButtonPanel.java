@@ -4,6 +4,7 @@ import ar.com.fdvs.dj.core.DynamicJasperHelper;
 import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
 import ar.com.fdvs.dj.domain.DynamicReport;
 import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
+import com.jidesoft.grid.TableUtils;
 import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.border.BorderManager;
 import com.nepxion.swing.layout.filed.FiledLayout;
@@ -120,14 +121,10 @@ public class ProductButtonPanel extends JPanel {
             productTable.setModel(tableModel);
 
             productScrollPane.setViewportView(productTable);
+            TableUtils.synchronizeTableColumn(productTable,productTable);
 
             add(productToolBar, BorderLayout.PAGE_START);
             add(productScrollPane, BorderLayout.CENTER);
         }
-    }
-
-    private List<Product> getData() {
-        List<Product> list = new ArrayList<Product>();
-        return list;
     }
 }
