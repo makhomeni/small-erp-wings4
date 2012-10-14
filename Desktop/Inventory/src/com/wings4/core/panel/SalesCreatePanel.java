@@ -8,6 +8,8 @@ import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.layout.filed.FiledLayout;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
+import com.wings4.core.toggle.GeneralToggleActionButton;
+import com.wings4.core.toggle.SalesButtonTogglePanel;
 import com.wings4.dao.CommonDao;
 import com.wings4.dao.JobDao;
 import com.wings4.model.*;
@@ -43,28 +45,28 @@ public class SalesCreatePanel   extends JPanel {
             builder.appendColumn("fill:max(pref; 10px)");
 
 
-            AnnotationResolver vendorResolver = new AnnotationResolver(Vendor.class);
-            AnnotationResolver productResolver = new AnnotationResolver(PurchaseOrder.class);
+            AnnotationResolver vendorResolver = new AnnotationResolver(Customer.class);
+            AnnotationResolver salesResolver = new AnnotationResolver(SalesOrder.class);
 
 
-            final ObjectTableModel<Vendor> tableModelVendor = new ObjectTableModel<Vendor>(
+            final ObjectTableModel<Customer> tableModelVendor = new ObjectTableModel<Customer>(
                     vendorResolver, "id,firstName");
 
-            final ObjectTableModel<PurchaseOrder> tableModelPurchaseOrder = new ObjectTableModel<PurchaseOrder>(
-                    productResolver, "id,jobName");
+            final ObjectTableModel<SalesOrder> tableModelSalesOrder = new ObjectTableModel<SalesOrder>(
+                    salesResolver, "id,jobName");
 
 
-            tableModelVendor.setData(CommonDao.findAllVendors());
-            tableModelPurchaseOrder.setData(JobDao.findAllPurchaseOrders());
+            tableModelVendor.setData(CommonDao.findAllCustomers());
+            tableModelSalesOrder.setData(JobDao.findAllSalesOrder());
 
 
 
             final TableComboBox vendorCombo = new TableComboBox(tableModelVendor);
-            final TableComboBox purchaseOrderCombo = new TableComboBox(tableModelPurchaseOrder);
+            final TableComboBox salesOrderCombo = new TableComboBox(tableModelSalesOrder);
 
             final JTextField priceTextField = new JTextField();
             final JTextField quantity = new JTextField();
-            String[] purchaseTypeValue = {"A", "B", "C"};
+            String[] purchaseTypeValue = {"Sales", "Sample", "Loan"};
             final JComboBox purchaseTypeCombo = new JComboBox(purchaseTypeValue);
 
 
@@ -75,10 +77,10 @@ public class SalesCreatePanel   extends JPanel {
             JButton cancelPurchase = new JButton();
 
 
-            builder.append("Vendor:", vendorCombo);
+            builder.append("Customer:", vendorCombo);
             builder.nextLine();
 
-            builder.append("Purchase Order:", purchaseOrderCombo);
+            builder.append("Sales Order:", salesOrderCombo);
             builder.nextLine();
 
             builder.append("Price:", priceTextField);
@@ -107,7 +109,7 @@ public class SalesCreatePanel   extends JPanel {
                     Sales sales = new Sales();
 
                     sales.setCustomerName(vendorCombo.getSelectedItem().toString());
-                    sales.setSalesOrder(purchaseOrderCombo.getSelectedItem().toString());
+                    sales.setSalesOrder(salesOrderCombo.getSelectedItem().toString());
                     sales.setPrice(Double.parseDouble(priceTextField.getText()));
                     sales.setQuantity(Integer.parseInt(quantity.getText()));
                     sales.setSalesType(purchaseTypeCombo.getSelectedItem().toString());
@@ -119,6 +121,11 @@ public class SalesCreatePanel   extends JPanel {
                     if (JobDao.saveSales(sales)) {
                         JideOptionPane.showMessageDialog(null, "Sales Saved Successfully", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
+                        try{
+                            GeneralToggleActionButton salesButton = new GeneralToggleActionButton(new
+                                    SalesButtonTogglePanel());
+                            salesButton.doClick();
+                        } catch (Exception ex){}
                     } else {
                         JideOptionPane.showMessageDialog(null, "Sales Save Failed", "Failure",
                                 JOptionPane.ERROR_MESSAGE);

@@ -65,7 +65,7 @@ public class PurchaseCreateButtonPanel extends JPanel {
 
             final JTextField priceTextField = new JTextField();
             final JTextField quantity = new JTextField();
-            String[] purchaseTypeValue = {"A", "B", "C"};
+            String[] purchaseTypeValue = {"From Local Supplier", "Import by LC", "Sales Return", "Loan Return"};
             final JComboBox purchaseTypeCombo = new JComboBox(purchaseTypeValue);
 
 
