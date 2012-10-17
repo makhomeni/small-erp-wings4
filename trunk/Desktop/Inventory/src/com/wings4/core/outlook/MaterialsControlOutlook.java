@@ -1,9 +1,11 @@
 package com.wings4.core.outlook;
 
+import com.nepxion.swing.action.JSecurityAction;
 import com.nepxion.swing.button.ButtonManager;
 import com.wings4.core.toggle.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 /**
  * Created by IntelliJ IDEA.

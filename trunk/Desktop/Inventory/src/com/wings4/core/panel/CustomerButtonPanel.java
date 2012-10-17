@@ -9,6 +9,7 @@ import com.towel.swing.table.ObjectTableModel;
 import com.wings4.core.toggle.CategoryCreateTogglePanel;
 import com.wings4.core.toggle.CustomerCreateTogglePanel;
 import com.wings4.core.toggle.GeneralToggleActionButton;
+import com.wings4.dao.CommonDao;
 import com.wings4.dao.MaterialDao;
 import com.wings4.model.Category;
 import com.wings4.model.Customer;
@@ -39,12 +40,12 @@ public class CustomerButtonPanel extends JPanel {
         setLayout(new FiledLayout(FiledLayout.COLUMN, FiledLayout.FULL, 0));
         setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-        add(new CategoryListPanel());
+        add(new CustomerListPanel());
     }
 
 
-    public class CategoryListPanel extends JPanel {
-        public CategoryListPanel() {
+    public class CustomerListPanel extends JPanel {
+        public CustomerListPanel() {
             setLayout(new BorderLayout());
             setBorder(BorderManager.createComplexTitledBorder("Customer List"));
 
@@ -78,9 +79,9 @@ public class CustomerButtonPanel extends JPanel {
             AnnotationResolver resolver = new AnnotationResolver(Customer.class);
             final ObjectTableModel<Customer> tableModel = new ObjectTableModel<Customer>(
                     resolver, "id,firstName,lastName,emailId,organization,mobileNumber," +
-                    "phoneNumber,address,contact,reference,billingAddress");
+                    "phoneNumber,address,billingAddress");
 
-//            tableModel.setData();
+            tableModel.setData(CommonDao.findAllCustomers());
             categoryTable.setModel(tableModel);
             categoryScrollPane.setViewportView(categoryTable);
 

@@ -51,6 +51,26 @@ public class JobDao {
 
     public static List<Sales> findAllSales() {
         List<Sales> saleses = new ArrayList<Sales>();
+        String allSales = FindAllResourceFeed.restFeedInitialization("sales");
+        try {
+            JSONArray jsonArray = new JSONArray(allSales);
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject salesObject = (JSONObject)jsonArray.get(i);
+                Sales sales = new Sales();
+                sales.setId(Integer.parseInt(salesObject.get("id").toString()));
+                sales.setCustomerName(salesObject.get("customerName").toString());
+                sales.setProductName(salesObject.get("productName").toString());
+                sales.setSalesDate(salesObject.get("salesDate").toString());
+                sales.setQuantity(Integer.parseInt(salesObject.get("quantity").toString()));
+                sales.setPrice(Double.parseDouble(salesObject.get("price").toString()));
+                saleses.add(sales);
+            }
+        } catch (JSONException jEx){
+            jEx.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         return saleses;
     }
     

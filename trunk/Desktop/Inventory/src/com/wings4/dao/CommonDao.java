@@ -171,19 +171,22 @@ public class CommonDao {
     }
 
     public static List<Customer>  findAllCustomers(){
-        System.out.println("Here");
         List<Customer> customers = new ArrayList<Customer>();
         try{
             String allCustomers = FindAllResourceFeed.restFeedInitialization("customer");
             JSONArray jsonArray = new JSONArray(allCustomers);
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject customerObject = (JSONObject)jsonArray.get(i);
-                Product product = new Product();
                 Customer customer = new Customer();
-                System.out.println(" product id = "+customerObject.get("id").toString());
                 customer.setId(Integer.parseInt(customerObject.get("id").toString()));
                 customer.setFirstName(customerObject.get("firstName").toString());
-                customer.setFirstName(customerObject.get("lastName").toString());
+                customer.setLastName(customerObject.get("lastName").toString());
+                customer.setEmailId(customerObject.get("emailId").toString());
+                customer.setOrganization(customerObject.get("organizationName").toString());
+                customer.setMobileNumber(customerObject.get("mobileNumber").toString());
+                customer.setPhoneNumber(customerObject.get("phoneNumber").toString());
+                customer.setAddress(customerObject.get("address").toString());
+                customer.setBillingAddress(customerObject.get("billingAddress").toString());
                 customers.add(customer);
             }
         }catch(JSONException jE){
@@ -192,6 +195,27 @@ public class CommonDao {
 
 
         return customers;
+    }
+
+    public static Customer findCustomerById(int id){
+        Customer customer;
+        try{
+            customer = new Customer();
+            String customerREST = FindAllResourceFeed.restFeedInitialization("customer/" + id);
+            JSONObject customerObject = new JSONObject(customerREST);
+            customer.setId(Integer.parseInt(customerObject.get("id").toString()));
+            customer.setFirstName(customerObject.get("firstName").toString());
+            customer.setLastName(customerObject.get("lastName").toString());
+            customer.setEmailId(customerObject.get("emailId").toString());
+            customer.setOrganization(customerObject.get("organizationName").toString());
+            customer.setMobileNumber(customerObject.get("mobileNumber").toString());
+            customer.setPhoneNumber(customerObject.get("phoneNumber").toString());
+            customer.setAddress(customerObject.get("address").toString());
+            customer.setBillingAddress(customerObject.get("billingAddress").toString());
+        } catch (JSONException jE){
+            customer = null;
+        }
+        return customer;
     }
 
     public  static List<SalesOrder> findAllSalesOrder(){

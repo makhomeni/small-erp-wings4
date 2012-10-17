@@ -1,6 +1,7 @@
 package com.wings4.core.toggle;
 
 import com.wings4.core.panel.PurchaseOrderButtonPanel;
+import com.wings4.core.panel.SalesButtonPanel;
 import com.wings4.util.IconFactory;
 import com.wings4.util.JEclipseTabbedPane;
 
@@ -22,7 +23,7 @@ public class SalesButtonTogglePanel extends AppTogglePanel {
     public void initialize() {
         JEclipseTabbedPane toggleTabbedPane = getToggleTabbedPane();
         toggleTabbedPane.addTab("Sales", IconFactory.getSwingIcon("component/button_16.png"),
-                new AppToggleTemplate(new PurchaseOrderButtonPanel()), "Sales");
+                new AppToggleTemplate(new SalesButtonPanel()), "Sales");
 
     }
 

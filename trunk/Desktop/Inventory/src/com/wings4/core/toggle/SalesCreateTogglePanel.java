@@ -25,7 +25,7 @@ public class SalesCreateTogglePanel  extends AppTogglePanel {
     }
 
     public String getToggleText(){
-        return "Sales Order";
+        return "Sales";
     }
 
     public Icon getToggleIcon(){
@@ -37,6 +37,6 @@ public class SalesCreateTogglePanel  extends AppTogglePanel {
     }
 
     public String getToggleDescription(){
-        return "Sales Order";
+        return "Sales";
     }
 }
