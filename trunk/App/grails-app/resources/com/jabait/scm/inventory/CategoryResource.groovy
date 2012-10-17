@@ -40,7 +40,9 @@ class CategoryResource {
             categoryMap = new HashMap<String,Object>();
             categoryMap.put("id", category.id);
             categoryMap.put("categoryName", category.categoryName);
-            categoryMap.put("parentCategory", category?.parentCategory?.categoryName);
+            String parent = "";
+            if(category.parentCategory != null) parent = category?.parentCategory?.categoryName
+            categoryMap.put("parentCategory", parent);
 
             allCategories.add(categoryMap);
         }
