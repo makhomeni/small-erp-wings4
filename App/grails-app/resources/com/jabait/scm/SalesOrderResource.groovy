@@ -167,6 +167,14 @@ class SalesOrderResource {
             salesOrderMap = new HashMap<String,Object>();
             salesOrderMap.put("id", salesOrder.id);
             salesOrderMap.put("customer", salesOrder.customer.firstName + " " + salesOrder.customer.lastName);
+            salesOrderMap.put("jobName", salesOrder.jobName.toString());
+            salesOrderMap.put("orderQuantity",salesOrder.orderQuantity.toString());
+            salesOrderMap.put("createdDate", salesOrder.createdDate.toString());
+            salesOrderMap.put("status", salesOrder.status.toString());
+            salesOrderMap.put("priority", salesOrder.priority.toString());
+            salesOrderMap.put("isSent", salesOrder.isSent.toString());
+            salesOrderMap.put("dueDate", salesOrder.dueDate.toString());
+            salesOrderMap.put("isArchived", salesOrder.isArchived.toString());
 //            purchaseOrderMap.put("parentCategory", category?.parentCategory?.categoryName);
 
             allSalesOrders.add(salesOrderMap);
