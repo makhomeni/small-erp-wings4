@@ -13,9 +13,19 @@ import com.wings4.core.toggle.SalesButtonTogglePanel;
 import com.wings4.dao.CommonDao;
 import com.wings4.dao.JobDao;
 import com.wings4.model.*;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -97,7 +107,7 @@ public class SalesCreatePanel   extends JPanel {
             cancelPurchase .setText("Cancel");
 
             builder.append(submitPurchase);
-            builder.append(cancelPurchase );
+            builder.append(cancelPurchase);
 
             add(builder.getPanel());
 
@@ -113,19 +123,59 @@ public class SalesCreatePanel   extends JPanel {
                     sales.setPrice(Double.parseDouble(priceTextField.getText()));
                     sales.setQuantity(Integer.parseInt(quantity.getText()));
                     sales.setSalesType(purchaseTypeCombo.getSelectedItem().toString());
-
+                    Customer customer = CommonDao.findCustomerById(Integer.parseInt(vendorCombo.getSelectedItem().toString()));
+                    String billingName = customer.getFirstName() + " " + customer.getLastName();
+                    String billingAddress = customer.getBillingAddress();
 
 //                    purchaseOrder.setVendorId(vendorCombo.getSelectedItem().toString());
 
+                    DateFormat dateFormatter = new SimpleDateFormat("yyyyMMddHHmmss", Locale.US);
+                    String autoName = dateFormatter.format(new Date());
 
                     if (JobDao.saveSales(sales)) {
                         JideOptionPane.showMessageDialog(null, "Sales Saved Successfully", "Success",
                                 JOptionPane.INFORMATION_MESSAGE);
+
                         try{
+//                            JasperReport jasperReport = (JasperReport) JRLoader.loadObject("com/wings4/reports/invoice.jasper");
+
+
+
+                            Map parameters = new HashMap();
+
+                            parameters.put("INV_SERIAL",autoName);
+                            parameters.put("BILL_NUMBER", "BILL_NAF_SAL_" + autoName);
+                            parameters.put("PARTY", billingName);
+                            parameters.put("ADDRESS_PARTY", billingAddress);
+                            parameters.put("LOGO_PATH", "com/wings4/resource/");
+                            
+                            Double quantity = sales.getQuantity().doubleValue();
+                            Double unit = sales.getPrice();
+
+                            List<Invoice> salesInvoiceList = new ArrayList<Invoice>();
+                            Invoice invoice = new Invoice();
+                            invoice.setPkid(1);
+                            invoice.setName(sales.getProductName());
+                            invoice.setQty(quantity);
+                            invoice.setUnit(unit);
+                            invoice.setRemarks(quantity * unit);
+                            salesInvoiceList.add(invoice);
+                            JRDataSource productDataSource = new JRBeanCollectionDataSource(salesInvoiceList);
+                            JasperDesign jasperDesign = JRXmlLoader
+                                    .load(new File("src//com/wings4//reports//invoice_bill.jrxml"));
+                            JasperReport jasperReport = JasperCompileManager
+                                    .compileReport(jasperDesign);
+                            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, productDataSource);
+                            JasperViewer.viewReport(jasperPrint, false);
+//                            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, productDataSource);
+                            JasperViewer.viewReport(jasperPrint);
+
                             GeneralToggleActionButton salesButton = new GeneralToggleActionButton(new
                                     SalesButtonTogglePanel());
                             salesButton.doClick();
-                        } catch (Exception ex){}
+                        } catch (Exception ex){
+                            ex.printStackTrace();
+                        }
                     } else {
                         JideOptionPane.showMessageDialog(null, "Sales Save Failed", "Failure",
                                 JOptionPane.ERROR_MESSAGE);

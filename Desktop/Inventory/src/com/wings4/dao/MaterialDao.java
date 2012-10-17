@@ -52,9 +52,12 @@ public class MaterialDao {
                 category.setCategoryId(Integer.parseInt(categoryObject.get("id").toString()));
                 category.setCategoryName(categoryObject.get("categoryName").toString());
                 String parentCategory = "";
-                if(categoryObject.get("parentCategory") != null ){
+                if(categoryObject.get("parentCategory") != null){
                     System.out.println("parentCategory = " + parentCategory);
                     parentCategory = categoryObject.get("parentCategory").toString();
+                }
+                if(categoryObject.get("parentCategory").equals("null")){
+                    parentCategory = "";
                 }
 
 

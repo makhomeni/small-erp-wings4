@@ -5,23 +5,25 @@
   
 	import java.awt.Color;
     import java.util.ArrayList;
+    import java.util.HashMap;
     import java.util.List;
+    import java.util.Map;
 
     import ar.com.fdvs.dj.core.DynamicJasperHelper;
     import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
+    import ar.com.fdvs.dj.domain.*;
     import com.wings4.dao.MaterialDao;
     import com.wings4.model.Product;
     import com.wings4.model.TestProduct;
     import net.sf.jasperreports.engine.JRDataSource;
+    import net.sf.jasperreports.engine.JasperFillManager;
     import net.sf.jasperreports.engine.JasperPrint;
+    import net.sf.jasperreports.engine.JasperReport;
     import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+    import net.sf.jasperreports.engine.util.JRLoader;
     import net.sf.jasperreports.view.JasperDesignViewer;
 	import net.sf.jasperreports.view.JasperViewer;
-	import ar.com.fdvs.dj.domain.AutoText;
-	import ar.com.fdvs.dj.domain.DJCalculation;
-	import ar.com.fdvs.dj.domain.DynamicReport;
-	import ar.com.fdvs.dj.domain.Style;
-	import ar.com.fdvs.dj.domain.builders.ColumnBuilder;
+    import ar.com.fdvs.dj.domain.builders.ColumnBuilder;
 	import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
 	import ar.com.fdvs.dj.domain.builders.GroupBuilder;
 	import ar.com.fdvs.dj.domain.constants.Border;
@@ -65,27 +67,35 @@
   
 			Style titleStyle = new Style("titleStyle");
 			titleStyle.setFont(new Font(18, Font._FONT_VERDANA, true));
+            titleStyle.setBorderBottom(Border.THIN());
 			Style importeStyle = new Style();
-			importeStyle.setHorizontalAlign(HorizontalAlign.RIGHT);
+			importeStyle.setHorizontalAlign(HorizontalAlign.LEFT);
 			Style oddRowStyle = new Style();
 			oddRowStyle.setBorder(Border.NO_BORDER());
 			oddRowStyle.setBackgroundColor(Color.LIGHT_GRAY);
 			oddRowStyle.setTransparency(Transparency.OPAQUE);
+
 	
 			DynamicReportBuilder drb = new DynamicReportBuilder();
 			Integer margin = new Integer(20);
 			drb
+            .addFirstPageImageBanner("com/wings4/resource/category.png", new Integer(50), new Integer(50), ImageBanner.ALIGN_LEFT)
+                    .addImageBanner("com/wings4/resource/customer.png", new Integer(30), new Integer(30), ImageBanner.ALIGN_RIGHT)
 				.setTitleStyle(titleStyle)
-				.setTitle("November 2006 sales report")					//defines the title of the report
-				.setSubtitle("The items in this report correspond "
-						+"to the main products: DVDs, Books, Foods and Magazines")
+				.setTitle("Nafisa Enterprise")					//defines the title of the report
+				.setSubtitle("Textile Dyestuff & Auxiliary chemical importers, Indentor & General Suppliers")
+                .setSubtitleStyle(importeStyle)
+                //.setTemplateFile()
 				.setDetailHeight(new Integer(15)).setLeftMargin(margin)
 				.setRightMargin(margin).setTopMargin(margin).setBottomMargin(margin)
 				.setPrintBackgroundOnOddRows(true)
 				.setGrandTotalLegend("Grand Total")
 				.setGrandTotalLegendStyle(headerVariables)
 				.setOddRowBackgroundStyle(oddRowStyle);
- 
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject("com/report/asda.jasper");
+            Map parameters = new HashMap();
+            JRDataSource productDataSource = new JRBeanCollectionDataSource(new ArrayList());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, productDataSource);
  
 			AbstractColumn columnState = ColumnBuilder.getNew()
  				.setColumnProperty("state", String.class.getName()).setTitle(
