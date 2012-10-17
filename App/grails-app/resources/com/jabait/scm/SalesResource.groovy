@@ -31,7 +31,24 @@ class SalesResource {
 
     @GET
     Response readAll(){
-        ok salesResourceService.readAll();
+        Map<String,Object> salesObject;
+        List salesList = new ArrayList();
+        List<Sales> salesSet = Sales.list();
+        for (Sales sales: salesSet) {
+            salesObject = new HashMap<String,Object>();
+            salesObject.put("id",sales.id);
+            salesObject.put("customerName", sales.customer.firstName + " " + sales.customer.lastName);
+            salesObject.put("productName", sales.salesOrder.product.productName);
+            salesObject.put("salesDate", sales.salesDate);
+            salesObject.put("quantity", sales.quantity);
+            salesObject.put("price", sales.price);
+            salesObject.put("salesOrder", sales.salesOrder.jobName);
+            salesObject.put("salesType", sales.salesType);
+
+            salesList.add(salesObject);
+        }
+        
+        ok salesList;
     }
 
     @PUT
@@ -49,7 +66,7 @@ class SalesResource {
     Response createSales(String salesJson){
         JSONObject jsonObject = new JSONObject(salesJson);
         Sales sales = new Sales();
-        sales.customer = Customer.get(Integer.parseInt(jsonObject.get("customer").toString()));
+        sales.customer = Customer.get(Integer.parseInt(jsonObject.get("customerName").toString()));
         sales.salesOrder = SalesOrder.get(Integer.parseInt(jsonObject.get("salesOrder").toString()))
         sales.price = Integer.parseInt(jsonObject.get("price").toString());
         sales.quantity = Integer.parseInt(jsonObject.get("quantity").toString());
@@ -75,7 +92,7 @@ class SalesResource {
         }
 
 
-        if(sales.save()){
+        if(sales.save(flush: true)){
             println "saved";
             ok sales;
         }else{
